@@ -1,3 +1,3 @@
 Készítõk:
-Sarlósi Patrik és Lanszki Csaba
+Szabolcs Gábor, Sarlósi Patrik és Lanszki Csaba
 
