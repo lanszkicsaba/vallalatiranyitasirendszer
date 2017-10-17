@@ -1,0 +1,11 @@
+C:\Users\P\Desktop\VIR\VIR\bin\Debug\VIR.exe.config
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\bin\Debug\VIR.exe.config
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\bin\Debug\VIR.exe
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\bin\Debug\VIR.pdb
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.csprojResolveAssemblyReference.cache
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.HomeForm.resources
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.LoginForm.resources
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.Properties.Resources.resources
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.csproj.GenerateResource.Cache
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.exe
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.pdb
