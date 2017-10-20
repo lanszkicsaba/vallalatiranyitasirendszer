@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Keszletezes = new System.Windows.Forms.TabPage();
-<<<<<<< HEAD
             this.listView1 = new System.Windows.Forms.ListView();
             this.ID_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Termeknev_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -46,38 +45,19 @@
             this.vevoadoszam_textBox = new System.Windows.Forms.TextBox();
             this.vevocime_textBox = new System.Windows.Forms.TextBox();
             this.vevoneve_textBox = new System.Windows.Forms.TextBox();
-=======
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.welcome_label = new System.Windows.Forms.Label();
             this.logout_btn = new System.Windows.Forms.Button();
-            this.tableexport_btn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-<<<<<<< HEAD
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.kibocsajtokozossegiadoszam_textBox = new System.Windows.Forms.TextBox();
-            this.kibocsajtoszamlaszam_textBox = new System.Windows.Forms.TextBox();
-            this.kibocsajtoadoszam_textBox = new System.Windows.Forms.TextBox();
-            this.kibocsajtocime_textBox = new System.Windows.Forms.TextBox();
-            this.kibocsajtoneve_textBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.welcome_label = new System.Windows.Forms.Label();
-            this.logout_btn = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -106,25 +86,16 @@
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-=======
             this.kibocsajtoneve_textBox = new System.Windows.Forms.TextBox();
             this.kibocsajtocime_textBox = new System.Windows.Forms.TextBox();
             this.kibocsajtoadoszam_textBox = new System.Windows.Forms.TextBox();
             this.kibocsajtoszamlaszam_textBox = new System.Windows.Forms.TextBox();
             this.kibocsajtokozossegiadoszam_textBox = new System.Windows.Forms.TextBox();
-            this.vevoneve_textBox = new System.Windows.Forms.TextBox();
-            this.vevocime_textBox = new System.Windows.Forms.TextBox();
-            this.vevoadoszam_textBox = new System.Windows.Forms.TextBox();
-            this.vevoszamlaszam_textBox = new System.Windows.Forms.TextBox();
-            this.vevokozossegiadoszam_textBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.megrendelesek_comboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.Keszletezes.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             this.SuspendLayout();
             // 
             // tabControl1
@@ -139,12 +110,9 @@
             // 
             // Keszletezes
             // 
-<<<<<<< HEAD
             this.Keszletezes.Controls.Add(this.groupBox4);
             this.Keszletezes.Controls.Add(this.groupBox3);
             this.Keszletezes.Controls.Add(this.listView1);
-=======
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             this.Keszletezes.Controls.Add(this.tableexport_btn);
             this.Keszletezes.Location = new System.Drawing.Point(4, 22);
             this.Keszletezes.Name = "Keszletezes";
@@ -154,7 +122,6 @@
             this.Keszletezes.Text = "Készletezés";
             this.Keszletezes.UseVisualStyleBackColor = true;
             // 
-<<<<<<< HEAD
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -197,8 +164,6 @@
             this.tableexport_btn.Text = "Tábla exportálás";
             this.tableexport_btn.UseVisualStyleBackColor = true;
             // 
-=======
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.megrendelesek_comboBox);
@@ -213,7 +178,6 @@
             this.tabPage2.Text = "Számlázás";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-<<<<<<< HEAD
             // megrendelesek_comboBox
             // 
             this.megrendelesek_comboBox.FormattingEnabled = true;
@@ -231,7 +195,6 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Számla kiállítása";
             this.button1.UseVisualStyleBackColor = true;
-=======
             // welcome_label
             // 
             this.welcome_label.AutoSize = true;
@@ -277,7 +240,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Számlakibocsátó adatai:";
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             // 
             // groupBox2
             // 
@@ -298,7 +260,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Vevő adatai:";
             // 
-<<<<<<< HEAD
             // vevokozossegiadoszam_textBox
             // 
             this.vevokozossegiadoszam_textBox.Location = new System.Drawing.Point(157, 193);
@@ -333,7 +294,6 @@
             this.vevoneve_textBox.Name = "vevoneve_textBox";
             this.vevoneve_textBox.Size = new System.Drawing.Size(218, 20);
             this.vevoneve_textBox.TabIndex = 10;
-=======
             // label1
             // 
             this.label1.AutoSize = true;
@@ -378,7 +338,6 @@
             this.label5.Size = new System.Drawing.Size(103, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Közösségi adószám:";
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             // 
             // label6
             // 
@@ -425,7 +384,6 @@
             this.label10.TabIndex = 5;
             this.label10.Text = "Név:";
             // 
-<<<<<<< HEAD
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.kibocsajtokozossegiadoszam_textBox);
@@ -458,7 +416,6 @@
             this.kibocsajtoszamlaszam_textBox.Name = "kibocsajtoszamlaszam_textBox";
             this.kibocsajtoszamlaszam_textBox.Size = new System.Drawing.Size(179, 20);
             this.kibocsajtoszamlaszam_textBox.TabIndex = 8;
-=======
             // kibocsajtoneve_textBox
             // 
             this.kibocsajtoneve_textBox.Location = new System.Drawing.Point(56, 41);
@@ -472,7 +429,6 @@
             this.kibocsajtocime_textBox.Name = "kibocsajtocime_textBox";
             this.kibocsajtocime_textBox.Size = new System.Drawing.Size(218, 20);
             this.kibocsajtocime_textBox.TabIndex = 6;
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             // 
             // kibocsajtoadoszam_textBox
             // 
@@ -481,7 +437,6 @@
             this.kibocsajtoadoszam_textBox.Size = new System.Drawing.Size(145, 20);
             this.kibocsajtoadoszam_textBox.TabIndex = 7;
             // 
-<<<<<<< HEAD
             // kibocsajtocime_textBox
             // 
             this.kibocsajtocime_textBox.Location = new System.Drawing.Point(56, 84);
@@ -751,7 +706,6 @@
             this.label19.Size = new System.Drawing.Size(156, 25);
             this.label19.TabIndex = 3;
             this.label19.Text = "VIR Rendszer";
-=======
             // kibocsajtoszamlaszam_textBox
             // 
             this.kibocsajtoszamlaszam_textBox.Location = new System.Drawing.Point(95, 152);
@@ -818,17 +772,13 @@
             this.megrendelesek_comboBox.Size = new System.Drawing.Size(644, 21);
             this.megrendelesek_comboBox.TabIndex = 3;
             this.megrendelesek_comboBox.Text = "Válaszon a megrendelések közül";
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 562);
-<<<<<<< HEAD
             this.Controls.Add(this.label19);
-=======
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             this.Controls.Add(this.logout_btn);
             this.Controls.Add(this.welcome_label);
             this.Controls.Add(this.tabControl1);
@@ -837,7 +787,6 @@
             this.tabControl1.ResumeLayout(false);
             this.Keszletezes.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-<<<<<<< HEAD
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -846,12 +795,10 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-=======
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -889,7 +836,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox megrendelesek_comboBox;
-<<<<<<< HEAD
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader ID_columnHeader;
         private System.Windows.Forms.ColumnHeader Termeknev_columnHeader;
@@ -916,7 +862,5 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-=======
->>>>>>> 88b58a74ccec1f1375200ec10a897198b0705669
     }
 }
