@@ -9,3 +9,15 @@ C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.Pro
 C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.csproj.GenerateResource.Cache
 C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.exe
 C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.pdb
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\VIR.exe.config
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\obj\Debug\VIR.exe
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\obj\Debug\VIR.pdb
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\obj\Debug\VIR.csprojResolveAssemblyReference.cache
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\obj\Debug\VIR.HomeForm.resources
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\obj\Debug\VIR.LoginForm.resources
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\obj\Debug\VIR.Properties.Resources.resources
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\obj\Debug\VIR.csproj.GenerateResource.Cache
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\VIR.exe
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\VIR.pdb
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\MySql.Data.dll
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\MySql.Web.dll
