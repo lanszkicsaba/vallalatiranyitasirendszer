@@ -1,0 +1,19 @@
+Ajánlatkérés
+
+Megkérem a cégünk nevében Lanszki Csabát, Sarlósi Patrikot és Szabolcs Gábort, hogy az új vállalatirányítási szoftverünk elképzeléseire tegyenek egy ajánlatot.
+
+Fõbb elképzeléseink:
+Vállalatunk szeretne egy olcsó vállalatirányítás rendszert, amely képes termékek, készletek felvezetésére, szerkesztésére, törlésére, leltárba vételére.  A készlet adatbázisát XML-be menti/konvertálja. Öncélra lehessen ezt az adatbázist Excel formátumba kiexportálni, ha belefér a fejlesztési idõkeretbe.
+
+Két komponensbõl áll az elképzelés szerinti rendszer: egy asztali szoftverbõl és egy webes felületrõl.
+
+A felület legyen felhasználóbarát mind az asztali szoftver, mind a webes felület terén. Egyszerûen mutassa meg a termékek adatlapját: kép, képek, fõbb jellemzõi, amely szükséges az általános munkához. A könnyû áttekintés érdekében szükségeltetik egy lapozó, amely segítségével a további termékeket is meglehet tekinteni, egyszerûen.
+
+Az asztali szoftverbõl lehessen termékek, készletek adatlapját megtekinteni webes felületen és ezek megrendelésére is legyen ott lehetõség. A megrendelésrõl készüljön számla, amely eleget tesz a magyarországi követelményeknek.
+
+Ha megrendelnek egy terméket, akkor az értesítse az asztali arról, hogy egyel kevesebb lett belõle a készleten. Ha már csak pár darab van raktáron, akkor értesüljön errõl az adminisztrátor, beszerzõ, hogy idõben feltudja tölteni a készletet az adott termékbõl.
+
+Mindenképpen szeretnénk, ha ez a rendszer problémamentes lenne, kellõképpen letesztelve.
+							
+								Kiss József
+							E CORP beszerzési osztály

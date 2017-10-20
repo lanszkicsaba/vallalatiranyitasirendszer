@@ -1,0 +1,71 @@
+Ajánlat
+Ajánlat tevõk, és céljának bemutatása
+Az ajánlatot Lanszki Csaba, Sarlósi Patrik és Szabolcs Gábor, az Eszterházy Károly Egyetem hallgatói ajánlják meg, az Ajánlatkérés és a Követelményspecifikáció alapján.
+Célja, hogy összefoglalja és részletesen leírja az Ajánlatkérésben leírt szoftver megvalósításainak részleteit és kivitelezésének módját.
+Az ajánlott szolgáltatás bemutatása
+Az ajánlatunkban egy olyan vállalatirányítási rendszert terveztünk meg, ami összefoglalja a vállalat által használt számítógépesszoftvert, és a vállalat ügyfeleinek szánt webesrendelési felületet.
+Asztaliprogram:
+A számítógépesszoftvert úgy alakítsuk ki, hogy nagyon egyszerûen használható, szinte csak alap számítógépesismeretekre legyen szükség, a vállalat bármely munkatársa számára. A desktop program használatához szükséges lesz regisztrációra, aminek segítségével nyomon követhetõvé válik, hogy ki milyen módosításokat hajtott végre a vállalatirányítási rendszeren belül. 
+Miután a vállalat felhasználója belép a rendszerbe lehetõsége nyílik a termékek, készletek felvezetésére, szerkesztésére, törlésére és leltárba vételére. A készlet adatbázisát XML-be menti/konvertálja, így akár internet kapcsolat hiányában is hozzá lehet férni a készletek adataihoz és módosíthatók azok. 
+Lehetõség nyílik majd a készlet adatait kiexportálni egy a Microsoft Excel által is használt fájlba és a webesfelületen megrendelet termékekrõl számlákat is lehet majd készíteni.
+Webesfelület:
+A webes felületettet szintén úgy készítsük el, hogy bárki számára egyszerûen és felhasználó barát módon használható legyen. A felületen lehetõség lesz bárki számára a vállalt termékeinek megtekintésére. A webesfelületen megjelennek majd a termékeknek az adatai (cikkszám, név, tulajdonságok, darabszám), de rendelésre csak a regisztrált felhasználóknak lesz lehetõségük a honlapon.
+A munkamenete:
+A munkamenetét az alábbi követelményspecifikációban is összefoglaló táblázat alapján fogjuk véghez vinni:
+ __________________________________________________________________________________________________
+|Modul	    |	ID    |	Verzió |Név  		   |Kifejtés                                       |
+|___________|_________|________|___________________|_______________________________________________|
+|Program    |	001   |	v0.1   |Felület 	   |Kezdetleges felület létrehozása:  	           |
+|	    |	      |	       |		   |Funkciógombok elhelyezése, feliratok,      	   |
+|	    |	      |	       |    		   |szövegdobozok létrehozása.         	   	   |
+|___________|_________|________|___________________|_______________________________________________|
+|Program    |	002   |	v0.2   |Felület		   |Menürendszer megtervezése és létrehozása.      |
+|___________|_________|________|___________________|_______________________________________________|
+|Program    |	003   |	v0.2   |Regisztráció	   |Regisztrációs ûrlap létrehozása.		   |
+|	    |	      |        |                   |Lehessen regisztrálni a rendszerbe bárkinek.   |
+|___________|_________|________|___________________|_______________________________________________|
+|Program    |	004   |	v0.3   |Készletkezelés	   |Új termék/készlet létrehozására szolgáló       |
+|           |         |        |                   |felület megtervezése és megvalósítása.         |
+|___________|_________|________|___________________|_______________________________________________|
+|Adatbázis  |	005   |	v0.3   |Készletexport	   |A termékek, készlet XML-be való mentése.       |
+|___________|_________|________|___________________|_______________________________________________|
+|Program    |	006   |	v0.2   |Felhasználókezelés |A rendszer mentse azt a felhasználót, aki új   |
+|           |         |        |                   |terméket vesz fel, szerkeszt. (XML-be plusz    |
+|           |         |        |                   |bejegyzés).					   |
+|___________|_________|________|___________________|_______________________________________________|
+|Adatbázis  |	007   |	v0.3   |Készletkezelés 	   |A készlettel kapcsolatban lehessen: 	   | 
+|           |         |        |                   |szerkeszteni, törölni.			   |
+|___________|_________|________|___________________|_______________________________________________|
+|Adatbázis  |	008   |	v0.4   |Készletkezelés     |Leltár funkció: Mennyi van még raktáron, 	   |
+|           |         |        |                   |státusza: van, nincs. Értesítõ küldése, ha 	   |
+|           |         |        |                   |valamibõl kevés van.			   |
+|___________|_________|________|___________________|_______________________________________________|
+|Program    |	009   |	v0.4   |Terméknézegetõ	   |Termékek megtekintése egyszerûen. Irányító     |
+|           |         |        |                   |nyilak, töltse be hozzá a képet, az adatokat.  |
+|___________|_________|________|___________________|_______________________________________________|
+|Weblap	    |	010   | v0.7   |Készletkezelés	   |A készletet/termékeket egy webes felületen     |
+|           |         |        |                   |megjeleníteni. Az adatokat XML-bõl kapja meg.  |
+|___________|_________|________|___________________|_______________________________________________|
+|Weblap	    |	011   | v0.7   |Készletkezelés	   |A weboldalon lehessen lapozgatni a termékek    |
+|           |         |        |                   |között.					   |
+|___________|_________|________|___________________|_______________________________________________|
+|Weblap	    |	012   | v0.8   |Rendelés	   |Termékek megrendelése szolgáló felület.        |
+|___________|_________|________|___________________|_______________________________________________|
+|Weblap –   |	013   |	v0.8   |Rendelés           |Rendelésrõl szóló számla kiállító form    	   |
+|program    |         |        |                   |létrehozása.				   |
+|___________|_________|________|___________________|_______________________________________________|
+|Program    |	014   |	v1.0   |Design	  	   |A program felület design elemeinek kidolgozása,| 
+|           |         |        |                   |funkciógombok, szövegelemek végleges  	   |
+|           |         |        |                   |elhelyezése.Menürendszer újra átgondolása és   |
+|           |         |        |                   |véglegesítése.				   |				   |
+|___________|_________|________|___________________|_______________________________________________|
+|Weblap	    |	015   |	v1.0   |Design             |A weblap felület design elemeinek kidolgozása, |
+|           |         |        |                   |funkciógombok, szövegelemek végleges 	   |
+|           |         |        |                   |elhelyezése. Menürendszer újra átgondolása és  |
+|           |         |        |                   |véglegesítése.				   |
+|___________|_________|________|___________________|_______________________________________________|
+|Adatbázis  |	---   |	---    |Készletexport      |Készlet exportja Excel formátumba.		   |
+|___________|_________|________|___________________|_______________________________________________|
+
+Tesztelés
+Mivel a szoftvereknél a legfontosabb dolog, hogy megbízhatóan és megfelelõlen mûködjenek a tesztelésére is óriási hangsúlyt fektetünk. A tesztelést menetét szoftveresen, Unit tesztek segítségével és mechanikusan próba üzemmel teszteljük le.
