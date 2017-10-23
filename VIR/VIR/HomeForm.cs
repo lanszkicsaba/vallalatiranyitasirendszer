@@ -19,7 +19,7 @@ namespace VIR
             InitializeComponent();
 
             DBConnect conn = new DBConnect();
-            MySqlDataAdapter ada = new MySqlDataAdapter("select * from termekek", conn.returnConnection());
+            MySqlDataAdapter ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());
             DataTable dt = new DataTable();
             ada.Fill(dt);
      
@@ -42,7 +42,6 @@ namespace VIR
                 listView1.Items.Add(listViewItem);
 
             }
-
 
         }
 
