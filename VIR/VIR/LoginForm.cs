@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Threading;
+using System.Resources;
 
 namespace VIR
 {
@@ -19,26 +21,64 @@ namespace VIR
         private string dbuid;
         private string dbpassword;
         private string connstr;
+        private Form homeForm = new HomeForm();
+        private string fullname = "";
 
+        
+        
         public LoginForm()
         {
             InitializeComponent();
-          
-            server = "localhost";
-        
-           database = "sys";
-        
-           dbuid = "root";
-            dbpassword = "";
+            if (Properties.Settings.Default.Username!=null)
+            {
+                textBoxUserName.Text = Properties.Settings.Default.Username;
+            }
+
+            buttonLogout.Enabled = false;
+            server = "sql11.freemysqlhosting.net";
+            database = "sql11200750";
+            dbuid = "sql11200750";
+            dbpassword = "UEyZHhGBNu";
             connstr = "SERVER=" + server + ";" + "DATABASE=" +
         database + ";" + "UID=" + dbuid + ";" + "PASSWORD=" + dbpassword + ";"+"Connection Timeout=300;";
 
             conn = new MySqlConnection(connstr);
         }
 
-       
+        
 
         private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            LoggingIn();            
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            if (homeForm.Created==true)
+            {
+                homeForm.Dispose();
+                HomeClosed();
+            }
+        }
+
+        public void HomeClosed()
+        {
+            buttonLogin.Enabled = true;
+            buttonLogout.Enabled = false;
+            labelMessage.Text = "Sikeres kijelentkezés.";
+            labelMessage.ForeColor = Color.Black;
+            buttonLogin.Enabled = true;
+            textBoxPasswd.Text = "";
+            textBoxPasswd.Enabled = true;
+            textBoxUserName.Enabled = true;
+        }
+
+        public string Fullname
+        {
+            get { return fullname; }
+        }
+
+        private void LoggingIn()
         {
             if (textBoxUserName.Text.ToString() == "" && textBoxPasswd.Text.ToString() == "")
             {
@@ -46,7 +86,7 @@ namespace VIR
                 labelMessage.ForeColor = Color.Red;
             }
 
-            if (textBoxUserName.Text.ToString()=="")
+            if (textBoxUserName.Text.ToString() == "")
             {
                 labelMessage.Text = "A felhasználónév mező üres. Kérlek ellenőrizd.";
                 labelMessage.ForeColor = Color.Red;
@@ -59,7 +99,13 @@ namespace VIR
 
             if (textBoxUserName.Text.ToString() != "" && textBoxPasswd.Text.ToString() != "")
             {
-                string mquerylogin = "SELECT * FROM sys.asztali where name=\"" + (textBoxUserName.Text.ToLower()) + "\"";               
+                //Név mentése
+                Properties.Settings.Default.Username = textBoxUserName.Text;
+                Properties.Settings.Default.Save();
+
+                pictureBox1.Image = Image.FromFile("loading.gif");
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                string mquerylogin = "SELECT * FROM asztaliusers where name=\"" + (textBoxUserName.Text.ToLower()) + "\"";
                 MySqlCommand cmdlogin = new MySqlCommand(mquerylogin, conn);
                 try
                 {
@@ -74,29 +120,54 @@ namespace VIR
                     {
                         name = reader.GetString("name");
                         passwd = reader.GetString("passwd");
+                        fullname = reader.GetString("fullname");
                     }
                     conn.Close();
                     if ((name != "" && name.ToLower() == textBoxUserName.Text.ToLower()) && (passwd != "" && passwd == textBoxPasswd.Text.ToString()))
                     {
                         labelMessage.Text = "Sikeres belépés!";
                         labelMessage.ForeColor = Color.Green;
-                        var homeForm = new HomeForm();
+                        if (homeForm.IsDisposed == true)
+                        {
+                            homeForm = new HomeForm();
+                        }
                         homeForm.Show();
+                        buttonLogin.Enabled = false;
+                        buttonLogout.Enabled = true;
+                        textBoxUserName.Enabled = false;
+                        textBoxPasswd.Enabled = false;
+                        pictureBox1.Image = null;
                     }
                     else
                     {
                         labelMessage.Text = "Sikertelen bejelentkezés. Kérjük ellenőrizze az adatokat.";
                         labelMessage.ForeColor = Color.Red;
+                        pictureBox1.Image = null;
                     }
                 }
                 catch (MySqlException ex)
                 {
                     labelMessage.Text = "Hiba lépett fel";
                     labelMessage.ForeColor = Color.Red;
-                    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message,"Adatbázis hiba");
+                    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+                    pictureBox1.Image = null;
                 }
+            }
+        }
 
-                
+        private void textBoxPasswd_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoggingIn();
+            }
+        }
+
+        private void textBoxUserName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoggingIn();
             }
         }
     }
