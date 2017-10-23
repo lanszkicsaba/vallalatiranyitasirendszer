@@ -30,7 +30,19 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Keszletezes = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.termekKep_pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.modositasKep_btn = new System.Windows.Forms.Button();
+            this.modositasKeszleten_textBox = new System.Windows.Forms.TextBox();
+            this.modositasSuly_textBox = new System.Windows.Forms.TextBox();
+            this.modositasLeiras_textBox = new System.Windows.Forms.TextBox();
+            this.modositasKategoria_textBox = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.modositas_btn = new System.Windows.Forms.Button();
             this.modositasMennyiseg_textBox = new System.Windows.Forms.TextBox();
             this.modositasAr_textBox = new System.Windows.Forms.TextBox();
@@ -41,6 +53,16 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.hozzaadasMegnyitas_btn = new System.Windows.Forms.Button();
+            this.hozzaadasKeszleten_textBox = new System.Windows.Forms.TextBox();
+            this.hozzaadasSuly_textBox = new System.Windows.Forms.TextBox();
+            this.hozzaadasLeiras_textBox = new System.Windows.Forms.TextBox();
+            this.hozzaadasKategoria_textBox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.hozzaadas_btn = new System.Windows.Forms.Button();
             this.hozzaadasMennyiseg_textBox = new System.Windows.Forms.TextBox();
             this.hozzaadasAr_textBox = new System.Windows.Forms.TextBox();
@@ -55,6 +77,11 @@
             this.Termeknev_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Ar_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mennyiseg_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Kategoria_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Leiras_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Suly_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Kep_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Keszleten_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableexport_btn = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.megrendelesek_comboBox = new System.Windows.Forms.ComboBox();
@@ -86,6 +113,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Keszletezes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.termekKep_pictureBox)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -97,14 +125,16 @@
             // 
             this.tabControl1.Controls.Add(this.Keszletezes);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 62);
+            this.tabControl1.Location = new System.Drawing.Point(12, 55);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(860, 488);
+            this.tabControl1.Size = new System.Drawing.Size(860, 627);
             this.tabControl1.TabIndex = 0;
             // 
             // Keszletezes
             // 
+            this.Keszletezes.Controls.Add(this.label30);
+            this.Keszletezes.Controls.Add(this.termekKep_pictureBox);
             this.Keszletezes.Controls.Add(this.groupBox4);
             this.Keszletezes.Controls.Add(this.groupBox3);
             this.Keszletezes.Controls.Add(this.listView1);
@@ -112,13 +142,40 @@
             this.Keszletezes.Location = new System.Drawing.Point(4, 22);
             this.Keszletezes.Name = "Keszletezes";
             this.Keszletezes.Padding = new System.Windows.Forms.Padding(3);
-            this.Keszletezes.Size = new System.Drawing.Size(852, 462);
+            this.Keszletezes.Size = new System.Drawing.Size(852, 601);
             this.Keszletezes.TabIndex = 0;
             this.Keszletezes.Text = "Készletezés";
             this.Keszletezes.UseVisualStyleBackColor = true;
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(394, 321);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(64, 13);
+            this.label30.TabIndex = 8;
+            this.label30.Text = "Termék kép";
+            // 
+            // termekKep_pictureBox
+            // 
+            this.termekKep_pictureBox.Location = new System.Drawing.Point(348, 344);
+            this.termekKep_pictureBox.Name = "termekKep_pictureBox";
+            this.termekKep_pictureBox.Size = new System.Drawing.Size(166, 149);
+            this.termekKep_pictureBox.TabIndex = 7;
+            this.termekKep_pictureBox.TabStop = false;
+            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.modositasKep_btn);
+            this.groupBox4.Controls.Add(this.modositasKeszleten_textBox);
+            this.groupBox4.Controls.Add(this.modositasSuly_textBox);
+            this.groupBox4.Controls.Add(this.modositasLeiras_textBox);
+            this.groupBox4.Controls.Add(this.modositasKategoria_textBox);
+            this.groupBox4.Controls.Add(this.label25);
+            this.groupBox4.Controls.Add(this.label26);
+            this.groupBox4.Controls.Add(this.label27);
+            this.groupBox4.Controls.Add(this.label28);
+            this.groupBox4.Controls.Add(this.label29);
             this.groupBox4.Controls.Add(this.modositas_btn);
             this.groupBox4.Controls.Add(this.modositasMennyiseg_textBox);
             this.groupBox4.Controls.Add(this.modositasAr_textBox);
@@ -128,16 +185,98 @@
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Location = new System.Drawing.Point(511, 278);
+            this.groupBox4.Location = new System.Drawing.Point(545, 278);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(245, 178);
+            this.groupBox4.Size = new System.Drawing.Size(245, 320);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Módosítás";
             // 
+            // modositasKep_btn
+            // 
+            this.modositasKep_btn.Location = new System.Drawing.Point(108, 218);
+            this.modositasKep_btn.Name = "modositasKep_btn";
+            this.modositasKep_btn.Size = new System.Drawing.Size(75, 23);
+            this.modositasKep_btn.TabIndex = 28;
+            this.modositasKep_btn.Text = "Megnyitás...";
+            this.modositasKep_btn.UseVisualStyleBackColor = true;
+            // 
+            // modositasKeszleten_textBox
+            // 
+            this.modositasKeszleten_textBox.Location = new System.Drawing.Point(98, 248);
+            this.modositasKeszleten_textBox.Name = "modositasKeszleten_textBox";
+            this.modositasKeszleten_textBox.Size = new System.Drawing.Size(100, 20);
+            this.modositasKeszleten_textBox.TabIndex = 27;
+            // 
+            // modositasSuly_textBox
+            // 
+            this.modositasSuly_textBox.Location = new System.Drawing.Point(98, 192);
+            this.modositasSuly_textBox.Name = "modositasSuly_textBox";
+            this.modositasSuly_textBox.Size = new System.Drawing.Size(100, 20);
+            this.modositasSuly_textBox.TabIndex = 26;
+            // 
+            // modositasLeiras_textBox
+            // 
+            this.modositasLeiras_textBox.Location = new System.Drawing.Point(98, 165);
+            this.modositasLeiras_textBox.Name = "modositasLeiras_textBox";
+            this.modositasLeiras_textBox.Size = new System.Drawing.Size(100, 20);
+            this.modositasLeiras_textBox.TabIndex = 25;
+            // 
+            // modositasKategoria_textBox
+            // 
+            this.modositasKategoria_textBox.Location = new System.Drawing.Point(98, 138);
+            this.modositasKategoria_textBox.Name = "modositasKategoria_textBox";
+            this.modositasKategoria_textBox.Size = new System.Drawing.Size(100, 20);
+            this.modositasKategoria_textBox.TabIndex = 24;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(31, 251);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(53, 13);
+            this.label25.TabIndex = 23;
+            this.label25.Text = "Készleten";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(31, 221);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(26, 13);
+            this.label26.TabIndex = 22;
+            this.label26.Text = "Kép";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(31, 195);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(27, 13);
+            this.label27.TabIndex = 21;
+            this.label27.Text = "Súly";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(31, 168);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(37, 13);
+            this.label28.TabIndex = 20;
+            this.label28.Text = "Leírás";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(31, 141);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(52, 13);
+            this.label29.TabIndex = 19;
+            this.label29.Text = "Kategória";
+            // 
             // modositas_btn
             // 
-            this.modositas_btn.Location = new System.Drawing.Point(82, 149);
+            this.modositas_btn.Location = new System.Drawing.Point(98, 291);
             this.modositas_btn.Name = "modositas_btn";
             this.modositas_btn.Size = new System.Drawing.Size(75, 23);
             this.modositas_btn.TabIndex = 8;
@@ -210,6 +349,16 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.hozzaadasMegnyitas_btn);
+            this.groupBox3.Controls.Add(this.hozzaadasKeszleten_textBox);
+            this.groupBox3.Controls.Add(this.hozzaadasSuly_textBox);
+            this.groupBox3.Controls.Add(this.hozzaadasLeiras_textBox);
+            this.groupBox3.Controls.Add(this.hozzaadasKategoria_textBox);
+            this.groupBox3.Controls.Add(this.label24);
+            this.groupBox3.Controls.Add(this.label23);
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.label21);
+            this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.hozzaadas_btn);
             this.groupBox3.Controls.Add(this.hozzaadasMennyiseg_textBox);
             this.groupBox3.Controls.Add(this.hozzaadasAr_textBox);
@@ -219,16 +368,98 @@
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Location = new System.Drawing.Point(101, 278);
+            this.groupBox3.Location = new System.Drawing.Point(66, 281);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(245, 178);
+            this.groupBox3.Size = new System.Drawing.Size(245, 317);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hozzáadás";
             // 
+            // hozzaadasMegnyitas_btn
+            // 
+            this.hozzaadasMegnyitas_btn.Location = new System.Drawing.Point(108, 218);
+            this.hozzaadasMegnyitas_btn.Name = "hozzaadasMegnyitas_btn";
+            this.hozzaadasMegnyitas_btn.Size = new System.Drawing.Size(75, 23);
+            this.hozzaadasMegnyitas_btn.TabIndex = 18;
+            this.hozzaadasMegnyitas_btn.Text = "Megnyitás...";
+            this.hozzaadasMegnyitas_btn.UseVisualStyleBackColor = true;
+            // 
+            // hozzaadasKeszleten_textBox
+            // 
+            this.hozzaadasKeszleten_textBox.Location = new System.Drawing.Point(98, 248);
+            this.hozzaadasKeszleten_textBox.Name = "hozzaadasKeszleten_textBox";
+            this.hozzaadasKeszleten_textBox.Size = new System.Drawing.Size(100, 20);
+            this.hozzaadasKeszleten_textBox.TabIndex = 17;
+            // 
+            // hozzaadasSuly_textBox
+            // 
+            this.hozzaadasSuly_textBox.Location = new System.Drawing.Point(98, 192);
+            this.hozzaadasSuly_textBox.Name = "hozzaadasSuly_textBox";
+            this.hozzaadasSuly_textBox.Size = new System.Drawing.Size(100, 20);
+            this.hozzaadasSuly_textBox.TabIndex = 16;
+            // 
+            // hozzaadasLeiras_textBox
+            // 
+            this.hozzaadasLeiras_textBox.Location = new System.Drawing.Point(98, 165);
+            this.hozzaadasLeiras_textBox.Name = "hozzaadasLeiras_textBox";
+            this.hozzaadasLeiras_textBox.Size = new System.Drawing.Size(100, 20);
+            this.hozzaadasLeiras_textBox.TabIndex = 15;
+            // 
+            // hozzaadasKategoria_textBox
+            // 
+            this.hozzaadasKategoria_textBox.Location = new System.Drawing.Point(98, 138);
+            this.hozzaadasKategoria_textBox.Name = "hozzaadasKategoria_textBox";
+            this.hozzaadasKategoria_textBox.Size = new System.Drawing.Size(100, 20);
+            this.hozzaadasKategoria_textBox.TabIndex = 14;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(31, 251);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(53, 13);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Készleten";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(31, 221);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(26, 13);
+            this.label23.TabIndex = 12;
+            this.label23.Text = "Kép";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(31, 195);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(27, 13);
+            this.label22.TabIndex = 11;
+            this.label22.Text = "Súly";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(31, 168);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(37, 13);
+            this.label21.TabIndex = 10;
+            this.label21.Text = "Leírás";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(31, 141);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(52, 13);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Kategória";
+            // 
             // hozzaadas_btn
             // 
-            this.hozzaadas_btn.Location = new System.Drawing.Point(82, 149);
+            this.hozzaadas_btn.Location = new System.Drawing.Point(74, 288);
             this.hozzaadas_btn.Name = "hozzaadas_btn";
             this.hozzaadas_btn.Size = new System.Drawing.Size(75, 23);
             this.hozzaadas_btn.TabIndex = 8;
@@ -305,7 +536,12 @@
             this.ID_columnHeader,
             this.Termeknev_columnHeader,
             this.Ar_columnHeader,
-            this.Mennyiseg_columnHeader});
+            this.Mennyiseg_columnHeader,
+            this.Kategoria_columnHeader,
+            this.Leiras_columnHeader,
+            this.Suly_columnHeader,
+            this.Kep_columnHeader,
+            this.Keszleten_columnHeader});
             this.listView1.Location = new System.Drawing.Point(56, 74);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(743, 198);
@@ -320,17 +556,40 @@
             // Termeknev_columnHeader
             // 
             this.Termeknev_columnHeader.Text = "Terméknév";
-            this.Termeknev_columnHeader.Width = 313;
+            this.Termeknev_columnHeader.Width = 130;
             // 
             // Ar_columnHeader
             // 
             this.Ar_columnHeader.Text = "Ár";
-            this.Ar_columnHeader.Width = 87;
+            this.Ar_columnHeader.Width = 55;
             // 
             // Mennyiseg_columnHeader
             // 
             this.Mennyiseg_columnHeader.Text = "Mennyiség";
-            this.Mennyiseg_columnHeader.Width = 104;
+            this.Mennyiseg_columnHeader.Width = 98;
+            // 
+            // Kategoria_columnHeader
+            // 
+            this.Kategoria_columnHeader.Text = "Kategória";
+            this.Kategoria_columnHeader.Width = 79;
+            // 
+            // Leiras_columnHeader
+            // 
+            this.Leiras_columnHeader.Text = "Leírás";
+            this.Leiras_columnHeader.Width = 81;
+            // 
+            // Suly_columnHeader
+            // 
+            this.Suly_columnHeader.Text = "Súly";
+            // 
+            // Kep_columnHeader
+            // 
+            this.Kep_columnHeader.Text = "Kép";
+            this.Kep_columnHeader.Width = 112;
+            // 
+            // Keszleten_columnHeader
+            // 
+            this.Keszleten_columnHeader.Text = "Készleten";
             // 
             // tableexport_btn
             // 
@@ -350,7 +609,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(852, 462);
+            this.tabPage2.Size = new System.Drawing.Size(852, 601);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Számlázás";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -401,7 +660,7 @@
             // 
             // vevoszamlaszam_textBox
             // 
-            this.vevoszamlaszam_textBox.Location = new System.Drawing.Point(121, 152);
+            this.vevoszamlaszam_textBox.Location = new System.Drawing.Point(122, 152);
             this.vevoszamlaszam_textBox.Name = "vevoszamlaszam_textBox";
             this.vevoszamlaszam_textBox.Size = new System.Drawing.Size(179, 20);
             this.vevoszamlaszam_textBox.TabIndex = 13;
@@ -417,12 +676,12 @@
             // 
             this.vevocime_textBox.Location = new System.Drawing.Point(82, 81);
             this.vevocime_textBox.Name = "vevocime_textBox";
-            this.vevocime_textBox.Size = new System.Drawing.Size(218, 20);
+            this.vevocime_textBox.Size = new System.Drawing.Size(219, 20);
             this.vevocime_textBox.TabIndex = 11;
             // 
             // vevoneve_textBox
             // 
-            this.vevoneve_textBox.Location = new System.Drawing.Point(81, 41);
+            this.vevoneve_textBox.Location = new System.Drawing.Point(83, 41);
             this.vevoneve_textBox.Name = "vevoneve_textBox";
             this.vevoneve_textBox.Size = new System.Drawing.Size(218, 20);
             this.vevoneve_textBox.TabIndex = 10;
@@ -457,7 +716,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(50, 84);
+            this.label9.Location = new System.Drawing.Point(47, 84);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 13);
             this.label9.TabIndex = 6;
@@ -605,7 +864,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 562);
+            this.ClientSize = new System.Drawing.Size(884, 689);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.logout_btn);
             this.Controls.Add(this.welcome_label);
@@ -616,6 +875,8 @@
             this.Load += new System.EventHandler(this.HomeForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.Keszletezes.ResumeLayout(false);
+            this.Keszletezes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.termekKep_pictureBox)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -688,5 +949,32 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button modositasKep_btn;
+        private System.Windows.Forms.TextBox modositasKeszleten_textBox;
+        private System.Windows.Forms.TextBox modositasSuly_textBox;
+        private System.Windows.Forms.TextBox modositasLeiras_textBox;
+        private System.Windows.Forms.TextBox modositasKategoria_textBox;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button hozzaadasMegnyitas_btn;
+        private System.Windows.Forms.TextBox hozzaadasKeszleten_textBox;
+        private System.Windows.Forms.TextBox hozzaadasSuly_textBox;
+        private System.Windows.Forms.TextBox hozzaadasLeiras_textBox;
+        private System.Windows.Forms.TextBox hozzaadasKategoria_textBox;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.PictureBox termekKep_pictureBox;
+        private System.Windows.Forms.ColumnHeader Kategoria_columnHeader;
+        private System.Windows.Forms.ColumnHeader Leiras_columnHeader;
+        private System.Windows.Forms.ColumnHeader Suly_columnHeader;
+        private System.Windows.Forms.ColumnHeader Kep_columnHeader;
+        private System.Windows.Forms.ColumnHeader Keszleten_columnHeader;
     }
 }
