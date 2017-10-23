@@ -588,6 +588,7 @@
             this.logout_btn.TabIndex = 2;
             this.logout_btn.Text = "Kijelentkezés";
             this.logout_btn.UseVisualStyleBackColor = true;
+            this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
             // 
             // label19
             // 
@@ -611,6 +612,8 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "HomeForm";
             this.Text = "VIR Rendszer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeForm_FormClosing);
+            this.Load += new System.EventHandler(this.HomeForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.Keszletezes.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
