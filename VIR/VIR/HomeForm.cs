@@ -68,49 +68,67 @@ namespace VIR
         private void hozzaadas_btn_Click(object sender, EventArgs e)
         {
             DBConnect conn = new DBConnect();
+            try
+            {
+                string id = hozzaadasID_textBox.Text.ToString();
+                string termeknev = hozzaadasTermeknev_textBox.Text.ToString();
+                string ar = hozzaadasAr_textBox.Text.ToString();
+                string mennyiseg = hozzaadasMennyiseg_textBox.Text.ToString();
+                string kategoria = hozzaadasKategoria_textBox.Text.ToString();
+                string leiras = hozzaadasLeiras_textBox.Text.ToString();
+                string suly = hozzaadasSuly_textBox.Text.ToString();
+                Muvelet muvelet = new Muvelet();
+                muvelet.FileCopy(selectedFileName, selectedFilePathName);
+                string kep = selectedFileName;
+                string keszleten = hozzaadasKeszleten_textBox.Text.ToString();
+                string query = "INSERT INTO sql11200750.termekek(ID,termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + int.Parse(id) +
+                        "','" + termeknev +
+                        "','" + int.Parse(ar) +
+                        "','" + int.Parse(mennyiseg) +
+                        "','" + kategoria +
+                        "','" + leiras +
+                        "','" + int.Parse(suly) +
+                        "','" + kep +
+                        "','" + int.Parse(keszleten) + "')";
 
-            string id = hozzaadasID_textBox.Text.ToString();
-            string termeknev = hozzaadasTermeknev_textBox.Text.ToString();
-            string ar = hozzaadasAr_textBox.Text.ToString();
-            string mennyiseg = hozzaadasMennyiseg_textBox.Text.ToString();
-            string kategoria = hozzaadasKategoria_textBox.Text.ToString();
-            string leiras = hozzaadasLeiras_textBox.Text.ToString();
-            string suly = hozzaadasSuly_textBox.Text.ToString();
-            Muvelet muvelet = new Muvelet();
-            muvelet.FileCopy(selectedFileName, selectedFilePathName);
-            string kep = selectedFileName;
-            string keszleten = hozzaadasKeszleten_textBox.Text.ToString();
-            string query = "INSERT INTO sql11200750.termekek(ID,termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + int.Parse(id) +
-                    "','" + termeknev +
-                    "','" + int.Parse(ar) +
-                    "','" + int.Parse(mennyiseg) +
-                    "','" + kategoria +
-                    "','" + leiras +
-                    "','" + int.Parse(suly) +
-                    "','" + kep +
-                    "','" + int.Parse(keszleten) + "')";
+                MySqlDataReader reader;
+                MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
+                conn.OpenConnection();
+                reader = cmd.ExecuteReader();
+                while (reader.Read()) { }
 
-            MySqlDataReader reader;
-            MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
-            conn.OpenConnection();
-            reader = cmd.ExecuteReader();
-            while (reader.Read()) { }
+                string[] row = { id, termeknev, ar, mennyiseg, kategoria, leiras, suly, kep, keszleten };
 
-            string[] row = { id, termeknev, ar, mennyiseg, kategoria, leiras, suly, kep, keszleten };
+                var listViewItem = new ListViewItem(row);
+                listView1.Items.Add(listViewItem);
 
-            var listViewItem = new ListViewItem(row);
-            listView1.Items.Add(listViewItem);
+                termekKep_pictureBox.Image = new Bitmap("image/kezdo.jpg");
 
-            conn.CloseConnection();
-
-            hozzaadasID_textBox.Clear();
-            hozzaadasTermeknev_textBox.Clear();
-            hozzaadasAr_textBox.Clear();
-            hozzaadasMennyiseg_textBox.Clear();
-            hozzaadasKategoria_textBox.Clear();
-            hozzaadasLeiras_textBox.Clear();
-            hozzaadasSuly_textBox.Clear();
-            hozzaadasKeszleten_textBox.Clear();
+                hozzaadasID_textBox.Clear();
+                hozzaadasTermeknev_textBox.Clear();
+                hozzaadasAr_textBox.Clear();
+                hozzaadasMennyiseg_textBox.Clear();
+                hozzaadasKategoria_textBox.Clear();
+                hozzaadasLeiras_textBox.Clear();
+                hozzaadasSuly_textBox.Clear();
+                hozzaadasKeszleten_textBox.Clear();
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Töltsön ki minden mezőt!");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Nem megfelelő a bevinni kívánt adat!");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hoppá valami hiba történt!");
+            }
+            finally
+            {
+                conn.CloseConnection();
+            }
         }
 
         private string selectedFilePathName;
@@ -135,9 +153,7 @@ namespace VIR
                         {
                             selectedFilePathName = openFileDialog1.FileName;
                             termekKep_pictureBox.Image = new Bitmap(selectedFilePathName);
-                            //MessageBox.Show(selectedFilePathName);
                             selectedFileName = Path.GetFileName(selectedFilePathName);
-                            //MessageBox.Show(selectedFileName);
                         }
                     }
                 }
