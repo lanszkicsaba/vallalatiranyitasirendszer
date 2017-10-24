@@ -383,6 +383,7 @@
             this.hozzaadasMegnyitas_btn.TabIndex = 18;
             this.hozzaadasMegnyitas_btn.Text = "Megnyitás...";
             this.hozzaadasMegnyitas_btn.UseVisualStyleBackColor = true;
+            this.hozzaadasMegnyitas_btn.Click += new System.EventHandler(this.hozzaadasMegnyitas_btn_Click);
             // 
             // hozzaadasKeszleten_textBox
             // 
@@ -459,12 +460,13 @@
             // 
             // hozzaadas_btn
             // 
-            this.hozzaadas_btn.Location = new System.Drawing.Point(74, 288);
+            this.hozzaadas_btn.Location = new System.Drawing.Point(76, 288);
             this.hozzaadas_btn.Name = "hozzaadas_btn";
             this.hozzaadas_btn.Size = new System.Drawing.Size(75, 23);
             this.hozzaadas_btn.TabIndex = 8;
             this.hozzaadas_btn.Text = "Hozzáadás";
             this.hozzaadas_btn.UseVisualStyleBackColor = true;
+            this.hozzaadas_btn.Click += new System.EventHandler(this.hozzaadas_btn_Click);
             // 
             // hozzaadasMennyiseg_textBox
             // 

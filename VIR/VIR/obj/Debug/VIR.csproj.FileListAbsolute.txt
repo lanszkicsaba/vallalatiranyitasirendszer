@@ -21,3 +21,4 @@ C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogi
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\VIR.pdb
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\MySql.Data.dll
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\MySql.Web.dll
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\image\kezdo.jpg
