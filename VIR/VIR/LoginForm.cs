@@ -103,7 +103,7 @@ namespace VIR
                 Properties.Settings.Default.Username = textBoxUserName.Text;
                 Properties.Settings.Default.Save();
 
-                pictureBox1.Image = Image.FromFile("loading.gif");
+                pictureBox1.Image = Image.FromFile("image/loading.gif");
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 string mquerylogin = "SELECT * FROM asztaliusers where name=\"" + (textBoxUserName.Text.ToLower()) + "\"";
                 MySqlCommand cmdlogin = new MySqlCommand(mquerylogin, conn);
