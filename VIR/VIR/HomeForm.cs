@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VIRConnect;
-using Fajlmuveletek;
+using Muveletek;
 
 namespace VIR
 {
@@ -43,47 +43,16 @@ namespace VIR
                 welcome_label.Text = "Üdvözöllek, " + Program.logForm.Fullname;
             }
 
-            try
-            {
-                string sKeszleten;
-                termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
-                termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+            termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                DBConnect conn = new DBConnect();
-                MySqlDataAdapter ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());
-                DataTable dt = new DataTable();
-                ada.Fill(dt);
+            Muvelet muvelet = new Muvelet();
+            muvelet.Adatletoltes(listView1);
 
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    DataRow dr = dt.Rows[i];
-                    if (dr["keszleten"].ToString() == "True")
-                    {
-                        sKeszleten = "Van";
-                    }
-                    else
-                    {
-                        sKeszleten = "Nincs";
-                    }
-                    string[] row = {
-                    dr["termeknev"].ToString(),
-                    dr["ar"].ToString(),
-                    dr["mennyiseg"].ToString(),
-                    dr["kategoria"].ToString(),
-                    dr["leiras"].ToString(),
-                    dr["suly"].ToString(),
-                    sKeszleten
-                };
-
-                    var listViewItem = new ListViewItem(row);
-                    listView1.Items.Add(listViewItem);
-                    conn.CloseConnection();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
-            }
+            Timer timer = new Timer();
+            timer.Interval = (10 * 1000); // 10 secs
+            timer.Tick += new EventHandler(frissites_btn_Click);
+            timer.Start();
         }
 
         private void hozzaadas_btn_Click(object sender, EventArgs e)
@@ -91,7 +60,6 @@ namespace VIR
             DBConnect conn = new DBConnect();
             try
             {
-
                 string termeknev = hozzaadasTermeknev_textBox.Text.ToString();
                 string ar = hozzaadasAr_textBox.Text.ToString();
                 string mennyiseg = hozzaadasMennyiseg_textBox.Text.ToString();
@@ -109,8 +77,10 @@ namespace VIR
                 {
                     kep = "";
                 }
+
                 int iKeszleten;
                 string sKeszleten;
+
                 if (checkBox_KeszletenHozzaadas.Checked == true)
                 {
                     iKeszleten = 1;
@@ -121,7 +91,8 @@ namespace VIR
                     iKeszleten = 0;
                     sKeszleten = "Nincs";
                 }
-                string query = "INSERT INTO sql11200750.termekek(id, termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + null +
+
+                string query = "INSERT INTO sql11200750.termekek(id,termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + null +
                         "','" + termeknev +
                         "','" + int.Parse(ar) +
                         "','" + int.Parse(mennyiseg) +
@@ -138,10 +109,9 @@ namespace VIR
 
                 while (reader.Read()) { } //?????????? megvárja ameddig elküldi 
 
-                string[] row = { termeknev, ar, mennyiseg, kategoria, leiras, suly, sKeszleten };
-
-                var listViewItem = new ListViewItem(row);
-                listView1.Items.Add(listViewItem);
+                listView1.Items.Clear();
+                Muvelet muveletek = new Muvelet();
+                muveletek.Adatletoltes(listView1);
 
                 termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
 
@@ -206,6 +176,45 @@ namespace VIR
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+        }
+
+        private void hozzadasUrites_btn_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné üríteni az eddig beirtadatokat?", "Figyelmeztetés!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+            termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+            hozzaadasTermeknev_textBox.Clear();
+            hozzaadasAr_textBox.Clear();
+            hozzaadasMennyiseg_textBox.Clear();
+            hozzaadasKategoria_textBox.Clear();
+            richTextBox_LeirasHozzaad.Clear();
+            hozzaadasSuly_textBox.Clear();
+            checkBox_KeszletenHozzaadas.Checked = false;
+            }
+        }
+
+        private void modositasUrites_btn_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné üríteni az eddig beirtadatokat?", "Figyelmeztetés!", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                modositasTermeknev_textBox.Clear();
+                modositasAr_textBox.Clear();
+                modositasMennyiseg_textBox.Clear();
+                modositasKategoria_textBox.Clear();
+                richTextBox_LeirasModositas.Clear();
+                modositasSuly_textBox.Clear();
+                checkBox_KeszletenModositas.Checked = false;
+            }
+        }
+
+        private void frissites_btn_Click(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+            Muvelet muveletek = new Muvelet();
+            muveletek.Adatletoltes(listView1);
         }
     }
 }
