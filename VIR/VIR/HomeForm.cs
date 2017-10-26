@@ -17,12 +17,35 @@ namespace VIR
     public partial class HomeForm : Form
     {
         public HomeForm()
-        {
-
+        { 
             InitializeComponent();
-            string sKeszleten;
+        }
+
+        private void HomeForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.logForm.HomeClosed();
+        }
+
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
+            Program.logForm.HomeClosed();
+            this.Close();
+        }
+
+        private void HomeForm_Load(object sender, EventArgs e)
+        {
+            if (Program.logForm.Fullname == "" || Program.logForm.Fullname == null)
+            {
+                welcome_label.Text = "Üdvözöllek Felhasználó";
+            }
+            else
+            {
+                welcome_label.Text = "Üdvözöllek, " + Program.logForm.Fullname;
+            }
+
             try
             {
+                string sKeszleten;
                 termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
                 termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
 
@@ -60,30 +83,6 @@ namespace VIR
             catch (MySqlException ex)
             {
                 MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
-            }
-        }
-
-        private void HomeForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Program.logForm.HomeClosed();
-
-        }
-
-        private void logout_btn_Click(object sender, EventArgs e)
-        {
-            Program.logForm.HomeClosed();
-            this.Close();
-        }
-
-        private void HomeForm_Load(object sender, EventArgs e)
-        {
-            if (Program.logForm.Fullname == "" || Program.logForm.Fullname == null)
-            {
-                welcome_label.Text = "Üdvözöllek Felhasználó";
-            }
-            else
-            {
-                welcome_label.Text = "Üdvözöllek, " + Program.logForm.Fullname;
             }
         }
 
