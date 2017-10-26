@@ -18,40 +18,48 @@ namespace VIR
     {
         public HomeForm()
         {
+
             InitializeComponent();
             string sKeszleten;
-            termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
-            termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            DBConnect conn = new DBConnect();
-            MySqlDataAdapter ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());
-            DataTable dt = new DataTable();
-            ada.Fill(dt);
-
-            for (int i = 0; i < dt.Rows.Count; i++)
+            try
             {
-                DataRow dr = dt.Rows[i];
-                if (dr["keszleten"].ToString()=="True")
+                termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                DBConnect conn = new DBConnect();
+                MySqlDataAdapter ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());
+                DataTable dt = new DataTable();
+                ada.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    sKeszleten = "Van";
-                }
-                else
-                {
-                    sKeszleten = "Nincs";
-                }
-                string[] row = {
+                    DataRow dr = dt.Rows[i];
+                    if (dr["keszleten"].ToString() == "True")
+                    {
+                        sKeszleten = "Van";
+                    }
+                    else
+                    {
+                        sKeszleten = "Nincs";
+                    }
+                    string[] row = {
                     dr["termeknev"].ToString(),
                     dr["ar"].ToString(),
                     dr["mennyiseg"].ToString(),
                     dr["kategoria"].ToString(),
                     dr["leiras"].ToString(),
-                    dr["suly"].ToString(),                   
+                    dr["suly"].ToString(),
                     sKeszleten
                 };
 
-                var listViewItem = new ListViewItem(row);
-                listView1.Items.Add(listViewItem);
-                conn.CloseConnection();
+                    var listViewItem = new ListViewItem(row);
+                    listView1.Items.Add(listViewItem);
+                    conn.CloseConnection();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
             }
         }
 
@@ -83,18 +91,18 @@ namespace VIR
         {
             DBConnect conn = new DBConnect();
             try
-            {                
+            {
 
                 string termeknev = hozzaadasTermeknev_textBox.Text.ToString();
                 string ar = hozzaadasAr_textBox.Text.ToString();
                 string mennyiseg = hozzaadasMennyiseg_textBox.Text.ToString();
                 string kategoria = hozzaadasKategoria_textBox.Text.ToString();
-                string leiras = richTextBox_LeirasHozzaad.Text.ToString(); 
+                string leiras = richTextBox_LeirasHozzaad.Text.ToString();
                 string suly = hozzaadasSuly_textBox.Text.ToString();
                 Muvelet muvelet = new Muvelet();
                 muvelet.FileCopy(selectedFileName, selectedFilePathName);
                 string kep;
-                if (selectedFileName!=null || selectedFileName!="")
+                if (selectedFileName != null || selectedFileName != "")
                 {
                     kep = selectedFileName;
                 }
@@ -106,15 +114,15 @@ namespace VIR
                 string sKeszleten;
                 if (checkBox_KeszletenHozzaadas.Checked == true)
                 {
-                   iKeszleten = 1;                   
+                    iKeszleten = 1;
                     sKeszleten = "Van";
                 }
                 else
                 {
-                   iKeszleten = 0;
-                   sKeszleten = "Nincs";
+                    iKeszleten = 0;
+                    sKeszleten = "Nincs";
                 }
-                string query = "INSERT INTO sql11200750.termekek(id, termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('"+ null+
+                string query = "INSERT INTO sql11200750.termekek(id, termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + null +
                         "','" + termeknev +
                         "','" + int.Parse(ar) +
                         "','" + int.Parse(mennyiseg) +
@@ -129,15 +137,15 @@ namespace VIR
                 conn.OpenConnection();
                 reader = cmd.ExecuteReader();
 
-               while (reader.Read()) { } //??????????
+                while (reader.Read()) { } //?????????? megvárja ameddig elküldi 
 
-                string[] row = {termeknev, ar, mennyiseg, kategoria, leiras, suly, sKeszleten };
+                string[] row = { termeknev, ar, mennyiseg, kategoria, leiras, suly, sKeszleten };
 
                 var listViewItem = new ListViewItem(row);
                 listView1.Items.Add(listViewItem);
 
                 termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
-              
+
                 hozzaadasTermeknev_textBox.Clear();
                 hozzaadasAr_textBox.Clear();
                 hozzaadasMennyiseg_textBox.Clear();
@@ -148,15 +156,19 @@ namespace VIR
             }
             catch (ArgumentNullException)
             {
-                MessageBox.Show("Töltsön ki minden mezőt!","Hiba");
+                MessageBox.Show("Töltsön ki minden mezőt!", "Hiba");
             }
             catch (FormatException)
             {
-                MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!","Hiba");
+                MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Hiba történt! \n" +ex.Message,"Hiba");
+                MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
             }
             finally
             {

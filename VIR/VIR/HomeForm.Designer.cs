@@ -36,6 +36,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.termekKep_pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBox_KeszletenModositas = new System.Windows.Forms.CheckBox();
             this.richTextBox_LeirasModositas = new System.Windows.Forms.RichTextBox();
             this.modositasKep_btn = new System.Windows.Forms.Button();
             this.modositasSuly_textBox = new System.Windows.Forms.TextBox();
@@ -53,10 +54,12 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox_KeszletenHozzaadas = new System.Windows.Forms.CheckBox();
             this.richTextBox_LeirasHozzaad = new System.Windows.Forms.RichTextBox();
             this.hozzaadasMegnyitas_btn = new System.Windows.Forms.Button();
             this.hozzaadasSuly_textBox = new System.Windows.Forms.TextBox();
             this.hozzaadasKategoria_textBox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -105,9 +108,6 @@
             this.welcome_label = new System.Windows.Forms.Label();
             this.logout_btn = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
-            this.checkBox_KeszletenHozzaadas = new System.Windows.Forms.CheckBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.checkBox_KeszletenModositas = new System.Windows.Forms.CheckBox();
             this.tabControl_Keszlet.SuspendLayout();
             this.Tab_Keszlet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.termekKep_pictureBox)).BeginInit();
@@ -149,7 +149,7 @@
             // label_kereses
             // 
             this.label_kereses.AutoSize = true;
-            this.label_kereses.Location = new System.Drawing.Point(577, 35);
+            this.label_kereses.Location = new System.Drawing.Point(578, 38);
             this.label_kereses.Name = "label_kereses";
             this.label_kereses.Size = new System.Drawing.Size(48, 13);
             this.label_kereses.TabIndex = 10;
@@ -206,6 +206,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Módosítás";
             // 
+            // checkBox_KeszletenModositas
+            // 
+            this.checkBox_KeszletenModositas.AutoSize = true;
+            this.checkBox_KeszletenModositas.Location = new System.Drawing.Point(98, 214);
+            this.checkBox_KeszletenModositas.Name = "checkBox_KeszletenModositas";
+            this.checkBox_KeszletenModositas.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_KeszletenModositas.TabIndex = 30;
+            this.checkBox_KeszletenModositas.UseVisualStyleBackColor = true;
+            // 
             // richTextBox_LeirasModositas
             // 
             this.richTextBox_LeirasModositas.Location = new System.Drawing.Point(6, 129);
@@ -240,7 +249,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(32, 218);
+            this.label25.Location = new System.Drawing.Point(31, 214);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(53, 13);
             this.label25.TabIndex = 23;
@@ -258,7 +267,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(32, 188);
+            this.label27.Location = new System.Drawing.Point(33, 188);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(27, 13);
             this.label27.TabIndex = 21;
@@ -365,6 +374,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hozzáadás";
             // 
+            // checkBox_KeszletenHozzaadas
+            // 
+            this.checkBox_KeszletenHozzaadas.AutoSize = true;
+            this.checkBox_KeszletenHozzaadas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.checkBox_KeszletenHozzaadas.Location = new System.Drawing.Point(98, 215);
+            this.checkBox_KeszletenHozzaadas.Name = "checkBox_KeszletenHozzaadas";
+            this.checkBox_KeszletenHozzaadas.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_KeszletenHozzaadas.TabIndex = 20;
+            this.checkBox_KeszletenHozzaadas.UseVisualStyleBackColor = true;
+            // 
             // richTextBox_LeirasHozzaad
             // 
             this.richTextBox_LeirasHozzaad.Location = new System.Drawing.Point(6, 126);
@@ -397,6 +416,15 @@
             this.hozzaadasKategoria_textBox.Size = new System.Drawing.Size(100, 20);
             this.hozzaadasKategoria_textBox.TabIndex = 14;
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(32, 215);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(53, 13);
+            this.label24.TabIndex = 13;
+            this.label24.Text = "Készleten";
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -409,7 +437,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(31, 185);
+            this.label22.Location = new System.Drawing.Point(32, 188);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(27, 13);
             this.label22.TabIndex = 11;
@@ -543,7 +571,7 @@
             // 
             // tableexport_btn
             // 
-            this.tableexport_btn.Location = new System.Drawing.Point(56, 35);
+            this.tableexport_btn.Location = new System.Drawing.Point(66, 35);
             this.tableexport_btn.Name = "tableexport_btn";
             this.tableexport_btn.Size = new System.Drawing.Size(183, 23);
             this.tableexport_btn.TabIndex = 3;
@@ -809,34 +837,6 @@
             this.label19.Size = new System.Drawing.Size(294, 25);
             this.label19.TabIndex = 3;
             this.label19.Text = "Vállalatirányítási Rendszer";
-            // 
-            // checkBox_KeszletenHozzaadas
-            // 
-            this.checkBox_KeszletenHozzaadas.AutoSize = true;
-            this.checkBox_KeszletenHozzaadas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.checkBox_KeszletenHozzaadas.Location = new System.Drawing.Point(98, 215);
-            this.checkBox_KeszletenHozzaadas.Name = "checkBox_KeszletenHozzaadas";
-            this.checkBox_KeszletenHozzaadas.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_KeszletenHozzaadas.TabIndex = 20;
-            this.checkBox_KeszletenHozzaadas.UseVisualStyleBackColor = true;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(32, 215);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(53, 13);
-            this.label24.TabIndex = 13;
-            this.label24.Text = "Készleten";
-            // 
-            // checkBox_KeszletenModositas
-            // 
-            this.checkBox_KeszletenModositas.AutoSize = true;
-            this.checkBox_KeszletenModositas.Location = new System.Drawing.Point(98, 214);
-            this.checkBox_KeszletenModositas.Name = "checkBox_KeszletenModositas";
-            this.checkBox_KeszletenModositas.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_KeszletenModositas.TabIndex = 30;
-            this.checkBox_KeszletenModositas.UseVisualStyleBackColor = true;
             // 
             // HomeForm
             // 
