@@ -31,11 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             this.tabControl_Keszlet = new System.Windows.Forms.TabControl();
             this.Tab_Keszlet = new System.Windows.Forms.TabPage();
+            this.frissites_btn = new System.Windows.Forms.Button();
             this.label_kereses = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.termekKep_pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.modositasUrites_btn = new System.Windows.Forms.Button();
             this.checkBox_KeszletenModositas = new System.Windows.Forms.CheckBox();
             this.richTextBox_LeirasModositas = new System.Windows.Forms.RichTextBox();
             this.modositasKep_btn = new System.Windows.Forms.Button();
@@ -54,6 +56,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.hozzadasUrites_btn = new System.Windows.Forms.Button();
             this.checkBox_KeszletenHozzaadas = new System.Windows.Forms.CheckBox();
             this.richTextBox_LeirasHozzaad = new System.Windows.Forms.RichTextBox();
             this.hozzaadasMegnyitas_btn = new System.Windows.Forms.Button();
@@ -108,9 +111,6 @@
             this.welcome_label = new System.Windows.Forms.Label();
             this.logout_btn = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
-            this.hozzadasUrites_btn = new System.Windows.Forms.Button();
-            this.modositasUrites_btn = new System.Windows.Forms.Button();
-            this.frissites_btn = new System.Windows.Forms.Button();
             this.tabControl_Keszlet.SuspendLayout();
             this.Tab_Keszlet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.termekKep_pictureBox)).BeginInit();
@@ -149,6 +149,16 @@
             this.Tab_Keszlet.TabIndex = 0;
             this.Tab_Keszlet.Text = "Készlet";
             this.Tab_Keszlet.UseVisualStyleBackColor = true;
+            // 
+            // frissites_btn
+            // 
+            this.frissites_btn.Location = new System.Drawing.Point(66, 35);
+            this.frissites_btn.Name = "frissites_btn";
+            this.frissites_btn.Size = new System.Drawing.Size(75, 23);
+            this.frissites_btn.TabIndex = 11;
+            this.frissites_btn.Text = "Frissítés";
+            this.frissites_btn.UseVisualStyleBackColor = true;
+            this.frissites_btn.Click += new System.EventHandler(this.frissites_btn_Click);
             // 
             // label_kereses
             // 
@@ -210,6 +220,16 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Módosítás";
+            // 
+            // modositasUrites_btn
+            // 
+            this.modositasUrites_btn.Location = new System.Drawing.Point(150, 291);
+            this.modositasUrites_btn.Name = "modositasUrites_btn";
+            this.modositasUrites_btn.Size = new System.Drawing.Size(75, 23);
+            this.modositasUrites_btn.TabIndex = 31;
+            this.modositasUrites_btn.Text = "Ürítés";
+            this.modositasUrites_btn.UseVisualStyleBackColor = true;
+            this.modositasUrites_btn.Click += new System.EventHandler(this.modositasUrites_btn_Click);
             // 
             // checkBox_KeszletenModositas
             // 
@@ -380,6 +400,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hozzáadás";
             // 
+            // hozzadasUrites_btn
+            // 
+            this.hozzadasUrites_btn.Location = new System.Drawing.Point(144, 288);
+            this.hozzadasUrites_btn.Name = "hozzadasUrites_btn";
+            this.hozzadasUrites_btn.Size = new System.Drawing.Size(75, 23);
+            this.hozzadasUrites_btn.TabIndex = 21;
+            this.hozzadasUrites_btn.Text = "Ürítés";
+            this.hozzadasUrites_btn.UseVisualStyleBackColor = true;
+            this.hozzadasUrites_btn.Click += new System.EventHandler(this.hozzadasUrites_btn_Click);
+            // 
             // checkBox_KeszletenHozzaadas
             // 
             this.checkBox_KeszletenHozzaadas.AutoSize = true;
@@ -541,6 +571,7 @@
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             // 
             // Termeknev_columnHeader
             // 
@@ -565,11 +596,12 @@
             // Leiras_columnHeader
             // 
             this.Leiras_columnHeader.Text = "Leírás";
-            this.Leiras_columnHeader.Width = 81;
+            this.Leiras_columnHeader.Width = 135;
             // 
             // Suly_columnHeader
             // 
             this.Suly_columnHeader.Text = "Súly";
+            this.Suly_columnHeader.Width = 65;
             // 
             // Keszleten_columnHeader
             // 
@@ -843,36 +875,6 @@
             this.label19.Size = new System.Drawing.Size(294, 25);
             this.label19.TabIndex = 3;
             this.label19.Text = "Vállalatirányítási Rendszer";
-            // 
-            // hozzadasUrites_btn
-            // 
-            this.hozzadasUrites_btn.Location = new System.Drawing.Point(144, 288);
-            this.hozzadasUrites_btn.Name = "hozzadasUrites_btn";
-            this.hozzadasUrites_btn.Size = new System.Drawing.Size(75, 23);
-            this.hozzadasUrites_btn.TabIndex = 21;
-            this.hozzadasUrites_btn.Text = "Ürítés";
-            this.hozzadasUrites_btn.UseVisualStyleBackColor = true;
-            this.hozzadasUrites_btn.Click += new System.EventHandler(this.hozzadasUrites_btn_Click);
-            // 
-            // modositasUrites_btn
-            // 
-            this.modositasUrites_btn.Location = new System.Drawing.Point(150, 291);
-            this.modositasUrites_btn.Name = "modositasUrites_btn";
-            this.modositasUrites_btn.Size = new System.Drawing.Size(75, 23);
-            this.modositasUrites_btn.TabIndex = 31;
-            this.modositasUrites_btn.Text = "Ürítés";
-            this.modositasUrites_btn.UseVisualStyleBackColor = true;
-            this.modositasUrites_btn.Click += new System.EventHandler(this.modositasUrites_btn_Click);
-            // 
-            // frissites_btn
-            // 
-            this.frissites_btn.Location = new System.Drawing.Point(66, 35);
-            this.frissites_btn.Name = "frissites_btn";
-            this.frissites_btn.Size = new System.Drawing.Size(75, 23);
-            this.frissites_btn.TabIndex = 11;
-            this.frissites_btn.Text = "Frissítés";
-            this.frissites_btn.UseVisualStyleBackColor = true;
-            this.frissites_btn.Click += new System.EventHandler(this.frissites_btn_Click);
             // 
             // HomeForm
             // 

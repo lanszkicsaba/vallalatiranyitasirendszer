@@ -17,7 +17,7 @@ namespace VIR
     public partial class HomeForm : Form
     {
         public HomeForm()
-        { 
+        {
             InitializeComponent();
         }
 
@@ -183,14 +183,14 @@ namespace VIR
             DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné üríteni az eddig beirtadatokat?", "Figyelmeztetés!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-            termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
-            hozzaadasTermeknev_textBox.Clear();
-            hozzaadasAr_textBox.Clear();
-            hozzaadasMennyiseg_textBox.Clear();
-            hozzaadasKategoria_textBox.Clear();
-            richTextBox_LeirasHozzaad.Clear();
-            hozzaadasSuly_textBox.Clear();
-            checkBox_KeszletenHozzaadas.Checked = false;
+                termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                hozzaadasTermeknev_textBox.Clear();
+                hozzaadasAr_textBox.Clear();
+                hozzaadasMennyiseg_textBox.Clear();
+                hozzaadasKategoria_textBox.Clear();
+                richTextBox_LeirasHozzaad.Clear();
+                hozzaadasSuly_textBox.Clear();
+                checkBox_KeszletenHozzaadas.Checked = false;
             }
         }
 
@@ -215,6 +215,15 @@ namespace VIR
             listView1.Items.Clear();
             Muvelet muveletek = new Muvelet();
             muveletek.Adatletoltes(listView1);
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                Muvelet muveletek = new Muvelet();
+                muveletek.Torles(listView1);
+            }
         }
     }
 }

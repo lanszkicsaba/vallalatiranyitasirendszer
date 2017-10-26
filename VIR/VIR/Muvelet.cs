@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,80 @@ namespace Muveletek
 {
     class Muvelet
     {
+        public void Torles(ListView listView1)
+        {
+            DBConnect conn = new DBConnect();
+
+            try
+            {
+                string termeknev = listView1.SelectedItems[0].SubItems[0].Text;
+                string ar = listView1.SelectedItems[0].SubItems[1].Text;
+                string mennyiseg = listView1.SelectedItems[0].SubItems[2].Text;
+                string kategoria = listView1.SelectedItems[0].SubItems[3].Text;
+                string leiras = listView1.SelectedItems[0].SubItems[4].Text;
+
+                DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné törölni a " + termeknev + " megnevezésű terméket?", "Figyelmeztetés!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string query1 = "SELECT kep FROM sql11200750.termekek WHERE termeknev='" + termeknev +
+                       "' AND ar='" + ar +
+                       "' AND mennyiseg='" + mennyiseg +
+                       "' AND kategoria='" + kategoria +
+                       "' AND leiras='" + leiras + "';";
+
+                    MySqlDataReader reader1;
+                    MySqlCommand cmd1 = new MySqlCommand(query1, conn.returnConnection());
+                    conn.OpenConnection();
+                    reader1 = cmd1.ExecuteReader();
+                    string kepnev = "";
+                    while (reader1.Read())
+                    {
+                        kepnev = reader1.GetString(0);
+                    }
+                    if (File.Exists(@"image/" + kepnev)) File.Delete(@"image/" + kepnev);
+                    
+                    conn.CloseConnection();
+
+                    string query = "DELETE FROM sql11200750.termekek WHERE termeknev='" + termeknev +
+                        "' AND ar='" + ar +
+                        "' AND mennyiseg='" + mennyiseg +
+                        "' AND kategoria='" + kategoria +
+                        "' AND leiras='" + leiras + "';";
+
+                    MySqlDataReader reader;
+                    MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
+                    conn.OpenConnection();
+                    reader = cmd.ExecuteReader();
+
+                    while (reader.Read()) { }
+
+                    listView1.Items.Clear();
+                    Muvelet muveletek = new Muvelet();
+                    muveletek.Adatletoltes(listView1);
+
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
+            }
+            finally
+            {
+                conn.CloseConnection();
+            }
+        }
+
+
         public void Adatletoltes(ListView listView1)
         {
             try
             {
                 string sKeszleten;
-                
+
                 DBConnect conn = new DBConnect();
                 MySqlDataAdapter ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());
                 DataTable dt = new DataTable();
@@ -77,7 +146,7 @@ namespace Muveletek
             // overwrite the destination file if it already exists.
             System.IO.File.Copy(sourceFile, destFile, true);
 
-            }
         }
-
     }
+
+}
