@@ -225,5 +225,25 @@ namespace VIR
                 muveletek.Torles(listView1);
             }
         }
+
+        private async void tableexport_btn_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV File (*.xlsx)|*.csv|Excel munkafüzet (*.xls)|*.xls", ValidateNames = true })
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamWriter sw = new StreamWriter(new FileStream(sfd.FileName, FileMode.Create), Encoding.UTF8))
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        sb.AppendLine("Terméknév;Ár;Mennyiség;Kategória;Leirás;Súly;Készleten");
+                        foreach (ListViewItem item in listView1.Items)
+                        {
+                            sb.AppendLine(string.Format("{0};{1};{2};{3};{4};{5};{6}", item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text, item.SubItems[3].Text, item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text));
+                        }
+                        await sw.WriteLineAsync(sb.ToString());
+                    }
+                }
+            }
+        }
     }
 }

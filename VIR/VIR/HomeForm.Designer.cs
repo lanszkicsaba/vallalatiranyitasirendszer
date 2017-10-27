@@ -557,6 +557,9 @@
             // 
             // listView1
             // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Termeknev_columnHeader,
             this.Ar_columnHeader,
@@ -609,12 +612,14 @@
             // 
             // tableexport_btn
             // 
+            this.tableexport_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tableexport_btn.Location = new System.Drawing.Point(156, 35);
             this.tableexport_btn.Name = "tableexport_btn";
             this.tableexport_btn.Size = new System.Drawing.Size(149, 23);
             this.tableexport_btn.TabIndex = 3;
             this.tableexport_btn.Text = "Tábla exportálás";
             this.tableexport_btn.UseVisualStyleBackColor = true;
+            this.tableexport_btn.Click += new System.EventHandler(this.tableexport_btn_Click);
             // 
             // tab_Szamla
             // 
