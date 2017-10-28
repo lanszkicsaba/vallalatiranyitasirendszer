@@ -108,7 +108,6 @@ namespace VIR
             
 
         }
-
         private void hozzaadas_btn_Click(object sender, EventArgs e)
         {
             DBConnect conn = new DBConnect();
@@ -300,6 +299,8 @@ namespace VIR
             }
         }
 
+        private string selectedFilePathNameModositas;
+        private string selectedFileNameModositas;
         private void modositas_btn_Click(object sender, EventArgs e)
         {
             DBConnect conn = new DBConnect();
@@ -311,9 +312,43 @@ namespace VIR
                 string kategoria = modositasKategoria_textBox.Text.ToString();
                 string leiras = richTextBox_LeirasModositas.Text.ToString();
                 string suly = modositasSuly_textBox.Text.ToString();
+                string query1;
+                string kepnevTorol = "";
 
+                bool torolkep = false;
+                if (selectedFileNameModositas != null && selectedFileNameModositas != "")
+                {
+                    torolkep = true;
+                    string query = "SELECT kep FROM sql11200750.termekek WHERE termeknev='" + termeknev +
+                           "' AND ar='" + ar +
+                           "' AND leiras='" + leiras + "';";
 
-                string query = "UPDATE sql11200750.termekek SET " +
+                    MySqlDataReader reader;
+                    MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
+                    conn.OpenConnection();
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        kepnevTorol = reader.GetString(0);
+                    }
+                    Muvelet muvelet = new Muvelet();
+                    muvelet.FileCopy(selectedFileNameModositas, selectedFilePathNameModositas);
+                    conn.CloseConnection();
+                    query1 = "UPDATE sql11200750.termekek SET " +
+                        "termeknev = '" + termeknev + "'," +
+                        " ar = '" + int.Parse(ar) + "'," +
+                        " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
+                        " kategoria = '" + kategoria + "', " +
+                        " leiras = '" + leiras + "', " +
+                        " suly = '" + int.Parse(suly) + "'," +
+                        " kep = '" + selectedFileNameModositas + "'" +
+                        " WHERE termeknev = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text + "' AND ar = '" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text) + "' AND leiras = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text + "';";
+                    
+
+                }
+                else
+                {
+                    query1 = "UPDATE sql11200750.termekek SET " +
                         "termeknev = '" + termeknev + "'," +
                         " ar = '" + int.Parse(ar) + "'," +
                         " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
@@ -321,22 +356,27 @@ namespace VIR
                         " leiras = '" + leiras + "', " +
                         " suly = '" + int.Parse(suly) + "' WHERE termeknev = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text + "' AND ar = '" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text) + "' AND leiras = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text + "';";
 
-                MySqlDataReader reader;
-                MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
+                }
+
+                MySqlDataReader reader1;
+                MySqlCommand cmd1 = new MySqlCommand(query1, conn.returnConnection());
                 conn.OpenConnection();
-                reader = cmd.ExecuteReader();
+                reader1 = cmd1.ExecuteReader();
+                if (torolkep)
+                {
+                    if (File.Exists(@"image/" + kepnevTorol) && kepnevTorol != "kezdo")
+                    {
+                        System.GC.Collect();
+                        System.GC.WaitForPendingFinalizers();
+                        File.Delete(@"image/" + kepnevTorol);
+                        kepnevTorol = "";
+                    }
+                }
 
                 listView1.Items.Clear();
                 Muvelet muveletek = new Muvelet();
                 muveletek.Adatletoltes(listView1);
-
-                hozzaadasTermeknev_textBox.Clear();
-                hozzaadasAr_textBox.Clear();
-                hozzaadasMennyiseg_textBox.Clear();
-                hozzaadasKategoria_textBox.Clear();
-                richTextBox_LeirasHozzaad.Clear();
-                hozzaadasSuly_textBox.Clear();
-                checkBox_KeszletenHozzaadas.Checked = false;
+                
             }
             catch (FormatException)
             {
@@ -355,5 +395,41 @@ namespace VIR
                 conn.CloseConnection();
             }
         }
+
+        private void modositasKep_btn_Click(object sender, EventArgs e)
+        { 
+            Stream myStream = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "Image files (*.jpg)|*.jpg|Image files (*.png)|*.png|All Files (*.*)|*.*";
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            selectedFilePathNameModositas = openFileDialog1.FileName;
+                            termekKep_pictureBox.Image = new Bitmap(selectedFilePathNameModositas);
+                            selectedFileNameModositas = Path.GetFileName(selectedFilePathNameModositas);
+                        }
+}
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+                finally
+                {
+
+                }
+                myStream.Close();
+            }
+        }
+
     }
 }

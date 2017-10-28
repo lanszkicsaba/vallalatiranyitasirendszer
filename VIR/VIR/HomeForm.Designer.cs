@@ -269,6 +269,7 @@
             this.modositasKep_btn.TabIndex = 28;
             this.modositasKep_btn.Text = "Megnyitás...";
             this.modositasKep_btn.UseVisualStyleBackColor = true;
+            this.modositasKep_btn.Click += new System.EventHandler(this.modositasKep_btn_Click);
             // 
             // modositasSuly_textBox
             // 
