@@ -264,6 +264,7 @@
             this.modositasSuly_textBox.Name = "modositasSuly_textBox";
             this.modositasSuly_textBox.Size = new System.Drawing.Size(100, 20);
             this.modositasSuly_textBox.TabIndex = 26;
+            this.modositasSuly_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // modositasKategoria_textBox
             // 
@@ -333,6 +334,7 @@
             this.modositasMennyiseg_textBox.Name = "modositasMennyiseg_textBox";
             this.modositasMennyiseg_textBox.Size = new System.Drawing.Size(100, 20);
             this.modositasMennyiseg_textBox.TabIndex = 7;
+            this.modositasMennyiseg_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // modositasAr_textBox
             // 
@@ -340,6 +342,7 @@
             this.modositasAr_textBox.Name = "modositasAr_textBox";
             this.modositasAr_textBox.Size = new System.Drawing.Size(100, 20);
             this.modositasAr_textBox.TabIndex = 6;
+            this.modositasAr_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // modositasTermeknev_textBox
             // 
@@ -446,6 +449,7 @@
             this.hozzaadasSuly_textBox.Name = "hozzaadasSuly_textBox";
             this.hozzaadasSuly_textBox.Size = new System.Drawing.Size(100, 20);
             this.hozzaadasSuly_textBox.TabIndex = 16;
+            this.hozzaadasSuly_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // hozzaadasKategoria_textBox
             // 
@@ -515,6 +519,7 @@
             this.hozzaadasMennyiseg_textBox.Name = "hozzaadasMennyiseg_textBox";
             this.hozzaadasMennyiseg_textBox.Size = new System.Drawing.Size(100, 20);
             this.hozzaadasMennyiseg_textBox.TabIndex = 7;
+            this.hozzaadasMennyiseg_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // hozzaadasAr_textBox
             // 
@@ -522,6 +527,7 @@
             this.hozzaadasAr_textBox.Name = "hozzaadasAr_textBox";
             this.hozzaadasAr_textBox.Size = new System.Drawing.Size(100, 20);
             this.hozzaadasAr_textBox.TabIndex = 6;
+            this.hozzaadasAr_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // hozzaadasTermeknev_textBox
             // 

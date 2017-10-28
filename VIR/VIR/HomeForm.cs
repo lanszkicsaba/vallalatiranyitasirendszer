@@ -20,7 +20,10 @@ namespace VIR
         {
             InitializeComponent();
         }
-
+        private void textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
         private void HomeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.logForm.HomeClosed();
@@ -376,8 +379,8 @@ namespace VIR
                 {
                     if (File.Exists(@"image/" + kepnevTorol) && kepnevTorol != "kezdo")
                     {
-                        System.GC.Collect();
-                        System.GC.WaitForPendingFinalizers();
+                        //System.GC.Collect();
+                        //System.GC.WaitForPendingFinalizers();
                         File.Delete(@"image/" + kepnevTorol);
                         kepnevTorol = "";
                     }
