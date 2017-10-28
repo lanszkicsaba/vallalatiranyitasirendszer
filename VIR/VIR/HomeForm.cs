@@ -234,6 +234,10 @@ namespace VIR
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
+                finally
+                {
+                    myStream.Close();
+                }
             }
         }
 
