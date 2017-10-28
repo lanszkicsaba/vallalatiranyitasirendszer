@@ -54,19 +54,16 @@ namespace VIR
             timer.Tick += new EventHandler(frissites_btn_Click);
             timer.Start();
         }
-        private static int id;
         private void modositas_Kivalasztas(object sender, EventArgs e)
         {
             if (listView1.SelectedIndices.Count > 0)
             {
-                modositasTermeknev_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text;
-                modositasAr_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[2].Text;
-                modositasMennyiseg_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[3].Text;
-                modositasKategoria_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
-                richTextBox_LeirasModositas.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[5].Text;
-                modositasSuly_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[6].Text;
-                id = int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text);
-
+                modositasTermeknev_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text;
+                modositasAr_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text;
+                modositasMennyiseg_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[2].Text;
+                modositasKategoria_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[3].Text;
+                richTextBox_LeirasModositas.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
+                modositasSuly_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[5].Text;
             }
             
 
@@ -266,30 +263,57 @@ namespace VIR
         private void modositas_btn_Click(object sender, EventArgs e)
         {
             DBConnect conn = new DBConnect();
-            string termeknev = modositasTermeknev_textBox.Text.ToString();
-            string ar = modositasAr_textBox.Text.ToString();
-            string mennyiseg = modositasMennyiseg_textBox.Text.ToString();
-            string kategoria = modositasKategoria_textBox.Text.ToString();
-            string leiras = richTextBox_LeirasModositas.Text.ToString();
-            string suly = modositasSuly_textBox.Text.ToString();
-            
+            try
+            {                
+                string termeknev = modositasTermeknev_textBox.Text.ToString();
+                string ar = modositasAr_textBox.Text.ToString();
+                string mennyiseg = modositasMennyiseg_textBox.Text.ToString();
+                string kategoria = modositasKategoria_textBox.Text.ToString();
+                string leiras = richTextBox_LeirasModositas.Text.ToString();
+                string suly = modositasSuly_textBox.Text.ToString();
 
-            string query = "UPDATE sql11200750.termekek SET " +
-                    "termeknev = '" + termeknev + "'," +
-                    " ar = '" + int.Parse(ar) + "'," +
-                    " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
-                    " kategoria = '" + kategoria + "', " +
-                    " leiras = '" + leiras + "', " +
-                    " suly = '" + int.Parse(suly) + "' WHERE id = '" + id + "';";
 
-            MySqlDataReader reader;
-            MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
-            conn.OpenConnection();
-            reader = cmd.ExecuteReader();
+                string query = "UPDATE sql11200750.termekek SET " +
+                        "termeknev = '" + termeknev + "'," +
+                        " ar = '" + int.Parse(ar) + "'," +
+                        " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
+                        " kategoria = '" + kategoria + "', " +
+                        " leiras = '" + leiras + "', " +
+                        " suly = '" + int.Parse(suly) + "' WHERE termeknev = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text + "' AND ar = '" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text) + "' AND leiras = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text + "';";
 
-            listView1.Items.Clear();
-            Muvelet muveletek = new Muvelet();
-            muveletek.Adatletoltes(listView1);
+                MySqlDataReader reader;
+                MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
+                conn.OpenConnection();
+                reader = cmd.ExecuteReader();
+
+                listView1.Items.Clear();
+                Muvelet muveletek = new Muvelet();
+                muveletek.Adatletoltes(listView1);
+
+                hozzaadasTermeknev_textBox.Clear();
+                hozzaadasAr_textBox.Clear();
+                hozzaadasMennyiseg_textBox.Clear();
+                hozzaadasKategoria_textBox.Clear();
+                richTextBox_LeirasHozzaad.Clear();
+                hozzaadasSuly_textBox.Clear();
+                checkBox_KeszletenHozzaadas.Checked = false;
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
+            }
+            finally
+            {
+                conn.CloseConnection();
+            }
         }
     }
 }

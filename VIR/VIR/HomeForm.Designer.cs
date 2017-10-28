@@ -75,7 +75,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.ID_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Termeknev_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Ar_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Mennyiseg_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -610,7 +609,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.ID_columnHeader,
             this.Termeknev_columnHeader,
             this.Ar_columnHeader,
             this.Mennyiseg_columnHeader,
@@ -629,10 +627,6 @@
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.modositas_Kivalasztas);
             this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
-            // 
-            // ID_columnHeader
-            // 
-            this.ID_columnHeader.Text = "ID";
             // 
             // Termeknev_columnHeader
             // 
@@ -1085,6 +1079,5 @@
         private System.Windows.Forms.Button modositasUrites_btn;
         private System.Windows.Forms.Button hozzadasUrites_btn;
         private System.Windows.Forms.Button frissites_btn;
-        private System.Windows.Forms.ColumnHeader ID_columnHeader;
     }
 }

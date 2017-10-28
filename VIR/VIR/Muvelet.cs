@@ -105,7 +105,6 @@ namespace Muveletek
                         sKeszleten = "Nincs";
                     }
                     string[] row = {
-                    dr["ID"].ToString(),
                     dr["termeknev"].ToString(),
                     dr["ar"].ToString(),
                     dr["mennyiseg"].ToString(),
