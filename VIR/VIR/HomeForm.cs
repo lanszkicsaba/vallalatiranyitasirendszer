@@ -54,6 +54,7 @@ namespace VIR
             timer.Tick += new EventHandler(frissites_btn_Click);
             timer.Start();
         }
+        private static int id;
         private void modositas_Kivalasztas(object sender, EventArgs e)
         {
             if (listView1.SelectedIndices.Count > 0)
@@ -64,6 +65,7 @@ namespace VIR
                 modositasKategoria_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
                 richTextBox_LeirasModositas.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[5].Text;
                 modositasSuly_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[6].Text;
+                id = int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text);
 
             }
             
@@ -259,6 +261,35 @@ namespace VIR
                     }
                 }
             }
+        }
+
+        private void modositas_btn_Click(object sender, EventArgs e)
+        {
+            DBConnect conn = new DBConnect();
+            string termeknev = modositasTermeknev_textBox.Text.ToString();
+            string ar = modositasAr_textBox.Text.ToString();
+            string mennyiseg = modositasMennyiseg_textBox.Text.ToString();
+            string kategoria = modositasKategoria_textBox.Text.ToString();
+            string leiras = richTextBox_LeirasModositas.Text.ToString();
+            string suly = modositasSuly_textBox.Text.ToString();
+            
+
+            string query = "UPDATE sql11200750.termekek SET " +
+                    "termeknev = '" + termeknev + "'," +
+                    " ar = '" + int.Parse(ar) + "'," +
+                    " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
+                    " kategoria = '" + kategoria + "', " +
+                    " leiras = '" + leiras + "', " +
+                    " suly = '" + int.Parse(suly) + "' WHERE id = '" + id + "';";
+
+            MySqlDataReader reader;
+            MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
+            conn.OpenConnection();
+            reader = cmd.ExecuteReader();
+
+            listView1.Items.Clear();
+            Muvelet muveletek = new Muvelet();
+            muveletek.Adatletoltes(listView1);
         }
     }
 }
