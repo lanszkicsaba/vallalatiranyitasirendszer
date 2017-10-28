@@ -54,15 +54,21 @@ namespace VIR
             timer.Tick += new EventHandler(frissites_btn_Click);
             timer.Start();
         }
+        private static string kivalasztottTermeknev = "";
+        private static string kivalasztottAr = "";
+        private static string kivalasztottLeiras = "";
         private void modositas_Kivalasztas(object sender, EventArgs e)
         {
             if (listView1.SelectedIndices.Count > 0)
             {
-                modositasTermeknev_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text;
-                modositasAr_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text;
+                kivalasztottTermeknev = listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text;
+                modositasTermeknev_textBox.Text = kivalasztottTermeknev;
+                kivalasztottAr = listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text;
+                modositasAr_textBox.Text = kivalasztottAr;
                 modositasMennyiseg_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[2].Text;
                 modositasKategoria_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[3].Text;
-                richTextBox_LeirasModositas.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
+                kivalasztottLeiras = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
+                richTextBox_LeirasModositas.Text = kivalasztottLeiras;
                 modositasSuly_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[5].Text;
                 if (listView1.Items[listView1.SelectedIndices[0]].SubItems[6].Text == "Van")
                 {
@@ -342,7 +348,7 @@ namespace VIR
                         " leiras = '" + leiras + "', " +
                         " suly = '" + int.Parse(suly) + "'," +
                         " kep = '" + selectedFileNameModositas + "'" +
-                        " WHERE termeknev = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text + "' AND ar = '" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text) + "' AND leiras = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text + "';";
+                        " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
                     
 
                 }
@@ -354,7 +360,7 @@ namespace VIR
                         " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
                         " kategoria = '" + kategoria + "', " +
                         " leiras = '" + leiras + "', " +
-                        " suly = '" + int.Parse(suly) + "' WHERE termeknev = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text + "' AND ar = '" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text) + "' AND leiras = '" + listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text + "';";
+                        " suly = '" + int.Parse(suly) + "' WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
 
                 }
 
@@ -417,7 +423,7 @@ namespace VIR
                             termekKep_pictureBox.Image = new Bitmap(selectedFilePathNameModositas);
                             selectedFileNameModositas = Path.GetFileName(selectedFilePathNameModositas);
                         }
-}
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -425,9 +431,9 @@ namespace VIR
                 }
                 finally
                 {
-
+                    myStream.Close();
                 }
-                myStream.Close();
+                
             }
         }
 
