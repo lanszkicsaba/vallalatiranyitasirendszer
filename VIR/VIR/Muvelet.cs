@@ -26,7 +26,7 @@ namespace Muveletek
                 string kategoria = listView1.SelectedItems[0].SubItems[3].Text;
                 string leiras = listView1.SelectedItems[0].SubItems[4].Text;
 
-                DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné törölni a " + termeknev + " megnevezésű terméket?", "Figyelmeztetés!", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné törölni a " + termeknev + " megnevezésű terméket?", "Figyelmeztetés!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     string query1 = "SELECT kep FROM sql11200750.termekek WHERE termeknev='" + termeknev +
@@ -45,7 +45,7 @@ namespace Muveletek
                         kepnev = reader1.GetString(0);
                     }
                     if (File.Exists(@"image/" + kepnev)) File.Delete(@"image/" + kepnev);
-                    
+
                     conn.CloseConnection();
 
                     string query = "DELETE FROM sql11200750.termekek WHERE termeknev='" + termeknev +
