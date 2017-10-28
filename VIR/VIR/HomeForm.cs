@@ -64,6 +64,41 @@ namespace VIR
                 modositasKategoria_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[3].Text;
                 richTextBox_LeirasModositas.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
                 modositasSuly_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[5].Text;
+                DBConnect conn = new DBConnect();
+                try
+                {
+                    string query1 = "SELECT kep FROM sql11200750.termekek WHERE termeknev='" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text +
+                       "' AND ar='" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text) +
+                       "' AND leiras='" + listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text + "';";
+
+                    MySqlDataReader reader1;
+                    MySqlCommand cmd1 = new MySqlCommand(query1, conn.returnConnection());
+                    conn.OpenConnection();
+                    reader1 = cmd1.ExecuteReader();
+                    string kepnev = "";
+                    while (reader1.Read())
+                    {
+                        kepnev = reader1.GetString(0);
+                    }
+                    conn.CloseConnection();
+                    if (File.Exists(@"image/" + kepnev))
+                    {
+                        termekKep_pictureBox.Image = new Bitmap("image/" + kepnev);
+                    }
+                    else
+                    {
+                        termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
+                }
+
             }
             
 
