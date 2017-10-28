@@ -661,6 +661,7 @@
             // Keszleten_columnHeader
             // 
             this.Keszleten_columnHeader.Text = "Készleten";
+            this.Keszleten_columnHeader.Width = 99;
             // 
             // tableexport_btn
             // 

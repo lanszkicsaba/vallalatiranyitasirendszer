@@ -64,6 +64,11 @@ namespace VIR
                 modositasKategoria_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[3].Text;
                 richTextBox_LeirasModositas.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
                 modositasSuly_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[5].Text;
+                if (listView1.Items[listView1.SelectedIndices[0]].SubItems[6].Text == "Van")
+                {
+                    checkBox_KeszletenModositas.Checked = true;
+                }
+                else checkBox_KeszletenModositas.Checked = false;
                 DBConnect conn = new DBConnect();
                 try
                 {
