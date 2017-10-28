@@ -54,6 +54,21 @@ namespace VIR
             timer.Tick += new EventHandler(frissites_btn_Click);
             timer.Start();
         }
+        private void modositas_Kivalasztas(object sender, EventArgs e)
+        {
+            if (listView1.SelectedIndices.Count > 0)
+            {
+                modositasTermeknev_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text;
+                modositasAr_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[2].Text;
+                modositasMennyiseg_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[3].Text;
+                modositasKategoria_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
+                richTextBox_LeirasModositas.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[5].Text;
+                modositasSuly_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[6].Text;
+
+            }
+            
+
+        }
 
         private void hozzaadas_btn_Click(object sender, EventArgs e)
         {

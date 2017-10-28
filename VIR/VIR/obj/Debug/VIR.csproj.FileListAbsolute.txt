@@ -21,3 +21,14 @@ C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogi
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\VIR.pdb
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\MySql.Data.dll
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIR\bin\Debug\MySql.Web.dll
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\bin\Debug\VIR.exe.config
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\bin\Debug\VIR.exe
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\bin\Debug\VIR.pdb
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.csprojResolveAssemblyReference.cache
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.HomeForm.resources
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.LoginForm.resources
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.Properties.Resources.resources
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.csproj.GenerateResource.Cache
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.csproj.CoreCompileInputs.cache
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.exe
+C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.pdb
