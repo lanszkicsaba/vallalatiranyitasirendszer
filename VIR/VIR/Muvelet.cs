@@ -106,11 +106,11 @@ namespace Muveletek
                     }
                     string[] row = {
                     dr["termeknev"].ToString(),
-                    dr["ar"].ToString(),
-                    dr["mennyiseg"].ToString(),
+                    dr["ar"].ToString() +"Ft",
+                    dr["mennyiseg"].ToString() + "Db",
                     dr["kategoria"].ToString(),
                     dr["leiras"].ToString(),
-                    dr["suly"].ToString(),
+                    dr["suly"].ToString()+"g",
                     sKeszleten
                 };
 

@@ -66,13 +66,13 @@ namespace VIR
             {
                 kivalasztottTermeknev = listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text;
                 modositasTermeknev_textBox.Text = kivalasztottTermeknev;
-                kivalasztottAr = listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text;
+                kivalasztottAr =  listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text.Replace("Ft","");
                 modositasAr_textBox.Text = kivalasztottAr;
-                modositasMennyiseg_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[2].Text;
+                modositasMennyiseg_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[2].Text.Replace("Db","");
                 modositasKategoria_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[3].Text;
                 kivalasztottLeiras = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
                 richTextBox_LeirasModositas.Text = kivalasztottLeiras;
-                modositasSuly_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[5].Text;
+                modositasSuly_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[5].Text.Replace("g","");
                 if (listView1.Items[listView1.SelectedIndices[0]].SubItems[6].Text == "Van")
                 {
                     checkBox_KeszletenModositas.Checked = true;
@@ -169,7 +169,7 @@ namespace VIR
                 conn.OpenConnection();
                 reader = cmd.ExecuteReader();
 
-                while (reader.Read()) { } //?????????? megvárja ameddig elküldi 
+                while (reader.Read()) { } 
 
                 listView1.Items.Clear();
                 Muvelet muveletek = new Muvelet();
@@ -215,7 +215,7 @@ namespace VIR
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             openFileDialog1.Filter = "Image files (*.jpg)|*.jpg|Image files (*.png)|*.png|All Files (*.*)|*.*";
             openFileDialog1.RestoreDirectory = true;
 
@@ -344,7 +344,7 @@ namespace VIR
                     {
                         kepnevTorol = reader.GetString(0);
                     }
-                    Muvelet muvelet = new Muvelet();
+                    Muvelet muvelet = new Muvelet();           
                     muvelet.FileCopy(selectedFileNameModositas, selectedFilePathNameModositas);
                     conn.CloseConnection();
                     query1 = "UPDATE sql11200750.termekek SET " +
@@ -434,7 +434,7 @@ namespace VIR
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    MessageBox.Show("Hiba, nem lehet a fájlt megnyitni.\n " + ex.Message, "Hiba");
                 }
                 finally
                 {

@@ -144,7 +144,7 @@
             this.Tab_Keszlet.Controls.Add(this.tableexport_btn);
             this.Tab_Keszlet.Location = new System.Drawing.Point(4, 22);
             this.Tab_Keszlet.Name = "Tab_Keszlet";
-            this.Tab_Keszlet.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Tab_Keszlet.Padding = new System.Windows.Forms.Padding(3);
             this.Tab_Keszlet.Size = new System.Drawing.Size(852, 601);
             this.Tab_Keszlet.TabIndex = 0;
             this.Tab_Keszlet.Text = "Készlet";
@@ -155,7 +155,7 @@
             this.frissites_btn.Location = new System.Drawing.Point(66, 35);
             this.frissites_btn.Name = "frissites_btn";
             this.frissites_btn.Size = new System.Drawing.Size(75, 23);
-            this.frissites_btn.TabIndex = 11;
+            this.frissites_btn.TabIndex = 1;
             this.frissites_btn.Text = "Frissítés";
             this.frissites_btn.UseVisualStyleBackColor = true;
             this.frissites_btn.Click += new System.EventHandler(this.frissites_btn_Click);
@@ -174,7 +174,7 @@
             this.textBox1.Location = new System.Drawing.Point(632, 35);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(167, 20);
-            this.textBox1.TabIndex = 9;
+            this.textBox1.TabIndex = 3;
             // 
             // label30
             // 
@@ -226,7 +226,7 @@
             this.modositasUrites_btn.Location = new System.Drawing.Point(150, 291);
             this.modositasUrites_btn.Name = "modositasUrites_btn";
             this.modositasUrites_btn.Size = new System.Drawing.Size(75, 23);
-            this.modositasUrites_btn.TabIndex = 31;
+            this.modositasUrites_btn.TabIndex = 23;
             this.modositasUrites_btn.Text = "Ürítés";
             this.modositasUrites_btn.UseVisualStyleBackColor = true;
             this.modositasUrites_btn.Click += new System.EventHandler(this.modositasUrites_btn_Click);
@@ -237,7 +237,7 @@
             this.checkBox_KeszletenModositas.Location = new System.Drawing.Point(98, 214);
             this.checkBox_KeszletenModositas.Name = "checkBox_KeszletenModositas";
             this.checkBox_KeszletenModositas.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_KeszletenModositas.TabIndex = 30;
+            this.checkBox_KeszletenModositas.TabIndex = 20;
             this.checkBox_KeszletenModositas.UseVisualStyleBackColor = true;
             // 
             // richTextBox_LeirasModositas
@@ -245,7 +245,7 @@
             this.richTextBox_LeirasModositas.Location = new System.Drawing.Point(6, 129);
             this.richTextBox_LeirasModositas.Name = "richTextBox_LeirasModositas";
             this.richTextBox_LeirasModositas.Size = new System.Drawing.Size(233, 53);
-            this.richTextBox_LeirasModositas.TabIndex = 29;
+            this.richTextBox_LeirasModositas.TabIndex = 18;
             this.richTextBox_LeirasModositas.Text = "";
             // 
             // modositasKep_btn
@@ -253,7 +253,7 @@
             this.modositasKep_btn.Location = new System.Drawing.Point(98, 245);
             this.modositasKep_btn.Name = "modositasKep_btn";
             this.modositasKep_btn.Size = new System.Drawing.Size(75, 23);
-            this.modositasKep_btn.TabIndex = 28;
+            this.modositasKep_btn.TabIndex = 21;
             this.modositasKep_btn.Text = "Megnyitás...";
             this.modositasKep_btn.UseVisualStyleBackColor = true;
             this.modositasKep_btn.Click += new System.EventHandler(this.modositasKep_btn_Click);
@@ -263,7 +263,7 @@
             this.modositasSuly_textBox.Location = new System.Drawing.Point(98, 185);
             this.modositasSuly_textBox.Name = "modositasSuly_textBox";
             this.modositasSuly_textBox.Size = new System.Drawing.Size(100, 20);
-            this.modositasSuly_textBox.TabIndex = 26;
+            this.modositasSuly_textBox.TabIndex = 19;
             this.modositasSuly_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // modositasKategoria_textBox
@@ -271,7 +271,7 @@
             this.modositasKategoria_textBox.Location = new System.Drawing.Point(98, 91);
             this.modositasKategoria_textBox.Name = "modositasKategoria_textBox";
             this.modositasKategoria_textBox.Size = new System.Drawing.Size(100, 20);
-            this.modositasKategoria_textBox.TabIndex = 24;
+            this.modositasKategoria_textBox.TabIndex = 17;
             // 
             // label25
             // 
@@ -323,7 +323,7 @@
             this.modositas_btn.Location = new System.Drawing.Point(34, 291);
             this.modositas_btn.Name = "modositas_btn";
             this.modositas_btn.Size = new System.Drawing.Size(75, 23);
-            this.modositas_btn.TabIndex = 8;
+            this.modositas_btn.TabIndex = 22;
             this.modositas_btn.Text = "Módosítás";
             this.modositas_btn.UseVisualStyleBackColor = true;
             this.modositas_btn.Click += new System.EventHandler(this.modositas_btn_Click);
@@ -333,7 +333,7 @@
             this.modositasMennyiseg_textBox.Location = new System.Drawing.Point(98, 67);
             this.modositasMennyiseg_textBox.Name = "modositasMennyiseg_textBox";
             this.modositasMennyiseg_textBox.Size = new System.Drawing.Size(100, 20);
-            this.modositasMennyiseg_textBox.TabIndex = 7;
+            this.modositasMennyiseg_textBox.TabIndex = 16;
             this.modositasMennyiseg_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // modositasAr_textBox
@@ -341,7 +341,7 @@
             this.modositasAr_textBox.Location = new System.Drawing.Point(98, 42);
             this.modositasAr_textBox.Name = "modositasAr_textBox";
             this.modositasAr_textBox.Size = new System.Drawing.Size(100, 20);
-            this.modositasAr_textBox.TabIndex = 6;
+            this.modositasAr_textBox.TabIndex = 15;
             this.modositasAr_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // modositasTermeknev_textBox
@@ -349,7 +349,7 @@
             this.modositasTermeknev_textBox.Location = new System.Drawing.Point(98, 16);
             this.modositasTermeknev_textBox.Name = "modositasTermeknev_textBox";
             this.modositasTermeknev_textBox.Size = new System.Drawing.Size(100, 20);
-            this.modositasTermeknev_textBox.TabIndex = 5;
+            this.modositasTermeknev_textBox.TabIndex = 14;
             // 
             // label15
             // 
@@ -410,7 +410,7 @@
             this.hozzadasUrites_btn.Location = new System.Drawing.Point(144, 288);
             this.hozzadasUrites_btn.Name = "hozzadasUrites_btn";
             this.hozzadasUrites_btn.Size = new System.Drawing.Size(75, 23);
-            this.hozzadasUrites_btn.TabIndex = 21;
+            this.hozzadasUrites_btn.TabIndex = 13;
             this.hozzadasUrites_btn.Text = "Ürítés";
             this.hozzadasUrites_btn.UseVisualStyleBackColor = true;
             this.hozzadasUrites_btn.Click += new System.EventHandler(this.hozzadasUrites_btn_Click);
@@ -422,7 +422,7 @@
             this.checkBox_KeszletenHozzaadas.Location = new System.Drawing.Point(98, 215);
             this.checkBox_KeszletenHozzaadas.Name = "checkBox_KeszletenHozzaadas";
             this.checkBox_KeszletenHozzaadas.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_KeszletenHozzaadas.TabIndex = 20;
+            this.checkBox_KeszletenHozzaadas.TabIndex = 10;
             this.checkBox_KeszletenHozzaadas.UseVisualStyleBackColor = true;
             // 
             // richTextBox_LeirasHozzaad
@@ -430,7 +430,7 @@
             this.richTextBox_LeirasHozzaad.Location = new System.Drawing.Point(6, 126);
             this.richTextBox_LeirasHozzaad.Name = "richTextBox_LeirasHozzaad";
             this.richTextBox_LeirasHozzaad.Size = new System.Drawing.Size(233, 53);
-            this.richTextBox_LeirasHozzaad.TabIndex = 19;
+            this.richTextBox_LeirasHozzaad.TabIndex = 8;
             this.richTextBox_LeirasHozzaad.Text = "";
             // 
             // hozzaadasMegnyitas_btn
@@ -438,7 +438,7 @@
             this.hozzaadasMegnyitas_btn.Location = new System.Drawing.Point(98, 242);
             this.hozzaadasMegnyitas_btn.Name = "hozzaadasMegnyitas_btn";
             this.hozzaadasMegnyitas_btn.Size = new System.Drawing.Size(75, 23);
-            this.hozzaadasMegnyitas_btn.TabIndex = 18;
+            this.hozzaadasMegnyitas_btn.TabIndex = 11;
             this.hozzaadasMegnyitas_btn.Text = "Megnyitás...";
             this.hozzaadasMegnyitas_btn.UseVisualStyleBackColor = true;
             this.hozzaadasMegnyitas_btn.Click += new System.EventHandler(this.hozzaadasMegnyitas_btn_Click);
@@ -448,7 +448,7 @@
             this.hozzaadasSuly_textBox.Location = new System.Drawing.Point(98, 185);
             this.hozzaadasSuly_textBox.Name = "hozzaadasSuly_textBox";
             this.hozzaadasSuly_textBox.Size = new System.Drawing.Size(100, 20);
-            this.hozzaadasSuly_textBox.TabIndex = 16;
+            this.hozzaadasSuly_textBox.TabIndex = 9;
             this.hozzaadasSuly_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // hozzaadasKategoria_textBox
@@ -456,7 +456,7 @@
             this.hozzaadasKategoria_textBox.Location = new System.Drawing.Point(98, 91);
             this.hozzaadasKategoria_textBox.Name = "hozzaadasKategoria_textBox";
             this.hozzaadasKategoria_textBox.Size = new System.Drawing.Size(100, 20);
-            this.hozzaadasKategoria_textBox.TabIndex = 14;
+            this.hozzaadasKategoria_textBox.TabIndex = 7;
             // 
             // label24
             // 
@@ -508,7 +508,7 @@
             this.hozzaadas_btn.Location = new System.Drawing.Point(34, 288);
             this.hozzaadas_btn.Name = "hozzaadas_btn";
             this.hozzaadas_btn.Size = new System.Drawing.Size(75, 23);
-            this.hozzaadas_btn.TabIndex = 8;
+            this.hozzaadas_btn.TabIndex = 12;
             this.hozzaadas_btn.Text = "Hozzáadás";
             this.hozzaadas_btn.UseVisualStyleBackColor = true;
             this.hozzaadas_btn.Click += new System.EventHandler(this.hozzaadas_btn_Click);
@@ -518,7 +518,7 @@
             this.hozzaadasMennyiseg_textBox.Location = new System.Drawing.Point(98, 66);
             this.hozzaadasMennyiseg_textBox.Name = "hozzaadasMennyiseg_textBox";
             this.hozzaadasMennyiseg_textBox.Size = new System.Drawing.Size(100, 20);
-            this.hozzaadasMennyiseg_textBox.TabIndex = 7;
+            this.hozzaadasMennyiseg_textBox.TabIndex = 6;
             this.hozzaadasMennyiseg_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // hozzaadasAr_textBox
@@ -526,7 +526,7 @@
             this.hozzaadasAr_textBox.Location = new System.Drawing.Point(98, 40);
             this.hozzaadasAr_textBox.Name = "hozzaadasAr_textBox";
             this.hozzaadasAr_textBox.Size = new System.Drawing.Size(100, 20);
-            this.hozzaadasAr_textBox.TabIndex = 6;
+            this.hozzaadasAr_textBox.TabIndex = 5;
             this.hozzaadasAr_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // hozzaadasTermeknev_textBox
@@ -534,7 +534,7 @@
             this.hozzaadasTermeknev_textBox.Location = new System.Drawing.Point(98, 13);
             this.hozzaadasTermeknev_textBox.Name = "hozzaadasTermeknev_textBox";
             this.hozzaadasTermeknev_textBox.Size = new System.Drawing.Size(100, 20);
-            this.hozzaadasTermeknev_textBox.TabIndex = 5;
+            this.hozzaadasTermeknev_textBox.TabIndex = 4;
             // 
             // label14
             // 
@@ -581,7 +581,7 @@
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(743, 198);
-            this.listView1.TabIndex = 4;
+            this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.modositas_Kivalasztas);
@@ -627,7 +627,7 @@
             this.tableexport_btn.Location = new System.Drawing.Point(156, 35);
             this.tableexport_btn.Name = "tableexport_btn";
             this.tableexport_btn.Size = new System.Drawing.Size(149, 23);
-            this.tableexport_btn.TabIndex = 3;
+            this.tableexport_btn.TabIndex = 2;
             this.tableexport_btn.Text = "Tábla exportálás";
             this.tableexport_btn.UseVisualStyleBackColor = true;
             this.tableexport_btn.Click += new System.EventHandler(this.tableexport_btn_Click);
@@ -640,7 +640,7 @@
             this.tab_Szamla.Controls.Add(this.groupBox1);
             this.tab_Szamla.Location = new System.Drawing.Point(4, 22);
             this.tab_Szamla.Name = "tab_Szamla";
-            this.tab_Szamla.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tab_Szamla.Padding = new System.Windows.Forms.Padding(3);
             this.tab_Szamla.Size = new System.Drawing.Size(852, 601);
             this.tab_Szamla.TabIndex = 1;
             this.tab_Szamla.Text = "Számlázás";
@@ -876,7 +876,7 @@
             this.logout_btn.Location = new System.Drawing.Point(778, 31);
             this.logout_btn.Name = "logout_btn";
             this.logout_btn.Size = new System.Drawing.Size(89, 23);
-            this.logout_btn.TabIndex = 2;
+            this.logout_btn.TabIndex = 24;
             this.logout_btn.Text = "Kijelentkezés";
             this.logout_btn.UseVisualStyleBackColor = true;
             this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
