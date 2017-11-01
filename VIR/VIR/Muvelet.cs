@@ -29,7 +29,7 @@ namespace Muveletek
                 DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné törölni a " + termeknev + " megnevezésű terméket?", "Figyelmeztetés!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    string query1 = "SELECT kep FROM sql11200750.termekek WHERE termeknev='" + termeknev +
+                    string query1 = "SELECT kep FROM sql11202526.termekek WHERE termeknev='" + termeknev +
                        "' AND ar='" + ar +
                        "' AND mennyiseg='" + mennyiseg +
                        "' AND kategoria='" + kategoria +
@@ -48,7 +48,7 @@ namespace Muveletek
 
                     conn.CloseConnection();
 
-                    string query = "DELETE FROM sql11200750.termekek WHERE termeknev='" + termeknev +
+                    string query = "DELETE FROM sql11202526.termekek WHERE termeknev='" + termeknev +
                         "' AND ar='" + ar +
                         "' AND mennyiseg='" + mennyiseg +
                         "' AND kategoria='" + kategoria +
