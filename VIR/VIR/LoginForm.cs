@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Threading;
 using System.Resources;
+using System.IO;
 
 namespace VIR
 {
@@ -37,8 +38,8 @@ namespace VIR
             buttonLogout.Enabled = false;
             server = "sql11.freemysqlhosting.net";
             database = "sql11202526";
-            uid = "sql11202526";
-            password = "pJYsZqIuFs";
+            dbuid = "sql11202526";
+            dbpassword = "pJYsZqIuFs";
             connstr = "SERVER=" + server + ";" + "DATABASE=" +
         database + ";" + "UID=" + dbuid + ";" + "PASSWORD=" + dbpassword + ";"+"Connection Timeout=300;";
 
@@ -102,8 +103,15 @@ namespace VIR
                 //Név mentése
                 Properties.Settings.Default.Username = textBoxUserName.Text;
                 Properties.Settings.Default.Save();
+                if (File.Exists("image/loading.gif"))
+                {
+                    pictureBox1.Image = Image.FromFile("image/loading.gif");
+                }
+                else
+                {
+                    pictureBox1.Image = null;
+                }
 
-                pictureBox1.Image = Image.FromFile("image/loading.gif");
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 string mquerylogin = "SELECT * FROM asztaliusers where name=\"" + (textBoxUserName.Text.ToLower()) + "\"";
                 MySqlCommand cmdlogin = new MySqlCommand(mquerylogin, conn);
@@ -147,6 +155,7 @@ namespace VIR
                 }
                 catch (MySqlException ex)
                 {
+                    conn.Close();
                     labelMessage.Text = "Hiba lépett fel";
                     labelMessage.ForeColor = Color.Red;
                     MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");

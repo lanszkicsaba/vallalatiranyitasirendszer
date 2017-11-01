@@ -14,7 +14,7 @@ namespace Muveletek
 {
     class Muvelet
     {
-        public void Torles(ListView listView1)
+        public void Torles(ListView listView1, PictureBox pb)
         {
             DBConnect conn = new DBConnect();
 
@@ -44,7 +44,20 @@ namespace Muveletek
                     {
                         kepnev = reader1.GetString(0);
                     }
-                    if (File.Exists(@"image/" + kepnev)) File.Delete(@"image/" + kepnev);
+                    if (File.Exists(@"image/" + kepnev))
+                    {
+                        if (File.Exists("image/kezdo.png"))
+                        {
+                            pb.Image = new Bitmap("image/kezdo.png");
+                        }
+                        else
+                        {
+                            pb.Image = null;
+                        }
+                        System.GC.Collect();
+                        System.GC.WaitForPendingFinalizers(); 
+                        File.Delete(@"image/" + kepnev);
+                    }
 
                     conn.CloseConnection();
 
@@ -107,7 +120,7 @@ namespace Muveletek
                     string[] row = {
                     dr["termeknev"].ToString(),
                     dr["ar"].ToString() +"Ft",
-                    dr["mennyiseg"].ToString() + "Db",
+                    dr["mennyiseg"].ToString() + "db",
                     dr["kategoria"].ToString(),
                     dr["leiras"].ToString(),
                     dr["suly"].ToString()+"g",

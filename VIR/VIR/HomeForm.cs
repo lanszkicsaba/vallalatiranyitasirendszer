@@ -37,6 +37,7 @@ namespace VIR
 
         private void HomeForm_Load(object sender, EventArgs e)
         {
+            termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             if (Program.logForm.Fullname == "" || Program.logForm.Fullname == null)
             {
                 welcome_label.Text = "Üdvözöllek Felhasználó";
@@ -46,9 +47,15 @@ namespace VIR
                 welcome_label.Text = "Üdvözöllek, " + Program.logForm.Fullname;
             }
 
-            termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
-            termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-
+            if (File.Exists("image/kezdo.png"))
+            {
+                termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");                
+            }
+            else
+            {
+                termekKep_pictureBox.Image = null;
+            }
+            
             Muvelet muvelet = new Muvelet();
             muvelet.Adatletoltes(listView1);
 
@@ -68,7 +75,7 @@ namespace VIR
                 modositasTermeknev_textBox.Text = kivalasztottTermeknev;
                 kivalasztottAr =  listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text.Replace("Ft","");
                 modositasAr_textBox.Text = kivalasztottAr;
-                modositasMennyiseg_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[2].Text.Replace("Db","");
+                modositasMennyiseg_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[2].Text.Replace("db","");
                 modositasKategoria_textBox.Text = listView1.Items[listView1.SelectedIndices[0]].SubItems[3].Text;
                 kivalasztottLeiras = listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text;
                 richTextBox_LeirasModositas.Text = kivalasztottLeiras;
@@ -82,7 +89,7 @@ namespace VIR
                 try
                 {
                     string query1 = "SELECT kep FROM termekek WHERE termeknev='" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text +
-                       "' AND ar='" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text) +
+                       "' AND ar='" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text.Replace("Ft","")) +
                        "' AND leiras='" + listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text + "';";
 
                     MySqlDataReader reader1;
@@ -101,7 +108,14 @@ namespace VIR
                     }
                     else
                     {
-                        termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                        if (File.Exists("image/kezdo.png"))
+                        {
+                            termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                        }
+                        else
+                        {
+                            termekKep_pictureBox.Image = null;
+                        }
                     }
                 }
                 catch (MySqlException ex)
@@ -117,9 +131,13 @@ namespace VIR
             
 
         }
+        private string selectedFilePathName;
+        private string selectedFileName;
         private void hozzaadas_btn_Click(object sender, EventArgs e)
         {
             DBConnect conn = new DBConnect();
+            
+            string kep = "";
             try
             {
                 string termeknev = hozzaadasTermeknev_textBox.Text.ToString();
@@ -128,11 +146,12 @@ namespace VIR
                 string kategoria = hozzaadasKategoria_textBox.Text.ToString();
                 string leiras = richTextBox_LeirasHozzaad.Text.ToString();
                 string suly = hozzaadasSuly_textBox.Text.ToString();
-                Muvelet muvelet = new Muvelet();
-                muvelet.FileCopy(selectedFileName, selectedFilePathName);
-                string kep;
-                if (selectedFileName != null || selectedFileName != "")
+                
+                
+                if (selectedFileName != null && selectedFileName != "")
                 {
+                    Muvelet muvelet = new Muvelet();
+                    muvelet.FileCopy(selectedFileName, selectedFilePathName);
                     kep = selectedFileName;
                 }
                 else
@@ -175,7 +194,14 @@ namespace VIR
                 Muvelet muveletek = new Muvelet();
                 muveletek.Adatletoltes(listView1);
 
-                termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                if (File.Exists("Image/kezdo.png"))
+                {
+                    termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                }
+                else
+                {
+                    termekKep_pictureBox.Image = null;
+                }
 
                 hozzaadasTermeknev_textBox.Clear();
                 hozzaadasAr_textBox.Clear();
@@ -184,6 +210,9 @@ namespace VIR
                 richTextBox_LeirasHozzaad.Clear();
                 hozzaadasSuly_textBox.Clear();
                 checkBox_KeszletenHozzaadas.Checked = false;
+                selectedFileName = "";
+                selectedFilePathName = "";
+                
             }
             catch (ArgumentNullException)
             {
@@ -207,8 +236,7 @@ namespace VIR
             }
         }
 
-        private string selectedFilePathName;
-        private string selectedFileName;
+        
 
         private void hozzaadasMegnyitas_btn_Click(object sender, EventArgs e)
         {
@@ -249,7 +277,14 @@ namespace VIR
             DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné üríteni az eddig beirtadatokat?", "Figyelmeztetés!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                if (File.Exists("image/kezdo.png"))
+                {
+                    termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                }
+                else
+                {
+                    termekKep_pictureBox.Image = null;
+                }
                 hozzaadasTermeknev_textBox.Clear();
                 hozzaadasAr_textBox.Clear();
                 hozzaadasMennyiseg_textBox.Clear();
@@ -257,6 +292,8 @@ namespace VIR
                 richTextBox_LeirasHozzaad.Clear();
                 hozzaadasSuly_textBox.Clear();
                 checkBox_KeszletenHozzaadas.Checked = false;
+                selectedFileName = "";
+                selectedFilePathName = "";
             }
         }
 
@@ -265,7 +302,14 @@ namespace VIR
             DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné üríteni az eddig beirtadatokat?", "Figyelmeztetés!", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                if (File.Exists("image/kezdo.png"))
+                {
+                    termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                }
+                else
+                {
+                    termekKep_pictureBox.Image = null;
+                }
                 modositasTermeknev_textBox.Clear();
                 modositasAr_textBox.Clear();
                 modositasMennyiseg_textBox.Clear();
@@ -288,7 +332,7 @@ namespace VIR
             if (e.Button == MouseButtons.Right)
             {
                 Muvelet muveletek = new Muvelet();
-                muveletek.Torles(listView1);
+                muveletek.Torles(listView1,termekKep_pictureBox);
             }
         }
 
