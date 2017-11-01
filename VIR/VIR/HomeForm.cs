@@ -81,7 +81,7 @@ namespace VIR
                 DBConnect conn = new DBConnect();
                 try
                 {
-                    string query1 = "SELECT kep FROM sql11202526.termekek WHERE termeknev='" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text +
+                    string query1 = "SELECT kep FROM termekek WHERE termeknev='" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text +
                        "' AND ar='" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text) +
                        "' AND leiras='" + listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text + "';";
 
@@ -154,7 +154,7 @@ namespace VIR
                     sKeszleten = "Nincs";
                 }
 
-                string query = "INSERT INTO sql11202526.termekek(id,termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + null +
+                string query = "INSERT INTO termekek(id,termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + null +
                         "','" + termeknev +
                         "','" + int.Parse(ar) +
                         "','" + int.Parse(mennyiseg) +
@@ -332,7 +332,7 @@ namespace VIR
                 if (selectedFileNameModositas != null && selectedFileNameModositas != "")
                 {
                     torolkep = true;
-                    string query = "SELECT kep FROM sql11202526.termekek WHERE termeknev='" + termeknev +
+                    string query = "SELECT kep FROM termekek WHERE termeknev='" + termeknev +
                            "' AND ar='" + ar +
                            "' AND leiras='" + leiras + "';";
 
@@ -361,7 +361,7 @@ namespace VIR
                 }
                 else
                 {
-                    query1 = "UPDATE sql11202526.termekek SET " +
+                    query1 = "UPDATE termekek SET " +
                         "termeknev = '" + termeknev + "'," +
                         " ar = '" + int.Parse(ar) + "'," +
                         " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
