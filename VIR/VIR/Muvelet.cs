@@ -95,14 +95,22 @@ namespace Muveletek
         }
 
 
-        public void Adatletoltes(ListView listView1)
+        public void Adatletoltes(ListView listView1, string optionalQuery="query")
         {
             try
             {
                 string sKeszleten;
 
                 DBConnect conn = new DBConnect();
-                MySqlDataAdapter ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());
+                MySqlDataAdapter ada;
+                if (optionalQuery != "query")
+                {
+                    ada = new MySqlDataAdapter(optionalQuery, conn.returnConnection());
+                }
+                else
+                {
+                    ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());
+                }
                 DataTable dt = new DataTable();
                 ada.Fill(dt);
 
@@ -159,6 +167,133 @@ namespace Muveletek
             // overwrite the destination file if it already exists.
             System.IO.File.Copy(sourceFile, destFile, true);
 
+        }
+
+        public void Kereses(string szoveg, bool[] check, ListView listView1)
+        {
+
+            DBConnect conn = new DBConnect();
+            string connstring = "SELECT * FROM termekek";
+            bool vancheck = false;
+            bool vanhiba = false;
+            if (szoveg!=null && szoveg!="")
+            {
+                if (check[0]==true)
+                {
+                    vancheck = true;
+                    connstring += " WHERE termeknev=\'" + szoveg + "\'";
+                }
+                if (check[1]==true)
+                {
+                    try
+                    {
+                        if (vancheck == false)
+                        {
+                            vancheck = true;
+                            connstring += " WHERE ar=" + int.Parse(szoveg);
+                        }
+                        else
+                        {
+                            connstring += " OR ar=" + int.Parse(szoveg);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
+                        vanhiba = true;
+                    }
+                }
+                if (check[2] == true)
+                {
+                    try
+                    {
+                        if (vancheck == false)
+                        {
+                            vancheck = true;
+                            connstring += " WHERE mennyiseg=" + int.Parse(szoveg);
+                        }
+                        else
+                        {
+                            connstring += " OR mennyiseg=" + int.Parse(szoveg);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
+                        vanhiba = true;
+                    }
+                }
+                if (check[3] == true)
+                {
+                    if (vancheck == false)
+                    {
+                        vancheck = true;
+                        connstring += " WHERE kategoria like \'%" + szoveg+"%\'";
+                    }
+                    else
+                    {
+                        connstring += " OR kategoria like \'%" + szoveg + "%\'";
+                    }
+                }
+                if (check[4] == true)
+                {
+                    try
+                    {
+                        if (vancheck == false)
+                        {
+                            vancheck = true;
+                            connstring += " WHERE suly=" + int.Parse(szoveg);
+                        }
+                        else
+                        {
+                            connstring += " OR suly=" + int.Parse(szoveg);
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
+                        vanhiba = true;
+                    }
+                }
+                if (check[5] == true)
+                {
+                    if (vancheck == false)
+                    {
+                        vancheck = true;
+                        if (szoveg.ToLower() == "van" || szoveg == "1")
+                        {
+                            connstring += " WHERE keszleten=1";
+                        }
+                        else if (szoveg.ToLower() == "nincs" || szoveg == "0")
+                        {
+                            connstring += " WHERE keszleten=0";
+                        }
+                    }
+                    else
+                    {
+                        if (szoveg.ToLower() == "van" || szoveg == "1")
+                        {
+                            connstring += " OR keszleten=1";
+                        }
+                        else if (szoveg.ToLower() == "nincs" || szoveg == "0")
+                        {
+                            connstring += " OR keszleten=0";
+                        }
+                    }
+                }
+
+                    
+            }
+            connstring += ";";
+            if (vanhiba == false)
+            {
+                listView1.Items.Clear();
+                Adatletoltes(listView1, connstring);
+            }
+            else
+            {
+                vanhiba = false;
+            }
         }
     }
 

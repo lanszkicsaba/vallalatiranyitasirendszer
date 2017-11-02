@@ -19,7 +19,17 @@ namespace VIR
         public HomeForm()
         {
             InitializeComponent();
+            
         }
+        Timer timer = new Timer();
+        private static string kivalasztottTermeknev = "";
+        private static string kivalasztottAr = "";
+        private static string kivalasztottLeiras = "";
+        private string selectedFilePathName;
+        private string selectedFileName;
+        private string selectedFilePathNameModositas;
+        private string selectedFileNameModositas;
+        bool[] check = new bool[6];
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
@@ -35,6 +45,8 @@ namespace VIR
             this.Close();
         }
 
+        
+              
         private void HomeForm_Load(object sender, EventArgs e)
         {
             termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -58,15 +70,11 @@ namespace VIR
             
             Muvelet muvelet = new Muvelet();
             muvelet.Adatletoltes(listView1);
-
-            Timer timer = new Timer();
-            timer.Interval = (10 * 1000); // 10 secs
-            timer.Tick += new EventHandler(frissites_btn_Click);
             timer.Start();
+            timer.Tick += new EventHandler(frissites_btn_Click);
+            timer.Interval = (10 * 1000); // 10 secs
         }
-        private static string kivalasztottTermeknev = "";
-        private static string kivalasztottAr = "";
-        private static string kivalasztottLeiras = "";
+        
         private void modositas_Kivalasztas(object sender, EventArgs e)
         {
             if (listView1.SelectedIndices.Count > 0)
@@ -131,8 +139,7 @@ namespace VIR
             
 
         }
-        private string selectedFilePathName;
-        private string selectedFileName;
+        
         private void hozzaadas_btn_Click(object sender, EventArgs e)
         {
             DBConnect conn = new DBConnect();
@@ -160,17 +167,14 @@ namespace VIR
                 }
 
                 int iKeszleten;
-                string sKeszleten;
 
                 if (checkBox_KeszletenHozzaadas.Checked == true)
                 {
                     iKeszleten = 1;
-                    sKeszleten = "Van";
                 }
                 else
                 {
                     iKeszleten = 0;
-                    sKeszleten = "Nincs";
                 }
 
                 string query = "INSERT INTO termekek(id,termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + null +
@@ -356,8 +360,7 @@ namespace VIR
             }
         }
 
-        private string selectedFilePathNameModositas;
-        private string selectedFileNameModositas;
+        
         private void modositas_btn_Click(object sender, EventArgs e)
         {
             DBConnect conn = new DBConnect();
@@ -486,6 +489,67 @@ namespace VIR
                 }
                 
             }
+        }
+        
+        private void button_Keres_Click(object sender, EventArgs e)
+        {
+            
+            Muvelet keres = new Muvelet();
+            timer.Stop();
+            for (int i = 0; i < check.Length; i++)
+            {
+                check[i] = false;
+            }
+                if (checkBox_Nev.Checked)
+                {
+                    check[0] = true;
+                }
+
+                if (checkBox_Ar.Checked)
+                {
+                    check[1] = true;
+                }
+
+                if (checkBox_Mennyiseg.Checked)
+                {
+                    check[2] = true;
+                }
+
+                if (checkBox_Kategoria.Checked)
+                {
+                    check[3] = true;
+                }
+
+                if (checkBox_Suly.Checked)
+                {
+                    check[4] = true;
+                }
+                if (checkBox_Keszleten.Checked)
+                {
+                    check[5] = true;
+                }
+
+                keres.Kereses(textBox_Kereses.Text, check, listView1);
+                
+        }
+
+        private void button_Vissza_Click(object sender, EventArgs e)
+        {
+            Muvelet keres = new Muvelet();
+            for (int i = 0; i < check.Length; i++)
+            {
+                check[i] = false;
+            }
+            checkBox_Nev.Checked = false;
+            checkBox_Ar.Checked = false;
+            checkBox_Mennyiseg.Checked = false;
+            checkBox_Kategoria.Checked = false;
+            checkBox_Suly.Checked = false;
+            checkBox_Keszleten.Checked = false;
+            textBox_Kereses.Text = "";
+            listView1.Items.Clear();
+            keres.Adatletoltes(listView1);            
+            timer.Start();
         }
 
     }

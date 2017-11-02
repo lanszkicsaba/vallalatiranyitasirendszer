@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             this.tabControl_Keszlet = new System.Windows.Forms.TabControl();
             this.Tab_Keszlet = new System.Windows.Forms.TabPage();
+            this.groupBox_Kereses = new System.Windows.Forms.GroupBox();
+            this.checkBox_Keszleten = new System.Windows.Forms.CheckBox();
+            this.checkBox_Suly = new System.Windows.Forms.CheckBox();
+            this.checkBox_Kategoria = new System.Windows.Forms.CheckBox();
+            this.button_Keres = new System.Windows.Forms.Button();
+            this.checkBox_Mennyiseg = new System.Windows.Forms.CheckBox();
+            this.checkBox_Ar = new System.Windows.Forms.CheckBox();
+            this.checkBox_Nev = new System.Windows.Forms.CheckBox();
+            this.textBox_Kereses = new System.Windows.Forms.TextBox();
             this.frissites_btn = new System.Windows.Forms.Button();
-            this.label_kereses = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.termekKep_pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -111,8 +119,11 @@
             this.welcome_label = new System.Windows.Forms.Label();
             this.logout_btn = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.button_Vissza = new System.Windows.Forms.Button();
             this.tabControl_Keszlet.SuspendLayout();
             this.Tab_Keszlet.SuspendLayout();
+            this.groupBox_Kereses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.termekKep_pictureBox)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -133,9 +144,8 @@
             // 
             // Tab_Keszlet
             // 
+            this.Tab_Keszlet.Controls.Add(this.groupBox_Kereses);
             this.Tab_Keszlet.Controls.Add(this.frissites_btn);
-            this.Tab_Keszlet.Controls.Add(this.label_kereses);
-            this.Tab_Keszlet.Controls.Add(this.textBox1);
             this.Tab_Keszlet.Controls.Add(this.label30);
             this.Tab_Keszlet.Controls.Add(this.termekKep_pictureBox);
             this.Tab_Keszlet.Controls.Add(this.groupBox4);
@@ -150,6 +160,101 @@
             this.Tab_Keszlet.Text = "Készlet";
             this.Tab_Keszlet.UseVisualStyleBackColor = true;
             // 
+            // groupBox_Kereses
+            // 
+            this.groupBox_Kereses.Controls.Add(this.button_Vissza);
+            this.groupBox_Kereses.Controls.Add(this.checkBox_Keszleten);
+            this.groupBox_Kereses.Controls.Add(this.checkBox_Suly);
+            this.groupBox_Kereses.Controls.Add(this.checkBox_Kategoria);
+            this.groupBox_Kereses.Controls.Add(this.button_Keres);
+            this.groupBox_Kereses.Controls.Add(this.checkBox_Mennyiseg);
+            this.groupBox_Kereses.Controls.Add(this.checkBox_Ar);
+            this.groupBox_Kereses.Controls.Add(this.checkBox_Nev);
+            this.groupBox_Kereses.Controls.Add(this.textBox_Kereses);
+            this.groupBox_Kereses.Location = new System.Drawing.Point(449, 0);
+            this.groupBox_Kereses.Name = "groupBox_Kereses";
+            this.groupBox_Kereses.Size = new System.Drawing.Size(360, 62);
+            this.groupBox_Kereses.TabIndex = 26;
+            this.groupBox_Kereses.TabStop = false;
+            this.groupBox_Kereses.Text = "Keresés";
+            // 
+            // checkBox_Keszleten
+            // 
+            this.checkBox_Keszleten.AutoSize = true;
+            this.checkBox_Keszleten.Location = new System.Drawing.Point(289, 35);
+            this.checkBox_Keszleten.Name = "checkBox_Keszleten";
+            this.checkBox_Keszleten.Size = new System.Drawing.Size(72, 17);
+            this.checkBox_Keszleten.TabIndex = 30;
+            this.checkBox_Keszleten.Text = "Készleten";
+            this.checkBox_Keszleten.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Suly
+            // 
+            this.checkBox_Suly.AutoSize = true;
+            this.checkBox_Suly.Location = new System.Drawing.Point(237, 35);
+            this.checkBox_Suly.Name = "checkBox_Suly";
+            this.checkBox_Suly.Size = new System.Drawing.Size(46, 17);
+            this.checkBox_Suly.TabIndex = 29;
+            this.checkBox_Suly.Text = "Súly";
+            this.checkBox_Suly.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Kategoria
+            // 
+            this.checkBox_Kategoria.AutoSize = true;
+            this.checkBox_Kategoria.Location = new System.Drawing.Point(167, 35);
+            this.checkBox_Kategoria.Name = "checkBox_Kategoria";
+            this.checkBox_Kategoria.Size = new System.Drawing.Size(71, 17);
+            this.checkBox_Kategoria.TabIndex = 28;
+            this.checkBox_Kategoria.Text = "Kategória";
+            this.checkBox_Kategoria.UseVisualStyleBackColor = true;
+            // 
+            // button_Keres
+            // 
+            this.button_Keres.Location = new System.Drawing.Point(242, 9);
+            this.button_Keres.Name = "button_Keres";
+            this.button_Keres.Size = new System.Drawing.Size(55, 23);
+            this.button_Keres.TabIndex = 31;
+            this.button_Keres.Text = "Keresés";
+            this.button_Keres.UseVisualStyleBackColor = true;
+            this.button_Keres.Click += new System.EventHandler(this.button_Keres_Click);
+            // 
+            // checkBox_Mennyiseg
+            // 
+            this.checkBox_Mennyiseg.AutoSize = true;
+            this.checkBox_Mennyiseg.Location = new System.Drawing.Point(90, 35);
+            this.checkBox_Mennyiseg.Name = "checkBox_Mennyiseg";
+            this.checkBox_Mennyiseg.Size = new System.Drawing.Size(77, 17);
+            this.checkBox_Mennyiseg.TabIndex = 27;
+            this.checkBox_Mennyiseg.Text = "Mennyiség";
+            this.checkBox_Mennyiseg.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Ar
+            // 
+            this.checkBox_Ar.AutoSize = true;
+            this.checkBox_Ar.Location = new System.Drawing.Point(52, 35);
+            this.checkBox_Ar.Name = "checkBox_Ar";
+            this.checkBox_Ar.Size = new System.Drawing.Size(36, 17);
+            this.checkBox_Ar.TabIndex = 26;
+            this.checkBox_Ar.Text = "Ár";
+            this.checkBox_Ar.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_Nev
+            // 
+            this.checkBox_Nev.AutoSize = true;
+            this.checkBox_Nev.Location = new System.Drawing.Point(6, 35);
+            this.checkBox_Nev.Name = "checkBox_Nev";
+            this.checkBox_Nev.Size = new System.Drawing.Size(46, 17);
+            this.checkBox_Nev.TabIndex = 25;
+            this.checkBox_Nev.Text = "Név";
+            this.checkBox_Nev.UseVisualStyleBackColor = true;
+            // 
+            // textBox_Kereses
+            // 
+            this.textBox_Kereses.Location = new System.Drawing.Point(57, 9);
+            this.textBox_Kereses.Name = "textBox_Kereses";
+            this.textBox_Kereses.Size = new System.Drawing.Size(179, 20);
+            this.textBox_Kereses.TabIndex = 24;
+            // 
             // frissites_btn
             // 
             this.frissites_btn.Location = new System.Drawing.Point(66, 35);
@@ -159,22 +264,6 @@
             this.frissites_btn.Text = "Frissítés";
             this.frissites_btn.UseVisualStyleBackColor = true;
             this.frissites_btn.Click += new System.EventHandler(this.frissites_btn_Click);
-            // 
-            // label_kereses
-            // 
-            this.label_kereses.AutoSize = true;
-            this.label_kereses.Location = new System.Drawing.Point(578, 38);
-            this.label_kereses.Name = "label_kereses";
-            this.label_kereses.Size = new System.Drawing.Size(48, 13);
-            this.label_kereses.TabIndex = 10;
-            this.label_kereses.Text = "Keresés:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(632, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(167, 20);
-            this.textBox1.TabIndex = 3;
             // 
             // label30
             // 
@@ -892,6 +981,21 @@
             this.label19.TabIndex = 3;
             this.label19.Text = "Vállalatirányítási Rendszer";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // button_Vissza
+            // 
+            this.button_Vissza.Location = new System.Drawing.Point(300, 9);
+            this.button_Vissza.Name = "button_Vissza";
+            this.button_Vissza.Size = new System.Drawing.Size(55, 23);
+            this.button_Vissza.TabIndex = 32;
+            this.button_Vissza.Text = "Vissza";
+            this.button_Vissza.UseVisualStyleBackColor = true;
+            this.button_Vissza.Click += new System.EventHandler(this.button_Vissza_Click);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -908,6 +1012,8 @@
             this.tabControl_Keszlet.ResumeLayout(false);
             this.Tab_Keszlet.ResumeLayout(false);
             this.Tab_Keszlet.PerformLayout();
+            this.groupBox_Kereses.ResumeLayout(false);
+            this.groupBox_Kereses.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.termekKep_pictureBox)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -998,8 +1104,6 @@
         private System.Windows.Forms.ColumnHeader Suly_columnHeader;
         private System.Windows.Forms.ColumnHeader Keszleten_columnHeader;
         private System.Windows.Forms.RichTextBox richTextBox_LeirasHozzaad;
-        private System.Windows.Forms.Label label_kereses;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.RichTextBox richTextBox_LeirasModositas;
         private System.Windows.Forms.CheckBox checkBox_KeszletenModositas;
         private System.Windows.Forms.CheckBox checkBox_KeszletenHozzaadas;
@@ -1007,5 +1111,16 @@
         private System.Windows.Forms.Button modositasUrites_btn;
         private System.Windows.Forms.Button hozzadasUrites_btn;
         private System.Windows.Forms.Button frissites_btn;
+        private System.Windows.Forms.GroupBox groupBox_Kereses;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.CheckBox checkBox_Keszleten;
+        private System.Windows.Forms.CheckBox checkBox_Suly;
+        private System.Windows.Forms.CheckBox checkBox_Kategoria;
+        private System.Windows.Forms.Button button_Keres;
+        private System.Windows.Forms.CheckBox checkBox_Mennyiseg;
+        private System.Windows.Forms.CheckBox checkBox_Ar;
+        private System.Windows.Forms.CheckBox checkBox_Nev;
+        private System.Windows.Forms.TextBox textBox_Kereses;
+        private System.Windows.Forms.Button button_Vissza;
     }
 }
