@@ -412,7 +412,16 @@ namespace VIR
                     string leiras = richTextBox_LeirasModositas.Text.ToString();
                     string query1;
                     string kepnevTorol = "";
+                    int iKeszleten =0;
 
+                if (checkBox_KeszletenModositas.Checked == true)
+                {
+                    iKeszleten = 1;
+                }
+                if (checkBox_KeszletenModositas.Checked == false)
+                {
+                    iKeszleten = 0;
+                }
                     bool torolkep = false;
                     if (selectedFileNameModositas != null && selectedFileNameModositas != "")
                     {
@@ -439,8 +448,9 @@ namespace VIR
                             " kategoria = '" + kategoria + "', " +
                             " leiras = '" + leiras + "', " +
                             " suly = '" + suly + "'," +
-                            " kep = '" + selectedFileNameModositas + "'" +
-                            " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
+                            " kep = '" + selectedFileNameModositas + "'," +
+                            " keszleten = '" + iKeszleten + "'" +
+                        " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
 
 
                     }
@@ -452,7 +462,9 @@ namespace VIR
                             " mennyiseg = '" + mennyiseg + "'," +
                             " kategoria = '" + kategoria + "', " +
                             " leiras = '" + leiras + "', " +
-                            " suly = '" + suly + "' WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
+                            " suly = '" + suly + "'," +
+                            " keszleten = '" + iKeszleten + "'" +
+                            " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
 
                     }
 
@@ -474,14 +486,12 @@ namespace VIR
                     listView1.Items.Clear();
                     Muvelet muveletek = new Muvelet();
                     muveletek.Adatletoltes(listView1);
-                        " keszleten = '" + iKeszleten + "'" +
-                        " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
+                        
 
                 }
                 catch (FormatException)
                 {
                     MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
-                        " keszleten = '" + iKeszleten + "'" +
                 }
                 catch (MySqlException ex)
                 {

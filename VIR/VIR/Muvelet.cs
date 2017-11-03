@@ -201,7 +201,7 @@ namespace Muveletek
                     {
                         if (vanhiba == false)
                         {
-                            MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
+                            MessageBox.Show("Hibás formátum.\nEbben az esetben csak szám lehet a keresés mezőben.", "Hiba");
                             vanhiba = true;
                         }
                     }
