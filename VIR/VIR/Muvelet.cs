@@ -199,8 +199,11 @@ namespace Muveletek
                     }
                     catch
                     {
-                        MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
-                        vanhiba = true;
+                        if (vanhiba == false)
+                        {
+                            MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
+                            vanhiba = true;
+                        }
                     }
                 }
                 if (check[2] == true)
@@ -219,8 +222,11 @@ namespace Muveletek
                     }
                     catch
                     {
-                        MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
-                        vanhiba = true;
+                        if (vanhiba == false)
+                        {
+                            MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
+                            vanhiba = true;
+                        }
                     }
                 }
                 if (check[3] == true)
@@ -237,23 +243,17 @@ namespace Muveletek
                 }
                 if (check[4] == true)
                 {
-                    try
-                    {
+
                         if (vancheck == false)
                         {
                             vancheck = true;
-                            connstring += " WHERE suly=" + int.Parse(szoveg);
+                            connstring += " WHERE leiras like \'%" + szoveg + "%\'";
                         }
                         else
                         {
-                            connstring += " OR suly=" + int.Parse(szoveg);
+                            connstring += " OR leiras like \'%" + szoveg + "%\'";
                         }
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
-                        vanhiba = true;
-                    }
+                    
                 }
                 if (check[5] == true)
                 {

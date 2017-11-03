@@ -139,107 +139,126 @@ namespace VIR
             
 
         }
-        
+
         private void hozzaadas_btn_Click(object sender, EventArgs e)
         {
-            DBConnect conn = new DBConnect();
-            
-            string kep = "";
-            try
+            int ar;
+            int mennyiseg;
+            int suly;
+            if (int.TryParse(hozzaadasAr_textBox.Text, out ar) == false && hozzaadasAr_textBox.Text != string.Empty)
             {
-                string termeknev = hozzaadasTermeknev_textBox.Text.ToString();
-                string ar = hozzaadasAr_textBox.Text.ToString();
-                string mennyiseg = hozzaadasMennyiseg_textBox.Text.ToString();
-                string kategoria = hozzaadasKategoria_textBox.Text.ToString();
-                string leiras = richTextBox_LeirasHozzaad.Text.ToString();
-                string suly = hozzaadasSuly_textBox.Text.ToString();
-                
-                
-                if (selectedFileName != null && selectedFileName != "")
-                {
-                    Muvelet muvelet = new Muvelet();
-                    muvelet.FileCopy(selectedFileName, selectedFilePathName);
-                    kep = selectedFileName;
-                }
-                else
-                {
-                    kep = "";
-                }
-
-                int iKeszleten;
-
-                if (checkBox_KeszletenHozzaadas.Checked == true)
-                {
-                    iKeszleten = 1;
-                }
-                else
-                {
-                    iKeszleten = 0;
-                }
-
-                string query = "INSERT INTO termekek(id,termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + null +
-                        "','" + termeknev +
-                        "','" + int.Parse(ar) +
-                        "','" + int.Parse(mennyiseg) +
-                        "','" + kategoria +
-                        "','" + leiras +
-                        "','" + int.Parse(suly) +
-                        "','" + kep +
-                        "','" + iKeszleten + "')";
-
-                MySqlDataReader reader;
-                MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
-                conn.OpenConnection();
-                reader = cmd.ExecuteReader();
-
-                while (reader.Read()) { } 
-
-                listView1.Items.Clear();
-                Muvelet muveletek = new Muvelet();
-                muveletek.Adatletoltes(listView1);
-
-                if (File.Exists("Image/kezdo.png"))
-                {
-                    termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
-                }
-                else
-                {
-                    termekKep_pictureBox.Image = null;
-                }
-
-                hozzaadasTermeknev_textBox.Clear();
-                hozzaadasAr_textBox.Clear();
-                hozzaadasMennyiseg_textBox.Clear();
-                hozzaadasKategoria_textBox.Clear();
-                richTextBox_LeirasHozzaad.Clear();
-                hozzaadasSuly_textBox.Clear();
-                checkBox_KeszletenHozzaadas.Checked = false;
-                selectedFileName = "";
-                selectedFilePathName = "";
-                
+                MessageBox.Show("Túl nagy érték az árnál. \n Maximum: 2147483647.", "Hiba");
             }
-            catch (ArgumentNullException)
+            else if (int.TryParse(hozzaadasMennyiseg_textBox.Text, out mennyiseg) ==false && hozzaadasMennyiseg_textBox.Text!=string.Empty)
             {
-                MessageBox.Show("Töltsön ki minden mezőt!", "Hiba");
+                MessageBox.Show("Túl nagy érték a mennyiségnél. \n Maximum: 2147483647.", "Hiba");
             }
-            catch (FormatException)
+            else if (int.TryParse(hozzaadasSuly_textBox.Text, out suly) ==false && hozzaadasSuly_textBox.Text!=string.Empty)
             {
-                MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
+                MessageBox.Show("Túl nagy érték a súlynál. \n Maximum: 2147483647.", "Hiba");
             }
-            catch (MySqlException ex)
+            else if (hozzaadasTermeknev_textBox.Text == string.Empty)
             {
-                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+                MessageBox.Show("Név megadása kötelező.", "Hiba");
             }
-            catch (Exception ex)
+
+            else
             {
-                MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
-            }
-            finally
-            {
-                conn.CloseConnection();
+
+                DBConnect conn = new DBConnect();
+
+                string kep = "";
+                try
+                {
+                    string termeknev = hozzaadasTermeknev_textBox.Text.ToString();                 
+                    string kategoria = hozzaadasKategoria_textBox.Text.ToString();
+                    string leiras = richTextBox_LeirasHozzaad.Text.ToString();
+                    
+                    if (selectedFileName != null && selectedFileName != "")
+                    {
+                        Muvelet muvelet = new Muvelet();
+                        muvelet.FileCopy(selectedFileName, selectedFilePathName);
+                        kep = selectedFileName;
+                    }
+                    else
+                    {
+                        kep = "";
+                    }
+
+                    int iKeszleten;
+
+                    if (checkBox_KeszletenHozzaadas.Checked == true)
+                    {
+                        iKeszleten = 1;
+                    }
+                    else
+                    {
+                        iKeszleten = 0;
+                    }
+
+                    string query = "INSERT INTO termekek(id,termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + null +
+                            "','" + termeknev +
+                            "','" + ar +
+                            "','" + mennyiseg +
+                            "','" + kategoria +
+                            "','" + leiras +
+                            "','" + suly +
+                            "','" + kep +
+                            "','" + iKeszleten + "')";
+
+                    MySqlDataReader reader;
+                    MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
+                    conn.OpenConnection();
+                    reader = cmd.ExecuteReader();
+
+                    while (reader.Read()) { }
+
+                    listView1.Items.Clear();
+                    Muvelet muveletek = new Muvelet();
+                    muveletek.Adatletoltes(listView1);
+
+                    if (File.Exists("Image/kezdo.png"))
+                    {
+                        termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                    }
+                    else
+                    {
+                        termekKep_pictureBox.Image = null;
+                    }
+
+                    hozzaadasTermeknev_textBox.Clear();
+                    hozzaadasAr_textBox.Clear();
+                    hozzaadasMennyiseg_textBox.Clear();
+                    hozzaadasKategoria_textBox.Clear();
+                    richTextBox_LeirasHozzaad.Clear();
+                    hozzaadasSuly_textBox.Clear();
+                    checkBox_KeszletenHozzaadas.Checked = false;
+                    selectedFileName = "";
+                    selectedFilePathName = "";
+
+                }
+                catch (ArgumentNullException)
+                {
+                    MessageBox.Show("Töltsön ki minden mezőt!", "Hiba");
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
+                }
+                finally
+                {
+                    conn.CloseConnection();
+                }
             }
         }
-
         
 
         private void hozzaadasMegnyitas_btn_Click(object sender, EventArgs e)
@@ -363,96 +382,116 @@ namespace VIR
         
         private void modositas_btn_Click(object sender, EventArgs e)
         {
-            DBConnect conn = new DBConnect();
-            try
-            {                
-                string termeknev = modositasTermeknev_textBox.Text.ToString();
-                string ar = modositasAr_textBox.Text.ToString();
-                string mennyiseg = modositasMennyiseg_textBox.Text.ToString();
-                string kategoria = modositasKategoria_textBox.Text.ToString();
-                string leiras = richTextBox_LeirasModositas.Text.ToString();
-                string suly = modositasSuly_textBox.Text.ToString();
-                string query1;
-                string kepnevTorol = "";
+             int ar;
+            int mennyiseg;
+            int suly;
+            if (int.TryParse(modositasAr_textBox.Text, out ar) == false && modositasAr_textBox.Text != string.Empty)
+            {
+                MessageBox.Show("Túl nagy érték az árnál. \n Maximum: 2147483647.", "Hiba");
+            }
+            else if (int.TryParse(modositasMennyiseg_textBox.Text, out mennyiseg) == false && modositasMennyiseg_textBox.Text != string.Empty)
+            {
+                MessageBox.Show("Túl nagy érték a mennyiségnél. \n Maximum: 2147483647.", "Hiba");
+            }
+            else if (int.TryParse(modositasSuly_textBox.Text, out suly) == false && modositasSuly_textBox.Text != string.Empty)
+            {
+                MessageBox.Show("Túl nagy érték a súlynál. \n Maximum: 2147483647.", "Hiba");
+            }
+            else if (modositasTermeknev_textBox.Text == string.Empty)
+            {
+                MessageBox.Show("Név megadása kötelező.", "Hiba");
+            }
 
-                bool torolkep = false;
-                if (selectedFileNameModositas != null && selectedFileNameModositas != "")
+            else
+            {
+                DBConnect conn = new DBConnect();
+                try
                 {
-                    torolkep = true;
-                    string query = "SELECT kep FROM termekek WHERE termeknev='" + termeknev +
-                           "' AND ar='" + ar +
-                           "' AND leiras='" + leiras + "';";
+                    string termeknev = modositasTermeknev_textBox.Text.ToString();
+                    string kategoria = modositasKategoria_textBox.Text.ToString();
+                    string leiras = richTextBox_LeirasModositas.Text.ToString();
+                    string query1;
+                    string kepnevTorol = "";
 
-                    MySqlDataReader reader;
-                    MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
+                    bool torolkep = false;
+                    if (selectedFileNameModositas != null && selectedFileNameModositas != "")
+                    {
+                        torolkep = true;
+                        string query = "SELECT kep FROM termekek WHERE termeknev='" + termeknev +
+                               "' AND ar='" + ar +
+                               "' AND leiras='" + leiras + "';";
+
+                        MySqlDataReader reader;
+                        MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
+                        conn.OpenConnection();
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            kepnevTorol = reader.GetString(0);
+                        }
+                        Muvelet muvelet = new Muvelet();
+                        muvelet.FileCopy(selectedFileNameModositas, selectedFilePathNameModositas);
+                        conn.CloseConnection();
+                        query1 = "UPDATE sql11202526.termekek SET " +
+                            "termeknev = '" + termeknev + "'," +
+                            " ar = '" + ar + "'," +
+                            " mennyiseg = '" + mennyiseg + "'," +
+                            " kategoria = '" + kategoria + "', " +
+                            " leiras = '" + leiras + "', " +
+                            " suly = '" + suly + "'," +
+                            " kep = '" + selectedFileNameModositas + "'" +
+                            " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
+
+
+                    }
+                    else
+                    {
+                        query1 = "UPDATE termekek SET " +
+                            "termeknev = '" + termeknev + "'," +
+                            " ar = '" + ar + "'," +
+                            " mennyiseg = '" + mennyiseg + "'," +
+                            " kategoria = '" + kategoria + "', " +
+                            " leiras = '" + leiras + "', " +
+                            " suly = '" + suly + "' WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
+
+                    }
+
+                    MySqlDataReader reader1;
+                    MySqlCommand cmd1 = new MySqlCommand(query1, conn.returnConnection());
                     conn.OpenConnection();
-                    reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    reader1 = cmd1.ExecuteReader();
+                    if (torolkep)
                     {
-                        kepnevTorol = reader.GetString(0);
+                        if (File.Exists(@"image/" + kepnevTorol) && kepnevTorol != "kezdo")
+                        {
+                            //System.GC.Collect();
+                            //System.GC.WaitForPendingFinalizers();
+                            File.Delete(@"image/" + kepnevTorol);
+                            kepnevTorol = "";
+                        }
                     }
-                    Muvelet muvelet = new Muvelet();           
-                    muvelet.FileCopy(selectedFileNameModositas, selectedFilePathNameModositas);
+
+                    listView1.Items.Clear();
+                    Muvelet muveletek = new Muvelet();
+                    muveletek.Adatletoltes(listView1);
+
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
+                }
+                finally
+                {
                     conn.CloseConnection();
-                    query1 = "UPDATE sql11202526.termekek SET " +
-                        "termeknev = '" + termeknev + "'," +
-                        " ar = '" + int.Parse(ar) + "'," +
-                        " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
-                        " kategoria = '" + kategoria + "', " +
-                        " leiras = '" + leiras + "', " +
-                        " suly = '" + int.Parse(suly) + "'," +
-                        " kep = '" + selectedFileNameModositas + "'" +
-                        " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
-                    
-
                 }
-                else
-                {
-                    query1 = "UPDATE termekek SET " +
-                        "termeknev = '" + termeknev + "'," +
-                        " ar = '" + int.Parse(ar) + "'," +
-                        " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
-                        " kategoria = '" + kategoria + "', " +
-                        " leiras = '" + leiras + "', " +
-                        " suly = '" + int.Parse(suly) + "' WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
-
-                }
-
-                MySqlDataReader reader1;
-                MySqlCommand cmd1 = new MySqlCommand(query1, conn.returnConnection());
-                conn.OpenConnection();
-                reader1 = cmd1.ExecuteReader();
-                if (torolkep)
-                {
-                    if (File.Exists(@"image/" + kepnevTorol) && kepnevTorol != "kezdo")
-                    {
-                        //System.GC.Collect();
-                        //System.GC.WaitForPendingFinalizers();
-                        File.Delete(@"image/" + kepnevTorol);
-                        kepnevTorol = "";
-                    }
-                }
-
-                listView1.Items.Clear();
-                Muvelet muveletek = new Muvelet();
-                muveletek.Adatletoltes(listView1);
-                
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
-            }
-            finally
-            {
-                conn.CloseConnection();
             }
         }
 
@@ -520,7 +559,7 @@ namespace VIR
                     check[3] = true;
                 }
 
-                if (checkBox_Suly.Checked)
+                if (checkBox_Leiras.Checked)
                 {
                     check[4] = true;
                 }
@@ -544,7 +583,7 @@ namespace VIR
             checkBox_Ar.Checked = false;
             checkBox_Mennyiseg.Checked = false;
             checkBox_Kategoria.Checked = false;
-            checkBox_Suly.Checked = false;
+            checkBox_Leiras.Checked = false;
             checkBox_Keszleten.Checked = false;
             textBox_Kereses.Text = "";
             listView1.Items.Clear();
