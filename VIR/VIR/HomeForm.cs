@@ -374,13 +374,13 @@ namespace VIR
                 string suly = modositasSuly_textBox.Text.ToString();
                 string query1;
                 string kepnevTorol = "";
-                int iKeszleten;
+                int iKeszleten = 0;
 
-                if (checkBox_KeszletenHozzaadas.Checked == true)
+                if (checkBox_KeszletenModositas.Checked == true)
                 {
                     iKeszleten = 1;
                 }
-                if (checkBox_KeszletenHozzaadas.Checked == false)
+                if (checkBox_KeszletenModositas.Checked == false)
                 {
                     iKeszleten = 0;
                 }
