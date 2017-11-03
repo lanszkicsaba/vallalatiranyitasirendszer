@@ -374,6 +374,16 @@ namespace VIR
                 string suly = modositasSuly_textBox.Text.ToString();
                 string query1;
                 string kepnevTorol = "";
+                int iKeszleten;
+
+                if (checkBox_KeszletenHozzaadas.Checked == true)
+                {
+                    iKeszleten = 1;
+                }
+                else
+                {
+                    iKeszleten = 0;
+                }
 
                 bool torolkep = false;
                 if (selectedFileNameModositas != null && selectedFileNameModositas != "")
@@ -401,7 +411,8 @@ namespace VIR
                         " kategoria = '" + kategoria + "', " +
                         " leiras = '" + leiras + "', " +
                         " suly = '" + int.Parse(suly) + "'," +
-                        " kep = '" + selectedFileNameModositas + "'" +
+                        " kep = '" + selectedFileNameModositas + "'," +
+                        " keszleten = '" + iKeszleten + "'" +
                         " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
                     
 
@@ -414,7 +425,9 @@ namespace VIR
                         " mennyiseg = '" + int.Parse(mennyiseg) + "'," +
                         " kategoria = '" + kategoria + "', " +
                         " leiras = '" + leiras + "', " +
-                        " suly = '" + int.Parse(suly) + "' WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
+                        " suly = '" + int.Parse(suly) + "'," +
+                        " keszleten = '" + iKeszleten + "'" +
+                        " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
 
                 }
 
