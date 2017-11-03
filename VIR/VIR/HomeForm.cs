@@ -474,11 +474,14 @@ namespace VIR
                     listView1.Items.Clear();
                     Muvelet muveletek = new Muvelet();
                     muveletek.Adatletoltes(listView1);
+                        " keszleten = '" + iKeszleten + "'" +
+                        " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
 
                 }
                 catch (FormatException)
                 {
                     MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
+                        " keszleten = '" + iKeszleten + "'" +
                 }
                 catch (MySqlException ex)
                 {
