@@ -380,7 +380,7 @@ namespace VIR
                 {
                     iKeszleten = 1;
                 }
-                else
+                if (checkBox_KeszletenHozzaadas.Checked == false)
                 {
                     iKeszleten = 0;
                 }
