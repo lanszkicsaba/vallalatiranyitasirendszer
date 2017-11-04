@@ -148,18 +148,22 @@ namespace VIR
             if (int.TryParse(hozzaadasAr_textBox.Text, out ar) == false && hozzaadasAr_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték az árnál. \n Maximum: 2147483647.", "Hiba");
+                hozzaadasAr_textBox.Select();
             }
             else if (int.TryParse(hozzaadasMennyiseg_textBox.Text, out mennyiseg) ==false && hozzaadasMennyiseg_textBox.Text!=string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a mennyiségnél. \n Maximum: 2147483647.", "Hiba");
+                hozzaadasMennyiseg_textBox.Select();
             }
             else if (int.TryParse(hozzaadasSuly_textBox.Text, out suly) ==false && hozzaadasSuly_textBox.Text!=string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a súlynál. \n Maximum: 2147483647.", "Hiba");
+                hozzaadasSuly_textBox.Select();
             }
             else if (hozzaadasTermeknev_textBox.Text == string.Empty)
             {
                 MessageBox.Show("Név megadása kötelező.", "Hiba");
+                hozzaadasTermeknev_textBox.Select();
             }
 
             else
@@ -388,18 +392,22 @@ namespace VIR
             if (int.TryParse(modositasAr_textBox.Text, out ar) == false && modositasAr_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték az árnál. \n Maximum: 2147483647.", "Hiba");
+                modositasAr_textBox.Select();
             }
             else if (int.TryParse(modositasMennyiseg_textBox.Text, out mennyiseg) == false && modositasMennyiseg_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a mennyiségnél. \n Maximum: 2147483647.", "Hiba");
+                modositasMennyiseg_textBox.Select();
             }
             else if (int.TryParse(modositasSuly_textBox.Text, out suly) == false && modositasSuly_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a súlynál. \n Maximum: 2147483647.", "Hiba");
+                modositasSuly_textBox.Select();
             }
             else if (modositasTermeknev_textBox.Text == string.Empty)
             {
                 MessageBox.Show("Név megadása kötelező.", "Hiba");
+                modositasTermeknev_textBox.Select();
             }
 
             else

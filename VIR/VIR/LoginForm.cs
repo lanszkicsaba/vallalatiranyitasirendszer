@@ -30,9 +30,17 @@ namespace VIR
         public LoginForm()
         {
             InitializeComponent();
-            if (Properties.Settings.Default.Username!=null)
+            if (Properties.Settings.Default.Username!=null || Properties.Settings.Default.Username!=textBoxUserName.Text)
             {
                 textBoxUserName.Text = Properties.Settings.Default.Username;
+            }
+            if (textBoxUserName.Text==string.Empty)
+            {
+                textBoxUserName.Select();
+            }
+            else
+            {
+                textBoxPasswd.Select();
             }
 
             buttonLogout.Enabled = false;
