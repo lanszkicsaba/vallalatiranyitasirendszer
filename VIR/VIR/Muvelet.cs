@@ -44,22 +44,38 @@ namespace Muveletek
                     {
                         kepnev = reader1.GetString(0);
                     }
-                    if (File.Exists(@"image/" + kepnev))
-                    {
-                        if (File.Exists("image/kezdo.png"))
-                        {
-                            pb.Image = new Bitmap("image/kezdo.png");
-                        }
-                        else
-                        {
-                            pb.Image = null;
-                        }
-                        System.GC.Collect();
-                        System.GC.WaitForPendingFinalizers(); 
-                        File.Delete(@"image/" + kepnev);
-                    }
 
                     conn.CloseConnection();
+
+                    string query2 = "SELECT COUNT(*) FROM termekek WHERE kep='" + kepnev + "';";
+                    MySqlCommand cmd2 = new MySqlCommand(query2, conn.returnConnection());
+                    conn.OpenConnection();
+
+                    int count = Convert.ToInt32(cmd2.ExecuteScalar());
+                    conn.CloseConnection();
+
+                    if (count == 1)
+                    {
+                        if (File.Exists(@"image/" + kepnev))
+                        {
+                            if (File.Exists("image/kezdo.png"))
+                            {
+                                pb.Image = new Bitmap("image/kezdo.png");
+                            }
+                            else
+                            {
+                                pb.Image = null;
+                            }
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+                            pb.Image = new Bitmap("image/kezdo.png");
+                            File.Delete(@"image/" + kepnev);
+                            kepnev = "";
+                        }
+                    }
+
+                    kepnev = "";
+                    pb.Image = new Bitmap("image/kezdo.png");
 
                     string query = "DELETE FROM termekek WHERE termeknev='" + termeknev +
                         "' AND ar='" + ar +
@@ -77,7 +93,6 @@ namespace Muveletek
                     listView1.Items.Clear();
                     Muvelet muveletek = new Muvelet();
                     muveletek.Adatletoltes(listView1);
-
                 }
             }
             catch (MySqlException ex)
@@ -95,7 +110,7 @@ namespace Muveletek
         }
 
 
-        public void Adatletoltes(ListView listView1, string optionalQuery="query")
+        public void Adatletoltes(ListView listView1, string optionalQuery = "query")
         {
             try
             {
@@ -176,14 +191,14 @@ namespace Muveletek
             string connstring = "SELECT * FROM termekek";
             bool vancheck = false;
             bool vanhiba = false;
-            if (szoveg!=null && szoveg!="")
+            if (szoveg != null && szoveg != "")
             {
-                if (check[0]==true)
+                if (check[0] == true)
                 {
                     vancheck = true;
                     connstring += " WHERE termeknev=\'" + szoveg + "\'";
                 }
-                if (check[1]==true)
+                if (check[1] == true)
                 {
                     try
                     {
@@ -234,7 +249,7 @@ namespace Muveletek
                     if (vancheck == false)
                     {
                         vancheck = true;
-                        connstring += " WHERE kategoria like \'%" + szoveg+"%\'";
+                        connstring += " WHERE kategoria like \'%" + szoveg + "%\'";
                     }
                     else
                     {
@@ -244,16 +259,16 @@ namespace Muveletek
                 if (check[4] == true)
                 {
 
-                        if (vancheck == false)
-                        {
-                            vancheck = true;
-                            connstring += " WHERE leiras like \'%" + szoveg + "%\'";
-                        }
-                        else
-                        {
-                            connstring += " OR leiras like \'%" + szoveg + "%\'";
-                        }
-                    
+                    if (vancheck == false)
+                    {
+                        vancheck = true;
+                        connstring += " WHERE leiras like \'%" + szoveg + "%\'";
+                    }
+                    else
+                    {
+                        connstring += " OR leiras like \'%" + szoveg + "%\'";
+                    }
+
                 }
                 if (check[5] == true)
                 {
@@ -282,7 +297,7 @@ namespace Muveletek
                     }
                 }
 
-                    
+
             }
             connstring += ";";
             if (vanhiba == false)
