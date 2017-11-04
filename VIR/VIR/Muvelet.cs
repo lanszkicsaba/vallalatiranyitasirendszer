@@ -27,6 +27,7 @@ namespace Muveletek
                 string leiras = listView1.SelectedItems[0].SubItems[4].Text;
 
                 DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné törölni a " + termeknev + " megnevezésű terméket?", "Figyelmeztetés!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
                 if (dialogResult == DialogResult.Yes)
                 {
                     string query1 = "SELECT kep FROM termekek WHERE termeknev='" + termeknev +
@@ -39,7 +40,9 @@ namespace Muveletek
                     MySqlCommand cmd1 = new MySqlCommand(query1, conn.returnConnection());
                     conn.OpenConnection();
                     reader1 = cmd1.ExecuteReader();
+
                     string kepnev = "";
+
                     while (reader1.Read())
                     {
                         kepnev = reader1.GetString(0);
@@ -75,7 +78,6 @@ namespace Muveletek
 
                     kepnev = "";
                     
-
                     string query = "DELETE FROM termekek WHERE termeknev='" + termeknev +
                         "' AND ar='" + ar +
                         "' AND mennyiseg='" + mennyiseg +
@@ -117,6 +119,7 @@ namespace Muveletek
 
                 DBConnect conn = new DBConnect();
                 MySqlDataAdapter ada;
+
                 if (optionalQuery != "query")
                 {
                     ada = new MySqlDataAdapter(optionalQuery, conn.returnConnection());
@@ -125,12 +128,14 @@ namespace Muveletek
                 {
                     ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());
                 }
+
                 DataTable dt = new DataTable();
                 ada.Fill(dt);
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     DataRow dr = dt.Rows[i];
+
                     if (dr["keszleten"].ToString() == "True")
                     {
                         sKeszleten = "Van";
@@ -139,6 +144,7 @@ namespace Muveletek
                     {
                         sKeszleten = "Nincs";
                     }
+
                     string[] row = {
                     dr["termeknev"].ToString(),
                     dr["ar"].ToString() +"Ft",
@@ -163,33 +169,34 @@ namespace Muveletek
         public void FileCopy(string Filename, string SourcePath)
         {
             string fileName = Filename;
-            string sourcePath = System.IO.Path.GetDirectoryName(SourcePath);
+            string sourcePath = Path.GetDirectoryName(SourcePath);
             string targetPath = @"image";
 
             // Use Path class to manipulate file and directory paths.
-            string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
-            string destFile = System.IO.Path.Combine(targetPath, fileName);
+            string sourceFile = Path.Combine(sourcePath, fileName);
+            string destFile = Path.Combine(targetPath, fileName);
 
             // To copy a folder's contents to a new location:
             // Create a new target folder, if necessary.
-            if (!System.IO.Directory.Exists(targetPath))
+            if (!Directory.Exists(targetPath))
             {
-                System.IO.Directory.CreateDirectory(targetPath);
+                Directory.CreateDirectory(targetPath);
             }
 
             // To copy a file to another location and 
             // overwrite the destination file if it already exists.
-            System.IO.File.Copy(sourceFile, destFile, true);
-
+            File.Copy(sourceFile, destFile, true);
         }
 
         public void Kereses(string szoveg, bool[] check, ListView listView1)
         {
 
             DBConnect conn = new DBConnect();
+
             string connstring = "SELECT * FROM termekek";
             bool vancheck = false;
             bool vanhiba = false;
+
             if (szoveg != null && szoveg != "")
             {
                 if (check[0] == true)
@@ -197,6 +204,7 @@ namespace Muveletek
                     vancheck = true;
                     connstring += " WHERE termeknev=\'" + szoveg + "\'";
                 }
+
                 if (check[1] == true)
                 {
                     try
@@ -220,6 +228,7 @@ namespace Muveletek
                         }
                     }
                 }
+
                 if (check[2] == true)
                 {
                     try
@@ -243,6 +252,7 @@ namespace Muveletek
                         }
                     }
                 }
+
                 if (check[3] == true)
                 {
                     if (vancheck == false)
@@ -255,6 +265,7 @@ namespace Muveletek
                         connstring += " OR kategoria like \'%" + szoveg + "%\'";
                     }
                 }
+
                 if (check[4] == true)
                 {
 
@@ -269,6 +280,7 @@ namespace Muveletek
                     }
 
                 }
+
                 if (check[5] == true)
                 {
                     if (vancheck == false)
@@ -295,10 +307,10 @@ namespace Muveletek
                         }
                     }
                 }
-
-
             }
+
             connstring += ";";
+
             if (vanhiba == false)
             {
                 listView1.Items.Clear();
@@ -310,5 +322,4 @@ namespace Muveletek
             }
         }
     }
-
 }

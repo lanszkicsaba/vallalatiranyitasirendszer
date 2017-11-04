@@ -68,6 +68,7 @@ namespace VIRConnect
                 return false;
             }
         }
+
         public bool CloseConnection()
         {
             try
