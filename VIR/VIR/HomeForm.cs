@@ -134,10 +134,7 @@ namespace VIR
                 {
                     MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
                 }
-
             }
-            
-
         }
 
         private void hozzaadas_btn_Click(object sender, EventArgs e)
@@ -451,8 +448,6 @@ namespace VIR
                             " kep = '" + selectedFileNameModositas + "'," +
                             " keszleten = '" + iKeszleten + "'" +
                         " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
-
-
                     }
                     else
                     {
@@ -465,7 +460,6 @@ namespace VIR
                             " suly = '" + suly + "'," +
                             " keszleten = '" + iKeszleten + "'" +
                             " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
-
                     }
 
                     MySqlDataReader reader1;
@@ -486,8 +480,6 @@ namespace VIR
                     listView1.Items.Clear();
                     Muvelet muveletek = new Muvelet();
                     muveletek.Adatletoltes(listView1);
-                        
-
                 }
                 catch (FormatException)
                 {
@@ -539,7 +531,6 @@ namespace VIR
                 {
                     myStream.Close();
                 }
-                
             }
         }
         
