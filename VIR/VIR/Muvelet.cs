@@ -68,14 +68,13 @@ namespace Muveletek
                             }
                             GC.Collect();
                             GC.WaitForPendingFinalizers();
-                            pb.Image = new Bitmap("image/kezdo.png");
                             File.Delete(@"image/" + kepnev);
                             kepnev = "";
                         }
                     }
 
                     kepnev = "";
-                    pb.Image = new Bitmap("image/kezdo.png");
+                    
 
                     string query = "DELETE FROM termekek WHERE termeknev='" + termeknev +
                         "' AND ar='" + ar +
