@@ -16,7 +16,6 @@
         echo "<tr>"
         . "<th>Fénykép</th>"
         . "<th>Terméknév</th>"
-        . "<th>Terméknév</th>"
         . "<th>Leírás</th>"
         . "<th>Készleten</th>"
         . "<th>Ár</th>"
