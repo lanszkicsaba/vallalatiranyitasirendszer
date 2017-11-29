@@ -473,7 +473,7 @@ namespace VIR
 
                         conn.CloseConnection();
 
-                        query1 = "UPDATE sql11202526.termekek SET " +
+                        query1 = "UPDATE termekek SET " +
                             "termeknev = '" + termeknev + "'," +
                             " ar = '" + ar + "'," +
                             " mennyiseg = '" + mennyiseg + "'," +

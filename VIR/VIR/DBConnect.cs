@@ -39,9 +39,9 @@ namespace VIRConnect
         public MySqlConnection returnConnection()
         {
             server = "sql11.freemysqlhosting.net";
-            database = "sql11202526";
-            uid = "sql11202526";
-            password = "pJYsZqIuFs";
+            database = "sql11207393";
+            uid = "sql11207393";
+            password = "CtdqJNMgAi";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
