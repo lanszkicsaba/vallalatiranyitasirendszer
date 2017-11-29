@@ -14,14 +14,9 @@
         $select = "SELECT kep, termeknev, leiras, keszleten, ar FROM termekek";
         $s = $conn->query($select);
         $conn->close();
-        
-        if ($_SESSION["login"]!="TRUE" || $_SESSION["login"]!="FALSE") {
-            $_SESSION["login"]="VALAMI";
-        }
-        
-        if ($_SESSION["login"] == "TRUE") {
+
+        if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
             echo "<p><a href=./logout.php>Kijelentkezés</a></p>";
-            
         } else {
             echo "<p><a href=./login.php>Bejelentkezés</a></p>";
             echo "<p><a href=#valami>Regisztráció</a></p>";
