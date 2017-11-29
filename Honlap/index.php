@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" lang="hu">
         <title></title>
     </head>
     <body>
@@ -24,9 +24,12 @@
             echo "<tr>"
             . "<td><img src=./image/" . $row["kep"] . " alt=fenykep style=width:128px;height:128px;></td>"
             . "<td>" . $row["termeknev"] . "</td>"
-            . "<td>" . $row["leiras"] . "</td>"
-            . "<td>" . $row["keszleten"] . "</td>"
-            . "<td>" . $row["ar"] . "</td>"
+            . "<td>" . $row["leiras"] . "</td>";
+            if ($row["keszleten"] == 0)
+                echo "<td>Nincs készleten</td>";
+            else
+                echo "<td>Van készleten</td>";
+            echo "<td>" . $row["ar"] . " Ft</td>"
             . "</tr>";
         }
         echo "</table>";
