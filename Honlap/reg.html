@@ -1,0 +1,30 @@
+﻿<html>
+	<head>
+		<meta charset="UTF-8" lang="hu">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class='container'>
+			<h2>Regisztráció</h2><br>
+			<form action="regisztracio.php" method="post">
+				Név:<br> <input type="text" name="f_nev"><br>
+				<br>
+				Felhasználónév:<br> <input type="text" name="f_felhnev"><br>
+				<br>
+				Cím:<br> <input type="text" name="f_cim"><br>
+				<br>
+				Telefonszám:<br> <input type="number" name="f_telefon"><br>
+				<br>
+				Jelszó:<br> <input type="password" name="f_jelszo"><br>
+				<br>
+				Jelszó mégegyszer<br> <input type="password" name="f_kontroll"><br>
+				<br>
+				<input type="submit" value="Regisztráció">
+				<input type="reset">
+			</form>
+			<form action="index.php" method="post">
+				<input type="submit" value="Vissza">
+			</form> 
+		</div>
+	</body>
+</html>
