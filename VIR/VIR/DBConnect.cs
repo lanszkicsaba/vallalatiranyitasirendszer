@@ -41,7 +41,7 @@ namespace VIRConnect
             server = "sql11.freemysqlhosting.net";
             database = "sql11209827";
             uid = "sql11209827";
-            password = "blklT755Ua";
+            password = "bIkIT755Ua";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";

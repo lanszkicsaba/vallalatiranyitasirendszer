@@ -47,7 +47,7 @@ namespace VIR
             server = "sql11.freemysqlhosting.net";
             database = "sql11209827";
             dbuid = "sql11209827";
-            dbpassword = "blklT755Ua";
+            dbpassword = "bIkIT755Ua";
             connstr = "SERVER=" + server + ";" + "DATABASE=" +
         database + ";" + "UID=" + dbuid + ";" + "PASSWORD=" + dbpassword + ";"+"Connection Timeout=300;";
 
