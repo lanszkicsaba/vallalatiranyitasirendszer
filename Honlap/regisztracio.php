@@ -1,35 +1,46 @@
-﻿<?php
-if($_POST['f_nev'] <> "" and $_POST['f_felhnev'] <> "" and $_POST['f_cim'] <> "" and $_POST['f_telefon'] <> "" and $_POST['f_jelszo'] <> "" and $_POST['f_kontroll'] <> "" ){
-	if($_POST['f_jelszo'] == $_POST['f_kontroll']){ 
-		include 'dbconnect.php';
-		$conn = MySQLServerConnecter();
-		$query="select Username from honlapusers where Username='".$_POST['f_felhnev']."';";
-		$result=$conn->query($query);
-		$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-		$curr_felh = $row["Username"];
-		
-		if($_POST['f_felhnev'] <> $curr_felh){
-			$query="insert into honlapusers (`Username`, `Password`, `Fullname`, `Address`, `Phonenumer`) values ('".$_POST['f_felhnev']."','".md5($_POST['f_jelszo'])."','".$_POST['f_nev']."','".$_POST['f_cim']."', '".$_POST['f_telefon']."')";
-			$conn->query($query);
-			$conn->close();
-	
-			echo "<h1>Sikeres regisztráció!</h1>";
-		}
-		else {
-			echo "<h2>A megadott felhasználónév foglalt!</h2>";
-		}
-	}
-	else {
-		echo "<h2>A két megadott jelszó nem egyezik!</h2>";
-	}
-}
-else { 
-	echo "<h2>Kérem minden mezőt töltson ki!</h2>";
-}
-	
-?>
+﻿<!DOCTYPE html>
 <html>
-	<form action="reg.html" method="post">
-	<input type="submit" value="Vissza"/>
-	</form> 
+    <head>
+        <meta charset="UTF-8">
+        <title>Regisztráció</title>
+    </head>
+    <body>
+        <h1>Regisztráció</h1>
+        <script>
+            function validateForm() {
+                var nev = document.forms["reg"]["f_nev"].value;
+				var felh = document.forms["reg"]["f_felhnev"].value;
+				var cim = document.forms["reg"]["f_cim"].value;
+				var tel = document.forms["reg"]["f_telefon"].value;
+				var pw = document.forms["reg"]["f_jelszo"].value;
+				var pwk = document.forms["reg"]["f_kontroll"].value;
+                if (nev == "" || felh == "" || cim == "" || tel == "" || pw == "" || pwk == "") {
+                    alert("Kérem minden mezőt töltsön ki!");
+                    return false;
+                }
+				if (pw != pwk){
+					alert("A két jelszó nem egyezik!");
+					return false;
+				}
+            }
+        </script>
+        <?php
+        echo '<form name="reg" action="reg.php" onsubmit="return validateForm()" method="post">
+				Név:<br> <input type="text" name="f_nev"><br>
+				<br>
+				Felhasználónév:<br> <input type="text" name="f_felhnev"><br>
+				<br>
+				Cím:<br> <input type="text" name="f_cim"><br>
+				<br>
+				Telefonszám:<br> <input type="number" name="f_telefon"><br>
+				<br>
+				Jelszó:<br> <input type="password" name="f_jelszo"><br>
+				<br>
+				Jelszó mégegyszer<br> <input type="password" name="f_kontroll"><br>
+				<br>
+				<input type="submit" value="Regisztráció" name="submit">
+				<input type="reset">
+			</form>';
+        ?>
+    </body>
 </html>

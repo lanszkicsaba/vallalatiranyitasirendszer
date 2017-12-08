@@ -19,7 +19,7 @@
             echo "<p><a href=./logout.php>Kijelentkezés</a></p>";
         } else {
             echo "<p><a href=./login.php>Bejelentkezés</a></p>";
-            echo "<p><a href=./reg.html>Regisztráció</a></p>";
+            echo "<p><a href=./regisztráció.php>Regisztráció</a></p>";
 
             echo "<table>";
             echo "<tr>"
