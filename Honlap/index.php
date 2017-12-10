@@ -11,16 +11,17 @@
         ?>
         <?php
         $conn = MySQLServerConnecter();
+        mysqli_set_charset($conn, "utf8");
         $select = "SELECT kep, termeknev, leiras, keszleten, ar FROM termekek";
         $s = $conn->query($select);
         $conn->close();
 
         if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
             echo "<p><a href=./logout.php>Kijelentkezés</a></p>";
+            echo "<p><a href=./useredit.php>Adatok módosítása</a></p>";
         } else {
             echo "<p><a href=./login.php>Bejelentkezés</a></p>";
             echo "<p><a href=./regisztracio.php>Regisztráció</a></p>";
-			echo "<p><a href=./useredit.php>Adatok módosítása</a></p>";
 
             echo "<table>";
             echo "<tr>"
