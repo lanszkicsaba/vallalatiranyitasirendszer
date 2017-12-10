@@ -8,7 +8,7 @@ $conn->close();
 echo "<h1>Sikeres regisztráció!</h1>";
 }
 else{
-	header("Location:regisztracio.html");
+	header("Location:regisztracio.php");
 }
 ?>
 <html>
