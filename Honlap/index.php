@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" lang="hu">
@@ -20,6 +20,7 @@
         } else {
             echo "<p><a href=./login.php>Bejelentkezés</a></p>";
             echo "<p><a href=./regisztráció.php>Regisztráció</a></p>";
+			echo "<p><a href=./useredit.php>Adatok módosítása</a></p>";
 
             echo "<table>";
             echo "<tr>"
