@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Regisztráció</title>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body>
         <h1>Regisztráció</h1>
@@ -38,6 +39,7 @@
 				<br>
 				Jelszó mégegyszer<br> <input type="password" name="f_kontroll"><br>
 				<br>
+				<div class="g-recaptcha" data-sitekey="6LedcDwUAAAAANZsQV5xlt0Vjex6x6n_4cio4-PB"></div><br>
 				<input type="submit" value="Regisztráció" name="submit">
 				<input type="reset">
 			</form>';
