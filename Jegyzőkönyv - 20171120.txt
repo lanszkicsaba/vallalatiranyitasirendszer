@@ -1,0 +1,32 @@
+﻿Jegyzőkönyv - Meeting of Minutes
+
+Résztvevők:
+Lanszki Csaba
+Sarlósi Patrik
+
+Helyszín:
+3300 Eger Leányka utca, EKE C Épület
+
+Időpont:
+2017.11.20.
+
+A találkozón hozott határozatok:
+- Legyen Login form
+	- Ha nincs bejelentkezve, ne tudjon vásárolni, csak a termékek között nézelődni
+- Felül legyen egy menüsör
+- Kategória szerinti szűrés még ne jelenjeg meg
+- Legyen egy keresés rész a menüsor jobb részén
+	- Szűrés:
+		- termék név
+		- Ár szűrő: vagy csúszkás vagy input text
+- A termékek listaszerűen jelenjenek meg egy táblázatban, az alábbi oszlopokkal:
+|Kép|Név|Leírás|Ár|Kosárba gomb|
+	- A Kosárba gomb/oszlop csak akkor látszik, ha a felhasználó be van jelentkezve.
+- Legyen a menüsor jobb oldalán még egy kosár rész is.
+- Ha belelépnek a kosárba, akkor ott lesznek a beletett termékek és alatta a megrendeléshez szükséges adatok kitöltése. Beszedi a rendelés form a regisztrált adatokat, melyeket lehet módosítani, ha máshova akarja a vevő.
+- A terméklistában ha rákkattintanak egy termékre, akkor hozza be annak az adatlapját a bővebb információkkal. Onnan pedig visszalehessen lépni a főoldalra.
+- Adatbázisba két tábla kell: userek, menük.
+	- User adatok: Nick név, jelszó, Teljes név, lakcím, telefonszám
+
+Nyitott pontok:
+- A megrendelés milyen formában jusson el a programhoz? Legyen egy megrendelések tábla, melyben tárolunk minden megrendelést vagy egy xml-t mentsen le és azt töltse be. Esetleg legyen adatbázis tábla is és legyen egy visszaigazoló xml is.
