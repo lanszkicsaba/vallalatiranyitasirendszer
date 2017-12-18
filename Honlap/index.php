@@ -9,6 +9,16 @@
         include 'dbconnect.php';
         session_start();
         ?>
+		<script>
+            function validateForm() {
+                var armin = document.forms["szures"]["f_armin"].value;
+                var armax = document.forms["szures"]["f_armax"].value;
+                if (armin > armax) {
+                    alert("A minimum ár nem lehet nagyobb a maximumnál!");
+                    return false;
+                }
+            }
+        </script>
         <?php
         $conn = MySQLServerConnecter();
         mysqli_set_charset($conn, "utf8");
@@ -22,6 +32,15 @@
         } else {
             echo "<p><a href=./login.php>Bejelentkezés</a></p>";
             echo "<p><a href=./regisztracio.php>Regisztráció</a></p>";
+			echo '<html>
+				<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
+				Név:<br> <input type="text" name="f_nev"><br>
+				Ár:<br> <input type="number" name="f_armin">-tól<br>
+				<input type="number" name="f_armax">-ig<br>
+				<br>
+				<input type="submit" value="Szűrés"/>
+				</form> 
+				</html>';
 
             echo "<table>";
             echo "<tr>"
