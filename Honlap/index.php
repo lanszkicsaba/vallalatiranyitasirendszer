@@ -29,18 +29,23 @@
         if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
             echo "<p><a href=./logout.php>Kijelentkezés</a></p>";
             echo "<p><a href=./useredit.php>Adatok módosítása</a></p>";
-        } else {
-            echo "<p><a href=./login.php>Bejelentkezés</a></p>";
-            echo "<p><a href=./regisztracio.php>Regisztráció</a></p>";
-			echo '<html>
-				<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
+			echo '<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
 				Név:<br> <input type="text" name="f_nev"><br>
 				Ár:<br> <input type="number" name="f_armin">-tól<br>
 				<input type="number" name="f_armax">-ig<br>
 				<br>
 				<input type="submit" value="Szűrés"/>
-				</form> 
-				</html>';
+				</form>';
+        } else {
+            echo "<p><a href=./login.php>Bejelentkezés</a></p>";
+            echo "<p><a href=./regisztracio.php>Regisztráció</a></p>";
+			echo '<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
+				Név:<br> <input type="text" name="f_nev"><br>
+				Ár:<br> <input type="number" name="f_armin">-tól<br>
+				<input type="number" name="f_armax">-ig<br>
+				<br>
+				<input type="submit" value="Szűrés"/>
+				</form>';
 
             echo "<table>";
             echo "<tr>"
