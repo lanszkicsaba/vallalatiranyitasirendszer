@@ -45,9 +45,9 @@ namespace VIR
 
             buttonLogout.Enabled = false;
             server = "sql11.freemysqlhosting.net";
-            database = "sql11209827";
-            dbuid = "sql11209827";
-            dbpassword = "bIkIT755Ua";
+            database = "sql11211489";
+            dbuid = "sql11211489";
+            dbpassword = "X5vvu2Mbk8";
             connstr = "SERVER=" + server + ";" + "DATABASE=" +
         database + ";" + "UID=" + dbuid + ";" + "PASSWORD=" + dbpassword + ";"+"Connection Timeout=300;";
 

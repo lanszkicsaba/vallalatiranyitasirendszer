@@ -26,9 +26,9 @@ namespace VIRConnect
         private void Initialize()
         {
             server = "sql11.freemysqlhosting.net";
-            database = "sql11209827";
-            uid = "sql11209827";
-            password = "blklT755Ua";
+            database = "sql11211489";
+            uid = "sql11211489";
+            password = "X5vvu2Mbk8";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
