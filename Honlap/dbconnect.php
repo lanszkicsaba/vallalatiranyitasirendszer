@@ -1,9 +1,9 @@
             <?php
             function MySQLServerConnecter() {
-                $servername = "sql11.freemysqlhosting.net:3306";
-                $dbname= "sql11211489"; 
-                $username = "sql11211489";                 
-                $password = "X5vvu2Mbk8";                 
+                $servername = "sql11.freesqldatabase.com:3306";
+                $dbname= "sql11212773"; 
+                $username = "sql11212773";                 
+                $password = "sJ36t24fes";                 
                 $conn = new mysqli($servername, $username, $password, $dbname);  
                 
                 if ($conn->connect_error) {
