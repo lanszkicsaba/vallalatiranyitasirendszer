@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace VIRConnect
 {
-    class DBConnect
+    public class DBConnect
     {
         private MySqlConnection connection;
         private string server;

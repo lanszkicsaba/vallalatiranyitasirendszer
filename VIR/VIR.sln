@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIR", "VIR\VIR.csproj", "{0ABDD7C0-FBDA-4AE9-A21C-5866C65928B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIRTests", "VIRTests\VIRTests.csproj", "{7532774A-311B-43CE-BA16-4E4126DEF182}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0ABDD7C0-FBDA-4AE9-A21C-5866C65928B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ABDD7C0-FBDA-4AE9-A21C-5866C65928B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ABDD7C0-FBDA-4AE9-A21C-5866C65928B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7532774A-311B-43CE-BA16-4E4126DEF182}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7532774A-311B-43CE-BA16-4E4126DEF182}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7532774A-311B-43CE-BA16-4E4126DEF182}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7532774A-311B-43CE-BA16-4E4126DEF182}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

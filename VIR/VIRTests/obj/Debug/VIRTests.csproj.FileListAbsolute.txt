@@ -1,0 +1,10 @@
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\bin\Debug\VIRTests.dll
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\bin\Debug\VIRTests.pdb
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\bin\Debug\VIR.exe
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\bin\Debug\MySql.Data.dll
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\bin\Debug\VIR.pdb
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\obj\Debug\VIRTests.csprojResolveAssemblyReference.cache
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\obj\Debug\VIRTests.dll
+C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\obj\Debug\VIRTests.pdb
