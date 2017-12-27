@@ -3,10 +3,15 @@
     <head>
         <meta charset="UTF-8" lang="hu">
         <title></title>
+	<!--	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script>
+	<//?php include 'kosar.js';?>
+	</script>-->
     </head>
+	
     <body>
         <?php
-        include 'dbconnect.php';
+        require_once 'dbconnect.php';
         session_start();
         ?>
 		<script>
@@ -22,7 +27,7 @@
         <?php
         $conn = MySQLServerConnecter();
         mysqli_set_charset($conn, "utf8");
-        $select = "SELECT kep, termeknev, leiras, keszleten, ar FROM termekek";
+        $select = "SELECT id, kep, termeknev, leiras, keszleten, ar FROM termekek";
         $s = $conn->query($select);
         $conn->close();
 
@@ -46,7 +51,7 @@
 				<br>
 				<input type="submit" value="Szűrés"/>
 				</form>';
-
+			}
             echo "<table>";
             echo "<tr>"
             . "<th>Fénykép</th>"
@@ -54,21 +59,27 @@
             . "<th>Leírás</th>"
             . "<th>Készleten</th>"
             . "<th>Ár</th>"
+			. "<th>Kosár</th>"
             . "</tr>";
             while ($row = $s->fetch_assoc()) {
-                echo "<tr>"
+                echo "<form action=kosar.php method=post><tr>"
                 . "<td><img src=./image/" . $row["kep"] . " alt=fenykep style=width:128px;height:128px;></td>"
-                . "<td>" . $row["termeknev"] . "</td>"
+                . "<td class='termeknev'>" . $row["termeknev"] . "</td>"
                 . "<td>" . $row["leiras"] . "</td>";
                 if ($row["keszleten"] == 0)
                     echo "<td>Nincs készleten</td>";
                 else
                     echo "<td>Van készleten</td>";
-                echo "<td>" . $row["ar"] . " Ft</td>"
-                . "</tr>";
+                echo "<td class='termekar'>" . $row["ar"] . " Ft</td>"              
+				. "<td>	
+				  <input type='hidden' name=id value='".$row["id"]."'>
+				  <button type='submit' class='btn btn-cart'>Kosárba</button>"
+				. "</tr></form>";
             }
             echo "</table>";
-        }
+        
         ?>
+		
+		
     </body>
 </html>
