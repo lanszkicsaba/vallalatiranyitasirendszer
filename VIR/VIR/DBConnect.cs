@@ -25,10 +25,10 @@ namespace VIRConnect
         //Initialize values
         private void Initialize()
         {
-            server = "sql11.freesqldatabase.com";
-            database = "sql11212773";
-            uid = "sql11212773";
-            password = "sJ36t24fes";
+            server = "193.164.132.164";
+            database = "csaba";
+            uid = "csaba";
+            password = "DPU3wX9HYmGEL8HK";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
@@ -38,10 +38,10 @@ namespace VIRConnect
 
         public MySqlConnection returnConnection()
         {
-            server = "sql11.freesqldatabase.com";
-            database = "sql11212773";
-            uid = "sql11212773";
-            password = "sJ36t24fes";
+            server = "193.164.132.164";
+            database = "csaba";
+            uid = "csaba";
+            password = "DPU3wX9HYmGEL8HK";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";

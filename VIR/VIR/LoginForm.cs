@@ -44,10 +44,10 @@ namespace VIR
             }
 
             buttonLogout.Enabled = false;
-            server = "sql11.freesqldatabase.com";
-            database = "sql11212773";
-            dbuid = "sql11212773";
-            dbpassword = "sJ36t24fes";
+            server = "193.164.132.164";
+            database = "csaba";
+            dbuid = "csaba";
+            dbpassword = "DPU3wX9HYmGEL8HK";
             connstr = "SERVER=" + server + ";" + "DATABASE=" +
         database + ";" + "UID=" + dbuid + ";" + "PASSWORD=" + dbpassword + ";"+"Connection Timeout=300;";
 
