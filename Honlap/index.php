@@ -86,9 +86,8 @@
             . "<th>Terméknév</th>"
             . "<th>Leírás</th>"
             . "<th>Készleten</th>"
-            . "<th>Ár</th>"
-			. "<th>Kosár</th>"
-            . "</tr>"; //kosart torolni
+            . "<th>Ár</>"
+            . "</tr>";
             while ($row = $s->fetch_assoc()) {
                 echo "<form action=kosar.php method=post><tr>"
                 . "<td><img src=./image/" . $row["kep"] . " alt=fenykep style=width:128px;height:128px;></td>"
@@ -98,16 +97,10 @@
                     echo "<td>Nincs készleten</td>";
                 else
                     echo "<td>Van készleten</td>";
-                echo "<td class='termekar'>" . $row["ar"] . " Ft</td>"              
-				. "<td>	
-				  <input type='hidden' name=id value='".$row["id"]."'>
-				  <button type='submit' class='btn btn-cart'>Kosárba</button>"
-				. "</tr></form>"; //torolni
+                echo "<td class='termekar'>" . $row["ar"] . " Ft</td>";
             }
             echo "</table>";
         }
         ?>
-		
-		
     </body>
 </html>
