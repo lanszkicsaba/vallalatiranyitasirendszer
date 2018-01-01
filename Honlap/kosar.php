@@ -78,7 +78,7 @@
 				<td><img src=./image/' . $kep . ' alt=fenykep style=width:50px;height:50px;></td>
 				<td>' . $termeknev . '</td>		
 				<td id="price_'.$dbhelye.'">' . $termekar . '</td>
-				<td>Darabszám:<input type="number" id="' . $dbhelye . '" size="3" min="0" max="99" value="1"; onchange="updatelabel('.$dbhelye++.')"/></td>
+				<td>Darabszám:<input type="number" name='.$dbhelye.' id="' . $dbhelye . '" size="3" min="0" max="99" value="1"; onchange="updatelabel('.$dbhelye++.')"/></td>
 				</tr>';
 							$osszar=$osszar+intval($termekar);
                             }
