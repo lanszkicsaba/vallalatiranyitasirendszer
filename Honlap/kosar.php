@@ -3,8 +3,23 @@
     session_start();
     require_once 'dbconnect.php';
     ?>
-    <script>
+    <script type="text/javascript">
 
+		function updatelabel(qtylabel)
+		{
+			var price = "price_"+qtylabel;
+			//price = price.concat(qtylabel);
+			var darab = parseInt(document.getElementById(qtylabel).value);
+			var ar = parseInt(document.getElementById(price).innerHTML);
+			var oldval = parseInt(document.getElementById(qtylabel).defaultValue);
+			var osszar= parseInt(document.getElementById("osszar").innerHTML);
+				osszar = osszar - (oldval*ar);
+				osszar = osszar + (darab*ar);
+			document.getElementById(qtylabel).defaultValue=darab;
+
+			document.getElementById("osszar").innerHTML= osszar;
+		}
+		
 
     </script>
     <body>
@@ -35,12 +50,25 @@
                         if (!isset($_SESSION['cart2'])) {
                             $_SESSION['cart2'] = array();
                         }
-                        if (!array_key_exists($termekid, $_SESSION['cart2'])) {
+						$bennevan = false;
+						foreach ($_SESSION['cart2'] as $key => $value) {
+							if ($value==$termekid)
+							{
+								$bennevan=true;
+							}								
+						}
+						
+                       /* if (!array_key_exists($termekid, $_SESSION['cart2'])) {
                             array_push($_SESSION['cart2'], $termekid);
-                        }
+                        }*/
+						
+						if ($bennevan==false)
+						{
+							array_push($_SESSION['cart2'], $termekid);
+						}
 
                         $dbhelye = 0;
-
+						$osszar=0;
                         foreach ($_SESSION['cart2'] as $key => $value) {
                             $query = "SELECT kep, termeknev,ar FROM termekek WHERE id=" . $value;
                             $result = mysqli_query($conn, $query) or die("Nem sikerült" . $query);
@@ -49,9 +77,10 @@
                                 echo '<tr>
 				<td><img src=./image/' . $kep . ' alt=fenykep style=width:50px;height:50px;></td>
 				<td>' . $termeknev . '</td>		
-				<td>' . $termekar . '</td>
-				<td>Darabszám:<input type="text" name="' . $dbhelye++ . '" size="3" value="1"/></td>
+				<td id="price_'.$dbhelye.'">' . $termekar . '</td>
+				<td>Darabszám:<input type="number" id="' . $dbhelye . '" size="3" min="0" max="99" value="1"; onchange="updatelabel('.$dbhelye++.')"/></td>
 				</tr>';
+							$osszar=$osszar+intval($termekar);
                             }
                         }
                         mysqli_close($conn);
@@ -59,8 +88,9 @@
                         echo '
 	 <tr></tr>
 	 <tr>
-	 <td colspan="4">
-	 
+	 <td colspan="2">Összár:</td>
+	 <td id="osszar">'.$osszar.'</td>
+	 <td>Ft</td>
 	 </td>
 	 </tr>
 	 <tr>
