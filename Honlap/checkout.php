@@ -1,6 +1,6 @@
 <?php
-
 include 'dbconnect.php';
+
 session_start();
 ?>
 
@@ -34,10 +34,11 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
         $conn->close();
 
         $row = $s->fetch_assoc();
-
+		if (isset($_POST[$index])){
         $writer->writeElement('termekneve', $row["termeknev"]);
         $writer->writeElement('mennyiseg', $_POST[$index] . ' db');
         $writer->writeElement('ara', $_POST[$index] * $row["ar"] . ' Ft');
+		}
     }
     $writer->endElement();
     $writer->endElement();
