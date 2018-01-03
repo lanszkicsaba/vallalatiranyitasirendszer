@@ -21,7 +21,7 @@ namespace VIR
         private string selectedFilePathNameModositas;
         private string selectedFileNameModositas;
         bool[] check = new bool[6];
-
+        //private Rendelesek rend = new Rendelesek();
         
         public HomeForm()
         {
@@ -75,6 +75,10 @@ namespace VIR
             timer.Start();
             timer.Tick += new EventHandler(frissites_btn_Click);
             timer.Interval = (10 * 1000); // 10 secs
+
+            
+          //  muvelet.getRend(rend);
+            
         }
 
 
@@ -642,5 +646,36 @@ namespace VIR
             keres.Adatletoltes(listView1);
             timer.Start();
         }
+
+        private void tabControl_Keszlet_Selected(object sender, TabControlEventArgs e)
+        {
+            int rendelesdb=0;
+            DBConnect conn = new DBConnect();
+            string qry = "SELECT count(rendelesek.id) FROM rendelesek INNER JOIN honlapusers ON rendelesek.rendelo_id=honlapusers.id WHERE honlapusers.Username='" + Program.logForm.LoginName + "';";
+            MySqlDataReader reader;
+            MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
+            conn.OpenConnection();
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                rendelesdb = int.Parse(reader.GetString(0));
+            }
+            conn.CloseConnection();
+            if (tabControl_Keszlet.SelectedIndex==1)
+            {
+                Rendelesek rend = new Rendelesek(rendelesdb);
+                Muvelet muv = new Muvelet();
+                muv.getRend(rend);
+                vevoneve_textBox.Text = rend.rendelo_nev;
+            }
+        }
+
+        
+
+
     }
+
+    
+
+   
 }

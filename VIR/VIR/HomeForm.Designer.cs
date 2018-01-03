@@ -141,6 +141,7 @@
             this.tabControl_Keszlet.SelectedIndex = 0;
             this.tabControl_Keszlet.Size = new System.Drawing.Size(860, 627);
             this.tabControl_Keszlet.TabIndex = 0;
+            this.tabControl_Keszlet.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Keszlet_Selected);
             // 
             // Tab_Keszlet
             // 

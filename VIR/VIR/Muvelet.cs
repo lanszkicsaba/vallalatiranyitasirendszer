@@ -14,6 +14,49 @@ namespace Muveletek
 {
     class Muvelet
     {
+
+        //A függvény, mely segítségével kigyűjtjük az adatokat az adatbázisból.
+        public void getRend(VIR.Rendelesek rend)
+        {
+            try
+            {
+                //  Rendelesek rend = new Rendelesek();
+                DBConnect conn = new DBConnect();
+                //INNER JOIN segítségével összekötjük a 4 szükséges táblát. Így tudjuk a rendelés ID-ja alapján a hozzá tartozó termékek, rendelés, rendelő adatait kinyerni.
+                string qry =
+                    @"SELECT rendelesek.id, rendelesek.rend_ido, rendeles_adatok.termek_id, termekek.termeknev, termekek.ar, rendeles_adatok.termek_db, honlapusers.Fullname, honlapusers.Address, honlapusers.Phonenumer
+                  FROM ((rendelesek
+                    INNER JOIN honlapusers ON rendelesek.rendelo_id = honlapusers.id)
+                    INNER JOIN rendeles_adatok ON rendelesek.id = rendeles_adatok.azon)
+					INNER JOIN termekek ON rendeles_adatok.termek_id = termekek.id
+                  WHERE
+                  honlapusers.Username='" + VIR.Program.logForm.LoginName + "';";
+                //DataReader deklarálása az adatok olvasásához
+                MySqlDataReader reader;
+                MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
+                conn.OpenConnection();
+                reader = cmd.ExecuteReader();
+                int idx = 0;
+                while (reader.Read())
+                {
+                    rend.rend_id[idx] = (int)reader["id"];
+                    rend.rend_ido[idx] = (DateTime)reader["rend_ido"];
+                    rend.termek_id[idx] = (int)reader["termek_id"];
+                    rend.termek_nev[idx] = (string)reader["termeknev"];
+                    rend.termek_ar[idx] = (int)reader["ar"];
+                    rend.termek_db[idx] = (int)reader["termek_db"];
+                    rend.rendelo_nev = (string)reader["Fullname"];
+                    rend.rendelo_cim = (string)reader["Address"];
+                    rend.rendelo_tel = (string)reader["Phonenumer"];
+                    idx++;
+                }
+                conn.CloseConnection();
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show("Hiba történt az adatok letöltésekor \n"+ex.Message,"Adatbázis hiba");
+            }
+        }
         public void Torles(ListView listView1, PictureBox pb)
         {
             DBConnect conn = new DBConnect();

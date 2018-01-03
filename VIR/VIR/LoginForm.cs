@@ -24,6 +24,7 @@ namespace VIR
         private string connstr;
         private Form homeForm = new HomeForm();
         private string fullname = "";
+        private string loginname = "";
 
         
         
@@ -86,7 +87,10 @@ namespace VIR
         {
             get { return fullname; }
         }
-
+        public string LoginName
+        {
+            get { return loginname; }
+        }
         private void LoggingIn()
         {
             if (textBoxUserName.Text.ToString() == "" && textBoxPasswd.Text.ToString() == "")
@@ -141,6 +145,7 @@ namespace VIR
                     conn.Close();
                     if ((name != "" && name.ToLower() == textBoxUserName.Text.ToLower()) && (passwd != "" && passwd == textBoxPasswd.Text.ToString()))
                     {
+                        loginname = name;
                         labelMessage.Text = "Sikeres belépés!";
                         labelMessage.ForeColor = Color.Green;
                         if (homeForm.IsDisposed == true)
