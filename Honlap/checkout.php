@@ -9,7 +9,8 @@ session_start();
 if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
     $conn = MySQLServerConnecter();
 
-    $query = "SELECT Fullname, Address, Phonenumer  FROM honlapusers WHERE Username='" . $_SESSION['user'] . "'";
+    $query = "SELECT Id, Fullname, Address, Phonenumer  FROM honlapusers WHERE Username='" . $_SESSION['user'] . "'";
+	
     $s = $conn->query($query);
     $conn->close();
 
@@ -25,11 +26,21 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
     $writer->writeElement('telefonszam', $row["Phonenumer"]);
     $writer->endElement();
     $writer->startElement("termekekadatai");
-
+	
+	$conn = MySQLServerConnecter();
+	date_default_timezone_set("Europe/Budapest");
+	$queryinsert = "INSERT INTO rendelesek VALUES (NULL,'".date("Y.m.d h:i:sa")."','".$row["Id"]."');";
+	$conn->query($queryinsert);
+	$queryget = "SELECT max(id) as id FROM rendelesek;";
+	$s = $conn->query($queryget);
+	$conn->close();
+	
+	$rendelesid = $s->fetch_assoc();
     for ($index = 0; $index < count($_SESSION["cart2"]); $index++) {
         $conn = MySQLServerConnecter();
 
-        $query = "SELECT termeknev, ar FROM termekek WHERE id=" . $_SESSION["cart2"][$index];
+        $query = "SELECT id, termeknev, ar FROM termekek WHERE id=" . $_SESSION["cart2"][$index];
+		
         $s = $conn->query($query);
         $conn->close();
 
@@ -38,6 +49,11 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
         $writer->writeElement('termekneve', $row["termeknev"]);
         $writer->writeElement('mennyiseg', $_POST[$index] . ' db');
         $writer->writeElement('ara', $_POST[$index] * $row["ar"] . ' Ft');
+		
+		$conn = MySQLServerConnecter();
+		$queryinsert = "INSERT INTO rendeles_adatok VALUES ('".$rendelesid["id"]."','".$row["id"]."','".$_POST[$index]."');";
+		$conn->query($queryinsert);
+		$conn->close();
 		}
     }
     $writer->endElement();
