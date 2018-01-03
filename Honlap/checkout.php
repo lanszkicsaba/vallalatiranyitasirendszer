@@ -51,7 +51,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
         $writer->writeElement('ara', $_POST[$index] * $row["ar"] . ' Ft');
 		
 		$conn = MySQLServerConnecter();
-		$queryinsert = "INSERT INTO rendeles_adatok VALUES ('".$rendelesid["id"]."','".$row["id"]."','".$_POST[$index]."');";
+		$queryinsert = "INSERT INTO rendeles_adatok VALUES (NULL,'".$rendelesid["id"]."','".$row["id"]."','".$_POST[$index]."');";
 		$conn->query($queryinsert);
 		$conn->close();
 		}
