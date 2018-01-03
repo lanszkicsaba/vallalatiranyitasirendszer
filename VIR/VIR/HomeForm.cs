@@ -384,7 +384,7 @@ namespace VIR
 
         private async void tableexport_btn_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV File (*.xlsx)|*.csv|Excel munkafüzet (*.xls)|*.xls", ValidateNames = true })
+            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV File (*.csv)|*.csv|Excel munkafüzet (*.xlsx)|*.xls", ValidateNames = true })
             {
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
