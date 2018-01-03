@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using VIRConnect;
 using Muveletek;
+using System.Data;
 
 namespace VIR
 {
@@ -21,6 +22,8 @@ namespace VIR
         private string selectedFilePathNameModositas;
         private string selectedFileNameModositas;
         bool[] check = new bool[6];
+        //Ha már egyszer betöltöttük a számla adatokat kattintáskor, akkor true és többször nem fogja.
+        bool betoltesbool = false;
         //private Rendelesek rend = new Rendelesek();
         
         public HomeForm()
@@ -647,27 +650,84 @@ namespace VIR
             timer.Start();
         }
 
+        Rendelesek rend;
         private void tabControl_Keszlet_Selected(object sender, TabControlEventArgs e)
         {
-            int rendelesdb=0;
-            DBConnect conn = new DBConnect();
-            string qry = "SELECT count(rendelesek.id) FROM rendelesek INNER JOIN honlapusers ON rendelesek.rendelo_id=honlapusers.id WHERE honlapusers.Username='" + Program.logForm.LoginName + "';";
-            MySqlDataReader reader;
-            MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
-            conn.OpenConnection();
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
+            if (betoltesbool == false)
             {
-                rendelesdb = int.Parse(reader.GetString(0));
+                betoltesbool = true;
+                //Le kell tölteni azt, hogy hány darab megrendelése volt a bejelentkezett felhasználónak, így ahhoz igazítja a Rendelesek osztályban lévő tömbök méretét.
+                int rendelesdb = 0;
+                DBConnect conn = new DBConnect();
+                string qry = "SELECT count(rendelesek.id) FROM rendelesek INNER JOIN honlapusers ON rendelesek.rendelo_id=honlapusers.id WHERE honlapusers.Username='" + Program.logForm.LoginName + "';";
+                MySqlDataReader reader;
+                MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
+                conn.OpenConnection();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    rendelesdb = int.Parse(reader.GetString(0));
+                }
+                conn.CloseConnection();
+                if (tabControl_Keszlet.SelectedIndex == 1)
+                {
+                    rend = new Rendelesek(rendelesdb);
+                    Muvelet muv = new Muvelet();
+                    muv.getRend(rend);
+                    vevoneve_textBox.Text = rend.rendelo_nev;
+                    vevocime_textBox.Text = rend.rendelo_cim;
+                    textBox_VevoTel.Text = rend.rendelo_tel;
+                    
+                   
+                    
+
+
+                    //Rendelések betöltése a comboboxba
+                    for (int i = 0; i < rend.rend_id.Length; i++)
+                    {
+                        //Ha 1 rendelés alatt több termék van, akkor többször szerepel egy ID, de ide elég csak 1x betölteni egy rendelést.
+                        
+                        if (i != 0)
+                        {
+                            if (rend.rend_id[i - 1] != rend.rend_id[i])
+                            {
+                                
+                                string item = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];                               
+                                megrendelesek_comboBox.Items.Add(item);
+                            }
+                        }
+                        else if (i==0)
+                        {
+                            string item = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
+                            megrendelesek_comboBox.Items.Add(item);
+                        }
+                    }
+                }
             }
-            conn.CloseConnection();
-            if (tabControl_Keszlet.SelectedIndex==1)
+        }
+
+        private void megrendelesek_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            //Sorok törlése, ha másik megrendelés lesz kiválasztva
+            dGV_Rendeles.Rows.Clear();
+            dgv_SzamlaTermekek.Rows.Clear();
+            dGV_SzamlaOssz.Rows.Clear();
+            //Datagridviewek feltöltése
+            dGV_Rendeles.Rows.Add(new object[] { "Átutalás", rend.rend_ido[megrendelesek_comboBox.SelectedIndex], DateTime.Now, DateTime.Now.AddDays(10) });
+            int ossznetto = 0;
+            int osszbrutto = 0;
+            int osszafa = 0;
+            for (int i = 0; i < rend.rend_id.Length; i++)
             {
-                Rendelesek rend = new Rendelesek(rendelesdb);
-                Muvelet muv = new Muvelet();
-                muv.getRend(rend);
-                vevoneve_textBox.Text = rend.rendelo_nev;
+                if (rend.rend_id[i]==rend.rend_id[megrendelesek_comboBox.SelectedIndex])
+                {
+                    dgv_SzamlaTermekek.Rows.Add(new object[] {rend.termek_nev[i],rend.termek_ar[i], rend.termek_db[i], Math.Round((rend.termek_ar[i]*rend.termek_db[i])/1.27,0),27,Math.Round((rend.termek_ar[i]*rend.termek_db[i])-((rend.termek_ar[i]*rend.termek_db[i])/1.27),0),rend.termek_ar[i]*rend.termek_db[i]});
+                    ossznetto += Convert.ToInt32((rend.termek_ar[i] * rend.termek_db[i]) / 1.27);
+                    osszbrutto += rend.termek_ar[i] * rend.termek_db[i];
+                    osszafa += Convert.ToInt32((rend.termek_ar[i] * rend.termek_db[i]) - ((rend.termek_ar[i] * rend.termek_db[i]) / 1.27));
+                }
             }
+            dGV_SzamlaOssz.Rows.Add(new object[] {ossznetto,27,osszafa,osszbrutto });
         }
 
         

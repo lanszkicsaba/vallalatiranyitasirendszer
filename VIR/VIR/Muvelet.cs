@@ -30,13 +30,15 @@ namespace Muveletek
                     INNER JOIN rendeles_adatok ON rendelesek.id = rendeles_adatok.azon)
 					INNER JOIN termekek ON rendeles_adatok.termek_id = termekek.id
                   WHERE
-                  honlapusers.Username='" + VIR.Program.logForm.LoginName + "';";
+                  honlapusers.Username='" + VIR.Program.logForm.LoginName + "' ORDER BY rendelesek.id;";
                 //DataReader deklarálása az adatok olvasásához
                 MySqlDataReader reader;
                 MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
                 conn.OpenConnection();
                 reader = cmd.ExecuteReader();
+                //Tömb indexelő
                 int idx = 0;
+                //Adatok beolvasása a megfelelő helyre
                 while (reader.Read())
                 {
                     rend.rend_id[idx] = (int)reader["id"];
