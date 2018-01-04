@@ -52,7 +52,7 @@
 		echo '</div>';
 		echo '</div>';
 		echo '<div class="row">';
-		echo '<div class="col-sm-4">';
+		echo '<div class="col-sm-3">';
 			echo '<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
 				Név:<br> <input type="text" name="f_nev"><br>
 				Ár:<br> <input type="number" name="f_armin">-tól<br>
@@ -61,8 +61,8 @@
 				<input type="submit" value="Szűrés"/>
 				</form>';
         echo '</div>';
-		echo '<div class="col-sm-8">';
-            echo "<table>";
+		echo '<div class="col-sm-9">';
+            echo "<table class='table table-striped'>";
             echo "<tr>"
             . "<th>Fénykép</th>"
             . "<th>Terméknév</th>"
@@ -102,7 +102,7 @@
 		echo '</div>';
 		echo '</div>';
 		echo '<div class="row">';
-		echo '<div class="col-sm-4">';
+		echo '<div class="col-sm-3">';
 			echo '<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
 				Név:<br> <input type="text" name="f_nev"><br>
 				Ár:<br> <input type="number" name="f_armin">-tól<br>
@@ -111,8 +111,8 @@
 				<input type="submit" value="Szűrés"/>
 				</form>';
 		echo '</div>';
-		echo '<div class="col-sm-8">';	
-            echo "<table>";
+		echo '<div class="col-sm-9">';	
+            echo "<table class='table table-striped'>";
             echo "<tr>"
             . "<th>Fénykép</th>"
             . "<th>Terméknév</th>"
