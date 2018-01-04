@@ -2,14 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8" lang="hu">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
         <title></title>
 	<!--	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script>
 	<//?php include 'kosar.js';?>
 	</script>-->
-    </head>
+	</head>
 	
     <body>
+	<div class="container">
         <?php
         require_once 'dbconnect.php';
         session_start();
@@ -24,6 +26,9 @@
                 }
             }
         </script>
+		<div class="page-header">
+		<h1>Webshop</h1>
+		</div>
         <?php
         $conn = MySQLServerConnecter();
         mysqli_set_charset($conn, "utf8");
@@ -32,9 +37,22 @@
         $conn->close();
 
         if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
-            echo "<p><a href=./logout.php>Kijelentkezés</a></p>";
-            echo "<p><a href=./useredit.php>Adatok módosítása</a></p>";
-            echo "<p><a href=./kosar.php>Kosár</a></p>";
+		echo '<div class="list-group">';
+		echo '<div class="row">';
+		echo '<div class="col-sm-4">';
+			echo "<a href=./kosar.php class='list-group-item active'>Kosár</a>";
+		echo '</div>';
+		echo '<div class="col-sm-4">';
+            echo "<a href=./useredit.php class='list-group-item active'>Adatok módosítása</a>";
+		echo '</div>';
+		echo '<div class="col-sm-4">';
+			echo "<a href=./logout.php class='list-group-item active'>Kijelentkezés</a>";
+            
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+		echo '<div class="row">';
+		echo '<div class="col-sm-4">';
 			echo '<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
 				Név:<br> <input type="text" name="f_nev"><br>
 				Ár:<br> <input type="number" name="f_armin">-tól<br>
@@ -42,7 +60,8 @@
 				<br>
 				<input type="submit" value="Szűrés"/>
 				</form>';
-                        
+        echo '</div>';
+		echo '<div class="col-sm-8">';
             echo "<table>";
             echo "<tr>"
             . "<th>Fénykép</th>"
@@ -68,10 +87,22 @@
 				. "</tr></form>";
             }
             echo "</table>";
+			echo '</div>';
+		
             
         } else {
-            echo "<p><a href=./login.php>Bejelentkezés</a></p>";
-            echo "<p><a href=./regisztracio.php>Regisztráció</a></p>";
+		echo '<div class="list-group">';
+		echo '<div class="row">';
+		echo '<div class="col-sm-6">';
+            echo "<a href=./login.php class='list-group-item active'>Bejelentkezés</a>";
+		echo '</div>';
+		echo '<div class="col-sm-6">';
+            echo "<a href=./regisztracio.php class='list-group-item active'>Regisztráció</a>";
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
+		echo '<div class="row">';
+		echo '<div class="col-sm-4">';
 			echo '<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
 				Név:<br> <input type="text" name="f_nev"><br>
 				Ár:<br> <input type="number" name="f_armin">-tól<br>
@@ -79,7 +110,8 @@
 				<br>
 				<input type="submit" value="Szűrés"/>
 				</form>';
-			
+		echo '</div>';
+		echo '<div class="col-sm-8">';	
             echo "<table>";
             echo "<tr>"
             . "<th>Fénykép</th>"
@@ -100,7 +132,9 @@
                 echo "<td class='termekar'>" . $row["ar"] . " Ft</td>";
             }
             echo "</table>";
+		echo '</div>';
         }
         ?>
+	</div>
     </body>
 </html>
