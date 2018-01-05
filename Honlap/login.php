@@ -11,6 +11,7 @@
 				<h1>Belépés</h1>
 			</div>
         <script>
+            //ha valami üres
             function validateForm() {
                 var x = document.forms["login"]["username"].value;
                 if (x == "") {
@@ -25,6 +26,7 @@
             }
         </script>
         <?php
+        //bejelentkezés form
         echo '<form class="form-horizontal" name="login" action="login_get.php" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
 				<div class="form-group">
 					<label class="control-label col-sm-2">Login név:</label>
@@ -47,6 +49,7 @@
 				</div>
 				
             </form>';
+        //visszagomb
 			echo '<html>
 				<form action="index.php" method="post">
 				<input class="btn btn-default"  type="submit" value="Vissza"/>

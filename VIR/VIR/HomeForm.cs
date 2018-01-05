@@ -74,27 +74,30 @@ namespace VIR
                 termekKep_pictureBox.Image = null;
             }
 
+            //Adatok frissítés
             Muvelet muvelet = new Muvelet();
-            muvelet.Adatletoltes(listView1);
-            timer.Start();
-            timer.Tick += new EventHandler(frissites_btn_Click);
-            timer.Interval = (10 * 1000); // 10 secs
+            muvelet.Adatletoltes(listView1); //adatok feltöltése
+            timer.Start();  //időzítő indítása
+            timer.Tick += new EventHandler(frissites_btn_Click); //meghívja a frissítést
+            timer.Interval = (10 * 1000); // 10 secs frissít
 
             
           //  muvelet.getRend(rend);
             
         }
 
-
+        /// <summary>
+        /// Kép megnyitása
+        /// </summary>
         private void hozzaadasMegnyitas_btn_Click(object sender, EventArgs e)
         {
             Stream myStream = null;
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
+            OpenFileDialog openFileDialog1 = new OpenFileDialog(); //Tallózás
+            
             openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             openFileDialog1.Filter = "Image files (*.jpg)|*.jpg|Image files (*.png)|*.png|All Files (*.*)|*.*";
             openFileDialog1.RestoreDirectory = true;
-
+            //ha igen
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -103,39 +106,42 @@ namespace VIR
                     {
                         using (myStream)
                         {
-                            selectedFilePathName = openFileDialog1.FileName;
-                            termekKep_pictureBox.Image = new Bitmap(selectedFilePathName);
+                            selectedFilePathName = openFileDialog1.FileName; //fájl neve
+                            termekKep_pictureBox.Image = new Bitmap(selectedFilePathName); //fájl megnyitása megnézőben
                             selectedFileName = Path.GetFileName(selectedFilePathName);
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception ex) //ha nem található a fájl
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
                 finally
                 {
-                    myStream.Close();
+                    myStream.Close(); //Streamer lezárása
                 }
             }
         }
 
-
+        /// <summary>
+        /// Eddigi adatok kiűrítése
+        /// </summary>
         private void hozzadasUrites_btn_Click(object sender, EventArgs e)
         {
+            //figyelmeztetés
             DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné üríteni az eddig beirtadatokat?", "Figyelmeztetés!", MessageBoxButtons.YesNo);
-
+            // ha igen
             if (dialogResult == DialogResult.Yes)
             {
                 if (File.Exists("image/kezdo.png"))
                 {
-                    termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                    termekKep_pictureBox.Image = new Bitmap("image/kezdo.png"); //kezdőkép visszaállítássa
                 }
                 else
                 {
                     termekKep_pictureBox.Image = null;
                 }
-
+                //Textboxok és checkboxok ürítése
                 hozzaadasTermeknev_textBox.Clear();
                 hozzaadasAr_textBox.Clear();
                 hozzaadasMennyiseg_textBox.Clear();
@@ -148,21 +154,25 @@ namespace VIR
             }
         }
 
-
+        /// <summary>
+        /// Eddigi adatok kiűrítése
+        /// </summary>
         private void modositasUrites_btn_Click(object sender, EventArgs e)
         {
+            //figyelmeztetés
             DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné üríteni az eddig beirtadatokat?", "Figyelmeztetés!", MessageBoxButtons.YesNo);
-
+            // ha igen
             if (dialogResult == DialogResult.Yes)
             {
                 if (File.Exists("image/kezdo.png"))
                 {
-                    termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                    termekKep_pictureBox.Image = new Bitmap("image/kezdo.png"); //kezdőkép visszaállítássa
                 }
                 else
                 {
                     termekKep_pictureBox.Image = null;
                 }
+                //Textboxok és checkboxok ürítése
                 modositasTermeknev_textBox.Clear();
                 modositasAr_textBox.Clear();
                 modositasMennyiseg_textBox.Clear();
@@ -173,12 +183,14 @@ namespace VIR
             }
         }
 
-
+        /// <summary>
+        /// A ListView lista frissítés gombja
+        /// </summary>
         private void frissites_btn_Click(object sender, EventArgs e)
         {
-            listView1.Items.Clear();
-            Muvelet muveletek = new Muvelet();
-            muveletek.Adatletoltes(listView1);
+            listView1.Items.Clear();      //ListView Kiürítése
+            Muvelet muveletek = new Muvelet(); //Muvelet osztály meghívása
+            muveletek.Adatletoltes(listView1); //Adatletöltése és átadása ListViewnek
         }
 
 
@@ -260,12 +272,15 @@ namespace VIR
             }
         }
 
+        /// <summary>
+        /// Termékhozzáadása gomb
+        /// </summary>
         private void hozzaadas_btn_Click(object sender, EventArgs e)
         {
-            int ar;
+            int ar; 
             int mennyiseg;
             int suly;
-
+            //Ha nem megfelelő adatot próbálunk bevinni
             if (int.TryParse(hozzaadasAr_textBox.Text, out ar) == false && hozzaadasAr_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték az árnál. \n Maximum: 2147483647.", "Hiba");
@@ -290,27 +305,30 @@ namespace VIR
             else
             {
 
-                DBConnect conn = new DBConnect();
+                DBConnect conn = new DBConnect();  //Adatbázis kapcsolat
 
-                string kep = "";
+                string kep = ""; //kép elérési útja
 
                 try
                 {
-                    string termeknev = hozzaadasTermeknev_textBox.Text.ToString();
+                    //Szöveggé alakítások
+                    string termeknev = hozzaadasTermeknev_textBox.Text.ToString(); 
                     string kategoria = hozzaadasKategoria_textBox.Text.ToString();
                     string leiras = richTextBox_LeirasHozzaad.Text.ToString();
 
+                    //ha megfelelő a tallózott fájl elérési útja
                     if (selectedFileName != null && selectedFileName != "")
                     {
-                        Muvelet muvelet = new Muvelet();
-                        muvelet.FileCopy(selectedFileName, selectedFilePathName);
-                        kep = selectedFileName;
+                        Muvelet muvelet = new Muvelet(); 
+                        muvelet.FileCopy(selectedFileName, selectedFilePathName); //képmásolása a "szerverre"
+                        kep = selectedFileName;                                   //a kép elérési útja
                     }
                     else
                     {
-                        kep = "";
+                        kep = "";   //ha nem megfelelő a tallózott fájl elérési útja
                     }
 
+                    //készleten van-e
                     int iKeszleten;
 
                     if (checkBox_KeszletenHozzaadas.Checked == true)
@@ -322,6 +340,7 @@ namespace VIR
                         iKeszleten = 0;
                     }
 
+                    //Beszúró query
                     string query = "INSERT INTO termekek(id,termeknev,ar,mennyiseg,kategoria,leiras,suly,kep,keszleten)VALUES('" + null +
                             "','" + termeknev +
                             "','" + ar +
@@ -333,17 +352,17 @@ namespace VIR
                             "','" + iKeszleten + "')";
 
                     MySqlDataReader reader;
-                    MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
-                    conn.OpenConnection();
-                    reader = cmd.ExecuteReader();
+                    MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection()); //query parancsá alakítása 
+                    conn.OpenConnection(); //kapcsolat megnyitása
+                    reader = cmd.ExecuteReader();                                      //query lefuttatása
 
-                    while (reader.Read()) { }
+                    while (reader.Read()) { }      //megvárja míg lefut a query
 
-                    listView1.Items.Clear();
+                    listView1.Items.Clear(); //Listview űrítése
                     Muvelet muveletek = new Muvelet();
-                    muveletek.Adatletoltes(listView1);
+                    muveletek.Adatletoltes(listView1); //Listview feltöltése
 
-                    if (File.Exists("Image/kezdo.png"))
+                    if (File.Exists("Image/kezdo.png"))         // Kezdőkép beállítása
                     {
                         termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
                     }
@@ -352,6 +371,7 @@ namespace VIR
                         termekKep_pictureBox.Image = null;
                     }
 
+                    //Textboxok, checkboxok alaphelyzetre állítása
                     hozzaadasTermeknev_textBox.Clear();
                     hozzaadasAr_textBox.Clear();
                     hozzaadasMennyiseg_textBox.Clear();
@@ -362,47 +382,51 @@ namespace VIR
                     selectedFileName = "";
                     selectedFilePathName = "";
                 }
-                catch (ArgumentNullException)
+                catch (ArgumentNullException) //nincs kitöltve valami
                 {
                     MessageBox.Show("Töltsön ki minden mezőt!", "Hiba");
                 }
-                catch (FormatException)
+                catch (FormatException) //hibás a formátuma
                 {
                     MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
                 }
-                catch (MySqlException ex)
+                catch (MySqlException ex) //Adatbázis elérési hiba
                 {
                     MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
                 }
-                catch (Exception ex)
+                catch (Exception ex) //egyébhiba
                 {
                     MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
                 }
                 finally
                 {
-                    conn.CloseConnection();
+                    conn.CloseConnection(); //Kapcsolat lezárása
                 }
             }
         }
 
-
+        /// <summary>
+        /// A táblát kiexportálja excel és CSV file-ba
+        /// </summary>
         private async void tableexport_btn_Click(object sender, EventArgs e)
         {
+            //Tallózás megnyitása
             using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV File (*.csv)|*.csv|Excel munkafüzet (*.xlsx)|*.xls", ValidateNames = true })
             {
                 if (sfd.ShowDialog() == DialogResult.OK)
-                {
+                {    //fájl létrehozása
                     using (StreamWriter sw = new StreamWriter(new FileStream(sfd.FileName, FileMode.Create), Encoding.UTF8))
-                    {
+                    {   //fájl kiírása
                         StringBuilder sb = new StringBuilder();
+                        //Első sor
                         sb.AppendLine("Terméknév;Ár;Mennyiség;Kategória;Leirás;Súly;Készleten");
-
+                        //elemek kiírása
                         foreach (ListViewItem item in listView1.Items)
                         {
                             sb.AppendLine(string.Format("{0};{1};{2};{3};{4};{5};{6}", item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text, item.SubItems[3].Text, item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text));
                         }
 
-                        await sw.WriteLineAsync(sb.ToString());
+                        await sw.WriteLineAsync(sb.ToString()); //kiírás
                     }
                 }
             }

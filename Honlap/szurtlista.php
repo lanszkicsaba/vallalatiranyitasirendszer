@@ -4,7 +4,7 @@ session_start();
 ?>
 <?php
 if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
-
+//ha bevan lépve
     if ($_POST['f_armin'] == "") {
         $_POST['f_armin'] = 0;
     }
@@ -159,7 +159,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
         }
     }
 } else {
-
+//ha nincs belépve
     if ($_POST['f_armin'] == "") {
         $_POST['f_armin'] = 0;
     }

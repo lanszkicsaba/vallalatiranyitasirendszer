@@ -25,50 +25,57 @@ namespace VIRConnect
         //Initialize values
         private void Initialize()
         {
-            server = "193.164.132.164";
-            database = "csaba";
-            uid = "csaba";
-            password = "DPU3wX9HYmGEL8HK";
-            string connectionString;
+            server = "193.164.132.164";   //MySQL szerver elérési cime
+            database = "csaba";           //Adatbázis neve
+            uid = "csaba";               //Felhasználói név
+            password = "DPU3wX9HYmGEL8HK";   //Jelszó
+            string connectionString;         //Kapcsolódási parancs
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
-            connection = new MySqlConnection(connectionString);
+            connection = new MySqlConnection(connectionString);  //Kapcsolat létrehozása
         }
 
         public MySqlConnection returnConnection()
         {
-            server = "193.164.132.164";
-            database = "csaba";
-            uid = "csaba";
-            password = "DPU3wX9HYmGEL8HK";
-            string connectionString;
+            server = "193.164.132.164";   //MySQL szerver elérési cime
+            database = "csaba";           //Adatbázis neve
+            uid = "csaba";               //Felhasználói név
+            password = "DPU3wX9HYmGEL8HK";   //Jelszó
+            string connectionString;         //Kapcsolódási parancs
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
-            return connection = new MySqlConnection(connectionString);
+            return connection = new MySqlConnection(connectionString);  //Kapcsolat létrehozása
         }
 
-        //open connection to database
+        /// <summary>
+        /// Kapcsolat megnyitása
+        /// </summary>
+        /// <returns>igen ha sikerült, nem ha nem sikerült</returns>
         public bool OpenConnection()
         {
             try
             {
-                connection.Open();
+                connection.Open(); //Megnyitja a kapcsolatot
                 return true;
             }
             catch (MySqlException ex)
             {
-                switch (ex.Number)
+                switch (ex.Number) //milyen számú hiba jön
                 {
                     case 0:
                         MessageBox.Show("Nincs kapcsolat az adatbázissal. Kérjük vegye fel a kapcsolatot az adminisztrátorral!");
-                        break;
+                        break; //0 akkor nincs kapcsolat
                 }
                 return false;
             }
         }
 
+        /// <summary>
+        /// Kapcsolat lezárása
+        /// </summary>
+        /// <returns>igen ha sikerült, nem ha nem sikerült</returns>
         public bool CloseConnection()
         {
             try

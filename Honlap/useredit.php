@@ -5,6 +5,7 @@
         session_start();
         ?>
         <?php
+        //ha bevan lépve
         if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
             if (isset($_POST['submit'])) {
                 $con = MySQLServerConnecter();
@@ -26,6 +27,7 @@
             }
             
         } else {
+            //nincs bejelentkezve visszadobja az index.php-re
             echo '<meta http-equiv="refresh" content="0; URL=index.php">';
         }
         ?>

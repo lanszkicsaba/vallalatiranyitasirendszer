@@ -59,133 +59,152 @@ namespace Muveletek
                 MessageBox.Show("Hiba történt az adatok letöltésekor \n"+ex.Message,"Adatbázis hiba");
             }
         }
+
+        /// <summary>
+        /// Adatok törlése
+        /// </summary>
+        /// <param name="listView1">A megjeleníteni kívánt ListView helye</param>
+        /// <param name="pb">A képet megjelenítőbox</param>
         public void Torles(ListView listView1, PictureBox pb)
         {
+            //Adatbázos kapcsolat
             DBConnect conn = new DBConnect();
 
             try
             {
+                //Adatok szöveggé alakítása
                 string termeknev = listView1.SelectedItems[0].SubItems[0].Text;
                 string ar = listView1.SelectedItems[0].SubItems[1].Text;
                 string mennyiseg = listView1.SelectedItems[0].SubItems[2].Text;
                 string kategoria = listView1.SelectedItems[0].SubItems[3].Text;
                 string leiras = listView1.SelectedItems[0].SubItems[4].Text;
-
+                
+                //Figyelmeztetés
                 DialogResult dialogResult = MessageBox.Show("Biztosan kiszeretné törölni a " + termeknev + " megnevezésű terméket?", "Figyelmeztetés!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
+                //ha igen
                 if (dialogResult == DialogResult.Yes)
                 {
+                    //MySQL query
                     string query1 = "SELECT kep FROM termekek WHERE termeknev='" + termeknev +
                        "' AND ar='" + ar +
                        "' AND mennyiseg='" + mennyiseg +
                        "' AND kategoria='" + kategoria +
                        "' AND leiras='" + leiras + "';";
 
-                    MySqlDataReader reader1;
-                    MySqlCommand cmd1 = new MySqlCommand(query1, conn.returnConnection());
-                    conn.OpenConnection();
-                    reader1 = cmd1.ExecuteReader();
+                    MySqlDataReader reader1;         //adatolvasó
+                    MySqlCommand cmd1 = new MySqlCommand(query1, conn.returnConnection()); //parancsá alakítás
+                    conn.OpenConnection();       //kapcsolat megnyitása
+                    reader1 = cmd1.ExecuteReader();  //parancs lefutatása
 
-                    string kepnev = "";
+                    string kepnev = "";   //kép neve
 
                     while (reader1.Read())
                     {
-                        kepnev = reader1.GetString(0);
+                        kepnev = reader1.GetString(0); //a lekérdezett kép neve
                     }
 
-                    conn.CloseConnection();
+                    conn.CloseConnection();   //kapcsolat lezárása
 
-                    string query2 = "SELECT COUNT(*) FROM termekek WHERE kep='" + kepnev + "';";
-                    MySqlCommand cmd2 = new MySqlCommand(query2, conn.returnConnection());
-                    conn.OpenConnection();
+                    string query2 = "SELECT COUNT(*) FROM termekek WHERE kep='" + kepnev + "';"; //hányszor van a kép query
+                    MySqlCommand cmd2 = new MySqlCommand(query2, conn.returnConnection());  //parancs
+                    conn.OpenConnection();                 //kapcsolat megnyitása
 
-                    int count = Convert.ToInt32(cmd2.ExecuteScalar());
-                    conn.CloseConnection();
+                    int count = Convert.ToInt32(cmd2.ExecuteScalar()); //érték konvertálása
+                    conn.CloseConnection();               //kapcsolat lezárása
 
-                    if (count == 1)
+                    //ha az érték 1
+                    if (count == 1) 
                     {
+                        //ha a kép létezik 
                         if (File.Exists(@"image/" + kepnev))
                         {
+                            //ha a kezdőkép létezik
                             if (File.Exists("image/kezdo.png"))
                             {
-                                pb.Image = new Bitmap("image/kezdo.png");
+                                pb.Image = new Bitmap("image/kezdo.png"); //betölti a kezdőképet
                             }
                             else
                             {
-                                pb.Image = null;
+                                pb.Image = null; 
                             }
                             GC.Collect();
-                            GC.WaitForPendingFinalizers();
-                            File.Delete(@"image/" + kepnev);
-                            kepnev = "";
+                            GC.WaitForPendingFinalizers(); //kép elvetése memóriából
+                            File.Delete(@"image/" + kepnev); //kép törlése
+                            kepnev = ""; //képnev
                         }
                     }
 
-                    kepnev = "";
-                    
+                    kepnev = "";     //képnev
+
+                    //Törlő MySQL query
                     string query = "DELETE FROM termekek WHERE termeknev='" + termeknev +
                         "' AND ar='" + ar +
                         "' AND mennyiseg='" + mennyiseg +
                         "' AND kategoria='" + kategoria +
                         "' AND leiras='" + leiras + "';";
 
-                    MySqlDataReader reader;
-                    MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());
-                    conn.OpenConnection();
-                    reader = cmd.ExecuteReader();
+                    MySqlDataReader reader; //adatolvasó
+                    MySqlCommand cmd = new MySqlCommand(query, conn.returnConnection());   //parancsá alakítás
+                    conn.OpenConnection(); //kapcsolat megnyitása
+                    reader = cmd.ExecuteReader(); //parancs lefutatása
 
-                    while (reader.Read()) { }
+                    while (reader.Read()) { } //megvárja amíg lefut
 
-                    listView1.Items.Clear();
-                    Muvelet muveletek = new Muvelet();
-                    muveletek.Adatletoltes(listView1);
+                    listView1.Items.Clear(); //Listview űrítése
+                    Muvelet muveletek = new Muvelet(); 
+                    muveletek.Adatletoltes(listView1); //Listview feltöltése friss adatokkal
                 }
             }
-            catch (MySqlException ex)
+            catch (MySqlException ex) //Adatbázis hiba
             {
                 MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
             }
-            catch (Exception ex)
+            catch (Exception ex) //Egyéb hiba
             {
                 MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
             }
             finally
             {
-                conn.CloseConnection();
+                conn.CloseConnection(); //kapcsolat lezárása
             }
         }
 
-
+        /// <summary>
+        /// Adatok letöltése az adatbázis termekek táblájából
+        /// </summary>
+        /// <param name="listView1">A megjeleníteni kívánt ListView helye</param>
+        /// <param name="optionalQuery">Az SQL query helye</param>
         public void Adatletoltes(ListView listView1, string optionalQuery = "query")
         {
             try
             {
                 string sKeszleten;
 
-                DBConnect conn = new DBConnect();
-                MySqlDataAdapter ada;
+                DBConnect conn = new DBConnect();     //Kapcsolat létrehozása
+                MySqlDataAdapter ada;                //Adapter létrehozása
 
-                if (optionalQuery != "query")
+                if (optionalQuery != "query")        //Ha van query akkor ez fut le
                 {
-                    ada = new MySqlDataAdapter(optionalQuery, conn.returnConnection());
+                    ada = new MySqlDataAdapter(optionalQuery, conn.returnConnection()); //Adapter létrehoza a query által lekérni kívánt adatokat
                 }
-                else
+                else //Ha nincs query
                 {
-                    ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());
+                    ada = new MySqlDataAdapter("SELECT * FROM termekek", conn.returnConnection());  // Adapter létrehoza a query által lekérni kívánt adatokat
                 }
 
-                DataTable dt = new DataTable();
-                ada.Fill(dt);
+                DataTable dt = new DataTable(); //Adattáblák osztály létrehozása
+                ada.Fill(dt);                   //Az adatok felbontása 
 
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for (int i = 0; i < dt.Rows.Count; i++)    //Végig megy a sorokon
                 {
-                    DataRow dr = dt.Rows[i];
+                    DataRow dr = dt.Rows[i]; //Az adatok sorainak lekérése
 
-                    if (dr["keszleten"].ToString() == "True")
+                    if (dr["keszleten"].ToString() == "True") //Ha készleten van
                     {
                         sKeszleten = "Van";
                     }
-                    else
+                    else                                     //Ha nincs készleten
                     {
                         sKeszleten = "Nincs";
                     }
@@ -198,14 +217,14 @@ namespace Muveletek
                     dr["leiras"].ToString(),
                     dr["suly"].ToString()+"g",
                     sKeszleten
-                };
+                };     //Adatok kinyerése a sorokból és ellátni a megfelelő rövidítésekkel
 
-                    var listViewItem = new ListViewItem(row);
-                    listView1.Items.Add(listViewItem);
-                    conn.CloseConnection();
+                    var listViewItem = new ListViewItem(row); //Sorok elhelyezése Listviewben
+                    listView1.Items.Add(listViewItem);       // feltölteni a Listviewet
+                    conn.CloseConnection(); //Adatbázis kapcsolat lezárása
                 }
             }
-            catch (MySqlException ex)
+            catch (MySqlException ex)   //Ha hiba lépfel
             {
                 MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
             }
