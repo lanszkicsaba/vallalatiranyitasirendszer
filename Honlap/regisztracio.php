@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
         <title>Regisztráció</title>
         <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
@@ -9,7 +10,10 @@
     session_start();
     ?>
     <body>
-        <h1>Regisztráció</h1>
+	<div class="container">
+        <div class="page-header">
+				<h1>Regisztráció</h1>
+			</div>
         <script>
             function validateForm() {
                 var nev = document.forms["reg"]["f_nev"].value;
@@ -30,26 +34,57 @@
         </script>
         <?php
         if (count($_SESSION) > 0 && $_SESSION["login"] == "FALSE") {
-            echo '<form name="reg" action="reg.php" onsubmit="return validateForm()" method="post">
-				Név:<br> <input type="text" name="f_nev"><br>
-				<br>
-				Felhasználónév:<br> <input type="text" name="f_felhnev"><br>
-				<br>
-				Cím:<br> <input type="text" name="f_cim"><br>
-				<br>
-				Telefonszám:<br> <input type="number" name="f_telefon"><br>
-				<br>
-				Jelszó:<br> <input type="password" name="f_jelszo"><br>
-				<br>
-				Jelszó mégegyszer<br> <input type="password" name="f_kontroll"><br>
-				<br>
+            echo '<form name="reg" class="form-horizontal" action="reg.php" onsubmit="return validateForm()" method="post">
+				<div class="form-group">
+					<label class="control-label col-sm-2">Név:</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="f_nev" placeholder="Teljes név">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Felhasználónév:</label>
+					<div class="col-sm-2">
+						<input type="text" name="f_felhnev" class="form-control" placeholder="Felhasználónév">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Cím:</label>
+					<div class="col-sm-2">
+						<input type="text" name="f_cim" class="form-control" placeholder="Cím">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Telefonszám:</label>
+					<div class="col-sm-2">
+						<input type="number" name="f_telefon" class="form-control" placeholder="Telefonszám">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Jelszó:</label>
+					<div class="col-sm-2">
+						<input type="password" name="f_jelszo" class="form-control" placeholder="Jelszó">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Jelszó mégegyszer:</label>
+					<div class="col-sm-2">
+						<input type="password" name="f_kontroll" class="form-control" placeholder="Jelszó"><br>
+					</div>
+				</div>
 				<div class="g-recaptcha" data-sitekey="6LedcDwUAAAAANZsQV5xlt0Vjex6x6n_4cio4-PB"></div><br>
-				<input type="submit" value="Regisztráció" name="submit">
-				<input type="reset">
+				<input class="btn btn-default" type="submit" value="Regisztráció" name="submit">
+				<input class="btn btn-default" type="reset">
 			</form>';
+			echo '<html>
+				<br>
+				<form action="index.php" method="post">
+				<input class="btn btn-default"  type="submit" value="Vissza"/>
+				</form> 
+			</html>';
         } else {
             echo '<meta http-equiv="refresh" content="0; URL=index.php">';
         }
         ?>
+	</div>
     </body>
 </html>
