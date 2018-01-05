@@ -1,15 +1,16 @@
-ï»¿<?xml version="1.0" encoding="UTF-8"?>
+Ã¯Â»Â¿<?xml version="1.0" encoding="UTF-8"?>
 <rendeles>
 	<rendeloadatai>
 		<nev>Test Elek</nev>
-		<cim>3400 Mez?kövesd, Mátyás király út 124.</cim>
+		<cim>3400 Mez?kÃ¶vesd, MÃ¡tyÃ¡s kirÃ¡ly Ãºt 124.</cim>
 		<telefonszam>06307239293</telefonszam>
+		<adoszam>15834481210</adoszam>
 	</rendeloadatai>
 	<termekekadatai>
 		<termekneve>Barack</termekneve>
 		<mennyiseg>1 db</mennyiseg>
 		<ara>190 Ft</ara>
-		<termekneve>Elektromos kisautó</termekneve>
+		<termekneve>Elektromos kisautÃ³</termekneve>
 		<mennyiseg>2 db</mennyiseg>
 		<ara>100000 Ft</ara>
 	</termekekadatai>
