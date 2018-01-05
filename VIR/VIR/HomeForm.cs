@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using VIRConnect;
 using Muveletek;
 using System.Data;
+using System.Drawing.Printing;
 
 namespace VIR
 {
@@ -708,6 +709,10 @@ namespace VIR
 
         private void megrendelesek_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {            
+            //Számla sorszám label
+            label_Sorszam.Text = "Sorszám: " + rend.rend_ido[megrendelesek_comboBox.SelectedIndex].Year + "/" + rend.rend_id[megrendelesek_comboBox.SelectedIndex];
+            //Nyomtatás engedélyezése
+            button_Kiallitas.Enabled = true;
             //Sorok törlése, ha másik megrendelés lesz kiválasztva
             dGV_Rendeles.Rows.Clear();
             dgv_SzamlaTermekek.Rows.Clear();
@@ -728,10 +733,70 @@ namespace VIR
                 }
             }
             dGV_SzamlaOssz.Rows.Add(new object[] {ossznetto,27,osszafa,osszbrutto });
+
+            //Alap kijelölés törlése
+            dGV_Rendeles.ClearSelection();
+            dGV_SzamlaOssz.ClearSelection();
+            dgv_SzamlaTermekek.ClearSelection();
         }
 
-        
+       
 
+        private void Doc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            float x = e.MarginBounds.Left;
+            float y = e.MarginBounds.Top;
+            Bitmap bmp = new Bitmap(this.tab_Szamla.Width, this.tab_Szamla.Height);
+            this.tab_Szamla.DrawToBitmap(bmp, new Rectangle(0, 0, this.tab_Szamla.Width, this.tab_Szamla.Height));
+           
+            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            e.Graphics.DrawImage((Image)bmp,x,y);
+
+        }
+        private void button_Kiallitas_Click(object sender, EventArgs e)
+        {
+            int boxheight = groupBox5.Height;
+            int dgvheight = dgv_SzamlaTermekek.Height;
+            int osszesenpoz = groupBox6.Location.Y;
+            int szamlaosszpoz = dGV_SzamlaOssz.Location.Y;
+
+            groupBox5.Height = boxheight + (megrendelesek_comboBox.Location.Y -(groupBox5.Location.Y+boxheight));
+            dgv_SzamlaTermekek.Height = groupBox5.Height - dgv_SzamlaTermekek.Location.Y-5;
+            dGV_SzamlaOssz.Location = new Point(dGV_SzamlaOssz.Location.X, groupBox5.Location.Y + groupBox5.Height + 10);
+            groupBox6.Location = new Point(groupBox6.Location.X, groupBox5.Location.Y + groupBox5.Height + 10);
+            megrendelesek_comboBox.Visible = false;
+            textBox_SzTalloz.Visible = false;
+            button_Talloz.Visible = false;
+            button_Kiallitas.Visible = false;
+
+
+            dGV_SzamlaOssz.Parent = groupBox6;
+
+            
+
+            PrintDocument doc = new PrintDocument();
+            doc.DefaultPageSettings.Landscape = true;
+            doc.DefaultPageSettings.PrinterResolution.Kind = PrinterResolutionKind.High;
+            doc.PrintPage += this.Doc_PrintPage;
+           // PrintDialog pdlg = new PrintDialog();
+            PrintPreviewDialog pdlg = new PrintPreviewDialog();
+           
+            pdlg.Document = doc;
+           /* if (pdlg.ShowDialog() == DialogResult.OK)
+            {
+                doc.Print();
+            }*/
+            pdlg.ShowDialog();
+
+            groupBox5.Height = boxheight;
+            dgv_SzamlaTermekek.Height = dgvheight;
+            dGV_SzamlaOssz.Location = new Point(dGV_SzamlaOssz.Location.X, szamlaosszpoz);
+            groupBox6.Location = new Point(groupBox6.Location.X, osszesenpoz);
+            megrendelesek_comboBox.Visible = true;
+            textBox_SzTalloz.Visible = true;
+            button_Talloz.Visible = true;
+            button_Kiallitas.Visible = true;
+        }
 
     }
 

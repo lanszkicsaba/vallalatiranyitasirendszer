@@ -93,38 +93,16 @@
             this.Keszleten_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableexport_btn = new System.Windows.Forms.Button();
             this.tab_Szamla = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button_Talloz = new System.Windows.Forms.Button();
-            this.megrendelesek_comboBox = new System.Windows.Forms.ComboBox();
-            this.button_Kiallitas = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.vevoszamlaszam_textBox = new System.Windows.Forms.TextBox();
-            this.vevocime_textBox = new System.Windows.Forms.TextBox();
-            this.vevoneve_textBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.kibocsajtoszamlaszam_textBox = new System.Windows.Forms.TextBox();
-            this.kibocsajtoadoszam_textBox = new System.Windows.Forms.TextBox();
-            this.kibocsajtocime_textBox = new System.Windows.Forms.TextBox();
-            this.kibocsajtoneve_textBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.welcome_label = new System.Windows.Forms.Label();
-            this.logout_btn = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label_Sorszam = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.dGV_SzamlaOssz = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox_VevoTel = new System.Windows.Forms.TextBox();
-            this.dGV_Rendeles = new System.Windows.Forms.DataGridView();
-            this.Fiz_mod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telj_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.szamla_kelte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fiz_hat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_SzamlaTermekek = new System.Windows.Forms.DataGridView();
             this.Megnevezes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.egysegar = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,12 +111,36 @@
             this.AFA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AFA2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Brutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.dGV_SzamlaOssz = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dGV_Rendeles = new System.Windows.Forms.DataGridView();
+            this.Fiz_mod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telj_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.szamla_kelte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fiz_hat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox_SzTalloz = new System.Windows.Forms.TextBox();
+            this.button_Talloz = new System.Windows.Forms.Button();
+            this.megrendelesek_comboBox = new System.Windows.Forms.ComboBox();
+            this.button_Kiallitas = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox_VevoTel = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.vevoszamlaszam_textBox = new System.Windows.Forms.TextBox();
+            this.vevocime_textBox = new System.Windows.Forms.TextBox();
+            this.vevoneve_textBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label_Cegszsz = new System.Windows.Forms.Label();
+            this.label_EVsz = new System.Windows.Forms.Label();
+            this.label_Cegado = new System.Windows.Forms.Label();
+            this.label_Cegcim = new System.Windows.Forms.Label();
+            this.label_Cegnev = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.welcome_label = new System.Windows.Forms.Label();
+            this.logout_btn = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabControl_Keszlet.SuspendLayout();
             this.Tab_Keszlet.SuspendLayout();
             this.groupBox_Kereses.SuspendLayout();
@@ -146,12 +148,13 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tab_Szamla.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_SzamlaOssz)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_SzamlaTermekek)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Rendeles)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_Rendeles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_SzamlaTermekek)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_SzamlaOssz)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl_Keszlet
@@ -755,10 +758,12 @@
             // 
             // tab_Szamla
             // 
-            this.tab_Szamla.Controls.Add(this.dGV_SzamlaOssz);
+            this.tab_Szamla.Controls.Add(this.label1);
+            this.tab_Szamla.Controls.Add(this.label_Sorszam);
+            this.tab_Szamla.Controls.Add(this.label6);
             this.tab_Szamla.Controls.Add(this.groupBox6);
             this.tab_Szamla.Controls.Add(this.groupBox5);
-            this.tab_Szamla.Controls.Add(this.textBox1);
+            this.tab_Szamla.Controls.Add(this.textBox_SzTalloz);
             this.tab_Szamla.Controls.Add(this.button_Talloz);
             this.tab_Szamla.Controls.Add(this.megrendelesek_comboBox);
             this.tab_Szamla.Controls.Add(this.button_Kiallitas);
@@ -772,222 +777,98 @@
             this.tab_Szamla.Text = "Számlázás";
             this.tab_Szamla.UseVisualStyleBackColor = true;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(285, 532);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 20);
-            this.textBox1.TabIndex = 5;
-            // 
-            // button_Talloz
-            // 
-            this.button_Talloz.Location = new System.Drawing.Point(445, 530);
-            this.button_Talloz.Name = "button_Talloz";
-            this.button_Talloz.Size = new System.Drawing.Size(75, 23);
-            this.button_Talloz.TabIndex = 4;
-            this.button_Talloz.Text = "Tallózás";
-            this.button_Talloz.UseVisualStyleBackColor = true;
-            // 
-            // megrendelesek_comboBox
-            // 
-            this.megrendelesek_comboBox.FormattingEnabled = true;
-            this.megrendelesek_comboBox.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.megrendelesek_comboBox.Location = new System.Drawing.Point(92, 490);
-            this.megrendelesek_comboBox.Name = "megrendelesek_comboBox";
-            this.megrendelesek_comboBox.Size = new System.Drawing.Size(644, 21);
-            this.megrendelesek_comboBox.TabIndex = 3;
-            this.megrendelesek_comboBox.Text = "Válaszon a megrendelések közül, vagy tallózza ki a visszaigazolást";
-            this.megrendelesek_comboBox.SelectedIndexChanged += new System.EventHandler(this.megrendelesek_comboBox_SelectedIndexChanged);
-            // 
-            // button_Kiallitas
-            // 
-            this.button_Kiallitas.Location = new System.Drawing.Point(345, 559);
-            this.button_Kiallitas.Name = "button_Kiallitas";
-            this.button_Kiallitas.Size = new System.Drawing.Size(109, 23);
-            this.button_Kiallitas.TabIndex = 2;
-            this.button_Kiallitas.Text = "Számla kiállítása";
-            this.button_Kiallitas.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox_VevoTel);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.vevoszamlaszam_textBox);
-            this.groupBox2.Controls.Add(this.vevocime_textBox);
-            this.groupBox2.Controls.Add(this.vevoneve_textBox);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Location = new System.Drawing.Point(457, 22);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(344, 147);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Vevő adatai:";
-            // 
-            // vevoszamlaszam_textBox
-            // 
-            this.vevoszamlaszam_textBox.Location = new System.Drawing.Point(123, 91);
-            this.vevoszamlaszam_textBox.Name = "vevoszamlaszam_textBox";
-            this.vevoszamlaszam_textBox.Size = new System.Drawing.Size(179, 20);
-            this.vevoszamlaszam_textBox.TabIndex = 13;
-            // 
-            // vevocime_textBox
-            // 
-            this.vevocime_textBox.Location = new System.Drawing.Point(84, 42);
-            this.vevocime_textBox.Name = "vevocime_textBox";
-            this.vevocime_textBox.Size = new System.Drawing.Size(219, 20);
-            this.vevocime_textBox.TabIndex = 11;
-            // 
-            // vevoneve_textBox
-            // 
-            this.vevoneve_textBox.Location = new System.Drawing.Point(84, 19);
-            this.vevoneve_textBox.Name = "vevoneve_textBox";
-            this.vevoneve_textBox.Size = new System.Drawing.Size(218, 20);
-            this.vevoneve_textBox.TabIndex = 10;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(50, 94);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Számlaszám:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(50, 45);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 13);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Cím:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(50, 22);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Név:";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.kibocsajtoszamlaszam_textBox);
-            this.groupBox1.Controls.Add(this.kibocsajtoadoszam_textBox);
-            this.groupBox1.Controls.Add(this.kibocsajtocime_textBox);
-            this.groupBox1.Controls.Add(this.kibocsajtoneve_textBox);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(36, 22);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(318, 147);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Számlakibocsátó adatai:";
-            // 
-            // kibocsajtoszamlaszam_textBox
-            // 
-            this.kibocsajtoszamlaszam_textBox.Location = new System.Drawing.Point(94, 91);
-            this.kibocsajtoszamlaszam_textBox.Name = "kibocsajtoszamlaszam_textBox";
-            this.kibocsajtoszamlaszam_textBox.Size = new System.Drawing.Size(179, 20);
-            this.kibocsajtoszamlaszam_textBox.TabIndex = 8;
-            // 
-            // kibocsajtoadoszam_textBox
-            // 
-            this.kibocsajtoadoszam_textBox.Location = new System.Drawing.Point(128, 68);
-            this.kibocsajtoadoszam_textBox.Name = "kibocsajtoadoszam_textBox";
-            this.kibocsajtoadoszam_textBox.Size = new System.Drawing.Size(145, 20);
-            this.kibocsajtoadoszam_textBox.TabIndex = 7;
-            // 
-            // kibocsajtocime_textBox
-            // 
-            this.kibocsajtocime_textBox.Location = new System.Drawing.Point(55, 45);
-            this.kibocsajtocime_textBox.Name = "kibocsajtocime_textBox";
-            this.kibocsajtocime_textBox.Size = new System.Drawing.Size(218, 20);
-            this.kibocsajtocime_textBox.TabIndex = 6;
-            // 
-            // kibocsajtoneve_textBox
-            // 
-            this.kibocsajtoneve_textBox.Location = new System.Drawing.Point(56, 22);
-            this.kibocsajtoneve_textBox.Name = "kibocsajtoneve_textBox";
-            this.kibocsajtoneve_textBox.Size = new System.Drawing.Size(218, 20);
-            this.kibocsajtoneve_textBox.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 94);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Számlaszám:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Adóazonosító szám:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Cím:";
-            // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 25);
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(36, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Név:";
+            this.label1.Size = new System.Drawing.Size(765, 2);
+            this.label1.TabIndex = 12;
             // 
-            // welcome_label
+            // label_Sorszam
             // 
-            this.welcome_label.AutoSize = true;
-            this.welcome_label.Location = new System.Drawing.Point(619, 36);
-            this.welcome_label.Name = "welcome_label";
-            this.welcome_label.Size = new System.Drawing.Size(153, 13);
-            this.welcome_label.TabIndex = 1;
-            this.welcome_label.Text = "Üdvözöllek, \"Felhasználó név\"";
+            this.label_Sorszam.AutoSize = true;
+            this.label_Sorszam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label_Sorszam.Location = new System.Drawing.Point(453, 7);
+            this.label_Sorszam.Name = "label_Sorszam";
+            this.label_Sorszam.Size = new System.Drawing.Size(89, 20);
+            this.label_Sorszam.TabIndex = 11;
+            this.label_Sorszam.Text = "Sorszám: ";
             // 
-            // logout_btn
+            // label6
             // 
-            this.logout_btn.Location = new System.Drawing.Point(778, 31);
-            this.logout_btn.Name = "logout_btn";
-            this.logout_btn.Size = new System.Drawing.Size(89, 23);
-            this.logout_btn.TabIndex = 24;
-            this.logout_btn.Text = "Kijelentkezés";
-            this.logout_btn.UseVisualStyleBackColor = true;
-            this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(36, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 25);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Számla";
             // 
-            // label19
+            // groupBox6
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label19.ForeColor = System.Drawing.Color.Blue;
-            this.label19.Location = new System.Drawing.Point(296, 27);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(294, 25);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "Vállalatirányítási Rendszer";
+            this.groupBox6.Controls.Add(this.dGV_SzamlaOssz);
+            this.groupBox6.Location = new System.Drawing.Point(345, 411);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(456, 65);
+            this.groupBox6.TabIndex = 9;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Összesen";
             // 
-            // contextMenuStrip1
+            // dGV_SzamlaOssz
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.dGV_SzamlaOssz.AllowUserToAddRows = false;
+            this.dGV_SzamlaOssz.AllowUserToDeleteRows = false;
+            this.dGV_SzamlaOssz.AllowUserToResizeColumns = false;
+            this.dGV_SzamlaOssz.AllowUserToResizeRows = false;
+            this.dGV_SzamlaOssz.BackgroundColor = System.Drawing.Color.White;
+            this.dGV_SzamlaOssz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV_SzamlaOssz.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.dGV_SzamlaOssz.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dGV_SzamlaOssz.Enabled = false;
+            this.dGV_SzamlaOssz.Location = new System.Drawing.Point(3, 16);
+            this.dGV_SzamlaOssz.Name = "dGV_SzamlaOssz";
+            this.dGV_SzamlaOssz.ReadOnly = true;
+            this.dGV_SzamlaOssz.RowHeadersVisible = false;
+            this.dGV_SzamlaOssz.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.dGV_SzamlaOssz.Size = new System.Drawing.Size(450, 46);
+            this.dGV_SzamlaOssz.TabIndex = 8;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Nettó ár [Ft]";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.HeaderText = "ÁFA [%]";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.HeaderText = "ÁFA [Ft]";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Bruttó ár [Ft]";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // groupBox5
             // 
@@ -995,79 +876,10 @@
             this.groupBox5.Controls.Add(this.dGV_Rendeles);
             this.groupBox5.Location = new System.Drawing.Point(36, 182);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(765, 222);
+            this.groupBox5.Size = new System.Drawing.Size(765, 223);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Rendelés Adatai";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(50, 68);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Telefonszám:";
-            // 
-            // textBox_VevoTel
-            // 
-            this.textBox_VevoTel.Location = new System.Drawing.Point(123, 65);
-            this.textBox_VevoTel.Name = "textBox_VevoTel";
-            this.textBox_VevoTel.Size = new System.Drawing.Size(179, 20);
-            this.textBox_VevoTel.TabIndex = 15;
-            // 
-            // dGV_Rendeles
-            // 
-            this.dGV_Rendeles.AllowUserToAddRows = false;
-            this.dGV_Rendeles.AllowUserToDeleteRows = false;
-            this.dGV_Rendeles.AllowUserToResizeColumns = false;
-            this.dGV_Rendeles.AllowUserToResizeRows = false;
-            this.dGV_Rendeles.BackgroundColor = System.Drawing.Color.White;
-            this.dGV_Rendeles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGV_Rendeles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Fiz_mod,
-            this.Telj_date,
-            this.szamla_kelte,
-            this.Fiz_hat});
-            this.dGV_Rendeles.Location = new System.Drawing.Point(6, 20);
-            this.dGV_Rendeles.Name = "dGV_Rendeles";
-            this.dGV_Rendeles.ReadOnly = true;
-            this.dGV_Rendeles.RowHeadersVisible = false;
-            this.dGV_Rendeles.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dGV_Rendeles.Size = new System.Drawing.Size(753, 44);
-            this.dGV_Rendeles.TabIndex = 0;
-            // 
-            // Fiz_mod
-            // 
-            this.Fiz_mod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Fiz_mod.HeaderText = "Fizetési Mód";
-            this.Fiz_mod.Name = "Fiz_mod";
-            this.Fiz_mod.ReadOnly = true;
-            this.Fiz_mod.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Telj_date
-            // 
-            this.Telj_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Telj_date.HeaderText = "Teljesítés dátuma";
-            this.Telj_date.Name = "Telj_date";
-            this.Telj_date.ReadOnly = true;
-            this.Telj_date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // szamla_kelte
-            // 
-            this.szamla_kelte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.szamla_kelte.HeaderText = "Számla kelte";
-            this.szamla_kelte.Name = "szamla_kelte";
-            this.szamla_kelte.ReadOnly = true;
-            this.szamla_kelte.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Fiz_hat
-            // 
-            this.Fiz_hat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Fiz_hat.HeaderText = "Fizetési határidő";
-            this.Fiz_hat.Name = "Fiz_hat";
-            this.Fiz_hat.ReadOnly = true;
-            this.Fiz_hat.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // dgv_SzamlaTermekek
             // 
@@ -1085,6 +897,7 @@
             this.AFA,
             this.AFA2,
             this.Brutto});
+            this.dgv_SzamlaTermekek.Enabled = false;
             this.dgv_SzamlaTermekek.Location = new System.Drawing.Point(6, 70);
             this.dgv_SzamlaTermekek.Name = "dgv_SzamlaTermekek";
             this.dgv_SzamlaTermekek.ReadOnly = true;
@@ -1149,67 +962,292 @@
             this.Brutto.ReadOnly = true;
             this.Brutto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // groupBox6
+            // dGV_Rendeles
             // 
-            this.groupBox6.Location = new System.Drawing.Point(345, 411);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(456, 73);
-            this.groupBox6.TabIndex = 7;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Összesen";
+            this.dGV_Rendeles.AllowUserToAddRows = false;
+            this.dGV_Rendeles.AllowUserToDeleteRows = false;
+            this.dGV_Rendeles.AllowUserToResizeColumns = false;
+            this.dGV_Rendeles.AllowUserToResizeRows = false;
+            this.dGV_Rendeles.BackgroundColor = System.Drawing.Color.White;
+            this.dGV_Rendeles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dGV_Rendeles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Fiz_mod,
+            this.Telj_date,
+            this.szamla_kelte,
+            this.Fiz_hat});
+            this.dGV_Rendeles.Enabled = false;
+            this.dGV_Rendeles.Location = new System.Drawing.Point(6, 20);
+            this.dGV_Rendeles.Name = "dGV_Rendeles";
+            this.dGV_Rendeles.ReadOnly = true;
+            this.dGV_Rendeles.RowHeadersVisible = false;
+            this.dGV_Rendeles.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dGV_Rendeles.Size = new System.Drawing.Size(753, 44);
+            this.dGV_Rendeles.TabIndex = 0;
             // 
-            // dGV_SzamlaOssz
+            // Fiz_mod
             // 
-            this.dGV_SzamlaOssz.AllowUserToAddRows = false;
-            this.dGV_SzamlaOssz.AllowUserToDeleteRows = false;
-            this.dGV_SzamlaOssz.AllowUserToResizeColumns = false;
-            this.dGV_SzamlaOssz.AllowUserToResizeRows = false;
-            this.dGV_SzamlaOssz.BackgroundColor = System.Drawing.Color.White;
-            this.dGV_SzamlaOssz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dGV_SzamlaOssz.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.dGV_SzamlaOssz.Location = new System.Drawing.Point(351, 425);
-            this.dGV_SzamlaOssz.Name = "dGV_SzamlaOssz";
-            this.dGV_SzamlaOssz.ReadOnly = true;
-            this.dGV_SzamlaOssz.RowHeadersVisible = false;
-            this.dGV_SzamlaOssz.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.dGV_SzamlaOssz.Size = new System.Drawing.Size(444, 53);
-            this.dGV_SzamlaOssz.TabIndex = 2;
+            this.Fiz_mod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Fiz_mod.HeaderText = "Fizetési Mód";
+            this.Fiz_mod.Name = "Fiz_mod";
+            this.Fiz_mod.ReadOnly = true;
+            this.Fiz_mod.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // dataGridViewTextBoxColumn4
+            // Telj_date
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Nettó ár [Ft]";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Telj_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Telj_date.HeaderText = "Teljesítés dátuma";
+            this.Telj_date.Name = "Telj_date";
+            this.Telj_date.ReadOnly = true;
+            this.Telj_date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // dataGridViewTextBoxColumn5
+            // szamla_kelte
             // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.HeaderText = "ÁFA [%]";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.szamla_kelte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.szamla_kelte.HeaderText = "Számla kelte";
+            this.szamla_kelte.Name = "szamla_kelte";
+            this.szamla_kelte.ReadOnly = true;
+            this.szamla_kelte.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // dataGridViewTextBoxColumn6
+            // Fiz_hat
             // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.HeaderText = "ÁFA [Ft]";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Fiz_hat.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Fiz_hat.HeaderText = "Fizetési határidő";
+            this.Fiz_hat.Name = "Fiz_hat";
+            this.Fiz_hat.ReadOnly = true;
+            this.Fiz_hat.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // dataGridViewTextBoxColumn7
+            // textBox_SzTalloz
             // 
-            this.dataGridViewTextBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn7.HeaderText = "Bruttó ár [Ft]";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.textBox_SzTalloz.Location = new System.Drawing.Point(285, 532);
+            this.textBox_SzTalloz.Name = "textBox_SzTalloz";
+            this.textBox_SzTalloz.Size = new System.Drawing.Size(154, 20);
+            this.textBox_SzTalloz.TabIndex = 5;
+            // 
+            // button_Talloz
+            // 
+            this.button_Talloz.Location = new System.Drawing.Point(445, 530);
+            this.button_Talloz.Name = "button_Talloz";
+            this.button_Talloz.Size = new System.Drawing.Size(75, 23);
+            this.button_Talloz.TabIndex = 4;
+            this.button_Talloz.Text = "Tallózás";
+            this.button_Talloz.UseVisualStyleBackColor = true;
+            // 
+            // megrendelesek_comboBox
+            // 
+            this.megrendelesek_comboBox.FormattingEnabled = true;
+            this.megrendelesek_comboBox.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.megrendelesek_comboBox.Location = new System.Drawing.Point(92, 490);
+            this.megrendelesek_comboBox.Name = "megrendelesek_comboBox";
+            this.megrendelesek_comboBox.Size = new System.Drawing.Size(644, 21);
+            this.megrendelesek_comboBox.TabIndex = 3;
+            this.megrendelesek_comboBox.Text = "Válaszon a megrendelések közül, vagy tallózza ki a visszaigazolást";
+            this.megrendelesek_comboBox.SelectedIndexChanged += new System.EventHandler(this.megrendelesek_comboBox_SelectedIndexChanged);
+            // 
+            // button_Kiallitas
+            // 
+            this.button_Kiallitas.Enabled = false;
+            this.button_Kiallitas.Location = new System.Drawing.Point(345, 559);
+            this.button_Kiallitas.Name = "button_Kiallitas";
+            this.button_Kiallitas.Size = new System.Drawing.Size(109, 23);
+            this.button_Kiallitas.TabIndex = 2;
+            this.button_Kiallitas.Text = "Számla kiállítása";
+            this.button_Kiallitas.UseVisualStyleBackColor = true;
+            this.button_Kiallitas.Click += new System.EventHandler(this.button_Kiallitas_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBox_VevoTel);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.vevoszamlaszam_textBox);
+            this.groupBox2.Controls.Add(this.vevocime_textBox);
+            this.groupBox2.Controls.Add(this.vevoneve_textBox);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Location = new System.Drawing.Point(457, 41);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(344, 123);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Vevő adatai:";
+            // 
+            // textBox_VevoTel
+            // 
+            this.textBox_VevoTel.Location = new System.Drawing.Point(79, 65);
+            this.textBox_VevoTel.Name = "textBox_VevoTel";
+            this.textBox_VevoTel.Size = new System.Drawing.Size(259, 20);
+            this.textBox_VevoTel.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 68);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Telefonszám:";
+            // 
+            // vevoszamlaszam_textBox
+            // 
+            this.vevoszamlaszam_textBox.Location = new System.Drawing.Point(79, 91);
+            this.vevoszamlaszam_textBox.Name = "vevoszamlaszam_textBox";
+            this.vevoszamlaszam_textBox.Size = new System.Drawing.Size(259, 20);
+            this.vevoszamlaszam_textBox.TabIndex = 13;
+            // 
+            // vevocime_textBox
+            // 
+            this.vevocime_textBox.Location = new System.Drawing.Point(42, 42);
+            this.vevocime_textBox.Name = "vevocime_textBox";
+            this.vevocime_textBox.Size = new System.Drawing.Size(296, 20);
+            this.vevocime_textBox.TabIndex = 11;
+            // 
+            // vevoneve_textBox
+            // 
+            this.vevoneve_textBox.Location = new System.Drawing.Point(42, 19);
+            this.vevoneve_textBox.Name = "vevoneve_textBox";
+            this.vevoneve_textBox.Size = new System.Drawing.Size(296, 20);
+            this.vevoneve_textBox.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 94);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(68, 13);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Számlaszám:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(9, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(29, 13);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Cím:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Név:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label_Cegszsz);
+            this.groupBox1.Controls.Add(this.label_EVsz);
+            this.groupBox1.Controls.Add(this.label_Cegado);
+            this.groupBox1.Controls.Add(this.label_Cegcim);
+            this.groupBox1.Controls.Add(this.label_Cegnev);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Location = new System.Drawing.Point(36, 41);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(318, 123);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Szállító adatai:";
+            // 
+            // label_Cegszsz
+            // 
+            this.label_Cegszsz.AutoSize = true;
+            this.label_Cegszsz.Location = new System.Drawing.Point(17, 62);
+            this.label_Cegszsz.Name = "label_Cegszsz";
+            this.label_Cegszsz.Size = new System.Drawing.Size(74, 13);
+            this.label_Cegszsz.TabIndex = 8;
+            this.label_Cegszsz.Text = "label_Cegszsz";
+            // 
+            // label_EVsz
+            // 
+            this.label_EVsz.AutoSize = true;
+            this.label_EVsz.Location = new System.Drawing.Point(98, 98);
+            this.label_EVsz.Name = "label_EVsz";
+            this.label_EVsz.Size = new System.Drawing.Size(59, 13);
+            this.label_EVsz.TabIndex = 7;
+            this.label_EVsz.Text = "label_EVsz";
+            // 
+            // label_Cegado
+            // 
+            this.label_Cegado.AutoSize = true;
+            this.label_Cegado.Location = new System.Drawing.Point(71, 80);
+            this.label_Cegado.Name = "label_Cegado";
+            this.label_Cegado.Size = new System.Drawing.Size(72, 13);
+            this.label_Cegado.TabIndex = 6;
+            this.label_Cegado.Text = "label_Cegado";
+            // 
+            // label_Cegcim
+            // 
+            this.label_Cegcim.AutoSize = true;
+            this.label_Cegcim.Location = new System.Drawing.Point(17, 42);
+            this.label_Cegcim.Name = "label_Cegcim";
+            this.label_Cegcim.Size = new System.Drawing.Size(70, 13);
+            this.label_Cegcim.TabIndex = 5;
+            this.label_Cegcim.Text = "label_Cegcim";
+            // 
+            // label_Cegnev
+            // 
+            this.label_Cegnev.AutoSize = true;
+            this.label_Cegnev.Location = new System.Drawing.Point(17, 22);
+            this.label_Cegnev.Name = "label_Cegnev";
+            this.label_Cegnev.Size = new System.Drawing.Size(72, 13);
+            this.label_Cegnev.TabIndex = 4;
+            this.label_Cegnev.Text = "label_Cegnev";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "EV. nyilv. szám:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Adószám:";
+            // 
+            // welcome_label
+            // 
+            this.welcome_label.AutoSize = true;
+            this.welcome_label.Location = new System.Drawing.Point(619, 36);
+            this.welcome_label.Name = "welcome_label";
+            this.welcome_label.Size = new System.Drawing.Size(153, 13);
+            this.welcome_label.TabIndex = 1;
+            this.welcome_label.Text = "Üdvözöllek, \"Felhasználó név\"";
+            // 
+            // logout_btn
+            // 
+            this.logout_btn.Location = new System.Drawing.Point(778, 31);
+            this.logout_btn.Name = "logout_btn";
+            this.logout_btn.Size = new System.Drawing.Size(89, 23);
+            this.logout_btn.TabIndex = 24;
+            this.logout_btn.Text = "Kijelentkezés";
+            this.logout_btn.UseVisualStyleBackColor = true;
+            this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label19.ForeColor = System.Drawing.Color.Blue;
+            this.label19.Location = new System.Drawing.Point(296, 27);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(294, 25);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Vállalatirányítási Rendszer";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // HomeForm
             // 
@@ -1236,14 +1274,15 @@
             this.groupBox3.PerformLayout();
             this.tab_Szamla.ResumeLayout(false);
             this.tab_Szamla.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_SzamlaOssz)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_SzamlaTermekek)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dGV_Rendeles)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_Rendeles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_SzamlaTermekek)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dGV_SzamlaOssz)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1266,14 +1305,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox kibocsajtoszamlaszam_textBox;
-        private System.Windows.Forms.TextBox kibocsajtoadoszam_textBox;
-        private System.Windows.Forms.TextBox kibocsajtocime_textBox;
-        private System.Windows.Forms.TextBox kibocsajtoneve_textBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox megrendelesek_comboBox;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader Termeknev_columnHeader;
@@ -1337,7 +1370,7 @@
         private System.Windows.Forms.TextBox textBox_Kereses;
         private System.Windows.Forms.Button button_Vissza;
         private System.Windows.Forms.Button button_Talloz;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_SzTalloz;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox textBox_VevoTel;
         private System.Windows.Forms.Label label5;
@@ -1360,5 +1393,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label_EVsz;
+        private System.Windows.Forms.Label label_Cegado;
+        private System.Windows.Forms.Label label_Cegcim;
+        private System.Windows.Forms.Label label_Cegnev;
+        private System.Windows.Forms.Label label_Sorszam;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label_Cegszsz;
+        private System.Windows.Forms.Label label1;
     }
 }
