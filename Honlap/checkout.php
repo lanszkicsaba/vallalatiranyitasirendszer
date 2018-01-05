@@ -9,7 +9,7 @@ session_start();
 if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
     $conn = MySQLServerConnecter();
 
-    $query = "SELECT Id, Fullname, Address, Phonenumer  FROM honlapusers WHERE Username='" . $_SESSION['user'] . "'";
+    $query = "SELECT Id, Fullname, Address, Phonenumer, Taxnumber FROM honlapusers WHERE Username='" . $_SESSION['user'] . "'";
 	
     $s = $conn->query($query);
     $conn->close();
@@ -24,6 +24,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
     $writer->writeElement('nev', $row["Fullname"]);
     $writer->writeElement('cim', $row["Address"]);
     $writer->writeElement('telefonszam', $row["Phonenumer"]);
+    $writer->writeElement('adoszam', $row["Taxnumber"]);
     $writer->endElement();
     $writer->startElement("termekekadatai");
 	
