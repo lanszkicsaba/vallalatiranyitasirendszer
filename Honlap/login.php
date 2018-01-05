@@ -2,10 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
         <title>Bejelentkezés</title>
     </head>
     <body>
-        <h1>Belépés</h1>
+		<div class="container">
+			<div class="page-header">
+				<h1>Belépés</h1>
+			</div>
         <script>
             function validateForm() {
                 var x = document.forms["login"]["username"].value;
@@ -21,13 +25,34 @@
             }
         </script>
         <?php
-        echo '<form name="login" action="login_get.php" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
-            Login név:<input type="text" name="username"><br>
-            Jelszó:<input type="password" name="psw"><br>
-            <input type="submit" value="Bejelentkezés" name="submit">
+        echo '<form class="form-horizontal" name="login" action="login_get.php" onsubmit="return validateForm()" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label class="control-label col-sm-2">Login név:</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" name="username" placeholder="Felhasználónév"><br>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Jelszó:</label>
+					<div class="col-sm-2">
+						<input type="password" class="form-control" name="psw" placeholder="Jelszó"><br>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" value="Bejelentkezés" class="btn btn-default" name="submit">
+						<b>vagy</b>
+						<a href="./regisztracio.php">Regisztráció</a>
+					</div>
+				</div>
+				
             </form>';
-        echo '<h2>vagy</h2>';
-        echo '<h2><a href="./regisztracio.php">Regisztráció</a></h2>';
+			echo '<html>
+				<form action="index.php" method="post">
+				<input class="btn btn-default"  type="submit" value="Vissza"/>
+				</form> 
+			</html>';
+		echo '</div>';
         ?>
     </body>
 </html>
