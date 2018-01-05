@@ -33,7 +33,6 @@
             }
         </script>
         <?php
-        if (count($_SESSION) > 0 && $_SESSION["login"] == "FALSE") {
             echo '<form name="reg" class="form-horizontal" action="reg.php" onsubmit="return validateForm()" method="post">
 				<div class="form-group">
 					<label class="control-label col-sm-2">Név:</label>
@@ -81,9 +80,6 @@
 				<input class="btn btn-default"  type="submit" value="Vissza"/>
 				</form> 
 			</html>';
-        } else {
-            echo '<meta http-equiv="refresh" content="0; URL=index.php">';
-        }
         ?>
 	</div>
     </body>
