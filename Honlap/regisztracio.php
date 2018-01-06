@@ -22,7 +22,8 @@
                 var tel = document.forms["reg"]["f_telefon"].value;
                 var pw = document.forms["reg"]["f_jelszo"].value;
                 var pwk = document.forms["reg"]["f_kontroll"].value;
-                if (nev == "" || felh == "" || cim == "" || tel == "" || pw == "" || pwk == "") {
+                var ado = document.forms["reg"]["f_ado"].value;
+                if (nev == "" || felh == "" || cim == "" || tel == "" || ado == "" || pw == "" || pwk == "") {
                     alert("Kérem minden mezőt töltsön ki!");
                     return false;
                 }
@@ -56,6 +57,12 @@
 					<label class="control-label col-sm-2">Telefonszám:</label>
 					<div class="col-sm-2">
 						<input type="number" name="f_telefon" class="form-control" placeholder="Telefonszám">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Adószám:</label>
+					<div class="col-sm-2">
+						<input type="number" name="f_ado" class="form-control" placeholder="Adószám">
 					</div>
 				</div>
 				<div class="form-group">
