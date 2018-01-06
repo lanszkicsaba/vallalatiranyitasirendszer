@@ -8,6 +8,7 @@ using VIRConnect;
 using Muveletek;
 using System.Data;
 using System.Drawing.Printing;
+using System.Xml;
 
 namespace VIR
 {
@@ -676,15 +677,17 @@ namespace VIR
         }
 
         Rendelesek rend;
+
+        
         private void tabControl_Keszlet_Selected(object sender, TabControlEventArgs e)
         {
             if (betoltesbool == false)
             {
                 betoltesbool = true;
-                //Le kell tölteni azt, hogy hány darab megrendelése volt a bejelentkezett felhasználónak, így ahhoz igazítja a Rendelesek osztályban lévő tömbök méretét.
+                //Le kell tölteni azt, hogy hány sor van a rendeles_Adatok táblában, így ahhoz igazítja a Rendelesek osztályban lévő tömbök méretét.
                 int rendelesdb = 0;
                 DBConnect conn = new DBConnect();
-                string qry = "SELECT count(rendelesek.id) FROM rendelesek INNER JOIN honlapusers ON rendelesek.rendelo_id=honlapusers.id WHERE honlapusers.Username='" + Program.logForm.LoginName + "';";
+                string qry = "SELECT count(id) FROM rendeles_adatok;";
                 MySqlDataReader reader;
                 MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
                 conn.OpenConnection();
@@ -702,11 +705,6 @@ namespace VIR
                     vevoneve_textBox.Text = rend.rendelo_nev;
                     vevocime_textBox.Text = rend.rendelo_cim;
                     textBox_VevoTel.Text = rend.rendelo_tel;
-                    
-                   
-                    
-
-
                     //Rendelések betöltése a comboboxba
                     for (int i = 0; i < rend.rend_id.Length; i++)
                     {
@@ -716,15 +714,23 @@ namespace VIR
                         {
                             if (rend.rend_id[i - 1] != rend.rend_id[i])
                             {
-                                
-                                string item = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];                               
+                                                               
+                                ComboBoxItem item = new ComboBoxItem();
+                                item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
+                                item.Value = i;
                                 megrendelesek_comboBox.Items.Add(item);
+                                
+                                
                             }
                         }
                         else if (i==0)
                         {
-                            string item = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
+                            
+                            ComboBoxItem item = new ComboBoxItem();
+                            item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
+                            item.Value = i;
                             megrendelesek_comboBox.Items.Add(item);
+                            
                         }
                     }
                 }
@@ -734,7 +740,9 @@ namespace VIR
         private void megrendelesek_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {            
             //Számla sorszám label
-            label_Sorszam.Text = "Sorszám: " + rend.rend_ido[megrendelesek_comboBox.SelectedIndex].Year + "/" + rend.rend_id[megrendelesek_comboBox.SelectedIndex];
+            int rend_idx = (megrendelesek_comboBox.SelectedItem as ComboBoxItem).Value;
+
+            label_Sorszam.Text = "Sorszám: " + rend.rend_ido[rend_idx].Year + "/" + rend.rend_id[rend_idx];
             //Nyomtatás engedélyezése
             button_Kiallitas.Enabled = true;
             //Sorok törlése, ha másik megrendelés lesz kiválasztva
@@ -742,13 +750,13 @@ namespace VIR
             dgv_SzamlaTermekek.Rows.Clear();
             dGV_SzamlaOssz.Rows.Clear();
             //Datagridviewek feltöltése
-            dGV_Rendeles.Rows.Add(new object[] { "Átutalás", rend.rend_ido[megrendelesek_comboBox.SelectedIndex], DateTime.Now, DateTime.Now.AddDays(10) });
+            dGV_Rendeles.Rows.Add(new object[] { "Átutalás", rend.rend_ido[rend_idx], DateTime.Now, DateTime.Now.AddDays(10) });
             int ossznetto = 0;
             int osszbrutto = 0;
             int osszafa = 0;
             for (int i = 0; i < rend.rend_id.Length; i++)
             {
-                if (rend.rend_id[i]==rend.rend_id[megrendelesek_comboBox.SelectedIndex])
+                if (rend.rend_id[i]==rend.rend_id[rend_idx])
                 {
                     dgv_SzamlaTermekek.Rows.Add(new object[] {rend.termek_nev[i],rend.termek_ar[i], rend.termek_db[i], Math.Round((rend.termek_ar[i]*rend.termek_db[i])/1.27,0),27,Math.Round((rend.termek_ar[i]*rend.termek_db[i])-((rend.termek_ar[i]*rend.termek_db[i])/1.27),0),rend.termek_ar[i]*rend.termek_db[i]});
                     ossznetto += Convert.ToInt32((rend.termek_ar[i] * rend.termek_db[i]) / 1.27);
@@ -820,6 +828,68 @@ namespace VIR
             textBox_SzTalloz.Visible = true;
             button_Talloz.Visible = true;
             button_Kiallitas.Visible = true;
+        }
+
+        private void button_Talloz_Click(object sender, EventArgs e)
+        {
+            
+            openFileDialog1.InitialDirectory = ".";
+            openFileDialog1.Filter = "Xml files (*.xml)|*.xml";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                textBox_SzTalloz.Text = Path.GetDirectoryName(openFileDialog1.FileName);
+                XmlDocument doc = new XmlDocument();
+                doc.Load(openFileDialog1.FileName);
+
+                label_Sorszam.Text = "Sorszám: " + doc.SelectSingleNode("rendeles/rendelesadatai/rendid").InnerText;
+                vevoneve_textBox.Text = doc.SelectSingleNode("rendeles/rendeloadatai/nev").InnerText;
+                vevocime_textBox.Text = doc.SelectSingleNode("rendeles/rendeloadatai/cim").InnerText;
+                textBox_VevoTel.Text = doc.SelectSingleNode("rendeles/rendeloadatai/telefonszam").InnerText;
+                textBox_Vevoado.Text = doc.SelectSingleNode("rendeles/rendeloadatai/adoszam").InnerText;
+                XmlNodeList termekek = doc.SelectNodes("rendeles/termekekadatai/termek");
+                dGV_Rendeles.Rows.Clear();
+                dgv_SzamlaTermekek.Rows.Clear();
+                dGV_SzamlaOssz.Rows.Clear();
+                int ossznetto = 0;
+                int osszbrutto = 0;
+                int osszafa = 0;
+                    foreach (XmlNode termek in termekek)
+                    {
+                        /*dgv_SzamlaTermekek.Rows.Add(new object[] {
+                         * rend.termek_nev[i],
+                         * rend.termek_ar[i],
+                         * rend.termek_db[i],
+                         * Math.Round((rend.termek_ar[i]*rend.termek_db[i])/1.27,0),
+                         * 27,
+                         * Math.Round((rend.termek_ar[i]*rend.termek_db[i])-((rend.termek_ar[i]*rend.termek_db[i])/1.27),0),
+                         * rend.termek_ar[i]*rend.termek_db[i]
+                         * });
+                        */                        
+                        int ar = int.Parse(termek["ara"].InnerText.Replace(" Ft",""));
+                        int db = int.Parse(termek["mennyiseg"].InnerText.Replace(" db",""));
+                        
+                        dgv_SzamlaTermekek.Rows.Add(new object[] {termek["termekneve"].InnerText,ar,db,Math.Round((ar*db)/1.27,0),27,Math.Round((ar*db)-((ar*db)/1.27),0),ar*db });
+                        ossznetto += Convert.ToInt32((ar * db) / 1.27);
+                        osszbrutto += ar * db;
+                        osszafa += Convert.ToInt32((ar * db) - ((ar * db) / 1.27));
+                    }
+                    dGV_SzamlaOssz.Rows.Add(new object[] { ossznetto, 27, osszafa, osszbrutto });
+                //Alap kijelölés törlése
+                dGV_Rendeles.ClearSelection();
+                dGV_SzamlaOssz.ClearSelection();
+                dgv_SzamlaTermekek.ClearSelection();
+                button_Kiallitas.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Nem sikerült kiolvasni az adatokat.\n" + ex.Message,"Hiba");
+                }
+
+            }
         }
 
     }

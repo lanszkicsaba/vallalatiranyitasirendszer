@@ -116,14 +116,13 @@
             this.Telj_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.szamla_kelte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fiz_hat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox_SzTalloz = new System.Windows.Forms.TextBox();
             this.button_Talloz = new System.Windows.Forms.Button();
             this.megrendelesek_comboBox = new System.Windows.Forms.ComboBox();
             this.button_Kiallitas = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox_VevoTel = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.vevoszamlaszam_textBox = new System.Windows.Forms.TextBox();
+            this.textBox_Vevoado = new System.Windows.Forms.TextBox();
             this.vevocime_textBox = new System.Windows.Forms.TextBox();
             this.vevoneve_textBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -141,6 +140,8 @@
             this.logout_btn = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.textBox_SzTalloz = new System.Windows.Forms.TextBox();
             this.tabControl_Keszlet.SuspendLayout();
             this.Tab_Keszlet.SuspendLayout();
             this.groupBox_Kereses.SuspendLayout();
@@ -1016,13 +1017,6 @@
             this.Fiz_hat.ReadOnly = true;
             this.Fiz_hat.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // textBox_SzTalloz
-            // 
-            this.textBox_SzTalloz.Location = new System.Drawing.Point(285, 532);
-            this.textBox_SzTalloz.Name = "textBox_SzTalloz";
-            this.textBox_SzTalloz.Size = new System.Drawing.Size(154, 20);
-            this.textBox_SzTalloz.TabIndex = 5;
-            // 
             // button_Talloz
             // 
             this.button_Talloz.Location = new System.Drawing.Point(445, 530);
@@ -1031,6 +1025,7 @@
             this.button_Talloz.TabIndex = 4;
             this.button_Talloz.Text = "Tallózás";
             this.button_Talloz.UseVisualStyleBackColor = true;
+            this.button_Talloz.Click += new System.EventHandler(this.button_Talloz_Click);
             // 
             // megrendelesek_comboBox
             // 
@@ -1058,7 +1053,7 @@
             // 
             this.groupBox2.Controls.Add(this.textBox_VevoTel);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.vevoszamlaszam_textBox);
+            this.groupBox2.Controls.Add(this.textBox_Vevoado);
             this.groupBox2.Controls.Add(this.vevocime_textBox);
             this.groupBox2.Controls.Add(this.vevoneve_textBox);
             this.groupBox2.Controls.Add(this.label7);
@@ -1087,12 +1082,12 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Telefonszám:";
             // 
-            // vevoszamlaszam_textBox
+            // textBox_Vevoado
             // 
-            this.vevoszamlaszam_textBox.Location = new System.Drawing.Point(79, 91);
-            this.vevoszamlaszam_textBox.Name = "vevoszamlaszam_textBox";
-            this.vevoszamlaszam_textBox.Size = new System.Drawing.Size(259, 20);
-            this.vevoszamlaszam_textBox.TabIndex = 13;
+            this.textBox_Vevoado.Location = new System.Drawing.Point(79, 91);
+            this.textBox_Vevoado.Name = "textBox_Vevoado";
+            this.textBox_Vevoado.Size = new System.Drawing.Size(259, 20);
+            this.textBox_Vevoado.TabIndex = 13;
             // 
             // vevocime_textBox
             // 
@@ -1113,9 +1108,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(9, 94);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 13);
+            this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 8;
-            this.label7.Text = "Számlaszám:";
+            this.label7.Text = "Adószám:";
             // 
             // label9
             // 
@@ -1156,45 +1151,45 @@
             this.label_Cegszsz.AutoSize = true;
             this.label_Cegszsz.Location = new System.Drawing.Point(17, 62);
             this.label_Cegszsz.Name = "label_Cegszsz";
-            this.label_Cegszsz.Size = new System.Drawing.Size(74, 13);
+            this.label_Cegszsz.Size = new System.Drawing.Size(157, 13);
             this.label_Cegszsz.TabIndex = 8;
-            this.label_Cegszsz.Text = "label_Cegszsz";
+            this.label_Cegszsz.Text = "13370078-12344321-00000000";
             // 
             // label_EVsz
             // 
             this.label_EVsz.AutoSize = true;
             this.label_EVsz.Location = new System.Drawing.Point(98, 98);
             this.label_EVsz.Name = "label_EVsz";
-            this.label_EVsz.Size = new System.Drawing.Size(59, 13);
+            this.label_EVsz.Size = new System.Drawing.Size(55, 13);
             this.label_EVsz.TabIndex = 7;
-            this.label_EVsz.Text = "label_EVsz";
+            this.label_EVsz.Text = "21387114";
             // 
             // label_Cegado
             // 
             this.label_Cegado.AutoSize = true;
             this.label_Cegado.Location = new System.Drawing.Point(71, 80);
             this.label_Cegado.Name = "label_Cegado";
-            this.label_Cegado.Size = new System.Drawing.Size(72, 13);
+            this.label_Cegado.Size = new System.Drawing.Size(79, 13);
             this.label_Cegado.TabIndex = 6;
-            this.label_Cegado.Text = "label_Cegado";
+            this.label_Cegado.Text = "12348438-9-01";
             // 
             // label_Cegcim
             // 
             this.label_Cegcim.AutoSize = true;
             this.label_Cegcim.Location = new System.Drawing.Point(17, 42);
             this.label_Cegcim.Name = "label_Cegcim";
-            this.label_Cegcim.Size = new System.Drawing.Size(70, 13);
+            this.label_Cegcim.Size = new System.Drawing.Size(161, 13);
             this.label_Cegcim.TabIndex = 5;
-            this.label_Cegcim.Text = "label_Cegcim";
+            this.label_Cegcim.Text = "3200 Gyöngyös, Püspöki út 999.";
             // 
             // label_Cegnev
             // 
             this.label_Cegnev.AutoSize = true;
             this.label_Cegnev.Location = new System.Drawing.Point(17, 22);
             this.label_Cegnev.Name = "label_Cegnev";
-            this.label_Cegnev.Size = new System.Drawing.Size(72, 13);
+            this.label_Cegnev.Size = new System.Drawing.Size(114, 13);
             this.label_Cegnev.TabIndex = 4;
-            this.label_Cegnev.Text = "label_Cegnev";
+            this.label_Cegnev.Text = "Rendszerfejlesztés Kft.";
             // 
             // label4
             // 
@@ -1249,6 +1244,17 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // textBox_SzTalloz
+            // 
+            this.textBox_SzTalloz.Location = new System.Drawing.Point(285, 532);
+            this.textBox_SzTalloz.Name = "textBox_SzTalloz";
+            this.textBox_SzTalloz.Size = new System.Drawing.Size(154, 20);
+            this.textBox_SzTalloz.TabIndex = 5;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1298,7 +1304,7 @@
         private System.Windows.Forms.Button tableexport_btn;
         private System.Windows.Forms.Button button_Kiallitas;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox vevoszamlaszam_textBox;
+        private System.Windows.Forms.TextBox textBox_Vevoado;
         private System.Windows.Forms.TextBox vevocime_textBox;
         private System.Windows.Forms.TextBox vevoneve_textBox;
         private System.Windows.Forms.Label label7;
@@ -1370,7 +1376,6 @@
         private System.Windows.Forms.TextBox textBox_Kereses;
         private System.Windows.Forms.Button button_Vissza;
         private System.Windows.Forms.Button button_Talloz;
-        private System.Windows.Forms.TextBox textBox_SzTalloz;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox textBox_VevoTel;
         private System.Windows.Forms.Label label5;
@@ -1401,5 +1406,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label_Cegszsz;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox textBox_SzTalloz;
     }
 }

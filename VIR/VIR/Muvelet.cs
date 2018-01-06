@@ -29,8 +29,7 @@ namespace Muveletek
                     INNER JOIN honlapusers ON rendelesek.rendelo_id = honlapusers.id)
                     INNER JOIN rendeles_adatok ON rendelesek.id = rendeles_adatok.azon)
 					INNER JOIN termekek ON rendeles_adatok.termek_id = termekek.id
-                  WHERE
-                  honlapusers.Username='" + VIR.Program.logForm.LoginName + "' ORDER BY rendelesek.id;";
+                    ORDER BY rendelesek.id;";
                 //DataReader deklarálása az adatok olvasásához
                 MySqlDataReader reader;
                 MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 include 'dbconnect.php';
 
@@ -28,7 +28,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
     $writer->writeElement('telefonszam', $row["Phonenumer"]); //Telefonszám
     $writer->writeElement('adoszam', $row["Taxnumber"]); //adószám
     $writer->endElement(); //Melléklevél lezárása
-    $writer->startElement("termekekadatai"); //melléklevél létrehozása
+    
 
     $conn = MySQLServerConnecter(); //kapcsolat megnyitás
     date_default_timezone_set("Europe/Budapest"); //időzóna
@@ -39,7 +39,12 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
     $conn->close(); //kapcsolat lezárása
 
     $rendelesid = $s->fetch_assoc(); //rendelési azonosító
-    
+	$writer->startElement("rendelesadatai"); //Melléklevél létrehozása
+	$writer->writeElement('rendid',date("Y")."/".$rendelesid["id"]); //Rendelés sorszáma
+	$writer->writeElement('rendido',date("Y.m.d h:i:sa")); //Rendelés pontos ideje
+	$writer->endElement(); //Melléklevél lezárása
+    $writer->startElement("termekekadatai"); //melléklevél létrehozása
+	
     for ($index = 0; $index < count($_SESSION["cart2"]); $index++) {
 
         $conn = MySQLServerConnecter(); //kapcsolat megnyitás
@@ -51,10 +56,11 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
 
         $row = $s->fetch_assoc(); //sorok felbontása
         if (isset($_POST[$index])) {
+			$writer->startElement("termek"); //Melléklevél létrehozása
             $writer->writeElement('termekneve', $row["termeknev"]); //termékneve
             $writer->writeElement('mennyiseg', $_POST[$index] . ' db'); //termék mennyisége
             $writer->writeElement('ara', $_POST[$index] * $row["ar"] . ' Ft'); //ára számítva
-
+			$writer->endElement(); //Melléklevél lezárása
             $conn = MySQLServerConnecter(); //kapcsolat megnyitás
             $queryinsert = "INSERT INTO rendeles_adatok VALUES (NULL,'" . $rendelesid["id"] . "','" . $row["id"] . "','" . $_POST[$index] . "');"; //megrendelt termékek feltöltése
             $conn->query($queryinsert); //query lefutatása
