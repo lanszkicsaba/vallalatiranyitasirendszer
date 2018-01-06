@@ -1,0 +1,31 @@
+﻿Jegyzőkönyv - Meeting of Minutes
+
+Résztvevők:
+Lanszki Csaba [Fejlesztő]
+Sarlósi Patrik [Fejlesztő]
+Szabolcs Gábor [Fejlesztő]
+Kiss József [Megrendelő]
+
+Helyszín:
+Messenger konferencia
+
+Időpont:
+2018.01.05.
+
+A nyitott kérdések/feladatok:
+F1: A számlageneráláshoz (F.66) szükséges a vevő adószáma és a rendelés adatainak mentése az XML-be.
+F2: Az F1 magával vonja a weblap felületén (Regisztráció, adatmódosítás) és a kódjában történő módosításokat.
+
+K1: A rendszertesztelési terv (F.68) milyen kiterjesztésben legyen mentve?
+K2: A cégadatokat hogyan tároljuk? Legyen lokális fájl, adatbázis tábla, belegyen égetve a programba?
+K3: Fizetési módok mik legyenek és a választásuk hogyan történjen?
+
+
+A találkozón hozott határozatok:
+F1,F2: Új feladatokba ki kell írni a megvalósításukat.
+K1: Először .docx, majd a benne foglaltak átvitele .txt-be.
+K2: Az egyszerűség és az egyediség kedvéért beleégetjük [Label] a számlageneráló formba a cégadatokat. Módosulás esetén a fejlesztő csoport elvégzi a megfelelő módosításokat.
+K3: A megrendelő szeretne két opciót: Átutalálos és utánvét. A megrendelés típusa legyen feltültetve az XML-be és a rendelesek adatbázistáblában is új oszlopként (fiz_mod). A weblap felületén a kosárnál rádió gombok segítségével lehessen választani. A design a fejlesztőkre van bízva.
+
+Nyitott pontok:
+-
