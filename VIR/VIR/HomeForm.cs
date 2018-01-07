@@ -27,10 +27,13 @@ namespace VIR
         //Ha már egyszer betöltöttük a számla adatokat kattintáskor, akkor true és többször nem fogja.
         bool betoltesbool = false;
         //private Rendelesek rend = new Rendelesek();
-        
+        int oldwidth = 0;
+        int oldheight = 0;
         public HomeForm()
         {
             InitializeComponent();
+            oldwidth = this.Height;
+            oldheight = this.Width;
         }
 
 
@@ -81,7 +84,7 @@ namespace VIR
             timer.Start();  //időzítő indítása
             timer.Tick += new EventHandler(frissites_btn_Click); //meghívja a frissítést
             timer.Interval = (10 * 1000); // 10 secs frissít
-
+           
             
           //  muvelet.getRend(rend);
             
@@ -776,15 +779,18 @@ namespace VIR
 
         private void Doc_PrintPage(object sender, PrintPageEventArgs e)
         {
+            //A számla Tabon lévő Panel rárajzolása egy Bitmapra.
             float x = e.MarginBounds.Left;
             float y = e.MarginBounds.Top;
             Bitmap bmp = new Bitmap(this.tab_Szamla.Width, this.tab_Szamla.Height);
-            this.tab_Szamla.DrawToBitmap(bmp, new Rectangle(0, 0, this.tab_Szamla.Width, this.tab_Szamla.Height));
-           
+            
+            this.tab_Szamla.DrawToBitmap(bmp, new Rectangle(0,0,tab_Szamla.Width,tab_Szamla.Height));
             e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             e.Graphics.DrawImage((Image)bmp,x,y);
+            
 
         }
+
         private void button_Kiallitas_Click(object sender, EventArgs e)
         {
             int boxheight = groupBox5.Height;
@@ -803,22 +809,30 @@ namespace VIR
 
 
             dGV_SzamlaOssz.Parent = groupBox6;
-
-            
+            int newwidth = this.Width;
+            int newheight = this.Height;
+            this.Width = this.MaximumSize.Width;
+            this.Height = this.MaximumSize.Height;
 
             PrintDocument doc = new PrintDocument();
             doc.DefaultPageSettings.Landscape = true;
+            doc.OriginAtMargins = false;
             doc.DefaultPageSettings.PrinterResolution.Kind = PrinterResolutionKind.High;
+            
             doc.PrintPage += this.Doc_PrintPage;
            // PrintDialog pdlg = new PrintDialog();
+            
             PrintPreviewDialog pdlg = new PrintPreviewDialog();
            
             pdlg.Document = doc;
-           /* if (pdlg.ShowDialog() == DialogResult.OK)
-            {
-                doc.Print();
-            }*/
+           // if (pdlg.ShowDialog() == DialogResult.OK)
+           // {
+            //    doc.Print();
+          //  }
+
             pdlg.ShowDialog();
+            this.Width = newwidth;
+            this.Height = newheight;
 
             groupBox5.Height = boxheight;
             dgv_SzamlaTermekek.Height = dgvheight;
