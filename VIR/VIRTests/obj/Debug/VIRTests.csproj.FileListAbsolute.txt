@@ -8,3 +8,5 @@ C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogi
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\obj\Debug\VIRTests.csprojResolveAssemblyReference.cache
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\obj\Debug\VIRTests.dll
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\obj\Debug\VIRTests.pdb
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIRTests\obj\Debug\VIRTests.csprojResolveAssemblyReference.cache
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIRTests\obj\Debug\VIRTests.dll

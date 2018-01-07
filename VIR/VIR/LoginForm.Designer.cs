@@ -48,7 +48,7 @@
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonLogin.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonLogin.Image = ((System.Drawing.Image)(resources.GetObject("buttonLogin.Image")));
             this.buttonLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLogin.Location = new System.Drawing.Point(3, 14);
@@ -87,11 +87,11 @@
             // 
             this.labelUsername.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelUsername.AutoSize = true;
-            this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelUsername.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelUsername.ForeColor = System.Drawing.Color.Navy;
-            this.labelUsername.Location = new System.Drawing.Point(94, 124);
+            this.labelUsername.Location = new System.Drawing.Point(99, 124);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(121, 17);
+            this.labelUsername.Size = new System.Drawing.Size(111, 17);
             this.labelUsername.TabIndex = 3;
             this.labelUsername.Text = "Felhasználónév";
             // 
@@ -99,11 +99,11 @@
             // 
             this.labelPasswd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelPasswd.AutoSize = true;
-            this.labelPasswd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelPasswd.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelPasswd.ForeColor = System.Drawing.Color.Navy;
-            this.labelPasswd.Location = new System.Drawing.Point(128, 173);
+            this.labelPasswd.Location = new System.Drawing.Point(130, 173);
             this.labelPasswd.Name = "labelPasswd";
-            this.labelPasswd.Size = new System.Drawing.Size(54, 17);
+            this.labelPasswd.Size = new System.Drawing.Size(49, 17);
             this.labelPasswd.TabIndex = 4;
             this.labelPasswd.Text = "Jelszó";
             // 
@@ -111,17 +111,18 @@
             // 
             this.labelMessage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelMessage.AutoSize = true;
+            this.labelMessage.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelMessage.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.labelMessage.Location = new System.Drawing.Point(22, 322);
+            this.labelMessage.Location = new System.Drawing.Point(3, 322);
             this.labelMessage.Name = "labelMessage";
-            this.labelMessage.Size = new System.Drawing.Size(265, 13);
+            this.labelMessage.Size = new System.Drawing.Size(303, 16);
             this.labelMessage.TabIndex = 5;
             this.labelMessage.Text = "A belépéshez add meg a felhasználónevet és a jelszót.";
             // 
             // buttonLogout
             // 
             this.buttonLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonLogout.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.buttonLogout.Image = ((System.Drawing.Image)(resources.GetObject("buttonLogout.Image")));
             this.buttonLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLogout.Location = new System.Drawing.Point(167, 14);
@@ -135,7 +136,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Location = new System.Drawing.Point(130, 366);
+            this.pictureBox1.Location = new System.Drawing.Point(130, 368);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.TabIndex = 7;
@@ -167,7 +168,7 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxUserName, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelPasswd, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBoxPasswd, 0, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 14);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -197,7 +198,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(334, 472);
+            this.ClientSize = new System.Drawing.Size(334, 476);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

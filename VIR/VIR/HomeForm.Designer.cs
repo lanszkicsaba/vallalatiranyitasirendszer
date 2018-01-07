@@ -32,6 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeForm));
             this.tabControl_Keszlet = new System.Windows.Forms.TabControl();
             this.Tab_Keszlet = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.frissites_btn = new System.Windows.Forms.Button();
+            this.tableexport_btn = new System.Windows.Forms.Button();
             this.groupBox_Kereses = new System.Windows.Forms.GroupBox();
             this.button_Vissza = new System.Windows.Forms.Button();
             this.checkBox_Keszleten = new System.Windows.Forms.CheckBox();
@@ -42,8 +46,7 @@
             this.checkBox_Ar = new System.Windows.Forms.CheckBox();
             this.checkBox_Nev = new System.Windows.Forms.CheckBox();
             this.textBox_Kereses = new System.Windows.Forms.TextBox();
-            this.frissites_btn = new System.Windows.Forms.Button();
-            this.label30 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.termekKep_pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.modositasUrites_btn = new System.Windows.Forms.Button();
@@ -91,7 +94,6 @@
             this.Leiras_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Suly_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Keszleten_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tableexport_btn = new System.Windows.Forms.Button();
             this.tab_Szamla = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.label_Sorszam = new System.Windows.Forms.Label();
@@ -139,12 +141,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.welcome_label = new System.Windows.Forms.Label();
             this.logout_btn = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl_Keszlet.SuspendLayout();
             this.Tab_Keszlet.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupBox_Kereses.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.termekKep_pictureBox)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -156,39 +162,86 @@
             ((System.ComponentModel.ISupportInitialize)(this.dGV_Rendeles)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl_Keszlet
             // 
             this.tabControl_Keszlet.Controls.Add(this.Tab_Keszlet);
             this.tabControl_Keszlet.Controls.Add(this.tab_Szamla);
-            this.tabControl_Keszlet.Location = new System.Drawing.Point(12, 55);
+            this.tabControl_Keszlet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl_Keszlet.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.tabControl_Keszlet.Location = new System.Drawing.Point(3, 33);
             this.tabControl_Keszlet.Name = "tabControl_Keszlet";
             this.tabControl_Keszlet.SelectedIndex = 0;
-            this.tabControl_Keszlet.Size = new System.Drawing.Size(860, 627);
+            this.tabControl_Keszlet.Size = new System.Drawing.Size(854, 648);
             this.tabControl_Keszlet.TabIndex = 0;
             this.tabControl_Keszlet.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Keszlet_Selected);
             // 
             // Tab_Keszlet
             // 
-            this.Tab_Keszlet.Controls.Add(this.groupBox_Kereses);
-            this.Tab_Keszlet.Controls.Add(this.frissites_btn);
-            this.Tab_Keszlet.Controls.Add(this.label30);
-            this.Tab_Keszlet.Controls.Add(this.termekKep_pictureBox);
-            this.Tab_Keszlet.Controls.Add(this.groupBox4);
-            this.Tab_Keszlet.Controls.Add(this.groupBox3);
+            this.Tab_Keszlet.Controls.Add(this.tableLayoutPanel3);
+            this.Tab_Keszlet.Controls.Add(this.tableLayoutPanel2);
             this.Tab_Keszlet.Controls.Add(this.listView1);
-            this.Tab_Keszlet.Controls.Add(this.tableexport_btn);
-            this.Tab_Keszlet.Location = new System.Drawing.Point(4, 22);
+            this.Tab_Keszlet.Location = new System.Drawing.Point(4, 25);
             this.Tab_Keszlet.Name = "Tab_Keszlet";
             this.Tab_Keszlet.Padding = new System.Windows.Forms.Padding(3);
-            this.Tab_Keszlet.Size = new System.Drawing.Size(852, 601);
+            this.Tab_Keszlet.Size = new System.Drawing.Size(846, 619);
             this.Tab_Keszlet.TabIndex = 0;
             this.Tab_Keszlet.Text = "Készlet";
             this.Tab_Keszlet.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.48238F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.51762F));
+            this.tableLayoutPanel3.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox_Kereses, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(834, 62);
+            this.tableLayoutPanel3.TabIndex = 28;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.frissites_btn);
+            this.panel2.Controls.Add(this.tableexport_btn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(320, 62);
+            this.panel2.TabIndex = 0;
+            // 
+            // frissites_btn
+            // 
+            this.frissites_btn.Location = new System.Drawing.Point(3, 34);
+            this.frissites_btn.Name = "frissites_btn";
+            this.frissites_btn.Size = new System.Drawing.Size(90, 23);
+            this.frissites_btn.TabIndex = 1;
+            this.frissites_btn.Text = "Frissítés";
+            this.frissites_btn.UseVisualStyleBackColor = true;
+            this.frissites_btn.Click += new System.EventHandler(this.frissites_btn_Click);
+            // 
+            // tableexport_btn
+            // 
+            this.tableexport_btn.Location = new System.Drawing.Point(99, 34);
+            this.tableexport_btn.Name = "tableexport_btn";
+            this.tableexport_btn.Size = new System.Drawing.Size(98, 23);
+            this.tableexport_btn.TabIndex = 2;
+            this.tableexport_btn.Text = "Tábla exportálás";
+            this.tableexport_btn.UseVisualStyleBackColor = true;
+            this.tableexport_btn.Click += new System.EventHandler(this.tableexport_btn_Click);
+            // 
             // groupBox_Kereses
             // 
+            this.groupBox_Kereses.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_Kereses.Controls.Add(this.button_Vissza);
             this.groupBox_Kereses.Controls.Add(this.checkBox_Keszleten);
             this.groupBox_Kereses.Controls.Add(this.checkBox_Leiras);
@@ -198,16 +251,16 @@
             this.groupBox_Kereses.Controls.Add(this.checkBox_Ar);
             this.groupBox_Kereses.Controls.Add(this.checkBox_Nev);
             this.groupBox_Kereses.Controls.Add(this.textBox_Kereses);
-            this.groupBox_Kereses.Location = new System.Drawing.Point(449, 0);
+            this.groupBox_Kereses.Location = new System.Drawing.Point(449, 3);
             this.groupBox_Kereses.Name = "groupBox_Kereses";
-            this.groupBox_Kereses.Size = new System.Drawing.Size(360, 62);
+            this.groupBox_Kereses.Size = new System.Drawing.Size(382, 56);
             this.groupBox_Kereses.TabIndex = 26;
             this.groupBox_Kereses.TabStop = false;
             this.groupBox_Kereses.Text = "Keresés";
             // 
             // button_Vissza
             // 
-            this.button_Vissza.Location = new System.Drawing.Point(300, 9);
+            this.button_Vissza.Location = new System.Drawing.Point(319, 9);
             this.button_Vissza.Name = "button_Vissza";
             this.button_Vissza.Size = new System.Drawing.Size(55, 23);
             this.button_Vissza.TabIndex = 32;
@@ -218,9 +271,9 @@
             // checkBox_Keszleten
             // 
             this.checkBox_Keszleten.AutoSize = true;
-            this.checkBox_Keszleten.Location = new System.Drawing.Point(292, 35);
+            this.checkBox_Keszleten.Location = new System.Drawing.Point(307, 35);
             this.checkBox_Keszleten.Name = "checkBox_Keszleten";
-            this.checkBox_Keszleten.Size = new System.Drawing.Size(72, 17);
+            this.checkBox_Keszleten.Size = new System.Drawing.Size(77, 20);
             this.checkBox_Keszleten.TabIndex = 30;
             this.checkBox_Keszleten.Text = "Készleten";
             this.checkBox_Keszleten.UseVisualStyleBackColor = true;
@@ -228,9 +281,9 @@
             // checkBox_Leiras
             // 
             this.checkBox_Leiras.AutoSize = true;
-            this.checkBox_Leiras.Location = new System.Drawing.Point(237, 35);
+            this.checkBox_Leiras.Location = new System.Drawing.Point(249, 35);
             this.checkBox_Leiras.Name = "checkBox_Leiras";
-            this.checkBox_Leiras.Size = new System.Drawing.Size(56, 17);
+            this.checkBox_Leiras.Size = new System.Drawing.Size(56, 20);
             this.checkBox_Leiras.TabIndex = 29;
             this.checkBox_Leiras.Text = "Leírás";
             this.checkBox_Leiras.UseVisualStyleBackColor = true;
@@ -238,16 +291,16 @@
             // checkBox_Kategoria
             // 
             this.checkBox_Kategoria.AutoSize = true;
-            this.checkBox_Kategoria.Location = new System.Drawing.Point(167, 35);
+            this.checkBox_Kategoria.Location = new System.Drawing.Point(172, 35);
             this.checkBox_Kategoria.Name = "checkBox_Kategoria";
-            this.checkBox_Kategoria.Size = new System.Drawing.Size(71, 17);
+            this.checkBox_Kategoria.Size = new System.Drawing.Size(80, 20);
             this.checkBox_Kategoria.TabIndex = 28;
             this.checkBox_Kategoria.Text = "Kategória";
             this.checkBox_Kategoria.UseVisualStyleBackColor = true;
             // 
             // button_Keres
             // 
-            this.button_Keres.Location = new System.Drawing.Point(242, 9);
+            this.button_Keres.Location = new System.Drawing.Point(260, 9);
             this.button_Keres.Name = "button_Keres";
             this.button_Keres.Size = new System.Drawing.Size(55, 23);
             this.button_Keres.TabIndex = 31;
@@ -260,7 +313,7 @@
             this.checkBox_Mennyiseg.AutoSize = true;
             this.checkBox_Mennyiseg.Location = new System.Drawing.Point(90, 35);
             this.checkBox_Mennyiseg.Name = "checkBox_Mennyiseg";
-            this.checkBox_Mennyiseg.Size = new System.Drawing.Size(77, 17);
+            this.checkBox_Mennyiseg.Size = new System.Drawing.Size(85, 20);
             this.checkBox_Mennyiseg.TabIndex = 27;
             this.checkBox_Mennyiseg.Text = "Mennyiség";
             this.checkBox_Mennyiseg.UseVisualStyleBackColor = true;
@@ -270,7 +323,7 @@
             this.checkBox_Ar.AutoSize = true;
             this.checkBox_Ar.Location = new System.Drawing.Point(52, 35);
             this.checkBox_Ar.Name = "checkBox_Ar";
-            this.checkBox_Ar.Size = new System.Drawing.Size(36, 17);
+            this.checkBox_Ar.Size = new System.Drawing.Size(37, 20);
             this.checkBox_Ar.TabIndex = 26;
             this.checkBox_Ar.Text = "Ár";
             this.checkBox_Ar.UseVisualStyleBackColor = true;
@@ -280,7 +333,7 @@
             this.checkBox_Nev.AutoSize = true;
             this.checkBox_Nev.Location = new System.Drawing.Point(6, 35);
             this.checkBox_Nev.Name = "checkBox_Nev";
-            this.checkBox_Nev.Size = new System.Drawing.Size(46, 17);
+            this.checkBox_Nev.Size = new System.Drawing.Size(50, 20);
             this.checkBox_Nev.TabIndex = 25;
             this.checkBox_Nev.Text = "Név";
             this.checkBox_Nev.UseVisualStyleBackColor = true;
@@ -289,32 +342,31 @@
             // 
             this.textBox_Kereses.Location = new System.Drawing.Point(57, 9);
             this.textBox_Kereses.Name = "textBox_Kereses";
-            this.textBox_Kereses.Size = new System.Drawing.Size(179, 20);
+            this.textBox_Kereses.Size = new System.Drawing.Size(197, 21);
             this.textBox_Kereses.TabIndex = 24;
             // 
-            // frissites_btn
+            // tableLayoutPanel2
             // 
-            this.frissites_btn.Location = new System.Drawing.Point(66, 35);
-            this.frissites_btn.Name = "frissites_btn";
-            this.frissites_btn.Size = new System.Drawing.Size(75, 23);
-            this.frissites_btn.TabIndex = 1;
-            this.frissites_btn.Text = "Frissítés";
-            this.frissites_btn.UseVisualStyleBackColor = true;
-            this.frissites_btn.Click += new System.EventHandler(this.frissites_btn_Click);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(394, 321);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(64, 13);
-            this.label30.TabIndex = 8;
-            this.label30.Text = "Termék kép";
+            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 248F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 299F));
+            this.tableLayoutPanel2.Controls.Add(this.termekKep_pictureBox, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox4, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBox3, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 278);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(831, 332);
+            this.tableLayoutPanel2.TabIndex = 27;
             // 
             // termekKep_pictureBox
             // 
+            this.termekKep_pictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.termekKep_pictureBox.ErrorImage = ((System.Drawing.Image)(resources.GetObject("termekKep_pictureBox.ErrorImage")));
-            this.termekKep_pictureBox.Location = new System.Drawing.Point(357, 337);
+            this.termekKep_pictureBox.Location = new System.Drawing.Point(333, 91);
             this.termekKep_pictureBox.Name = "termekKep_pictureBox";
             this.termekKep_pictureBox.Size = new System.Drawing.Size(150, 150);
             this.termekKep_pictureBox.TabIndex = 7;
@@ -322,6 +374,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.modositasUrites_btn);
             this.groupBox4.Controls.Add(this.checkBox_KeszletenModositas);
             this.groupBox4.Controls.Add(this.richTextBox_LeirasModositas);
@@ -340,16 +394,16 @@
             this.groupBox4.Controls.Add(this.label15);
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Location = new System.Drawing.Point(545, 278);
+            this.groupBox4.Location = new System.Drawing.Point(535, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(245, 320);
+            this.groupBox4.Size = new System.Drawing.Size(293, 320);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Módosítás";
             // 
             // modositasUrites_btn
             // 
-            this.modositasUrites_btn.Location = new System.Drawing.Point(150, 291);
+            this.modositasUrites_btn.Location = new System.Drawing.Point(175, 291);
             this.modositasUrites_btn.Name = "modositasUrites_btn";
             this.modositasUrites_btn.Size = new System.Drawing.Size(75, 23);
             this.modositasUrites_btn.TabIndex = 23;
@@ -360,7 +414,7 @@
             // checkBox_KeszletenModositas
             // 
             this.checkBox_KeszletenModositas.AutoSize = true;
-            this.checkBox_KeszletenModositas.Location = new System.Drawing.Point(98, 214);
+            this.checkBox_KeszletenModositas.Location = new System.Drawing.Point(73, 225);
             this.checkBox_KeszletenModositas.Name = "checkBox_KeszletenModositas";
             this.checkBox_KeszletenModositas.Size = new System.Drawing.Size(15, 14);
             this.checkBox_KeszletenModositas.TabIndex = 20;
@@ -370,13 +424,13 @@
             // 
             this.richTextBox_LeirasModositas.Location = new System.Drawing.Point(6, 129);
             this.richTextBox_LeirasModositas.Name = "richTextBox_LeirasModositas";
-            this.richTextBox_LeirasModositas.Size = new System.Drawing.Size(233, 53);
+            this.richTextBox_LeirasModositas.Size = new System.Drawing.Size(281, 55);
             this.richTextBox_LeirasModositas.TabIndex = 18;
             this.richTextBox_LeirasModositas.Text = "";
             // 
             // modositasKep_btn
             // 
-            this.modositasKep_btn.Location = new System.Drawing.Point(98, 245);
+            this.modositasKep_btn.Location = new System.Drawing.Point(102, 250);
             this.modositasKep_btn.Name = "modositasKep_btn";
             this.modositasKep_btn.Size = new System.Drawing.Size(75, 23);
             this.modositasKep_btn.TabIndex = 21;
@@ -386,67 +440,67 @@
             // 
             // modositasSuly_textBox
             // 
-            this.modositasSuly_textBox.Location = new System.Drawing.Point(98, 185);
+            this.modositasSuly_textBox.Location = new System.Drawing.Point(73, 198);
             this.modositasSuly_textBox.Name = "modositasSuly_textBox";
-            this.modositasSuly_textBox.Size = new System.Drawing.Size(100, 20);
+            this.modositasSuly_textBox.Size = new System.Drawing.Size(214, 21);
             this.modositasSuly_textBox.TabIndex = 19;
             this.modositasSuly_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // modositasKategoria_textBox
             // 
-            this.modositasKategoria_textBox.Location = new System.Drawing.Point(98, 91);
+            this.modositasKategoria_textBox.Location = new System.Drawing.Point(73, 91);
             this.modositasKategoria_textBox.Name = "modositasKategoria_textBox";
-            this.modositasKategoria_textBox.Size = new System.Drawing.Size(100, 20);
+            this.modositasKategoria_textBox.Size = new System.Drawing.Size(214, 21);
             this.modositasKategoria_textBox.TabIndex = 17;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(31, 214);
+            this.label25.Location = new System.Drawing.Point(6, 225);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(53, 13);
+            this.label25.Size = new System.Drawing.Size(58, 16);
             this.label25.TabIndex = 23;
             this.label25.Text = "Készleten";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(33, 250);
+            this.label26.Location = new System.Drawing.Point(70, 255);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(26, 13);
+            this.label26.Size = new System.Drawing.Size(30, 16);
             this.label26.TabIndex = 22;
             this.label26.Text = "Kép";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(33, 188);
+            this.label27.Location = new System.Drawing.Point(6, 201);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(27, 13);
+            this.label27.Size = new System.Drawing.Size(29, 16);
             this.label27.TabIndex = 21;
             this.label27.Text = "Súly";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(12, 113);
+            this.label28.Location = new System.Drawing.Point(6, 114);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(37, 13);
+            this.label28.Size = new System.Drawing.Size(37, 16);
             this.label28.TabIndex = 20;
             this.label28.Text = "Leírás";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(32, 94);
+            this.label29.Location = new System.Drawing.Point(6, 94);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(52, 13);
+            this.label29.Size = new System.Drawing.Size(61, 16);
             this.label29.TabIndex = 19;
             this.label29.Text = "Kategória";
             // 
             // modositas_btn
             // 
-            this.modositas_btn.Location = new System.Drawing.Point(34, 291);
+            this.modositas_btn.Location = new System.Drawing.Point(54, 291);
             this.modositas_btn.Name = "modositas_btn";
             this.modositas_btn.Size = new System.Drawing.Size(75, 23);
             this.modositas_btn.TabIndex = 22;
@@ -456,56 +510,58 @@
             // 
             // modositasMennyiseg_textBox
             // 
-            this.modositasMennyiseg_textBox.Location = new System.Drawing.Point(98, 67);
+            this.modositasMennyiseg_textBox.Location = new System.Drawing.Point(73, 64);
             this.modositasMennyiseg_textBox.Name = "modositasMennyiseg_textBox";
-            this.modositasMennyiseg_textBox.Size = new System.Drawing.Size(100, 20);
+            this.modositasMennyiseg_textBox.Size = new System.Drawing.Size(214, 21);
             this.modositasMennyiseg_textBox.TabIndex = 16;
             this.modositasMennyiseg_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // modositasAr_textBox
             // 
-            this.modositasAr_textBox.Location = new System.Drawing.Point(98, 42);
+            this.modositasAr_textBox.Location = new System.Drawing.Point(73, 40);
             this.modositasAr_textBox.Name = "modositasAr_textBox";
-            this.modositasAr_textBox.Size = new System.Drawing.Size(100, 20);
+            this.modositasAr_textBox.Size = new System.Drawing.Size(214, 21);
             this.modositasAr_textBox.TabIndex = 15;
             this.modositasAr_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // modositasTermeknev_textBox
             // 
-            this.modositasTermeknev_textBox.Location = new System.Drawing.Point(98, 16);
+            this.modositasTermeknev_textBox.Location = new System.Drawing.Point(73, 12);
             this.modositasTermeknev_textBox.Name = "modositasTermeknev_textBox";
-            this.modositasTermeknev_textBox.Size = new System.Drawing.Size(100, 20);
+            this.modositasTermeknev_textBox.Size = new System.Drawing.Size(214, 21);
             this.modositasTermeknev_textBox.TabIndex = 14;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(32, 70);
+            this.label15.Location = new System.Drawing.Point(6, 67);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(58, 13);
+            this.label15.Size = new System.Drawing.Size(66, 16);
             this.label15.TabIndex = 3;
             this.label15.Text = "Mennyiség";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(32, 46);
+            this.label16.Location = new System.Drawing.Point(6, 40);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(17, 13);
+            this.label16.Size = new System.Drawing.Size(59, 16);
             this.label16.TabIndex = 2;
-            this.label16.Text = "Ár";
+            this.label16.Text = "Termék ár";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(32, 19);
+            this.label17.Location = new System.Drawing.Point(6, 16);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 13);
+            this.label17.Size = new System.Drawing.Size(67, 16);
             this.label17.TabIndex = 1;
             this.label17.Text = "Terméknév";
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.hozzadasUrites_btn);
             this.groupBox3.Controls.Add(this.checkBox_KeszletenHozzaadas);
             this.groupBox3.Controls.Add(this.richTextBox_LeirasHozzaad);
@@ -524,9 +580,9 @@
             this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(66, 281);
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(245, 317);
+            this.groupBox3.Size = new System.Drawing.Size(278, 317);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hozzáadás";
@@ -545,7 +601,7 @@
             // 
             this.checkBox_KeszletenHozzaadas.AutoSize = true;
             this.checkBox_KeszletenHozzaadas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.checkBox_KeszletenHozzaadas.Location = new System.Drawing.Point(98, 215);
+            this.checkBox_KeszletenHozzaadas.Location = new System.Drawing.Point(73, 225);
             this.checkBox_KeszletenHozzaadas.Name = "checkBox_KeszletenHozzaadas";
             this.checkBox_KeszletenHozzaadas.Size = new System.Drawing.Size(15, 14);
             this.checkBox_KeszletenHozzaadas.TabIndex = 10;
@@ -553,15 +609,15 @@
             // 
             // richTextBox_LeirasHozzaad
             // 
-            this.richTextBox_LeirasHozzaad.Location = new System.Drawing.Point(6, 126);
+            this.richTextBox_LeirasHozzaad.Location = new System.Drawing.Point(6, 131);
             this.richTextBox_LeirasHozzaad.Name = "richTextBox_LeirasHozzaad";
-            this.richTextBox_LeirasHozzaad.Size = new System.Drawing.Size(233, 53);
+            this.richTextBox_LeirasHozzaad.Size = new System.Drawing.Size(266, 53);
             this.richTextBox_LeirasHozzaad.TabIndex = 8;
             this.richTextBox_LeirasHozzaad.Text = "";
             // 
             // hozzaadasMegnyitas_btn
             // 
-            this.hozzaadasMegnyitas_btn.Location = new System.Drawing.Point(98, 242);
+            this.hozzaadasMegnyitas_btn.Location = new System.Drawing.Point(102, 250);
             this.hozzaadasMegnyitas_btn.Name = "hozzaadasMegnyitas_btn";
             this.hozzaadasMegnyitas_btn.Size = new System.Drawing.Size(75, 23);
             this.hozzaadasMegnyitas_btn.TabIndex = 11;
@@ -571,67 +627,67 @@
             // 
             // hozzaadasSuly_textBox
             // 
-            this.hozzaadasSuly_textBox.Location = new System.Drawing.Point(98, 185);
+            this.hozzaadasSuly_textBox.Location = new System.Drawing.Point(73, 198);
             this.hozzaadasSuly_textBox.Name = "hozzaadasSuly_textBox";
-            this.hozzaadasSuly_textBox.Size = new System.Drawing.Size(100, 20);
+            this.hozzaadasSuly_textBox.Size = new System.Drawing.Size(199, 21);
             this.hozzaadasSuly_textBox.TabIndex = 9;
             this.hozzaadasSuly_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // hozzaadasKategoria_textBox
             // 
-            this.hozzaadasKategoria_textBox.Location = new System.Drawing.Point(98, 91);
+            this.hozzaadasKategoria_textBox.Location = new System.Drawing.Point(73, 91);
             this.hozzaadasKategoria_textBox.Name = "hozzaadasKategoria_textBox";
-            this.hozzaadasKategoria_textBox.Size = new System.Drawing.Size(100, 20);
+            this.hozzaadasKategoria_textBox.Size = new System.Drawing.Size(199, 21);
             this.hozzaadasKategoria_textBox.TabIndex = 7;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(32, 215);
+            this.label24.Location = new System.Drawing.Point(6, 225);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(53, 13);
+            this.label24.Size = new System.Drawing.Size(58, 16);
             this.label24.TabIndex = 13;
             this.label24.Text = "Készleten";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(32, 247);
+            this.label23.Location = new System.Drawing.Point(70, 255);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(26, 13);
+            this.label23.Size = new System.Drawing.Size(30, 16);
             this.label23.TabIndex = 12;
             this.label23.Text = "Kép";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(32, 188);
+            this.label22.Location = new System.Drawing.Point(6, 201);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(27, 13);
+            this.label22.Size = new System.Drawing.Size(29, 16);
             this.label22.TabIndex = 11;
             this.label22.Text = "Súly";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 110);
+            this.label21.Location = new System.Drawing.Point(6, 114);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(37, 13);
+            this.label21.Size = new System.Drawing.Size(37, 16);
             this.label21.TabIndex = 10;
             this.label21.Text = "Leírás";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(31, 91);
+            this.label20.Location = new System.Drawing.Point(6, 94);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(52, 13);
+            this.label20.Size = new System.Drawing.Size(61, 16);
             this.label20.TabIndex = 9;
             this.label20.Text = "Kategória";
             // 
             // hozzaadas_btn
             // 
-            this.hozzaadas_btn.Location = new System.Drawing.Point(34, 288);
+            this.hozzaadas_btn.Location = new System.Drawing.Point(45, 288);
             this.hozzaadas_btn.Name = "hozzaadas_btn";
             this.hozzaadas_btn.Size = new System.Drawing.Size(75, 23);
             this.hozzaadas_btn.TabIndex = 12;
@@ -641,51 +697,51 @@
             // 
             // hozzaadasMennyiseg_textBox
             // 
-            this.hozzaadasMennyiseg_textBox.Location = new System.Drawing.Point(98, 66);
+            this.hozzaadasMennyiseg_textBox.Location = new System.Drawing.Point(73, 66);
             this.hozzaadasMennyiseg_textBox.Name = "hozzaadasMennyiseg_textBox";
-            this.hozzaadasMennyiseg_textBox.Size = new System.Drawing.Size(100, 20);
+            this.hozzaadasMennyiseg_textBox.Size = new System.Drawing.Size(199, 21);
             this.hozzaadasMennyiseg_textBox.TabIndex = 6;
             this.hozzaadasMennyiseg_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // hozzaadasAr_textBox
             // 
-            this.hozzaadasAr_textBox.Location = new System.Drawing.Point(98, 40);
+            this.hozzaadasAr_textBox.Location = new System.Drawing.Point(73, 40);
             this.hozzaadasAr_textBox.Name = "hozzaadasAr_textBox";
-            this.hozzaadasAr_textBox.Size = new System.Drawing.Size(100, 20);
+            this.hozzaadasAr_textBox.Size = new System.Drawing.Size(199, 21);
             this.hozzaadasAr_textBox.TabIndex = 5;
             this.hozzaadasAr_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // hozzaadasTermeknev_textBox
             // 
-            this.hozzaadasTermeknev_textBox.Location = new System.Drawing.Point(98, 13);
+            this.hozzaadasTermeknev_textBox.Location = new System.Drawing.Point(73, 12);
             this.hozzaadasTermeknev_textBox.Name = "hozzaadasTermeknev_textBox";
-            this.hozzaadasTermeknev_textBox.Size = new System.Drawing.Size(100, 20);
+            this.hozzaadasTermeknev_textBox.Size = new System.Drawing.Size(199, 21);
             this.hozzaadasTermeknev_textBox.TabIndex = 4;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(31, 67);
+            this.label14.Location = new System.Drawing.Point(6, 67);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(58, 13);
+            this.label14.Size = new System.Drawing.Size(66, 16);
             this.label14.TabIndex = 3;
             this.label14.Text = "Mennyiség";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(31, 43);
+            this.label13.Location = new System.Drawing.Point(6, 43);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(17, 13);
+            this.label13.Size = new System.Drawing.Size(59, 16);
             this.label13.TabIndex = 2;
-            this.label13.Text = "Ár";
+            this.label13.Text = "Termék ár";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(31, 16);
+            this.label12.Location = new System.Drawing.Point(6, 16);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(61, 13);
+            this.label12.Size = new System.Drawing.Size(67, 16);
             this.label12.TabIndex = 1;
             this.label12.Text = "Terméknév";
             // 
@@ -702,60 +758,59 @@
             this.Leiras_columnHeader,
             this.Suly_columnHeader,
             this.Keszleten_columnHeader});
+            this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(66, 64);
+            this.listView1.Location = new System.Drawing.Point(6, 64);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(743, 198);
+            this.listView1.Size = new System.Drawing.Size(834, 205);
             this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SizeChanged += new System.EventHandler(this.listView1_SizeChanged);
             this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             // 
             // Termeknev_columnHeader
             // 
+            this.Termeknev_columnHeader.Tag = "2";
             this.Termeknev_columnHeader.Text = "Terméknév";
-            this.Termeknev_columnHeader.Width = 189;
+            this.Termeknev_columnHeader.Width = 210;
             // 
             // Ar_columnHeader
             // 
+            this.Ar_columnHeader.Tag = "1";
             this.Ar_columnHeader.Text = "Ár";
-            this.Ar_columnHeader.Width = 68;
+            this.Ar_columnHeader.Width = 70;
             // 
             // Mennyiseg_columnHeader
             // 
+            this.Mennyiseg_columnHeader.Tag = "1";
             this.Mennyiseg_columnHeader.Text = "Mennyiség";
-            this.Mennyiseg_columnHeader.Width = 82;
+            this.Mennyiseg_columnHeader.Width = 83;
             // 
             // Kategoria_columnHeader
             // 
+            this.Kategoria_columnHeader.Tag = "1";
             this.Kategoria_columnHeader.Text = "Kategória";
-            this.Kategoria_columnHeader.Width = 108;
+            this.Kategoria_columnHeader.Width = 107;
             // 
             // Leiras_columnHeader
             // 
+            this.Leiras_columnHeader.Tag = "2";
             this.Leiras_columnHeader.Text = "Leírás";
-            this.Leiras_columnHeader.Width = 153;
+            this.Leiras_columnHeader.Width = 220;
             // 
             // Suly_columnHeader
             // 
+            this.Suly_columnHeader.Tag = "1";
             this.Suly_columnHeader.Text = "Súly";
-            this.Suly_columnHeader.Width = 65;
+            this.Suly_columnHeader.Width = 68;
             // 
             // Keszleten_columnHeader
             // 
+            this.Keszleten_columnHeader.Tag = "1";
             this.Keszleten_columnHeader.Text = "Készleten";
-            this.Keszleten_columnHeader.Width = 67;
-            // 
-            // tableexport_btn
-            // 
-            this.tableexport_btn.Location = new System.Drawing.Point(156, 35);
-            this.tableexport_btn.Name = "tableexport_btn";
-            this.tableexport_btn.Size = new System.Drawing.Size(149, 23);
-            this.tableexport_btn.TabIndex = 2;
-            this.tableexport_btn.Text = "Tábla exportálás";
-            this.tableexport_btn.UseVisualStyleBackColor = true;
-            this.tableexport_btn.Click += new System.EventHandler(this.tableexport_btn_Click);
+            this.Keszleten_columnHeader.Width = 69;
             // 
             // tab_Szamla
             // 
@@ -773,7 +828,7 @@
             this.tab_Szamla.Location = new System.Drawing.Point(4, 22);
             this.tab_Szamla.Name = "tab_Szamla";
             this.tab_Szamla.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_Szamla.Size = new System.Drawing.Size(852, 601);
+            this.tab_Szamla.Size = new System.Drawing.Size(846, 622);
             this.tab_Szamla.TabIndex = 1;
             this.tab_Szamla.Text = "Számlázás";
             this.tab_Szamla.UseVisualStyleBackColor = true;
@@ -789,20 +844,20 @@
             // label_Sorszam
             // 
             this.label_Sorszam.AutoSize = true;
-            this.label_Sorszam.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label_Sorszam.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label_Sorszam.Location = new System.Drawing.Point(453, 7);
             this.label_Sorszam.Name = "label_Sorszam";
-            this.label_Sorszam.Size = new System.Drawing.Size(89, 20);
+            this.label_Sorszam.Size = new System.Drawing.Size(81, 21);
             this.label_Sorszam.TabIndex = 11;
             this.label_Sorszam.Text = "Sorszám: ";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.Location = new System.Drawing.Point(36, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 25);
+            this.label6.Size = new System.Drawing.Size(86, 25);
             this.label6.TabIndex = 10;
             this.label6.Text = "Számla";
             // 
@@ -831,12 +886,12 @@
             this.dataGridViewTextBoxColumn7});
             this.dGV_SzamlaOssz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_SzamlaOssz.Enabled = false;
-            this.dGV_SzamlaOssz.Location = new System.Drawing.Point(3, 16);
+            this.dGV_SzamlaOssz.Location = new System.Drawing.Point(3, 17);
             this.dGV_SzamlaOssz.Name = "dGV_SzamlaOssz";
             this.dGV_SzamlaOssz.ReadOnly = true;
             this.dGV_SzamlaOssz.RowHeadersVisible = false;
             this.dGV_SzamlaOssz.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.dGV_SzamlaOssz.Size = new System.Drawing.Size(450, 46);
+            this.dGV_SzamlaOssz.Size = new System.Drawing.Size(450, 45);
             this.dGV_SzamlaOssz.TabIndex = 8;
             // 
             // dataGridViewTextBoxColumn4
@@ -1021,7 +1076,7 @@
             // 
             this.textBox_SzTalloz.Location = new System.Drawing.Point(285, 532);
             this.textBox_SzTalloz.Name = "textBox_SzTalloz";
-            this.textBox_SzTalloz.Size = new System.Drawing.Size(154, 20);
+            this.textBox_SzTalloz.Size = new System.Drawing.Size(154, 21);
             this.textBox_SzTalloz.TabIndex = 5;
             // 
             // button_Talloz
@@ -1040,7 +1095,7 @@
             this.megrendelesek_comboBox.ImeMode = System.Windows.Forms.ImeMode.On;
             this.megrendelesek_comboBox.Location = new System.Drawing.Point(92, 490);
             this.megrendelesek_comboBox.Name = "megrendelesek_comboBox";
-            this.megrendelesek_comboBox.Size = new System.Drawing.Size(644, 21);
+            this.megrendelesek_comboBox.Size = new System.Drawing.Size(644, 24);
             this.megrendelesek_comboBox.TabIndex = 3;
             this.megrendelesek_comboBox.Text = "Válaszon a megrendelések közül, vagy tallózza ki a visszaigazolást";
             this.megrendelesek_comboBox.SelectedIndexChanged += new System.EventHandler(this.megrendelesek_comboBox_SelectedIndexChanged);
@@ -1077,7 +1132,7 @@
             // 
             this.textBox_VevoTel.Location = new System.Drawing.Point(79, 65);
             this.textBox_VevoTel.Name = "textBox_VevoTel";
-            this.textBox_VevoTel.Size = new System.Drawing.Size(259, 20);
+            this.textBox_VevoTel.Size = new System.Drawing.Size(259, 21);
             this.textBox_VevoTel.TabIndex = 15;
             // 
             // label5
@@ -1085,7 +1140,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(9, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.Size = new System.Drawing.Size(76, 16);
             this.label5.TabIndex = 14;
             this.label5.Text = "Telefonszám:";
             // 
@@ -1093,21 +1148,21 @@
             // 
             this.textBox_Vevoado.Location = new System.Drawing.Point(79, 91);
             this.textBox_Vevoado.Name = "textBox_Vevoado";
-            this.textBox_Vevoado.Size = new System.Drawing.Size(259, 20);
+            this.textBox_Vevoado.Size = new System.Drawing.Size(259, 21);
             this.textBox_Vevoado.TabIndex = 13;
             // 
             // vevocime_textBox
             // 
             this.vevocime_textBox.Location = new System.Drawing.Point(42, 42);
             this.vevocime_textBox.Name = "vevocime_textBox";
-            this.vevocime_textBox.Size = new System.Drawing.Size(296, 20);
+            this.vevocime_textBox.Size = new System.Drawing.Size(296, 21);
             this.vevocime_textBox.TabIndex = 11;
             // 
             // vevoneve_textBox
             // 
             this.vevoneve_textBox.Location = new System.Drawing.Point(42, 19);
             this.vevoneve_textBox.Name = "vevoneve_textBox";
-            this.vevoneve_textBox.Size = new System.Drawing.Size(296, 20);
+            this.vevoneve_textBox.Size = new System.Drawing.Size(296, 21);
             this.vevoneve_textBox.TabIndex = 10;
             // 
             // label7
@@ -1115,7 +1170,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(9, 94);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.Size = new System.Drawing.Size(60, 16);
             this.label7.TabIndex = 8;
             this.label7.Text = "Adószám:";
             // 
@@ -1124,7 +1179,7 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(9, 45);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 13);
+            this.label9.Size = new System.Drawing.Size(32, 16);
             this.label9.TabIndex = 6;
             this.label9.Text = "Cím:";
             // 
@@ -1133,7 +1188,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(9, 22);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.Size = new System.Drawing.Size(34, 16);
             this.label10.TabIndex = 5;
             this.label10.Text = "Név:";
             // 
@@ -1158,7 +1213,7 @@
             this.label_Cegszsz.AutoSize = true;
             this.label_Cegszsz.Location = new System.Drawing.Point(17, 62);
             this.label_Cegszsz.Name = "label_Cegszsz";
-            this.label_Cegszsz.Size = new System.Drawing.Size(157, 13);
+            this.label_Cegszsz.Size = new System.Drawing.Size(160, 16);
             this.label_Cegszsz.TabIndex = 8;
             this.label_Cegszsz.Text = "13370078-12344321-00000000";
             // 
@@ -1167,7 +1222,7 @@
             this.label_EVsz.AutoSize = true;
             this.label_EVsz.Location = new System.Drawing.Point(98, 98);
             this.label_EVsz.Name = "label_EVsz";
-            this.label_EVsz.Size = new System.Drawing.Size(55, 13);
+            this.label_EVsz.Size = new System.Drawing.Size(56, 16);
             this.label_EVsz.TabIndex = 7;
             this.label_EVsz.Text = "21387114";
             // 
@@ -1176,7 +1231,7 @@
             this.label_Cegado.AutoSize = true;
             this.label_Cegado.Location = new System.Drawing.Point(71, 80);
             this.label_Cegado.Name = "label_Cegado";
-            this.label_Cegado.Size = new System.Drawing.Size(79, 13);
+            this.label_Cegado.Size = new System.Drawing.Size(82, 16);
             this.label_Cegado.TabIndex = 6;
             this.label_Cegado.Text = "12348438-9-01";
             // 
@@ -1185,7 +1240,7 @@
             this.label_Cegcim.AutoSize = true;
             this.label_Cegcim.Location = new System.Drawing.Point(17, 42);
             this.label_Cegcim.Name = "label_Cegcim";
-            this.label_Cegcim.Size = new System.Drawing.Size(161, 13);
+            this.label_Cegcim.Size = new System.Drawing.Size(173, 16);
             this.label_Cegcim.TabIndex = 5;
             this.label_Cegcim.Text = "3200 Gyöngyös, Püspöki út 999.";
             // 
@@ -1194,7 +1249,7 @@
             this.label_Cegnev.AutoSize = true;
             this.label_Cegnev.Location = new System.Drawing.Point(17, 22);
             this.label_Cegnev.Name = "label_Cegnev";
-            this.label_Cegnev.Size = new System.Drawing.Size(114, 13);
+            this.label_Cegnev.Size = new System.Drawing.Size(121, 16);
             this.label_Cegnev.TabIndex = 4;
             this.label_Cegnev.Text = "Rendszerfejlesztés Kft.";
             // 
@@ -1203,7 +1258,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(17, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.Size = new System.Drawing.Size(88, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "EV. nyilv. szám:";
             // 
@@ -1212,39 +1267,31 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(17, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.Size = new System.Drawing.Size(60, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Adószám:";
             // 
             // welcome_label
             // 
             this.welcome_label.AutoSize = true;
-            this.welcome_label.Location = new System.Drawing.Point(619, 36);
+            this.welcome_label.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.welcome_label.Location = new System.Drawing.Point(4, 7);
             this.welcome_label.Name = "welcome_label";
-            this.welcome_label.Size = new System.Drawing.Size(153, 13);
+            this.welcome_label.Size = new System.Drawing.Size(166, 16);
             this.welcome_label.TabIndex = 1;
             this.welcome_label.Text = "Üdvözöllek, \"Felhasználó név\"";
             // 
             // logout_btn
             // 
-            this.logout_btn.Location = new System.Drawing.Point(778, 31);
+            this.logout_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.logout_btn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.logout_btn.Location = new System.Drawing.Point(767, 4);
             this.logout_btn.Name = "logout_btn";
             this.logout_btn.Size = new System.Drawing.Size(89, 23);
             this.logout_btn.TabIndex = 24;
             this.logout_btn.Text = "Kijelentkezés";
             this.logout_btn.UseVisualStyleBackColor = true;
             this.logout_btn.Click += new System.EventHandler(this.logout_btn_Click);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label19.ForeColor = System.Drawing.Color.Blue;
-            this.label19.Location = new System.Drawing.Point(296, 27);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(294, 25);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "Vállalatirányítási Rendszer";
             // 
             // contextMenuStrip1
             // 
@@ -1255,25 +1302,55 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tabControl_Keszlet, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 173F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(860, 684);
+            this.tableLayoutPanel1.TabIndex = 25;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.logout_btn);
+            this.panel1.Controls.Add(this.welcome_label);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(860, 30);
+            this.panel1.TabIndex = 1;
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 687);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.logout_btn);
-            this.Controls.Add(this.welcome_label);
-            this.Controls.Add(this.tabControl_Keszlet);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(900, 725);
             this.Name = "HomeForm";
-            this.Text = "VIR Rendszer";
+            this.Text = "VIR";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeForm_FormClosing);
             this.Load += new System.EventHandler(this.HomeForm_Load);
             this.tabControl_Keszlet.ResumeLayout(false);
             this.Tab_Keszlet.ResumeLayout(false);
-            this.Tab_Keszlet.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.groupBox_Kereses.ResumeLayout(false);
             this.groupBox_Kereses.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.termekKep_pictureBox)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -1290,8 +1367,10 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1335,7 +1414,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button modositasKep_btn;
         private System.Windows.Forms.TextBox modositasSuly_textBox;
         private System.Windows.Forms.TextBox modositasKategoria_textBox;
@@ -1351,7 +1429,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.PictureBox termekKep_pictureBox;
         private System.Windows.Forms.ColumnHeader Kategoria_columnHeader;
         private System.Windows.Forms.ColumnHeader Leiras_columnHeader;
@@ -1409,5 +1486,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox textBox_SzTalloz;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }

@@ -891,10 +891,40 @@ namespace VIR
 
             }
         }
+        private bool Resizing = false;
+        private void listView1_SizeChanged(object sender, EventArgs e)
+        {
+            //A Resizing bool segtségével megakadályozzuk, hogy nagyon sokszor meghívódjon a triggerben lévő kód.
+            if (!Resizing)
+            {
+                //Elkezdjük a számítást
+                Resizing = true;
+                
+                
+                    float totalColumnWidth = 0;
 
+                    //Az oszlop tag-ekben szereplő számok összeadása.
+                //Ezzel segítségével tudjuk, hogy hány százalékos legyen egy oszlop. Minél nagyobb a tagben lévő szám, annál több helyet számol majd neki.
+                    for (int i = 0; i < this.listView1.Columns.Count; i++)
+                    {
+                        totalColumnWidth += Convert.ToInt32(this.listView1.Columns[i].Tag);
+                    }
+
+                    // Az oszlopok szélességének kiszámolása                  
+                    for (int i = 0; i < this.listView1.Columns.Count; i++)
+                    {
+                        // Elosztjuk az adott oszlop tagjét az össz taggel .Így megkapjuk, hogy hány százalékot kell elfoglalnia.
+                        float colPercentage = (Convert.ToInt32(this.listView1.Columns[i].Tag) / totalColumnWidth);
+                        // Kiszámoljuk a szélességét az oszlopnak: Megszorozzuk a százalékkal az egész Listview szélességét.
+                        this.listView1.Columns[i].Width = (int)(colPercentage * this.listView1.ClientRectangle.Width);
+                    }
+            }
+            //Kivonunk 2 pixelt az utolsó oszlop szélességéből, így nem fog vertikális slider megjelenni.
+            this.listView1.Columns[this.listView1.Columns.Count - 1].Width = this.listView1.Columns[this.listView1.Columns.Count - 1].Width - 2;
+            // Végeztünk a szélességek számításával
+            Resizing = false;
+        }
+       
     }
 
-    
-
-   
 }
