@@ -107,11 +107,13 @@ namespace VIR
             {
                 labelMessage.Text = "A felhasználónév mező üres. Kérlek ellenőrizd.";
                 labelMessage.ForeColor = Color.Red;
+                textBoxUserName.BackColor = Color.LightCoral;
             }
             if (textBoxPasswd.Text.ToString() == "")
             {
                 labelMessage.Text = "A jelszó mező üres. Kérlek ellenőrizd.";
                 labelMessage.ForeColor = Color.Red;
+                textBoxPasswd.BackColor = Color.LightCoral;
             }
 
             if (textBoxUserName.Text.ToString() != "" && textBoxPasswd.Text.ToString() != "")

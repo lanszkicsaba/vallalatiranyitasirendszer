@@ -24,7 +24,7 @@ namespace Muveletek
                 DBConnect conn = new DBConnect();
                 //INNER JOIN segítségével összekötjük a 4 szükséges táblát. Így tudjuk a rendelés ID-ja alapján a hozzá tartozó termékek, rendelés, rendelő adatait kinyerni.
                 string qry =
-                    @"SELECT rendelesek.id, rendelesek.rend_ido, rendeles_adatok.termek_id, termekek.termeknev, termekek.ar, rendeles_adatok.termek_db, honlapusers.Fullname, honlapusers.Address, honlapusers.Phonenumer
+                    @"SELECT rendelesek.id, rendelesek.rend_ido, rendeles_adatok.termek_id, termekek.termeknev, termekek.ar, rendeles_adatok.termek_db, honlapusers.Fullname, honlapusers.Address, honlapusers.Phonenumer, honlapusers.Taxnumber
                   FROM ((rendelesek
                     INNER JOIN honlapusers ON rendelesek.rendelo_id = honlapusers.id)
                     INNER JOIN rendeles_adatok ON rendelesek.id = rendeles_adatok.azon)
@@ -46,9 +46,10 @@ namespace Muveletek
                     rend.termek_nev[idx] = (string)reader["termeknev"];
                     rend.termek_ar[idx] = (int)reader["ar"];
                     rend.termek_db[idx] = (int)reader["termek_db"];
-                    rend.rendelo_nev = (string)reader["Fullname"];
-                    rend.rendelo_cim = (string)reader["Address"];
-                    rend.rendelo_tel = (string)reader["Phonenumer"];
+                    rend.rendelo_nev[idx] = (string)reader["Fullname"];
+                    rend.rendelo_cim[idx] = (string)reader["Address"];
+                    rend.rendelo_tel[idx] = (string)reader["Phonenumer"];
+                    rend.rendelo_tax[idx] = (string)reader["Taxnumber"];
                     idx++;
                 }
                 conn.CloseConnection();

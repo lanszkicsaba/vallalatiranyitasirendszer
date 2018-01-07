@@ -1233,7 +1233,7 @@
             // 
             // textBox_VevoTel
             // 
-            this.textBox_VevoTel.Location = new System.Drawing.Point(91, 65);
+            this.textBox_VevoTel.Location = new System.Drawing.Point(91, 67);
             this.textBox_VevoTel.Name = "textBox_VevoTel";
             this.textBox_VevoTel.Size = new System.Drawing.Size(247, 21);
             this.textBox_VevoTel.TabIndex = 15;
@@ -1249,21 +1249,21 @@
             // 
             // textBox_Vevoado
             // 
-            this.textBox_Vevoado.Location = new System.Drawing.Point(91, 91);
+            this.textBox_Vevoado.Location = new System.Drawing.Point(91, 93);
             this.textBox_Vevoado.Name = "textBox_Vevoado";
             this.textBox_Vevoado.Size = new System.Drawing.Size(247, 21);
             this.textBox_Vevoado.TabIndex = 13;
             // 
             // vevocime_textBox
             // 
-            this.vevocime_textBox.Location = new System.Drawing.Point(49, 42);
+            this.vevocime_textBox.Location = new System.Drawing.Point(49, 44);
             this.vevocime_textBox.Name = "vevocime_textBox";
             this.vevocime_textBox.Size = new System.Drawing.Size(289, 21);
             this.vevocime_textBox.TabIndex = 11;
             // 
             // vevoneve_textBox
             // 
-            this.vevoneve_textBox.Location = new System.Drawing.Point(49, 19);
+            this.vevoneve_textBox.Location = new System.Drawing.Point(49, 21);
             this.vevoneve_textBox.Name = "vevoneve_textBox";
             this.vevoneve_textBox.Size = new System.Drawing.Size(289, 21);
             this.vevoneve_textBox.TabIndex = 10;

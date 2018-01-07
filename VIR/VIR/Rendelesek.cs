@@ -14,9 +14,10 @@ namespace VIR
         public string[] termek_nev { get; set; }
         public int[] termek_ar { get; set; }
         public int[] termek_db { get; set; }
-        public string rendelo_nev { get; set; }
-        public string rendelo_cim { get; set; }
-        public string rendelo_tel { get; set; }
+        public string[] rendelo_nev { get; set; }
+        public string[] rendelo_cim { get; set; }
+        public string[] rendelo_tel { get; set; }
+        public string[] rendelo_tax { get; set; }
 
         public Rendelesek(int elemek)
         {
@@ -26,6 +27,10 @@ namespace VIR
             termek_nev = new string[elemek];
             termek_ar = new int[elemek];
             termek_db = new int[elemek];
+            rendelo_nev = new string[elemek];
+            rendelo_cim = new string[elemek];
+            rendelo_tel = new string[elemek];
+            rendelo_tax = new string[elemek];
         }
     }
 }

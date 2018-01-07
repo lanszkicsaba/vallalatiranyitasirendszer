@@ -705,9 +705,7 @@ namespace VIR
                     rend = new Rendelesek(rendelesdb);
                     Muvelet muv = new Muvelet();
                     muv.getRend(rend);
-                    vevoneve_textBox.Text = rend.rendelo_nev;
-                    vevocime_textBox.Text = rend.rendelo_cim;
-                    textBox_VevoTel.Text = rend.rendelo_tel;
+
                     //Rendelések betöltése a comboboxba
                     for (int i = 0; i < rend.rend_id.Length; i++)
                     {
@@ -742,7 +740,7 @@ namespace VIR
 
         private void megrendelesek_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {            
-            //Számla sorszám label
+            //Számla sorszámának kinyerése
             int rend_idx = (megrendelesek_comboBox.SelectedItem as ComboBoxItem).Value;
 
             label_Sorszam.Text = "Sorszám: " + rend.rend_ido[rend_idx].Year + "/" + rend.rend_id[rend_idx];
@@ -752,6 +750,11 @@ namespace VIR
             dGV_Rendeles.Rows.Clear();
             dgv_SzamlaTermekek.Rows.Clear();
             dGV_SzamlaOssz.Rows.Clear();
+            //Textboxok feltöltése:
+            vevoneve_textBox.Text = rend.rendelo_nev[rend_idx];
+            vevocime_textBox.Text = rend.rendelo_cim[rend_idx];
+            textBox_VevoTel.Text = rend.rendelo_tel[rend_idx];
+            textBox_Vevoado.Text = rend.rendelo_tax[rend_idx];
             //Datagridviewek feltöltése
             dGV_Rendeles.Rows.Add(new object[] { "Átutalás", rend.rend_ido[rend_idx], DateTime.Now, DateTime.Now.AddDays(10) });
             int ossznetto = 0;
@@ -806,6 +809,10 @@ namespace VIR
             textBox_SzTalloz.Visible = false;
             button_Talloz.Visible = false;
             button_Kiallitas.Visible = false;
+            vevoneve_textBox.BorderStyle = BorderStyle.None;
+            vevocime_textBox.BorderStyle = BorderStyle.None;
+            textBox_VevoTel.BorderStyle = BorderStyle.None;
+            textBox_Vevoado.BorderStyle = BorderStyle.None;
 
 
             dGV_SzamlaOssz.Parent = groupBox6;
@@ -842,6 +849,10 @@ namespace VIR
             textBox_SzTalloz.Visible = true;
             button_Talloz.Visible = true;
             button_Kiallitas.Visible = true;
+            vevoneve_textBox.BorderStyle = BorderStyle.Fixed3D;
+            vevocime_textBox.BorderStyle = BorderStyle.Fixed3D;
+            textBox_VevoTel.BorderStyle = BorderStyle.Fixed3D;
+            textBox_Vevoado.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void button_Talloz_Click(object sender, EventArgs e)
