@@ -73,16 +73,20 @@ namespace VIR
 
         public void HomeClosed()
         {
+            //Ha bezáródik a HomeForm, akkor állítson vissza minden control-t az alapra. (Color, Text, Enabled stb)
             buttonLogin.Enabled = true;
             buttonLogout.Enabled = false;
             labelMessage.Text = "Sikeres kijelentkezés.";
-            labelMessage.ForeColor = Color.Black;
+            labelMessage.ForeColor = Color.RoyalBlue;
             buttonLogin.Enabled = true;
             textBoxPasswd.Text = "";
             textBoxPasswd.Enabled = true;
             textBoxUserName.Enabled = true;
+            textBoxUserName.BackColor = Color.White;
+            textBoxPasswd.BackColor = Color.White ;
         }
 
+        //A bejelentkezett felhasználó nevéhez és usernevéhez getter.
         public string Fullname
         {
             get { return fullname; }
@@ -148,6 +152,9 @@ namespace VIR
                         loginname = name;
                         labelMessage.Text = "Sikeres belépés!";
                         labelMessage.ForeColor = Color.Green;
+                        textBoxUserName.BackColor = Color.LightGreen;
+                        textBoxPasswd.BackColor = Color.LightGreen;
+
                         if (homeForm.IsDisposed == true)
                         {
                             homeForm = new HomeForm();
@@ -164,6 +171,8 @@ namespace VIR
                         labelMessage.Text = "Sikertelen bejelentkezés. Kérjük ellenőrizze az adatokat.";
                         labelMessage.ForeColor = Color.Red;
                         pictureBox1.Image = null;
+                        textBoxUserName.BackColor = Color.LightCoral;
+                        textBoxPasswd.BackColor = Color.LightCoral;
                     }
                 }
                 catch (MySqlException ex)
@@ -177,8 +186,10 @@ namespace VIR
             }
         }
 
+        //Ha Entert nyom a felhasználó a jelszó vagy felhasználónév mezőben, akkor kezdje el a bejelentkeztetést.
         private void textBoxPasswd_KeyUp(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Enter)
             {
                 LoggingIn();
@@ -192,5 +203,7 @@ namespace VIR
                 LoggingIn();
             }
         }
+
+
     }
 }

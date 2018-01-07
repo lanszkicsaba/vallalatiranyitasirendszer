@@ -116,6 +116,7 @@
             this.Telj_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.szamla_kelte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fiz_hat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBox_SzTalloz = new System.Windows.Forms.TextBox();
             this.button_Talloz = new System.Windows.Forms.Button();
             this.megrendelesek_comboBox = new System.Windows.Forms.ComboBox();
             this.button_Kiallitas = new System.Windows.Forms.Button();
@@ -141,7 +142,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.textBox_SzTalloz = new System.Windows.Forms.TextBox();
             this.tabControl_Keszlet.SuspendLayout();
             this.Tab_Keszlet.SuspendLayout();
             this.groupBox_Kereses.SuspendLayout();
@@ -1017,6 +1017,13 @@
             this.Fiz_hat.ReadOnly = true;
             this.Fiz_hat.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // textBox_SzTalloz
+            // 
+            this.textBox_SzTalloz.Location = new System.Drawing.Point(285, 532);
+            this.textBox_SzTalloz.Name = "textBox_SzTalloz";
+            this.textBox_SzTalloz.Size = new System.Drawing.Size(154, 20);
+            this.textBox_SzTalloz.TabIndex = 5;
+            // 
             // button_Talloz
             // 
             this.button_Talloz.Location = new System.Drawing.Point(445, 530);
@@ -1248,13 +1255,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // textBox_SzTalloz
-            // 
-            this.textBox_SzTalloz.Location = new System.Drawing.Point(285, 532);
-            this.textBox_SzTalloz.Name = "textBox_SzTalloz";
-            this.textBox_SzTalloz.Size = new System.Drawing.Size(154, 20);
-            this.textBox_SzTalloz.TabIndex = 5;
-            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1264,6 +1264,7 @@
             this.Controls.Add(this.logout_btn);
             this.Controls.Add(this.welcome_label);
             this.Controls.Add(this.tabControl_Keszlet);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HomeForm";
             this.Text = "VIR Rendszer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeForm_FormClosing);
