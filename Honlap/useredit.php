@@ -1,9 +1,21 @@
-﻿<html>
+﻿<?php
+    include 'dbconnect.php';
+    session_start();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<title>Módosítás</title>
+	</head>
+</head>
     <body>
-        <?php
-        include 'dbconnect.php';
-        session_start();
-        ?>
+	<div class="container"> 
+		<div class="page-header">
+            <h1>Adatmódosítás</h1>
+        </div>
         <?php
         //ha bevan lépve
         if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
@@ -88,17 +100,9 @@
                 return true;
             }
         </script>
-        <form method="post" action="" onsubmit="return check()" enctype="multipart/form-data">
+        <form class="form-horizontal" method="post" action="" onsubmit="return check()" enctype="multipart/form-data">
             <table align="center">
-                <tfoot>
-                    <tr>
-                        <td colspan="2" style="background:#99ccff;border-top: 2px solid #444444;">
-                            <div style="text-align:center">
-                                <input type="submit" name="submit" value="Módosítás"/>
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
+                
                 <tbody>
                     <?php
                     if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") { //Ha a felh. bevan jelentkezve, akkor töltse be a módosítás formját.
@@ -115,43 +119,56 @@
 							//A tábla és a benne lévő mezők betöltése. A mezőkhöz a megfelelő értékek hozzárendelése.
                             echo '
 				
-				<tr>
-					<td>Felhasználónév:</td>
-					<td>
-					<p id="nev" name="nev">' . $username . '</p>
-					</td>
-				</tr>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Felhasználónév:</label>
+					<div class="col-sm-2">
+						<input disabled type="text" class="form-control" id="fullname" name="fullname" value="' . $username . '"/><br>
+					</div>
+				</div>
 				
-				<tr>
-					<td>Új jelszó:
-					<p style="font-size:75%">Minimum 5 karakter.</p></td>
-					<td><input type="password" id="pw1" name="pw1"/></td>
-				</tr>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Új jelszó:</label>
+					<div class="col-sm-2">
+						<input type="password" class="form-control" id="pw1" name="pw1" placeholder="Minimum 5 karakter"/><br>
+					</div>	
+				</div>
 
-				<tr>
-					<td>Új jelszó ismét:</td>
-					<td><input type="password" id="pw2" name="pw2"/></td>
-				</tr>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Új jelszó ismét:</label>
+					<div class="col-sm-2">
+						<input type="password" class="form-control" id="pw2" name="pw2" placeholder="Minimum 5 karakter"/><br>
+					</div>
+				</div>
 				
-				<tr>
-					<td>Teljes név:</td>
-					<td><input type="text" id="fullname" name="fullname" value="' . $fullname . '"/></td>
-				</tr>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Teljes név:</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="fullname" name="fullname" value="' . $fullname . '"/><br>
+					</div>
+					
+				</div>
 				
-				<tr>
-					<td>Lakcím:</td>
-					<td><input type="text" id="lakcim" name="lakcim" value="' . $address . '"/></td>
-				</tr>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Lakcím:</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="lakcim" name="lakcim" value="' . $address . '"/><br>
+					</div>
+				</div>
 
-				<tr>
-					<td>Telefonszám:
-					<p style="font-size:75%">Csak számok.</p></td>
-					<td><input type="number" id="telszam" name="telszam" value="' . $phonenumber . '"/></td>
-				</tr>
-				<tr>
-					<td>Adószám:</td>
-					<td><input type="number" id="adoszam" min="0" name="adoszam" value="' . $taxnumber . '"/></td>
-				</tr>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Telefonszám:</label>
+					' .//echo <p style="font-size:75%">Csak számok.</p></td>.
+					'<div class="col-sm-2">
+						<input type="number" class="form-control" id="telszam" name="telszam" value="' . $phonenumber . '"/><br>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">Adószám:</label>
+					<div class="col-sm-2">
+						<input type="number" class="form-control" id="adoszam" name="adoszam" value="' . $taxnumber . '"/><br>
+					</div>
+				</div>
 				'
 				;
                         }
@@ -161,8 +178,15 @@
                     ?>
 
                 </tbody>
+				<tfoot>
+                    <input class="btn btn-default" type="submit" name="submit" value="Módosítás"/>
+                </tfoot>
             </table>
             <br>
         </form>	
+		<form action="index.php" method="post">
+			<input class="btn btn-default"  type="submit" value="Vissza"/>
+		</form>
+	</div>
     <body>
 </html>

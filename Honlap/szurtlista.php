@@ -2,6 +2,18 @@
 include 'dbconnect.php';
 session_start();
 ?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<title>Szűrtlista</title>
+	</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1>Szűrtlista</h1>
+	</div>
 <?php
 if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
 //ha bevan lépve
@@ -17,7 +29,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
         $select = "SELECT id, kep, termeknev, leiras, keszleten, ar FROM termekek";
         $s = $conn->query($select);
         $conn->close();
-        echo "<table>";
+        echo "<table class='table table-striped'>";
         echo "<tr>"
         . "<th>Fénykép</th>"
         . "<th>Terméknév</th>"
@@ -51,7 +63,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
             $s = $conn->query($select);
             $conn->close();
             if ($s->num_rows > 0) {
-                echo "<table>";
+                echo "<table class='table table-striped'>";
                 echo "<tr>"
                 . "<th>Fénykép</th>"
                 . "<th>Terméknév</th>"
@@ -88,7 +100,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
                 $s = $conn->query($select);
                 $conn->close();
                 if ($s->num_rows > 0) {
-                    echo "<table>";
+                    echo "<table class='table table-striped'>";
                     echo "<tr>"
                     . "<th>Fénykép</th>"
                     . "<th>Terméknév</th>"
@@ -125,7 +137,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
                     $s = $conn->query($select);
                     $conn->close();
                     if ($s->num_rows > 0) {
-                        echo "<table>";
+                        echo "<table class='table table-striped'>";
                         echo "<tr>"
                         . "<th>Fénykép</th>"
                         . "<th>Terméknév</th>"
@@ -172,7 +184,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
         $select = "SELECT kep, termeknev, leiras, keszleten, ar FROM termekek";
         $s = $conn->query($select);
         $conn->close();
-        echo "<table>";
+        echo "<table class='table table-striped'>";
         echo "<tr>"
         . "<th>Fénykép</th>"
         . "<th>Terméknév</th>"
@@ -202,7 +214,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
             $s = $conn->query($select);
             $conn->close();
             if ($s->num_rows > 0) {
-                echo "<table>";
+                echo "<table class='table table-striped'>";
                 echo "<tr>"
                 . "<th>Fénykép</th>"
                 . "<th>Terméknév</th>"
@@ -235,7 +247,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
                 $s = $conn->query($select);
                 $conn->close();
                 if ($s->num_rows > 0) {
-                    echo "<table>";
+                    echo "<table class='table table-striped'>";
                     echo "<tr>"
                     . "<th>Fénykép</th>"
                     . "<th>Terméknév</th>"
@@ -268,7 +280,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
                     $s = $conn->query($select);
                     $conn->close();
                     if ($s->num_rows > 0) {
-                        echo "<table>";
+                        echo "<table class='table table-striped'>";
                         echo "<tr>"
                         . "<th>Fénykép</th>"
                         . "<th>Terméknév</th>"
@@ -300,7 +312,10 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
 }
 echo "<html>";
 echo '<form action="index.php" method="post">
-	<input type="submit" value="Vissza">
+	<input class="btn btn-default" type="submit" value="Vissza">
 	</form>';
 echo "</html>";
 ?>
+</div>
+</body>
+</html>
