@@ -31,3 +31,4 @@ C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.cspro
 C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.csproj.CoreCompileInputs.cache
 C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.exe
 C:\Users\Gábor\Documents\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.pdb
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIR\obj\Debug\VIR.csprojResolveAssemblyReference.cache
