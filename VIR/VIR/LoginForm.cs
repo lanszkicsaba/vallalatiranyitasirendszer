@@ -88,7 +88,7 @@ namespace VIR
             get { return loginname; }
         }
         //Bejelentkezés void
-        private void LoggingIn()
+        public void LoggingIn()
         {
             //Bevitt adatok ellenőrzése és a fomr hozzá igazítása (Színek, szövegek)
             if (textBoxUserName.Text.ToString() == "" && textBoxPasswd.Text.ToString() == "")

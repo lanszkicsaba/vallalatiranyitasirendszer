@@ -32,5 +32,20 @@ namespace VIR.Tests
             LoginForm l = new LoginForm();
             Assert.IsNotNull(l);
         }
+
+        [TestMethod()]
+        public void LoggingInTest()
+        {
+            try
+            {
+                LoginForm l = new LoginForm();
+                l.LoggingIn();
+                Assert.IsTrue(true);
+            }
+            catch
+            {
+                Assert.IsTrue(false);
+            }
+        }
     }
 }

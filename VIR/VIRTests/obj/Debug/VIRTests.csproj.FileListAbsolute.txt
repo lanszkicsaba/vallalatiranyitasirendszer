@@ -10,3 +10,8 @@ C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogi
 C:\Users\Csaba\Documents\Suli\5\A rendszerfejlesztés technológiája\beadandogit\VIR\VIRTests\obj\Debug\VIRTests.pdb
 C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIRTests\obj\Debug\VIRTests.csprojResolveAssemblyReference.cache
 C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIRTests\obj\Debug\VIRTests.dll
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIRTests\bin\Debug\VIRTests.dll
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIRTests\bin\Debug\VIRTests.pdb
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIRTests\bin\Debug\VIR.exe
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIRTests\bin\Debug\VIR.pdb
+C:\Users\P\Documents\GitHub\vallalatiranyitasirendszer\VIR\VIRTests\obj\Debug\VIRTests.pdb
