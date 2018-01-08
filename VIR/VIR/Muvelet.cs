@@ -15,7 +15,7 @@ namespace Muveletek
     class Muvelet
     {
 
-        //A függvény, mely segítségével kigyűjtjük az adatokat az adatbázisból.
+        //A függvény, mely segítségével kigyűjtjük a rendelések adatait az adatbázisból.
         public void getRend(VIR.Rendelesek rend)
         {
             try
@@ -252,43 +252,44 @@ namespace Muveletek
             File.Copy(sourceFile, destFile, true);
         }
 
+        //HomeFormon keresés funkció
         public void Kereses(string szoveg, bool[] check, ListView listView1)
         {
 
             DBConnect conn = new DBConnect();
 
             string connstring = "SELECT * FROM termekek";
-            bool vancheck = false;
-            bool vanhiba = false;
+            bool vancheck = false; //Segítségével tudjuk, hogy milyen Where kondíció kell.
+            bool vanhiba = false; //Ha volt valamiféle beviteli hiba (számoknál), akkor true lesz.
 
             if (szoveg != null && szoveg != "")
             {
-                if (check[0] == true)
+                if (check[0] == true) //Ha az első checkbox be van pipálva, akkor
                 {
-                    vancheck = true;
-                    connstring += " WHERE termeknev like '%" + szoveg + "%'";
+                    vancheck = true; //check true
+                    connstring += " WHERE termeknev like '%" + szoveg + "%'"; //alap where záradék
                 }
 
-                if (check[1] == true)
+                if (check[1] == true) //ha a második checkbox be van pipálva, akkor
                 {
                     try
                     {
-                        if (vancheck == false)
+                        if (vancheck == false) //Ha eddig nem volt semmi se bejelölve
                         {
-                            vancheck = true;
-                            connstring += " WHERE ar=" + int.Parse(szoveg);
+                            vancheck = true; //volt bejelölés = igaz
+                            connstring += " WHERE ar=" + int.Parse(szoveg); //sima where záradék
                         }
-                        else
+                        else //Ha már volt eddig már más is bejelölve
                         {
-                            connstring += " OR ar=" + int.Parse(szoveg);
+                            connstring += " OR ar=" + int.Parse(szoveg); //where .. or ... záradék
                         }
                     }
                     catch
                     {
-                        if (vanhiba == false)
+                        if (vanhiba == false) //Ha eddig nem volt hiba
                         {
-                            MessageBox.Show("Hibás formátum.\nEbben az esetben csak szám lehet a keresés mezőben.", "Hiba");
-                            vanhiba = true;
+                            MessageBox.Show("Hibás formátum.\nEbben az esetben csak szám lehet a keresés mezőben.", "Hiba"); //Hiba oka
+                            vanhiba = true; //volt hiba
                         }
                     }
                 }
@@ -375,12 +376,12 @@ namespace Muveletek
 
             connstring += ";";
 
-            if (vanhiba == false)
+            if (vanhiba == false) //ha nem volt hiba, akkor mehet a keresés
             {
-                listView1.Items.Clear();
-                Adatletoltes(listView1, connstring);
+                listView1.Items.Clear(); //listanézet adatainak törlése
+                Adatletoltes(listView1, connstring); //szűrt adatok betöltése
             }
-            else
+            else //ha volt hiba, akkor a jelző alaphelyzetre állítása.
             {
                 vanhiba = false;
             }

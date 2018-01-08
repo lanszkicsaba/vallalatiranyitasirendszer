@@ -19,7 +19,7 @@ namespace VIR
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            logForm = new LoginForm();
+            logForm = new LoginForm(); //LoginForm, mint kezdő ablak.
             Application.Run(logForm);
         }
     }

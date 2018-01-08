@@ -11,59 +11,51 @@ using MySql.Data.MySqlClient;
 using System.Threading;
 using System.Resources;
 using System.IO;
+using VIRConnect;
 
 namespace VIR
 {
     public partial class LoginForm : Form
     {
-        private MySqlConnection conn;
-        private string server;
-        private string database;
-        private string dbuid;
-        private string dbpassword;
-        private string connstr;
-        private Form homeForm = new HomeForm();
-        private string fullname = "";
-        private string loginname = "";
+        DBConnect conn = new DBConnect(); //Adatbázis csatlakozás
+        private Form homeForm = new HomeForm(); //HomeForm deklarálása
+        private string fullname = ""; //A getter része
+        private string loginname = ""; //A getter része
 
         
         
         public LoginForm()
         {
             InitializeComponent();
+            //Ha már 1x bejelentkezett, akkor Propertiesből töltse be a felhasználónevét. Ha még nem, vagy másik név, akkor töltse be a Propertiesba.
             if (Properties.Settings.Default.Username!=null || Properties.Settings.Default.Username!=textBoxUserName.Text)
             {
                 textBoxUserName.Text = Properties.Settings.Default.Username;
             }
+            //Ha még nincs felh. név beírva, akkor a fókusz azon a textboxon legyen
             if (textBoxUserName.Text==string.Empty)
             {
                 textBoxUserName.Select();
             }
-            else
+            else   //Ha már van felh. név betöltve, akkor a jelszó bevitelen legyen a fókusz
             {
                 textBoxPasswd.Select();
             }
-
-            buttonLogout.Enabled = false;
-            server = "193.164.132.164";
-            database = "csaba";
-            dbuid = "csaba";
-            dbpassword = "DPU3wX9HYmGEL8HK";
-            connstr = "SERVER=" + server + ";" + "DATABASE=" +
-        database + ";" + "UID=" + dbuid + ";" + "PASSWORD=" + dbpassword + ";"+"Connection Timeout=300;";
-
-            conn = new MySqlConnection(connstr);
+            //Kijelentkezés gomb beállítása letiltottra.
+            buttonLogout.Enabled = false;         
         }
 
         
-
+        //Bejelentkezés gomb
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             LoggingIn();            
         }
 
+        //Kijelentkezés gomb
         private void buttonLogout_Click(object sender, EventArgs e)
         {
+            //Ha a homeform létre volt már hozva, akkor zárja be és állítson mindent vissza az eredetire.
             if (homeForm.Created==true)
             {
                 homeForm.Dispose();
@@ -95,8 +87,10 @@ namespace VIR
         {
             get { return loginname; }
         }
+        //Bejelentkezés void
         private void LoggingIn()
         {
+            //Bevitt adatok ellenőrzése és a fomr hozzá igazítása (Színek, szövegek)
             if (textBoxUserName.Text.ToString() == "" && textBoxPasswd.Text.ToString() == "")
             {
                 labelMessage.Text = "Kérlek add meg a belépési adatokat.";
@@ -108,19 +102,22 @@ namespace VIR
                 labelMessage.Text = "A felhasználónév mező üres. Kérlek ellenőrizd.";
                 labelMessage.ForeColor = Color.Red;
                 textBoxUserName.BackColor = Color.LightCoral;
+                textBoxPasswd.BackColor = Color.White;
             }
             if (textBoxPasswd.Text.ToString() == "")
             {
                 labelMessage.Text = "A jelszó mező üres. Kérlek ellenőrizd.";
                 labelMessage.ForeColor = Color.Red;
                 textBoxPasswd.BackColor = Color.LightCoral;
+                if (textBoxUserName.Text!="")textBoxUserName.BackColor = Color.White; //Ha már közben beírta a nevét, akkor ne maradjon piros az username mező.
             }
 
             if (textBoxUserName.Text.ToString() != "" && textBoxPasswd.Text.ToString() != "")
             {
-                //Név mentése
+                //Név mentése a Propertiesbe
                 Properties.Settings.Default.Username = textBoxUserName.Text;
                 Properties.Settings.Default.Save();
+                //Loading gif betöltése a formra.
                 if (File.Exists("image/loading.gif"))
                 {
                     pictureBox1.Image = Image.FromFile("image/loading.gif");
@@ -131,13 +128,15 @@ namespace VIR
                 }
 
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                string mquerylogin = "SELECT * FROM asztaliusers where name=\"" + (textBoxUserName.Text.ToLower()) + "\"";
-                MySqlCommand cmdlogin = new MySqlCommand(mquerylogin, conn);
+
+                //Bejelentkezési adatok ellenőrzése.
                 try
                 {
-                    conn.Open();
-
-
+                    string mquerylogin = "SELECT * FROM asztaliusers where name=\"" + (textBoxUserName.Text.ToLower()) + "\"";
+                    MySqlCommand cmdlogin = new MySqlCommand(mquerylogin, conn.returnConnection());
+                    conn.OpenConnection();
+                    
+                    //Visszakapott adatok kinyerése
                     string name = "";
                     string passwd = "";
                     MySqlDataReader reader = cmdlogin.ExecuteReader();
@@ -148,7 +147,8 @@ namespace VIR
                         passwd = reader.GetString("passwd");
                         fullname = reader.GetString("fullname");
                     }
-                    conn.Close();
+                    conn.CloseConnection();
+                    //Megegyeznek-e az adatok a lekértekkel
                     if ((name != "" && name.ToLower() == textBoxUserName.Text.ToLower()) && (passwd != "" && passwd == textBoxPasswd.Text.ToString()))
                     {
                         loginname = name;
@@ -156,7 +156,7 @@ namespace VIR
                         labelMessage.ForeColor = Color.Green;
                         textBoxUserName.BackColor = Color.LightGreen;
                         textBoxPasswd.BackColor = Color.LightGreen;
-
+                        //Ha már egyszer be volt zárva a HomeForm, akkor hozza létre újra.
                         if (homeForm.IsDisposed == true)
                         {
                             homeForm = new HomeForm();
@@ -179,7 +179,7 @@ namespace VIR
                 }
                 catch (MySqlException ex)
                 {
-                    conn.Close();
+                    conn.CloseConnection();
                     labelMessage.Text = "Hiba lépett fel";
                     labelMessage.ForeColor = Color.Red;
                     MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");

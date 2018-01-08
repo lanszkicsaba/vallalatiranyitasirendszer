@@ -14,7 +14,7 @@ namespace VIR
 {
     public partial class HomeForm : Form
     {
-        Timer timer = new Timer();
+        Timer timer = new Timer(); //Automata listafrissítéshez
 
         private static string kivalasztottTermeknev = "";
         private static string kivalasztottAr = "";
@@ -37,25 +37,25 @@ namespace VIR
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-
-
+         
+        //HomeForm bezárása közbeni trigger
         private void HomeForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Program.logForm.HomeClosed();
+            Program.logForm.HomeClosed(); //LoginForm alaphelyzetbe állítása
         }
 
-
+        //Kijelentkezés gomb
         private void logout_btn_Click(object sender, EventArgs e)
         {
-            Program.logForm.HomeClosed();
-            this.Close();
+            this.Close(); //HomeForm bezárása
         }
 
 
         private void HomeForm_Load(object sender, EventArgs e)
         {
+            //Kép megjelenítő beállítása, üdvözlő szöveg megadása
             termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-
+            
             if (Program.logForm.Fullname == "" || Program.logForm.Fullname == null)
             {
                 welcome_label.Text = "Üdvözöllek Felhasználó";
@@ -79,10 +79,7 @@ namespace VIR
             muvelet.Adatletoltes(listView1); //adatok feltöltése
             timer.Start();  //időzítő indítása
             timer.Tick += new EventHandler(frissites_btn_Click); //meghívja a frissítést
-            timer.Interval = (10 * 1000); // 10 secs frissít
-           
-            
-          //  muvelet.getRend(rend);
+            timer.Interval = (10 * 1000); // 10 secs frissít          
             
         }
 
@@ -432,33 +429,35 @@ namespace VIR
             }
         }
 
-
+        //Termék frissítése
         private void modositas_btn_Click(object sender, EventArgs e)
         {
             int ar;
             int mennyiseg;
             int suly;
-
+            //Ha az int maximumánál nagyobb érték van megadva
             if (int.TryParse(modositasAr_textBox.Text, out ar) == false && modositasAr_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték az árnál. \n Maximum: 2147483647.", "Hiba");
-                modositasAr_textBox.Select();
+                modositasAr_textBox.Select(); //Bejelöli a hibás beviteli részt
             }
+            //Ha az int maximumánál nagyobb érték van megadva
             else if (int.TryParse(modositasMennyiseg_textBox.Text, out mennyiseg) == false && modositasMennyiseg_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a mennyiségnél. \n Maximum: 2147483647.", "Hiba");
-                modositasMennyiseg_textBox.Select();
+                modositasMennyiseg_textBox.Select(); //Bejelöli a hibás beviteli részt
             }
             else if (int.TryParse(modositasSuly_textBox.Text, out suly) == false && modositasSuly_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a súlynál. \n Maximum: 2147483647.", "Hiba");
                 modositasSuly_textBox.Select();
             }
+                //Név nélkül nem lehet feltölteni.
             else if (modositasTermeknev_textBox.Text == string.Empty)
             {
                 MessageBox.Show("Név megadása kötelező.", "Hiba");
                 modositasTermeknev_textBox.Select();
-            }
+            } //Ha minden jó
             else
             {
                 DBConnect conn = new DBConnect();
@@ -676,9 +675,10 @@ namespace VIR
             timer.Start();
         }
 
-        Rendelesek rend;
+        
 
 #region SzámlaForm
+        Rendelesek rend; //Rendelések adataihoz
         private void tabControl_Keszlet_Selected(object sender, TabControlEventArgs e)
         {
             if (betoltesbool == false)
