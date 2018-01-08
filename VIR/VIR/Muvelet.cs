@@ -266,7 +266,7 @@ namespace Muveletek
                 if (check[0] == true)
                 {
                     vancheck = true;
-                    connstring += " WHERE termeknev=\'" + szoveg + "\'";
+                    connstring += " WHERE termeknev like '%" + szoveg + "%'";
                 }
 
                 if (check[1] == true)

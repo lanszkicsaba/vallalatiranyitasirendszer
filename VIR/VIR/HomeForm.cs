@@ -23,17 +23,13 @@ namespace VIR
         private string selectedFileName;
         private string selectedFilePathNameModositas;
         private string selectedFileNameModositas;
-        bool[] check = new bool[6];
-        //Ha már egyszer betöltöttük a számla adatokat kattintáskor, akkor true és többször nem fogja.
-        bool betoltesbool = false;
+        bool[] check = new bool[6];  //button_Keres_Click voidhoz változó. Ebben tárolódnak a Keresés résznél bejelölt kritériumok státusza.
+        private bool Resizing = false; //Bool változó a listView1_SizeChanged Voidhoz.
+        bool betoltesbool = false; //Ha már egyszer betöltöttük a számla adatokat kattintáskor, akkor true és többször nem fogja.
         //private Rendelesek rend = new Rendelesek();
-        int oldwidth = 0;
-        int oldheight = 0;
         public HomeForm()
         {
             InitializeComponent();
-            oldwidth = this.Height;
-            oldheight = this.Width;
         }
 
 
@@ -610,19 +606,20 @@ namespace VIR
             }
         }
 
-
+        //HomeForm Keresés rész
         private void button_Keres_Click(object sender, EventArgs e)
         {
 
             Muvelet keres = new Muvelet();
-
+            //Automata frissítés megállítása
             timer.Stop();
-
+            //A check tömb alapra állítása
             for (int i = 0; i < check.Length; i++)
             {
                 check[i] = false;
             }
 
+            //Mely keresési kritériumok lettek bepipálva.
             if (checkBox_Nev.Checked)
             {
                 check[0] = true;
@@ -652,7 +649,7 @@ namespace VIR
             {
                 check[5] = true;
             }
-
+            //Keresés függvény meghívása.
             keres.Kereses(textBox_Kereses.Text, check, listView1);
 
         }
@@ -681,7 +678,7 @@ namespace VIR
 
         Rendelesek rend;
 
-        
+#region SzámlaForm
         private void tabControl_Keszlet_Selected(object sender, TabControlEventArgs e)
         {
             if (betoltesbool == false)
@@ -710,10 +707,10 @@ namespace VIR
                     for (int i = 0; i < rend.rend_id.Length; i++)
                     {
                         //Ha 1 rendelés alatt több termék van, akkor többször szerepel egy ID, de ide elég csak 1x betölteni egy rendelést.
-                        
-                        if (i != 0)
+                        //A rendelések ID szerint vannak sorbarendezve.
+                        if (i != 0) 
                         {
-                            if (rend.rend_id[i - 1] != rend.rend_id[i])
+                            if (rend.rend_id[i - 1] != rend.rend_id[i]) //Ha nem egyezik az előző ID-val, akkor adja hozzá.
                             {
                                                                
                                 ComboBoxItem item = new ComboBoxItem();
@@ -724,7 +721,7 @@ namespace VIR
                                 
                             }
                         }
-                        else if (i==0)
+                        else if (i==0) //Az első elemet nem hasonlítjuk az előzőhöz, mert nincs előző.
                         {
                             
                             ComboBoxItem item = new ComboBoxItem();
@@ -755,6 +752,7 @@ namespace VIR
             vevocime_textBox.Text = rend.rendelo_cim[rend_idx];
             textBox_VevoTel.Text = rend.rendelo_tel[rend_idx];
             textBox_Vevoado.Text = rend.rendelo_tax[rend_idx];
+
             //Datagridviewek feltöltése
             dGV_Rendeles.Rows.Add(new object[] { "Átutalás", rend.rend_ido[rend_idx], DateTime.Now, DateTime.Now.AddDays(10) });
             int ossznetto = 0;
@@ -765,14 +763,16 @@ namespace VIR
                 if (rend.rend_id[i]==rend.rend_id[rend_idx])
                 {
                     dgv_SzamlaTermekek.Rows.Add(new object[] {rend.termek_nev[i],rend.termek_ar[i], rend.termek_db[i], Math.Round((rend.termek_ar[i]*rend.termek_db[i])/1.27,0),27,Math.Round((rend.termek_ar[i]*rend.termek_db[i])-((rend.termek_ar[i]*rend.termek_db[i])/1.27),0),rend.termek_ar[i]*rend.termek_db[i]});
+                    //Rendelt termékek összárának számolása
                     ossznetto += Convert.ToInt32((rend.termek_ar[i] * rend.termek_db[i]) / 1.27);
                     osszbrutto += rend.termek_ar[i] * rend.termek_db[i];
                     osszafa += Convert.ToInt32((rend.termek_ar[i] * rend.termek_db[i]) - ((rend.termek_ar[i] * rend.termek_db[i]) / 1.27));
                 }
             }
+            //Összár adatok feltöltése
             dGV_SzamlaOssz.Rows.Add(new object[] {ossznetto,27,osszafa,osszbrutto });
 
-            //Alap kijelölés törlése
+            //Alap kijelölések törlése
             dGV_Rendeles.ClearSelection();
             dGV_SzamlaOssz.ClearSelection();
             dgv_SzamlaTermekek.ClearSelection();
@@ -782,12 +782,14 @@ namespace VIR
 
         private void Doc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            //A számla Tabon lévő Panel rárajzolása egy Bitmapra.
-            float x = e.MarginBounds.Left;
+            //A számla Tabon lévő Panel3 rárajzolása egy Bitmapra.
+
+            //Az oldal margójának mentése
+            float x = e.MarginBounds.Left; 
             float y = e.MarginBounds.Top;
-            Bitmap bmp = new Bitmap(this.tab_Szamla.Width, this.tab_Szamla.Height);
+            Bitmap bmp = new Bitmap(this.panel3.Width, this.panel3.Width);
             
-            this.tab_Szamla.DrawToBitmap(bmp, new Rectangle(0,0,tab_Szamla.Width,tab_Szamla.Height));
+            this.panel3.DrawToBitmap(bmp, new Rectangle(0,0,panel3.Width+2,panel3.Height+2));
             e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
             e.Graphics.DrawImage((Image)bmp,x,y);
             
@@ -796,51 +798,44 @@ namespace VIR
 
         private void button_Kiallitas_Click(object sender, EventArgs e)
         {
+            
+            //Eredeti pozíciók mentése a Termékek dataGridvievének és az Összesen résznek::
             int boxheight = groupBox5.Height;
             int dgvheight = dgv_SzamlaTermekek.Height;
             int osszesenpoz = groupBox6.Location.Y;
             int szamlaosszpoz = dGV_SzamlaOssz.Location.Y;
-
+            //A Termékek DataGridviewjének expandolása lefelé és az Összesen rész eltolása vele együtt lefelé.
             groupBox5.Height = boxheight + (megrendelesek_comboBox.Location.Y -(groupBox5.Location.Y+boxheight));
             dgv_SzamlaTermekek.Height = groupBox5.Height - dgv_SzamlaTermekek.Location.Y-5;
             dGV_SzamlaOssz.Location = new Point(dGV_SzamlaOssz.Location.X, groupBox5.Location.Y + groupBox5.Height + 10);
             groupBox6.Location = new Point(groupBox6.Location.X, groupBox5.Location.Y + groupBox5.Height + 10);
+            //A formon lévő fölösleges gombok, textboxok rejtése
             megrendelesek_comboBox.Visible = false;
             textBox_SzTalloz.Visible = false;
             button_Talloz.Visible = false;
             button_Kiallitas.Visible = false;
+            //Textboxok keretének eltűntetése
             vevoneve_textBox.BorderStyle = BorderStyle.None;
             vevocime_textBox.BorderStyle = BorderStyle.None;
             textBox_VevoTel.BorderStyle = BorderStyle.None;
             textBox_Vevoado.BorderStyle = BorderStyle.None;
 
+            //dGV_SzamlaOssz.Parent = groupBox6;
 
-            dGV_SzamlaOssz.Parent = groupBox6;
-            int newwidth = this.Width;
-            int newheight = this.Height;
-            this.Width = this.MaximumSize.Width;
-            this.Height = this.MaximumSize.Height;
-
+            //Számla nyomtatása.
             PrintDocument doc = new PrintDocument();
-            doc.DefaultPageSettings.Landscape = true;
-            doc.OriginAtMargins = false;
+            doc.DefaultPageSettings.Landscape = true; //Fektetett nézet
+            //doc.OriginAtMargins = false; 
             doc.DefaultPageSettings.PrinterResolution.Kind = PrinterResolutionKind.High;
             
             doc.PrintPage += this.Doc_PrintPage;
-           // PrintDialog pdlg = new PrintDialog();
-            
-            PrintPreviewDialog pdlg = new PrintPreviewDialog();
            
+            // PrintDialog pdlg = new PrintDialog(); //Rögtön PDF-be menti/nyomtatja ezzel.            
+            PrintPreviewDialog pdlg = new PrintPreviewDialog(); //Először van egy preview és onnan lehet nyomtatni.           
             pdlg.Document = doc;
-           // if (pdlg.ShowDialog() == DialogResult.OK)
-           // {
-            //    doc.Print();
-          //  }
-
             pdlg.ShowDialog();
-            this.Width = newwidth;
-            this.Height = newheight;
 
+            //Minden visszaállítása az eredetire
             groupBox5.Height = boxheight;
             dgv_SzamlaTermekek.Height = dgvheight;
             dGV_SzamlaOssz.Location = new Point(dGV_SzamlaOssz.Location.X, szamlaosszpoz);
@@ -855,53 +850,52 @@ namespace VIR
             textBox_Vevoado.BorderStyle = BorderStyle.Fixed3D;
         }
 
+        //XML tallózása a számlába
         private void button_Talloz_Click(object sender, EventArgs e)
         {
             
-            openFileDialog1.InitialDirectory = ".";
-            openFileDialog1.Filter = "Xml files (*.xml)|*.xml";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            openFileDialog1.InitialDirectory = "."; //Asztal, mint kezdő mappa
+            openFileDialog1.Filter = "Xml files (*.xml)|*.xml"; //Szűrő beállítása XML fájlokra
+            openFileDialog1.FilterIndex = 2; //Az xml filterje legyen az alapértelmezett
+            openFileDialog1.RestoreDirectory = true; //Újra megnyitáskor visszatölti a legutóbbi mappát
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) //Tallózó megnyitás, majd az if ágba lépés, ha OK gombra nyomtak
             {
                 try
                 {
-                textBox_SzTalloz.Text = Path.GetDirectoryName(openFileDialog1.FileName);
+                textBox_SzTalloz.Text = Path.GetDirectoryName(openFileDialog1.FileName); //Textboxba írja be a tallózott fájl mappáját.
+               //XML beolvasása
                 XmlDocument doc = new XmlDocument();
                 doc.Load(openFileDialog1.FileName);
-
+                    //XML adataiból a labelek, textboxok feltöltése
                 label_Sorszam.Text = "Sorszám: " + doc.SelectSingleNode("rendeles/rendelesadatai/rendid").InnerText;
                 vevoneve_textBox.Text = doc.SelectSingleNode("rendeles/rendeloadatai/nev").InnerText;
                 vevocime_textBox.Text = doc.SelectSingleNode("rendeles/rendeloadatai/cim").InnerText;
                 textBox_VevoTel.Text = doc.SelectSingleNode("rendeles/rendeloadatai/telefonszam").InnerText;
                 textBox_Vevoado.Text = doc.SelectSingleNode("rendeles/rendeloadatai/adoszam").InnerText;
                 XmlNodeList termekek = doc.SelectNodes("rendeles/termekekadatai/termek");
+                //Régi adatok törlése a dataGridViewekből
                 dGV_Rendeles.Rows.Clear();
                 dgv_SzamlaTermekek.Rows.Clear();
                 dGV_SzamlaOssz.Rows.Clear();
+                //Rendelt termékek összárai
                 int ossznetto = 0;
                 int osszbrutto = 0;
                 int osszafa = 0;
+                    //Több termék betöltése a termékeket tartalmazó dataGridViewbe
                     foreach (XmlNode termek in termekek)
                     {
-                        /*dgv_SzamlaTermekek.Rows.Add(new object[] {
-                         * rend.termek_nev[i],
-                         * rend.termek_ar[i],
-                         * rend.termek_db[i],
-                         * Math.Round((rend.termek_ar[i]*rend.termek_db[i])/1.27,0),
-                         * 27,
-                         * Math.Round((rend.termek_ar[i]*rend.termek_db[i])-((rend.termek_ar[i]*rend.termek_db[i])/1.27),0),
-                         * rend.termek_ar[i]*rend.termek_db[i]
-                         * });
-                        */                        
+                      
                         int ar = int.Parse(termek["ara"].InnerText.Replace(" Ft",""));
                         int db = int.Parse(termek["mennyiseg"].InnerText.Replace(" db",""));
-                        
+                        //Termék hozzáadása a dgv-hez
                         dgv_SzamlaTermekek.Rows.Add(new object[] {termek["termekneve"].InnerText,ar,db,Math.Round((ar*db)/1.27,0),27,Math.Round((ar*db)-((ar*db)/1.27),0),ar*db });
+                           //Összárak számolása
                         ossznetto += Convert.ToInt32((ar * db) / 1.27);
                         osszbrutto += ar * db;
                         osszafa += Convert.ToInt32((ar * db) - ((ar * db) / 1.27));
                     }
+                    //Összesen dgv feltöltése
                     dGV_SzamlaOssz.Rows.Add(new object[] { ossznetto, 27, osszafa, osszbrutto });
                 //Alap kijelölés törlése
                 dGV_Rendeles.ClearSelection();
@@ -916,7 +910,7 @@ namespace VIR
 
             }
         }
-        private bool Resizing = false;
+
         private void listView1_SizeChanged(object sender, EventArgs e)
         {
             //A Resizing bool segtségével megakadályozzuk, hogy nagyon sokszor meghívódjon a triggerben lévő kód.
@@ -924,12 +918,11 @@ namespace VIR
             {
                 //Elkezdjük a számítást
                 Resizing = true;
-                
-                
+              
                     float totalColumnWidth = 0;
 
                     //Az oszlop tag-ekben szereplő számok összeadása.
-                //Ezzel segítségével tudjuk, hogy hány százalékos legyen egy oszlop. Minél nagyobb a tagben lévő szám, annál több helyet számol majd neki.
+                    //Ezzel segítségével tudjuk, hogy hány százalékos legyen egy oszlop. Minél nagyobb a tagben lévő szám, annál több helyet számol majd neki.
                     for (int i = 0; i < this.listView1.Columns.Count; i++)
                     {
                         totalColumnWidth += Convert.ToInt32(this.listView1.Columns[i].Tag);
@@ -949,7 +942,7 @@ namespace VIR
             // Végeztünk a szélességek számításával
             Resizing = false;
         }
-       
+#endregion
     }
 
 }
