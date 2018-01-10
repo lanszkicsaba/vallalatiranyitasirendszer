@@ -5,11 +5,15 @@ session_start();
 <?php
 $conn = MySQLServerConnecter(); //kapcsolat megnyitása
 
-$query = "SELECT Username, Password FROM honlapusers WHERE Username='" . $_POST["username"] . "'"; //lekéri a jelszót és a felhasználó adatait
-$s = $conn->query($query); //lekérés futatás
+$s=$conn->prepare("SELECT Username, Password FROM honlapusers WHERE Username=?"); //MYSQL statement létrehozása
+$s->bind_param("s", $_POST["username"]); //Változók hozzárendelése a statementhez
+
+$s->execute(); //Statement futtatása
+$r=$s->get_result(); //Lekérdezés eredményének hozzárendelése a $resulthoz
+
 $conn->close(); // kapcsolat lezárása
 
-$row = $s->fetch_assoc(); //adatatok felbontása
+$row = $r->fetch_assoc(); //adatatok felbontása
 
 $password = md5($_POST["psw"]); //beírt jelszó md5 hash-é alakítása
 //jelszó ellenőrzés
