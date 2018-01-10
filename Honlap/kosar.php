@@ -3,7 +3,11 @@
     session_start();
     require_once 'dbconnect.php';
     ?>
-
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+		<title>Kosár</title>
+	</head>
 		
     <script type="text/javascript">
 		//A rendelt termékek árának összeadására és label-be írására
@@ -60,8 +64,13 @@
     });
     </script>
     <body>
+	<div class="container">
+		<div class="page-header">
+            <h1>Kosár</h1>
+        </div>
         <form action=checkout.php method=post>
-            <table>
+		<div class="col-sm-6">
+            <table class='table table-striped'>
                 <thead>
                     <?php
                     //ha bevan jelentkezve a felhasználó
@@ -76,7 +85,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    A kosár tartalma:';
+                    <h3>A kosár tartalma:</h3>';
 						//Ha kapott a kód termék ID-t, akkor mentse el a $ermekid-ba.
                         if (count($_POST) > 0)
                             $termekid = $_POST['id'];
@@ -132,8 +141,8 @@
 						</tr>
 						<tr>
 						<td colspan="4">
-							<input type="button" onClick="parent.location=\'index.php\'" value="Vissza a vásárláshoz"></input>
-							<input type="submit" value="Megrendelem"></input>
+							<input type="button" class="form-control " onClick="parent.location=\'index.php\'" value="Vissza a vásárláshoz"></input><br>
+							<input  type="submit" class="form-control " value="Megrendelem"></input>
 						</td>
 						</tr>
 						';
@@ -146,7 +155,8 @@
                     ?>
                     </tbody>
             </table>
-
+		</div>
         </form>
+		</div>
     </body>
 </html>
