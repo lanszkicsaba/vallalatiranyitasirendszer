@@ -96,6 +96,7 @@
             this.Keszleten_columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tab_Szamla = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button_szamlafriss = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.button_Kiallitas = new System.Windows.Forms.Button();
             this.textBox_SzTalloz = new System.Windows.Forms.TextBox();
@@ -146,7 +147,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button_szamlafriss = new System.Windows.Forms.Button();
             this.tabControl_Keszlet.SuspendLayout();
             this.Tab_Keszlet.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -176,7 +176,7 @@
             this.tabControl_Keszlet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl_Keszlet.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabControl_Keszlet.Location = new System.Drawing.Point(4, 41);
-            this.tabControl_Keszlet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl_Keszlet.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl_Keszlet.Name = "tabControl_Keszlet";
             this.tabControl_Keszlet.SelectedIndex = 0;
             this.tabControl_Keszlet.Size = new System.Drawing.Size(1139, 797);
@@ -189,9 +189,9 @@
             this.Tab_Keszlet.Controls.Add(this.tableLayoutPanel2);
             this.Tab_Keszlet.Controls.Add(this.listView1);
             this.Tab_Keszlet.Location = new System.Drawing.Point(4, 28);
-            this.Tab_Keszlet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Keszlet.Margin = new System.Windows.Forms.Padding(4);
             this.Tab_Keszlet.Name = "Tab_Keszlet";
-            this.Tab_Keszlet.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tab_Keszlet.Padding = new System.Windows.Forms.Padding(4);
             this.Tab_Keszlet.Size = new System.Drawing.Size(1131, 765);
             this.Tab_Keszlet.TabIndex = 0;
             this.Tab_Keszlet.Text = "Készlet";
@@ -207,7 +207,7 @@
             this.tableLayoutPanel3.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.groupBox_Kereses, 1, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(8, 0);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -228,7 +228,7 @@
             // frissites_btn
             // 
             this.frissites_btn.Location = new System.Drawing.Point(4, 42);
-            this.frissites_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.frissites_btn.Margin = new System.Windows.Forms.Padding(4);
             this.frissites_btn.Name = "frissites_btn";
             this.frissites_btn.Size = new System.Drawing.Size(120, 28);
             this.frissites_btn.TabIndex = 1;
@@ -239,7 +239,7 @@
             // tableexport_btn
             // 
             this.tableexport_btn.Location = new System.Drawing.Point(132, 42);
-            this.tableexport_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableexport_btn.Margin = new System.Windows.Forms.Padding(4);
             this.tableexport_btn.Name = "tableexport_btn";
             this.tableexport_btn.Size = new System.Drawing.Size(131, 28);
             this.tableexport_btn.TabIndex = 2;
@@ -260,9 +260,9 @@
             this.groupBox_Kereses.Controls.Add(this.checkBox_Nev);
             this.groupBox_Kereses.Controls.Add(this.textBox_Kereses);
             this.groupBox_Kereses.Location = new System.Drawing.Point(599, 4);
-            this.groupBox_Kereses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_Kereses.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_Kereses.Name = "groupBox_Kereses";
-            this.groupBox_Kereses.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_Kereses.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_Kereses.Size = new System.Drawing.Size(509, 68);
             this.groupBox_Kereses.TabIndex = 26;
             this.groupBox_Kereses.TabStop = false;
@@ -271,7 +271,7 @@
             // button_Vissza
             // 
             this.button_Vissza.Location = new System.Drawing.Point(425, 11);
-            this.button_Vissza.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Vissza.Margin = new System.Windows.Forms.Padding(4);
             this.button_Vissza.Name = "button_Vissza";
             this.button_Vissza.Size = new System.Drawing.Size(73, 28);
             this.button_Vissza.TabIndex = 32;
@@ -283,7 +283,7 @@
             // 
             this.checkBox_Keszleten.AutoSize = true;
             this.checkBox_Keszleten.Location = new System.Drawing.Point(409, 43);
-            this.checkBox_Keszleten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_Keszleten.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Keszleten.Name = "checkBox_Keszleten";
             this.checkBox_Keszleten.Size = new System.Drawing.Size(94, 23);
             this.checkBox_Keszleten.TabIndex = 30;
@@ -294,7 +294,7 @@
             // 
             this.checkBox_Leiras.AutoSize = true;
             this.checkBox_Leiras.Location = new System.Drawing.Point(332, 43);
-            this.checkBox_Leiras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_Leiras.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Leiras.Name = "checkBox_Leiras";
             this.checkBox_Leiras.Size = new System.Drawing.Size(68, 23);
             this.checkBox_Leiras.TabIndex = 29;
@@ -305,7 +305,7 @@
             // 
             this.checkBox_Kategoria.AutoSize = true;
             this.checkBox_Kategoria.Location = new System.Drawing.Point(229, 43);
-            this.checkBox_Kategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_Kategoria.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Kategoria.Name = "checkBox_Kategoria";
             this.checkBox_Kategoria.Size = new System.Drawing.Size(98, 23);
             this.checkBox_Kategoria.TabIndex = 28;
@@ -315,7 +315,7 @@
             // button_Keres
             // 
             this.button_Keres.Location = new System.Drawing.Point(347, 11);
-            this.button_Keres.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Keres.Margin = new System.Windows.Forms.Padding(4);
             this.button_Keres.Name = "button_Keres";
             this.button_Keres.Size = new System.Drawing.Size(73, 28);
             this.button_Keres.TabIndex = 31;
@@ -327,7 +327,7 @@
             // 
             this.checkBox_Mennyiseg.AutoSize = true;
             this.checkBox_Mennyiseg.Location = new System.Drawing.Point(120, 43);
-            this.checkBox_Mennyiseg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_Mennyiseg.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Mennyiseg.Name = "checkBox_Mennyiseg";
             this.checkBox_Mennyiseg.Size = new System.Drawing.Size(105, 23);
             this.checkBox_Mennyiseg.TabIndex = 27;
@@ -338,7 +338,7 @@
             // 
             this.checkBox_Ar.AutoSize = true;
             this.checkBox_Ar.Location = new System.Drawing.Point(69, 43);
-            this.checkBox_Ar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_Ar.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Ar.Name = "checkBox_Ar";
             this.checkBox_Ar.Size = new System.Drawing.Size(44, 23);
             this.checkBox_Ar.TabIndex = 26;
@@ -349,7 +349,7 @@
             // 
             this.checkBox_Nev.AutoSize = true;
             this.checkBox_Nev.Location = new System.Drawing.Point(8, 43);
-            this.checkBox_Nev.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_Nev.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_Nev.Name = "checkBox_Nev";
             this.checkBox_Nev.Size = new System.Drawing.Size(58, 23);
             this.checkBox_Nev.TabIndex = 25;
@@ -359,7 +359,7 @@
             // textBox_Kereses
             // 
             this.textBox_Kereses.Location = new System.Drawing.Point(76, 11);
-            this.textBox_Kereses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_Kereses.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Kereses.Name = "textBox_Kereses";
             this.textBox_Kereses.Size = new System.Drawing.Size(261, 24);
             this.textBox_Kereses.TabIndex = 24;
@@ -375,7 +375,7 @@
             this.tableLayoutPanel2.Controls.Add(this.groupBox4, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox3, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 341);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -387,7 +387,7 @@
             this.termekKep_pictureBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.termekKep_pictureBox.ErrorImage = ((System.Drawing.Image)(resources.GetObject("termekKep_pictureBox.ErrorImage")));
             this.termekKep_pictureBox.Location = new System.Drawing.Point(444, 112);
-            this.termekKep_pictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.termekKep_pictureBox.Margin = new System.Windows.Forms.Padding(4);
             this.termekKep_pictureBox.Name = "termekKep_pictureBox";
             this.termekKep_pictureBox.Size = new System.Drawing.Size(200, 185);
             this.termekKep_pictureBox.TabIndex = 7;
@@ -416,9 +416,9 @@
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Location = new System.Drawing.Point(714, 4);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(391, 394);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
@@ -427,7 +427,7 @@
             // modositasUrites_btn
             // 
             this.modositasUrites_btn.Location = new System.Drawing.Point(233, 358);
-            this.modositasUrites_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modositasUrites_btn.Margin = new System.Windows.Forms.Padding(4);
             this.modositasUrites_btn.Name = "modositasUrites_btn";
             this.modositasUrites_btn.Size = new System.Drawing.Size(100, 28);
             this.modositasUrites_btn.TabIndex = 23;
@@ -439,7 +439,7 @@
             // 
             this.checkBox_KeszletenModositas.AutoSize = true;
             this.checkBox_KeszletenModositas.Location = new System.Drawing.Point(97, 277);
-            this.checkBox_KeszletenModositas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_KeszletenModositas.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_KeszletenModositas.Name = "checkBox_KeszletenModositas";
             this.checkBox_KeszletenModositas.Size = new System.Drawing.Size(18, 17);
             this.checkBox_KeszletenModositas.TabIndex = 20;
@@ -448,7 +448,7 @@
             // richTextBox_LeirasModositas
             // 
             this.richTextBox_LeirasModositas.Location = new System.Drawing.Point(8, 159);
-            this.richTextBox_LeirasModositas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox_LeirasModositas.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_LeirasModositas.Name = "richTextBox_LeirasModositas";
             this.richTextBox_LeirasModositas.Size = new System.Drawing.Size(373, 67);
             this.richTextBox_LeirasModositas.TabIndex = 18;
@@ -457,7 +457,7 @@
             // modositasKep_btn
             // 
             this.modositasKep_btn.Location = new System.Drawing.Point(136, 308);
-            this.modositasKep_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modositasKep_btn.Margin = new System.Windows.Forms.Padding(4);
             this.modositasKep_btn.Name = "modositasKep_btn";
             this.modositasKep_btn.Size = new System.Drawing.Size(100, 28);
             this.modositasKep_btn.TabIndex = 21;
@@ -468,7 +468,7 @@
             // modositasSuly_textBox
             // 
             this.modositasSuly_textBox.Location = new System.Drawing.Point(97, 244);
-            this.modositasSuly_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modositasSuly_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.modositasSuly_textBox.Name = "modositasSuly_textBox";
             this.modositasSuly_textBox.Size = new System.Drawing.Size(284, 24);
             this.modositasSuly_textBox.TabIndex = 19;
@@ -477,7 +477,7 @@
             // modositasKategoria_textBox
             // 
             this.modositasKategoria_textBox.Location = new System.Drawing.Point(97, 112);
-            this.modositasKategoria_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modositasKategoria_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.modositasKategoria_textBox.Name = "modositasKategoria_textBox";
             this.modositasKategoria_textBox.Size = new System.Drawing.Size(284, 24);
             this.modositasKategoria_textBox.TabIndex = 17;
@@ -535,7 +535,7 @@
             // modositas_btn
             // 
             this.modositas_btn.Location = new System.Drawing.Point(72, 358);
-            this.modositas_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modositas_btn.Margin = new System.Windows.Forms.Padding(4);
             this.modositas_btn.Name = "modositas_btn";
             this.modositas_btn.Size = new System.Drawing.Size(100, 28);
             this.modositas_btn.TabIndex = 22;
@@ -546,7 +546,7 @@
             // modositasMennyiseg_textBox
             // 
             this.modositasMennyiseg_textBox.Location = new System.Drawing.Point(97, 79);
-            this.modositasMennyiseg_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modositasMennyiseg_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.modositasMennyiseg_textBox.Name = "modositasMennyiseg_textBox";
             this.modositasMennyiseg_textBox.Size = new System.Drawing.Size(284, 24);
             this.modositasMennyiseg_textBox.TabIndex = 16;
@@ -555,7 +555,7 @@
             // modositasAr_textBox
             // 
             this.modositasAr_textBox.Location = new System.Drawing.Point(97, 49);
-            this.modositasAr_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modositasAr_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.modositasAr_textBox.Name = "modositasAr_textBox";
             this.modositasAr_textBox.Size = new System.Drawing.Size(284, 24);
             this.modositasAr_textBox.TabIndex = 15;
@@ -564,7 +564,7 @@
             // modositasTermeknev_textBox
             // 
             this.modositasTermeknev_textBox.Location = new System.Drawing.Point(97, 15);
-            this.modositasTermeknev_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.modositasTermeknev_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.modositasTermeknev_textBox.Name = "modositasTermeknev_textBox";
             this.modositasTermeknev_textBox.Size = new System.Drawing.Size(284, 24);
             this.modositasTermeknev_textBox.TabIndex = 14;
@@ -622,9 +622,9 @@
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Location = new System.Drawing.Point(4, 4);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(371, 390);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
@@ -633,7 +633,7 @@
             // hozzadasUrites_btn
             // 
             this.hozzadasUrites_btn.Location = new System.Drawing.Point(192, 354);
-            this.hozzadasUrites_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hozzadasUrites_btn.Margin = new System.Windows.Forms.Padding(4);
             this.hozzadasUrites_btn.Name = "hozzadasUrites_btn";
             this.hozzadasUrites_btn.Size = new System.Drawing.Size(100, 28);
             this.hozzadasUrites_btn.TabIndex = 13;
@@ -646,7 +646,7 @@
             this.checkBox_KeszletenHozzaadas.AutoSize = true;
             this.checkBox_KeszletenHozzaadas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.checkBox_KeszletenHozzaadas.Location = new System.Drawing.Point(97, 277);
-            this.checkBox_KeszletenHozzaadas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox_KeszletenHozzaadas.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox_KeszletenHozzaadas.Name = "checkBox_KeszletenHozzaadas";
             this.checkBox_KeszletenHozzaadas.Size = new System.Drawing.Size(18, 17);
             this.checkBox_KeszletenHozzaadas.TabIndex = 10;
@@ -655,7 +655,7 @@
             // richTextBox_LeirasHozzaad
             // 
             this.richTextBox_LeirasHozzaad.Location = new System.Drawing.Point(8, 161);
-            this.richTextBox_LeirasHozzaad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox_LeirasHozzaad.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_LeirasHozzaad.Name = "richTextBox_LeirasHozzaad";
             this.richTextBox_LeirasHozzaad.Size = new System.Drawing.Size(353, 64);
             this.richTextBox_LeirasHozzaad.TabIndex = 8;
@@ -664,7 +664,7 @@
             // hozzaadasMegnyitas_btn
             // 
             this.hozzaadasMegnyitas_btn.Location = new System.Drawing.Point(136, 308);
-            this.hozzaadasMegnyitas_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hozzaadasMegnyitas_btn.Margin = new System.Windows.Forms.Padding(4);
             this.hozzaadasMegnyitas_btn.Name = "hozzaadasMegnyitas_btn";
             this.hozzaadasMegnyitas_btn.Size = new System.Drawing.Size(100, 28);
             this.hozzaadasMegnyitas_btn.TabIndex = 11;
@@ -675,7 +675,7 @@
             // hozzaadasSuly_textBox
             // 
             this.hozzaadasSuly_textBox.Location = new System.Drawing.Point(97, 244);
-            this.hozzaadasSuly_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hozzaadasSuly_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.hozzaadasSuly_textBox.Name = "hozzaadasSuly_textBox";
             this.hozzaadasSuly_textBox.Size = new System.Drawing.Size(264, 24);
             this.hozzaadasSuly_textBox.TabIndex = 9;
@@ -684,7 +684,7 @@
             // hozzaadasKategoria_textBox
             // 
             this.hozzaadasKategoria_textBox.Location = new System.Drawing.Point(97, 112);
-            this.hozzaadasKategoria_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hozzaadasKategoria_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.hozzaadasKategoria_textBox.Name = "hozzaadasKategoria_textBox";
             this.hozzaadasKategoria_textBox.Size = new System.Drawing.Size(264, 24);
             this.hozzaadasKategoria_textBox.TabIndex = 7;
@@ -742,7 +742,7 @@
             // hozzaadas_btn
             // 
             this.hozzaadas_btn.Location = new System.Drawing.Point(60, 354);
-            this.hozzaadas_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hozzaadas_btn.Margin = new System.Windows.Forms.Padding(4);
             this.hozzaadas_btn.Name = "hozzaadas_btn";
             this.hozzaadas_btn.Size = new System.Drawing.Size(100, 28);
             this.hozzaadas_btn.TabIndex = 12;
@@ -753,7 +753,7 @@
             // hozzaadasMennyiseg_textBox
             // 
             this.hozzaadasMennyiseg_textBox.Location = new System.Drawing.Point(97, 81);
-            this.hozzaadasMennyiseg_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hozzaadasMennyiseg_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.hozzaadasMennyiseg_textBox.Name = "hozzaadasMennyiseg_textBox";
             this.hozzaadasMennyiseg_textBox.Size = new System.Drawing.Size(264, 24);
             this.hozzaadasMennyiseg_textBox.TabIndex = 6;
@@ -762,7 +762,7 @@
             // hozzaadasAr_textBox
             // 
             this.hozzaadasAr_textBox.Location = new System.Drawing.Point(97, 49);
-            this.hozzaadasAr_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hozzaadasAr_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.hozzaadasAr_textBox.Name = "hozzaadasAr_textBox";
             this.hozzaadasAr_textBox.Size = new System.Drawing.Size(264, 24);
             this.hozzaadasAr_textBox.TabIndex = 5;
@@ -771,7 +771,7 @@
             // hozzaadasTermeknev_textBox
             // 
             this.hozzaadasTermeknev_textBox.Location = new System.Drawing.Point(97, 15);
-            this.hozzaadasTermeknev_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hozzaadasTermeknev_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.hozzaadasTermeknev_textBox.Name = "hozzaadasTermeknev_textBox";
             this.hozzaadasTermeknev_textBox.Size = new System.Drawing.Size(264, 24);
             this.hozzaadasTermeknev_textBox.TabIndex = 4;
@@ -822,7 +822,7 @@
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(8, 79);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(1111, 250);
@@ -878,9 +878,9 @@
             // 
             this.tab_Szamla.Controls.Add(this.panel3);
             this.tab_Szamla.Location = new System.Drawing.Point(4, 28);
-            this.tab_Szamla.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_Szamla.Margin = new System.Windows.Forms.Padding(4);
             this.tab_Szamla.Name = "tab_Szamla";
-            this.tab_Szamla.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_Szamla.Padding = new System.Windows.Forms.Padding(4);
             this.tab_Szamla.Size = new System.Drawing.Size(1131, 765);
             this.tab_Szamla.TabIndex = 1;
             this.tab_Szamla.Text = "Számlázás";
@@ -908,6 +908,18 @@
             this.panel3.Size = new System.Drawing.Size(1111, 754);
             this.panel3.TabIndex = 13;
             // 
+            // button_szamlafriss
+            // 
+            this.button_szamlafriss.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_szamlafriss.Location = new System.Drawing.Point(969, 603);
+            this.button_szamlafriss.Margin = new System.Windows.Forms.Padding(4);
+            this.button_szamlafriss.Name = "button_szamlafriss";
+            this.button_szamlafriss.Size = new System.Drawing.Size(100, 28);
+            this.button_szamlafriss.TabIndex = 13;
+            this.button_szamlafriss.Text = "Frissítés";
+            this.button_szamlafriss.UseVisualStyleBackColor = true;
+            this.button_szamlafriss.Click += new System.EventHandler(this.button_szamlafriss_Click);
+            // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -925,7 +937,7 @@
             this.button_Kiallitas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button_Kiallitas.Enabled = false;
             this.button_Kiallitas.Location = new System.Drawing.Point(443, 688);
-            this.button_Kiallitas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Kiallitas.Margin = new System.Windows.Forms.Padding(4);
             this.button_Kiallitas.Name = "button_Kiallitas";
             this.button_Kiallitas.Size = new System.Drawing.Size(145, 28);
             this.button_Kiallitas.TabIndex = 2;
@@ -937,7 +949,7 @@
             // 
             this.textBox_SzTalloz.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox_SzTalloz.Location = new System.Drawing.Point(363, 655);
-            this.textBox_SzTalloz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_SzTalloz.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_SzTalloz.Name = "textBox_SzTalloz";
             this.textBox_SzTalloz.Size = new System.Drawing.Size(204, 24);
             this.textBox_SzTalloz.TabIndex = 5;
@@ -947,9 +959,9 @@
             this.groupBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox6.Controls.Add(this.dGV_SzamlaOssz);
             this.groupBox6.Location = new System.Drawing.Point(443, 500);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox6.Size = new System.Drawing.Size(608, 80);
             this.groupBox6.TabIndex = 9;
             this.groupBox6.TabStop = false;
@@ -971,7 +983,7 @@
             this.dGV_SzamlaOssz.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dGV_SzamlaOssz.Enabled = false;
             this.dGV_SzamlaOssz.Location = new System.Drawing.Point(4, 21);
-            this.dGV_SzamlaOssz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dGV_SzamlaOssz.Margin = new System.Windows.Forms.Padding(4);
             this.dGV_SzamlaOssz.Name = "dGV_SzamlaOssz";
             this.dGV_SzamlaOssz.ReadOnly = true;
             this.dGV_SzamlaOssz.RowHeadersVisible = false;
@@ -1015,7 +1027,7 @@
             // 
             this.button_Talloz.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button_Talloz.Location = new System.Drawing.Point(576, 652);
-            this.button_Talloz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Talloz.Margin = new System.Windows.Forms.Padding(4);
             this.button_Talloz.Name = "button_Talloz";
             this.button_Talloz.Size = new System.Drawing.Size(100, 28);
             this.button_Talloz.TabIndex = 4;
@@ -1039,7 +1051,7 @@
             this.megrendelesek_comboBox.FormattingEnabled = true;
             this.megrendelesek_comboBox.ImeMode = System.Windows.Forms.ImeMode.On;
             this.megrendelesek_comboBox.Location = new System.Drawing.Point(104, 603);
-            this.megrendelesek_comboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.megrendelesek_comboBox.Margin = new System.Windows.Forms.Padding(4);
             this.megrendelesek_comboBox.Name = "megrendelesek_comboBox";
             this.megrendelesek_comboBox.Size = new System.Drawing.Size(857, 27);
             this.megrendelesek_comboBox.TabIndex = 3;
@@ -1052,9 +1064,9 @@
             this.groupBox5.Controls.Add(this.dgv_SzamlaTermekek);
             this.groupBox5.Controls.Add(this.dGV_Rendeles);
             this.groupBox5.Location = new System.Drawing.Point(31, 218);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(1020, 274);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
@@ -1078,7 +1090,7 @@
             this.Brutto});
             this.dgv_SzamlaTermekek.Enabled = false;
             this.dgv_SzamlaTermekek.Location = new System.Drawing.Point(8, 86);
-            this.dgv_SzamlaTermekek.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_SzamlaTermekek.Margin = new System.Windows.Forms.Padding(4);
             this.dgv_SzamlaTermekek.Name = "dgv_SzamlaTermekek";
             this.dgv_SzamlaTermekek.ReadOnly = true;
             this.dgv_SzamlaTermekek.RowHeadersVisible = false;
@@ -1157,7 +1169,7 @@
             this.Fiz_hat});
             this.dGV_Rendeles.Enabled = false;
             this.dGV_Rendeles.Location = new System.Drawing.Point(8, 25);
-            this.dGV_Rendeles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dGV_Rendeles.Margin = new System.Windows.Forms.Padding(4);
             this.dGV_Rendeles.Name = "dGV_Rendeles";
             this.dGV_Rendeles.ReadOnly = true;
             this.dGV_Rendeles.RowHeadersVisible = false;
@@ -1220,9 +1232,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(31, 44);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(424, 151);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -1310,9 +1322,9 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Location = new System.Drawing.Point(592, 44);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(459, 151);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -1321,7 +1333,7 @@
             // textBox_VevoTel
             // 
             this.textBox_VevoTel.Location = new System.Drawing.Point(121, 82);
-            this.textBox_VevoTel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_VevoTel.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_VevoTel.Name = "textBox_VevoTel";
             this.textBox_VevoTel.Size = new System.Drawing.Size(328, 24);
             this.textBox_VevoTel.TabIndex = 15;
@@ -1339,7 +1351,7 @@
             // textBox_Vevoado
             // 
             this.textBox_Vevoado.Location = new System.Drawing.Point(121, 114);
-            this.textBox_Vevoado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox_Vevoado.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_Vevoado.Name = "textBox_Vevoado";
             this.textBox_Vevoado.Size = new System.Drawing.Size(328, 24);
             this.textBox_Vevoado.TabIndex = 13;
@@ -1347,7 +1359,7 @@
             // vevocime_textBox
             // 
             this.vevocime_textBox.Location = new System.Drawing.Point(65, 54);
-            this.vevocime_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.vevocime_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.vevocime_textBox.Name = "vevocime_textBox";
             this.vevocime_textBox.Size = new System.Drawing.Size(384, 24);
             this.vevocime_textBox.TabIndex = 11;
@@ -1355,7 +1367,7 @@
             // vevoneve_textBox
             // 
             this.vevoneve_textBox.Location = new System.Drawing.Point(65, 26);
-            this.vevoneve_textBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.vevoneve_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.vevoneve_textBox.Name = "vevoneve_textBox";
             this.vevoneve_textBox.Size = new System.Drawing.Size(384, 24);
             this.vevoneve_textBox.TabIndex = 10;
@@ -1406,7 +1418,7 @@
             this.logout_btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.logout_btn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.logout_btn.Location = new System.Drawing.Point(1019, 5);
-            this.logout_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logout_btn.Margin = new System.Windows.Forms.Padding(4);
             this.logout_btn.Name = "logout_btn";
             this.logout_btn.Size = new System.Drawing.Size(119, 28);
             this.logout_btn.TabIndex = 24;
@@ -1435,7 +1447,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tabControl_Keszlet, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
@@ -1454,17 +1466,6 @@
             this.panel1.Size = new System.Drawing.Size(1147, 37);
             this.panel1.TabIndex = 1;
             // 
-            // button_szamlafriss
-            // 
-            this.button_szamlafriss.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_szamlafriss.Location = new System.Drawing.Point(969, 603);
-            this.button_szamlafriss.Margin = new System.Windows.Forms.Padding(4);
-            this.button_szamlafriss.Name = "button_szamlafriss";
-            this.button_szamlafriss.Size = new System.Drawing.Size(100, 28);
-            this.button_szamlafriss.TabIndex = 13;
-            this.button_szamlafriss.Text = "Frissítés";
-            this.button_szamlafriss.UseVisualStyleBackColor = true;
-            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1473,7 +1474,7 @@
             this.ClientSize = new System.Drawing.Size(1179, 846);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1194, 881);
             this.Name = "HomeForm";
             this.Text = "VIR";

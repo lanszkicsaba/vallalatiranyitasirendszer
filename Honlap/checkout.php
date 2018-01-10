@@ -1,10 +1,13 @@
 ﻿<?php
-
 include 'dbconnect.php';
-
 session_start();
 ?>
-
+<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
 <?php
 
 //ha bevan lépve
@@ -71,10 +74,17 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
     $writer->endElement(); //levéllezárás
     $writer->endDocument(); //dokumentum lezárás
     $writer->flush(); //fájl kiírása
-    echo '<p>Köszönjük megrendelését! Hamarosan szállítjuk a megrendelését!</p>';
+    echo '<h2>Köszönjük megrendelését! Hamarosan szállítjuk a megrendelését!</h2>';
     $_SESSION["cart2"] = array(); //lista ürítése
 } else {
     //nincs bejelentkezve visszadobja az index.php-re
     echo '<meta http-equiv="refresh" content="0; URL=index.php">';
 }
 ?>
+<html>
+	<form action="index.php" method="post">
+		<input class="btn btn-default"  type="submit" value="Vissza"/>
+	</form> 
+</html>
+</div>
+</body>

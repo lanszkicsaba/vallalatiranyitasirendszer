@@ -942,6 +942,50 @@ namespace VIR
             // Végeztünk a szélességek számításával
             Resizing = false;
         }
+
+        private void button_szamlafriss_Click(object sender, EventArgs e)
+        {
+            megrendelesek_comboBox.Items.Clear();
+            int rendelesdb = 0;
+            DBConnect conn = new DBConnect();
+            string qry = "SELECT count(id) FROM rendeles_adatok;";
+            MySqlDataReader reader;
+            MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
+            conn.OpenConnection();
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                rendelesdb = int.Parse(reader.GetString(0));
+            }
+            conn.CloseConnection();
+            if (tabControl_Keszlet.SelectedIndex == 1)
+            {
+                rend = new Rendelesek(rendelesdb);
+                Muvelet muv = new Muvelet();
+                muv.getRend(rend);
+
+                for (int i = 0; i < rend.rend_id.Length; i++)
+                {
+                    if (i != 0)
+                    {
+                        if (rend.rend_id[i - 1] != rend.rend_id[i])
+                        {
+                            ComboBoxItem item = new ComboBoxItem();
+                            item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
+                            item.Value = i;
+                            megrendelesek_comboBox.Items.Add(item);
+                        }
+                    }
+                    else if (i == 0)
+                    {
+                        ComboBoxItem item = new ComboBoxItem();
+                        item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
+                        item.Value = i;
+                        megrendelesek_comboBox.Items.Add(item);
+                    }
+                }
+            } 
+        }
 #endregion
     }
 
