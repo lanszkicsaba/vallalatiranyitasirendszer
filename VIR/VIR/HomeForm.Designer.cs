@@ -189,7 +189,7 @@
             this.Tab_Keszlet.Controls.Add(this.listView1);
             this.Tab_Keszlet.Location = new System.Drawing.Point(4, 25);
             this.Tab_Keszlet.Name = "Tab_Keszlet";
-            this.Tab_Keszlet.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Tab_Keszlet.Padding = new System.Windows.Forms.Padding(3);
             this.Tab_Keszlet.Size = new System.Drawing.Size(846, 631);
             this.Tab_Keszlet.TabIndex = 0;
             this.Tab_Keszlet.Text = "Készlet";
@@ -820,8 +820,8 @@
             this.tab_Szamla.Controls.Add(this.panel3);
             this.tab_Szamla.Location = new System.Drawing.Point(4, 25);
             this.tab_Szamla.Name = "tab_Szamla";
-            this.tab_Szamla.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tab_Szamla.Size = new System.Drawing.Size(846, 619);
+            this.tab_Szamla.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_Szamla.Size = new System.Drawing.Size(846, 631);
             this.tab_Szamla.TabIndex = 1;
             this.tab_Szamla.Text = "Számlázás";
             this.tab_Szamla.UseVisualStyleBackColor = true;
@@ -1377,7 +1377,7 @@
             this.ClientSize = new System.Drawing.Size(884, 699);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(900, 597);
+            this.MinimumSize = new System.Drawing.Size(900, 737);
             this.Name = "HomeForm";
             this.Text = "VIR";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeForm_FormClosing);
