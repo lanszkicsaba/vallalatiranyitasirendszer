@@ -1,4 +1,4 @@
-Testtelési terv
+Tesztelési terv
 
 
 A dokumentum célja:
