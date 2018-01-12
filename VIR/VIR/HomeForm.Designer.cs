@@ -851,7 +851,7 @@
             // button_szamlafriss
             // 
             this.button_szamlafriss.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_szamlafriss.Location = new System.Drawing.Point(727, 490);
+            this.button_szamlafriss.Location = new System.Drawing.Point(713, 490);
             this.button_szamlafriss.Name = "button_szamlafriss";
             this.button_szamlafriss.Size = new System.Drawing.Size(75, 23);
             this.button_szamlafriss.TabIndex = 13;
@@ -983,7 +983,7 @@
             this.megrendelesek_comboBox.ImeMode = System.Windows.Forms.ImeMode.On;
             this.megrendelesek_comboBox.Location = new System.Drawing.Point(78, 490);
             this.megrendelesek_comboBox.Name = "megrendelesek_comboBox";
-            this.megrendelesek_comboBox.Size = new System.Drawing.Size(644, 24);
+            this.megrendelesek_comboBox.Size = new System.Drawing.Size(621, 24);
             this.megrendelesek_comboBox.TabIndex = 3;
             this.megrendelesek_comboBox.Text = "Válaszon a megrendelések közül, vagy tallózza ki a visszaigazolást";
             this.megrendelesek_comboBox.SelectedIndexChanged += new System.EventHandler(this.megrendelesek_comboBox_SelectedIndexChanged);

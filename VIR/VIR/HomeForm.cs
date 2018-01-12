@@ -814,6 +814,7 @@ namespace VIR
             textBox_SzTalloz.Visible = false;
             button_Talloz.Visible = false;
             button_Kiallitas.Visible = false;
+            button_szamlafriss.Visible = false;
             //Textboxok keretének eltűntetése
             vevoneve_textBox.BorderStyle = BorderStyle.None;
             vevocime_textBox.BorderStyle = BorderStyle.None;
@@ -844,6 +845,7 @@ namespace VIR
             textBox_SzTalloz.Visible = true;
             button_Talloz.Visible = true;
             button_Kiallitas.Visible = true;
+            button_szamlafriss.Visible = true;
             vevoneve_textBox.BorderStyle = BorderStyle.Fixed3D;
             vevocime_textBox.BorderStyle = BorderStyle.Fixed3D;
             textBox_VevoTel.BorderStyle = BorderStyle.Fixed3D;
