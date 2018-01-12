@@ -1,0 +1,55 @@
+Testtelési terv
+
+
+A dokumentum célja:
+	A tesztelési terv célja a tesztelés teljes körûségének a biztosítása, a tesztelés során alkalmazott eljárásik és megoldások meghatározása.
+
+Tesztelés menete:
+	A megbeszéltek alapján minden fejlesztõ a rá kiosztott folyamatot teszteli. A teszteket több alkalommal is el kell végezni, hogy csökkentsük annak az esélyét, hogy csak egy véletlen folytán kaptunk jó eredményt a folyamat alatt. A tesztek eredményét minden alkalommal jegyzõkönyvezni kell!
+
+Határidõk:
+	A tesztelések határidejét úgy állapítsuk meg, hogy a fejlesztõnek legyen még elegendõ ideje korrigálni az esetlegesen felmerülõ hibákat.
+
+Tesztelés folyamat:
+	Határozzuk meg hogy az adott tesztel milyen célt akarunk elérni.
+	A cél minden egyes kimeneteli lehetõségét vizsgáljuk ki, Általános funkcionális teszt és Szélsõérték teszt módszerének az alkalmazásával.
+	Az elért eredményeket foglaljuk Tesztelési jegyzõkönyvbe
+
+Tesztelési típusok:
+	Funkcióteszt:
+		Általános funkcionális teszt:
+			A tesztelés során pontos adatokkal dolgozunk, azt feltételezve, hogy az általunk bevitt adatok pontosak, és ez alapján az elvárt eredmény a tökéletes mûködés legyen.
+		Szélsõérték teszt:
+			A tesztelés során fals adatokkal dolgozzunk, ezáltal vizsgálhatjuk az esetleges felhasználói tévedéseket, elírásokat. A tesztelés kimeneteleként az elvárt eredmény, hogy valamilyen akadályozó tényezõbe ütközzünk, pl.: sikertelen bejelentkezés, sikertelen megrendelés, stb. Ha a fals eredmény mégis hiba nélküli eredményt hoz, akkor azt felül kell vizsgálni, hogy a tesztelés során volt-e a hiba, vagy pedig a programban.
+	Biztonsági teszt: A biztonsági tesztek azt vizsgálják, hogy a rendszer mennyire sebezhetõ rosszindulatú támadás vagy használat esetén. E témakörbe tartozik adatok védelme és a hálózati környezet biztonságossága, illetve a rendszer adatbázisaiban tárolt érzékeny adatok titkosítása, mint például a jelszavak.:
+		Sebezhetõség vizsgálata:
+			Automatikus tesztezközökkel keresünk biztonsági hibákat.
+		Behatolási teszt:
+			A behatolási teszttel egy rosszindulatú felhasználó tevékenységét szimuláljuk, lehet black-box és white-boksz megközelítéssel is vizsgálni.
+	Teljesítményteszt: 
+
+Terheléses teszt: A terheléses tesztek célja, hogy bizonyos terhelés mellett keressük a rendszer szûk keresztmetszeteit.
+		Lehetséges szûk keresztmetszet:
+			- rendszerbe való be- és kijelentkezés,
+			- az asztali és webes program közötti szinkronizáció (megrendelések).
+		Stresszteszt: Célja, hogy megmutassa: a rendszer stabilitása az elvárásoknak megfelelõ.
+			Az elvárttól nagyobb terhelés alatt mûködtetjük a rendszert és vizsgáljuk az egyes elemeket.
+		Mennyiségi teszt: A rendszert nagy adatbázison, nagy rekordszám mellett vizsgáljuk, figyeljük, hogy hiányos, vagy nem megfelelõ indexelés mellett is stabilan mûködik a rendszer az adatbázis méretétõl függetlenül.
+
+Fõbb tesztelendõ folyamatok:
+Asztali alkalmazás:
+	- bejelentkezés (Általános funkcionális teszt, Szélsõérték teszt),
+	- keresés,
+	- termék felvitele (Általános funkcionális teszt, Szélsõérték teszt),
+	- termék módosítás (Általános funkcionális teszt, Szélsõérték teszt),
+	- számla kiállítása,
+	- megrendelések szinkronizálása,
+	- kijelentkezés (Terheléses teszt).
+Webes felület
+	- bejelentkezés (Általános funkcionális teszt, Szélsõérték teszt),
+	- szûrési funkció (Általános funkcionális teszt, Szélsõérték teszt),
+	- regisztráció (Általános funkcionális teszt, Szélsõérték teszt),
+	- kosár,
+	- adatmódosítás (Általános funkcionális teszt, Szélsõérték teszt),
+	- megrendelés,
+	- kijelentkezés.
