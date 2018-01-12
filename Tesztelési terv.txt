@@ -9,7 +9,7 @@ Készítette: Szabolcs Gábor
 Telefon:
 Utolsó mentés kelte: 2018. 01. 12.
 Dokumentum célja:
-Fájlnév:Tesztelési terv.docx
+Fájlnév:Tesztelési terv.txt
 
 
 A dokumentum célja:
