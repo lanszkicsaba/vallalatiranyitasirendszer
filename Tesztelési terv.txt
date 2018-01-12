@@ -1,20 +1,27 @@
+
 Tesztelési terv
+
+Dokumentum címe: Tesztelési terv
+Minõsítés:
+Verziószám: v1.0
+Projekt név: Vállalatirányítási rendszer
+Készítette: Szabolcs Gábor
+Telefon:
+Utolsó mentés kelte: 2018. 01. 12.
+Dokumentum célja:
+Fájlnév:Tesztelési terv.docx
 
 
 A dokumentum célja:
 	A tesztelési terv célja a tesztelés teljes körûségének a biztosítása, a tesztelés során alkalmazott eljárásik és megoldások meghatározása.
-
 Tesztelés menete:
 	A megbeszéltek alapján minden fejlesztõ a rá kiosztott folyamatot teszteli. A teszteket több alkalommal is el kell végezni, hogy csökkentsük annak az esélyét, hogy csak egy véletlen folytán kaptunk jó eredményt a folyamat alatt. A tesztek eredményét minden alkalommal jegyzõkönyvezni kell!
-
 Határidõk:
 	A tesztelések határidejét úgy állapítsuk meg, hogy a fejlesztõnek legyen még elegendõ ideje korrigálni az esetlegesen felmerülõ hibákat.
-
 Tesztelés folyamat:
 	Határozzuk meg hogy az adott tesztel milyen célt akarunk elérni.
 	A cél minden egyes kimeneteli lehetõségét vizsgáljuk ki, Általános funkcionális teszt és Szélsõérték teszt módszerének az alkalmazásával.
 	Az elért eredményeket foglaljuk Tesztelési jegyzõkönyvbe
-
 Tesztelési típusok:
 	Funkcióteszt:
 		Általános funkcionális teszt:
@@ -27,15 +34,13 @@ Tesztelési típusok:
 		Behatolási teszt:
 			A behatolási teszttel egy rosszindulatú felhasználó tevékenységét szimuláljuk, lehet black-box és white-boksz megközelítéssel is vizsgálni.
 	Teljesítményteszt: 
-
-Terheléses teszt: A terheléses tesztek célja, hogy bizonyos terhelés mellett keressük a rendszer szûk keresztmetszeteit.
+      Terheléses teszt: A terheléses tesztek célja, hogy bizonyos terhelés mellett keressük a rendszer szûk keresztmetszeteit.
 		Lehetséges szûk keresztmetszet:
 			- rendszerbe való be- és kijelentkezés,
 			- az asztali és webes program közötti szinkronizáció (megrendelések).
 		Stresszteszt: Célja, hogy megmutassa: a rendszer stabilitása az elvárásoknak megfelelõ.
 			Az elvárttól nagyobb terhelés alatt mûködtetjük a rendszert és vizsgáljuk az egyes elemeket.
 		Mennyiségi teszt: A rendszert nagy adatbázison, nagy rekordszám mellett vizsgáljuk, figyeljük, hogy hiányos, vagy nem megfelelõ indexelés mellett is stabilan mûködik a rendszer az adatbázis méretétõl függetlenül.
-
 Fõbb tesztelendõ folyamatok:
 Asztali alkalmazás:
 	- bejelentkezés (Általános funkcionális teszt, Szélsõérték teszt),
@@ -53,3 +58,7 @@ Webes felület
 	- adatmódosítás (Általános funkcionális teszt, Szélsõérték teszt),
 	- megrendelés,
 	- kijelentkezés.
+Tesztelési terv
+
+Vállalatirányítási rendszer
+
