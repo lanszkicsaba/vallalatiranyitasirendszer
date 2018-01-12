@@ -24,6 +24,14 @@
                         alert("A minimum ár nem lehet nagyobb a maximumnál!");
                         return false;
                     }
+					if (armin < 0) {
+                        alert("A minimum ár nem lehet negatív!");
+                        return false;
+                    }
+					if (armax < 0) {
+                        alert("A maximum ár nem lehet negatív!");
+                        return false;
+                    }
                 }
             </script>
             <div class="page-header">
@@ -55,11 +63,11 @@
                 echo '<div class="row">';
                 echo '<div class="col-sm-3">';
                 echo '<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
-				Név:<br> <input type="text" name="f_nev"><br>
-				Ár:<br> <input type="number" name="f_armin">-tól<br>
-				<input type="number" name="f_armax">-ig<br>
+				Név:<br> <input class="form-control" type="text" name="f_nev"><br>
+				Ár:<br> <input class="form-control" min="1" type="number" name="f_armin">-tól<br>
+				<input min="1" class="form-control" type="number" name="f_armax">-ig<br>
 				<br>
-				<input type="submit" value="Szűrés"/>
+				<input type="submit" class="btn btn-default" value="Szűrés"/>
 				</form>';
                 echo '</div>';
                 echo '<div class="col-sm-9">';
