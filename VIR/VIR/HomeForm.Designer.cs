@@ -692,7 +692,7 @@
             // 
             this.hozzaadas_btn.Location = new System.Drawing.Point(45, 288);
             this.hozzaadas_btn.Name = "hozzaadas_btn";
-            this.hozzaadas_btn.Size = new System.Drawing.Size(75, 23);
+            this.hozzaadas_btn.Size = new System.Drawing.Size(79, 23);
             this.hozzaadas_btn.TabIndex = 12;
             this.hozzaadas_btn.Text = "Hozzáadás";
             this.hozzaadas_btn.UseVisualStyleBackColor = true;
