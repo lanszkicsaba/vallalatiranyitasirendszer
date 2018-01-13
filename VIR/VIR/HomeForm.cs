@@ -15,7 +15,7 @@ namespace VIR
     public partial class HomeForm : Form
     {
         Timer timer = new Timer(); //Automata listafrissítéshez
-
+        int messagecount = 0;
         private static string kivalasztottTermeknev = "";
         private static string kivalasztottAr = "";
         private static string kivalasztottLeiras = "";
@@ -53,34 +53,38 @@ namespace VIR
 
         private void HomeForm_Load(object sender, EventArgs e)
         {
-            //Kép megjelenítő beállítása, üdvözlő szöveg megadása
-            termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             
-            if (Program.logForm.Fullname == "" || Program.logForm.Fullname == null)
-            {
-                welcome_label.Text = "Üdvözöllek Felhasználó";
-            }
-            else
-            {
-                welcome_label.Text = "Üdvözöllek, " + Program.logForm.Fullname;
-            }
+                DBConnect conn = new DBConnect();
+                conn.OpenConnection();
 
-            if (File.Exists("image/kezdo.png"))
-            {
-                termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
-            }
-            else
-            {
-                termekKep_pictureBox.Image = null;
-            }
+                //Kép megjelenítő beállítása, üdvözlő szöveg megadása
+                termekKep_pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            //Adatok frissítés
-            Muvelet muvelet = new Muvelet();
-            muvelet.Adatletoltes(listView1); //adatok feltöltése
-            timer.Start();  //időzítő indítása
-            timer.Tick += new EventHandler(frissites_btn_Click); //meghívja a frissítést
-            timer.Interval = (10 * 1000); // 10 secs frissít          
-            
+                if (Program.logForm.Fullname == "" || Program.logForm.Fullname == null)
+                {
+                    welcome_label.Text = "Üdvözöllek Felhasználó";
+                }
+                else
+                {
+                    welcome_label.Text = "Üdvözöllek, " + Program.logForm.Fullname;
+                }
+
+                if (File.Exists("image/kezdo.png"))
+                {
+                    termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                }
+                else
+                {
+                    termekKep_pictureBox.Image = null;
+                }
+
+                //Adatok frissítés
+                Muvelet muvelet = new Muvelet();
+
+                muvelet.Adatletoltes(listView1); //adatok feltöltése
+                timer.Start();  //időzítő indítása
+                timer.Tick += new EventHandler(frissites_btn_Click); //meghívja a frissítést
+                timer.Interval = (10 * 1000); // 10 secs frissít  
         }
 
         /// <summary>
@@ -183,11 +187,27 @@ namespace VIR
         /// <summary>
         /// A ListView lista frissítés gombja
         /// </summary>
+
+
         private void frissites_btn_Click(object sender, EventArgs e)
         {
-            listView1.Items.Clear();      //ListView Kiürítése
-            Muvelet muveletek = new Muvelet(); //Muvelet osztály meghívása
-            muveletek.Adatletoltes(listView1); //Adatletöltése és átadása ListViewnek
+            try
+            {
+                listView1.Items.Clear();      //ListView Kiürítése
+                Muvelet muveletek = new Muvelet(); //Muvelet osztály meghívása
+                messagecount++; //Üzenetek számlálójának növelése.
+                muveletek.Adatletoltes(listView1); //Adatletöltése és átadása ListViewnek
+            }
+            catch (MySqlException ex)
+            {
+                timer.Stop();
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+            }
+            catch (Exception ex)
+            {
+                timer.Stop();
+                MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
+            }
         }
 
 
@@ -195,6 +215,7 @@ namespace VIR
         {
             if (e.Button == MouseButtons.Right)
             {
+               
                 Muvelet muveletek = new Muvelet();
                 muveletek.Torles(listView1, termekKep_pictureBox);
             }
@@ -259,10 +280,12 @@ namespace VIR
                     }
                     catch (MySqlException ex)
                     {
+                        
                         MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
                     }
                     catch (Exception ex)
                     {
+                        
                         MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
                     }
                 }
@@ -407,26 +430,35 @@ namespace VIR
         /// </summary>
         private async void tableexport_btn_Click(object sender, EventArgs e)
         {
-            //Tallózás megnyitása
-            using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV File (*.csv)|*.csv|Excel munkafüzet (*.xlsx)|*.xls", ValidateNames = true })
+            try
             {
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {    //fájl létrehozása
-                    using (StreamWriter sw = new StreamWriter(new FileStream(sfd.FileName, FileMode.Create), Encoding.UTF8))
-                    {   //fájl kiírása
-                        StringBuilder sb = new StringBuilder();
-                        //Első sor
-                        sb.AppendLine("Terméknév;Ár;Mennyiség;Kategória;Leirás;Súly;Készleten");
-                        //elemek kiírása
-                        foreach (ListViewItem item in listView1.Items)
-                        {
-                            sb.AppendLine(string.Format("{0};{1};{2};{3};{4};{5};{6}", item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text, item.SubItems[3].Text, item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text));
-                        }
+                //Tallózás megnyitása
+                using (SaveFileDialog sfd = new SaveFileDialog() { Filter = "CSV File (*.csv)|*.csv|Excel munkafüzet (*.xlsx)|*.xls", ValidateNames = true })
+                {
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {    //fájl létrehozása
+                        using (StreamWriter sw = new StreamWriter(new FileStream(sfd.FileName, FileMode.Create), Encoding.UTF8))
+                        {   //fájl kiírása
+                            StringBuilder sb = new StringBuilder();
+                            //Első sor
+                            sb.AppendLine("Terméknév;Ár;Mennyiség;Kategória;Leirás;Súly;Készleten");
+                            //elemek kiírása
+                            foreach (ListViewItem item in listView1.Items)
+                            {
+                                sb.AppendLine(string.Format("{0};{1};{2};{3};{4};{5};{6}", item.SubItems[0].Text, item.SubItems[1].Text, item.SubItems[2].Text, item.SubItems[3].Text, item.SubItems[4].Text, item.SubItems[5].Text, item.SubItems[6].Text));
+                            }
 
-                        await sw.WriteLineAsync(sb.ToString()); //kiírás
+                            await sw.WriteLineAsync(sb.ToString()); //kiírás
+                        }
                     }
                 }
             }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
+            }
+
         }
 
         //Termék frissítése
@@ -686,96 +718,114 @@ namespace VIR
                 betoltesbool = true;
                 //Le kell tölteni azt, hogy hány sor van a rendeles_Adatok táblában, így ahhoz igazítja a Rendelesek osztályban lévő tömbök méretét.
                 int rendelesdb = 0;
-                DBConnect conn = new DBConnect();
-                string qry = "SELECT count(id) FROM rendeles_adatok;";
-                MySqlDataReader reader;
-                MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
-                conn.OpenConnection();
-                reader = cmd.ExecuteReader();
-                while (reader.Read())
+                try
                 {
-                    rendelesdb = int.Parse(reader.GetString(0));
-                }
-                conn.CloseConnection();
-                if (tabControl_Keszlet.SelectedIndex == 1)
-                {
-                    rend = new Rendelesek(rendelesdb);
-                    Muvelet muv = new Muvelet();
-                    muv.getRend(rend);
-
-                    //Rendelések betöltése a comboboxba
-                    for (int i = 0; i < rend.rend_id.Length; i++)
+                    DBConnect conn = new DBConnect();
+                    string qry = "SELECT count(id) FROM rendeles_adatok;";
+                    MySqlDataReader reader;
+                    MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
+                    conn.OpenConnection();
+                    reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        //Ha 1 rendelés alatt több termék van, akkor többször szerepel egy ID, de ide elég csak 1x betölteni egy rendelést.
-                        //A rendelések ID szerint vannak sorbarendezve.
-                        if (i != 0) 
+                        rendelesdb = int.Parse(reader.GetString(0));
+                    }
+                    conn.CloseConnection();
+                    if (tabControl_Keszlet.SelectedIndex == 1)
+                    {
+                        rend = new Rendelesek(rendelesdb);
+                        Muvelet muv = new Muvelet();
+                        muv.getRend(rend);
+
+                        //Rendelések betöltése a comboboxba
+                        for (int i = 0; i < rend.rend_id.Length; i++)
                         {
-                            if (rend.rend_id[i - 1] != rend.rend_id[i]) //Ha nem egyezik az előző ID-val, akkor adja hozzá.
+                            //Ha 1 rendelés alatt több termék van, akkor többször szerepel egy ID, de ide elég csak 1x betölteni egy rendelést.
+                            //A rendelések ID szerint vannak sorbarendezve.
+                            if (i != 0)
                             {
-                                                               
+                                if (rend.rend_id[i - 1] != rend.rend_id[i]) //Ha nem egyezik az előző ID-val, akkor adja hozzá.
+                                {
+
+                                    ComboBoxItem item = new ComboBoxItem();
+                                    item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
+                                    item.Value = i;
+                                    megrendelesek_comboBox.Items.Add(item);
+
+
+                                }
+                            }
+                            else if (i == 0) //Az első elemet nem hasonlítjuk az előzőhöz, mert nincs előző.
+                            {
+
                                 ComboBoxItem item = new ComboBoxItem();
                                 item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
                                 item.Value = i;
                                 megrendelesek_comboBox.Items.Add(item);
-                                
-                                
+
                             }
                         }
-                        else if (i==0) //Az első elemet nem hasonlítjuk az előzőhöz, mert nincs előző.
-                        {
-                            
-                            ComboBoxItem item = new ComboBoxItem();
-                            item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
-                            item.Value = i;
-                            megrendelesek_comboBox.Items.Add(item);
-                            
-                        }
                     }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
                 }
             }
         }
 
         private void megrendelesek_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            //Számla sorszámának kinyerése
-            int rend_idx = (megrendelesek_comboBox.SelectedItem as ComboBoxItem).Value;
-
-            label_Sorszam.Text = "Sorszám: " + rend.rend_ido[rend_idx].Year + "/" + rend.rend_id[rend_idx];
-            //Nyomtatás engedélyezése
-            button_Kiallitas.Enabled = true;
-            //Sorok törlése, ha másik megrendelés lesz kiválasztva
-            dGV_Rendeles.Rows.Clear();
-            dgv_SzamlaTermekek.Rows.Clear();
-            dGV_SzamlaOssz.Rows.Clear();
-            //Textboxok feltöltése:
-            vevoneve_textBox.Text = rend.rendelo_nev[rend_idx];
-            vevocime_textBox.Text = rend.rendelo_cim[rend_idx];
-            textBox_VevoTel.Text = rend.rendelo_tel[rend_idx];
-            textBox_Vevoado.Text = rend.rendelo_tax[rend_idx];
-
-            //Datagridviewek feltöltése
-            dGV_Rendeles.Rows.Add(new object[] { "Átutalás", rend.rend_ido[rend_idx], DateTime.Now, DateTime.Now.AddDays(10) });
-            int ossznetto = 0;
-            int osszbrutto = 0;
-            int osszafa = 0;
-            for (int i = 0; i < rend.rend_id.Length; i++)
+        {
+            try
             {
-                if (rend.rend_id[i]==rend.rend_id[rend_idx])
-                {
-                    dgv_SzamlaTermekek.Rows.Add(new object[] {rend.termek_nev[i],rend.termek_ar[i], rend.termek_db[i], Math.Round((rend.termek_ar[i]*rend.termek_db[i])/1.27,0),27,Math.Round((rend.termek_ar[i]*rend.termek_db[i])-((rend.termek_ar[i]*rend.termek_db[i])/1.27),0),rend.termek_ar[i]*rend.termek_db[i]});
-                    //Rendelt termékek összárának számolása
-                    ossznetto += Convert.ToInt32((rend.termek_ar[i] * rend.termek_db[i]) / 1.27);
-                    osszbrutto += rend.termek_ar[i] * rend.termek_db[i];
-                    osszafa += Convert.ToInt32((rend.termek_ar[i] * rend.termek_db[i]) - ((rend.termek_ar[i] * rend.termek_db[i]) / 1.27));
-                }
-            }
-            //Összár adatok feltöltése
-            dGV_SzamlaOssz.Rows.Add(new object[] {ossznetto,27,osszafa,osszbrutto });
+                //Számla sorszámának kinyerése
+                int rend_idx = (megrendelesek_comboBox.SelectedItem as ComboBoxItem).Value;
 
-            //Alap kijelölések törlése
-            dGV_Rendeles.ClearSelection();
-            dGV_SzamlaOssz.ClearSelection();
-            dgv_SzamlaTermekek.ClearSelection();
+                label_Sorszam.Text = "Sorszám: " + rend.rend_ido[rend_idx].Year + "/" + rend.rend_id[rend_idx];
+                //Nyomtatás engedélyezése
+                button_Kiallitas.Enabled = true;
+                //Sorok törlése, ha másik megrendelés lesz kiválasztva
+                dGV_Rendeles.Rows.Clear();
+                dgv_SzamlaTermekek.Rows.Clear();
+                dGV_SzamlaOssz.Rows.Clear();
+                //Textboxok feltöltése:
+                vevoneve_textBox.Text = rend.rendelo_nev[rend_idx];
+                vevocime_textBox.Text = rend.rendelo_cim[rend_idx];
+                textBox_VevoTel.Text = rend.rendelo_tel[rend_idx];
+                textBox_Vevoado.Text = rend.rendelo_tax[rend_idx];
+
+                //Datagridviewek feltöltése
+                dGV_Rendeles.Rows.Add(new object[] { "Átutalás", rend.rend_ido[rend_idx], DateTime.Now, DateTime.Now.AddDays(10) });
+                int ossznetto = 0;
+                int osszbrutto = 0;
+                int osszafa = 0;
+                for (int i = 0; i < rend.rend_id.Length; i++)
+                {
+                    if (rend.rend_id[i] == rend.rend_id[rend_idx])
+                    {
+                        dgv_SzamlaTermekek.Rows.Add(new object[] { rend.termek_nev[i], rend.termek_ar[i], rend.termek_db[i], Math.Round((rend.termek_ar[i] * rend.termek_db[i]) / 1.27, 0), 27, Math.Round((rend.termek_ar[i] * rend.termek_db[i]) - ((rend.termek_ar[i] * rend.termek_db[i]) / 1.27), 0), rend.termek_ar[i] * rend.termek_db[i] });
+                        //Rendelt termékek összárának számolása
+                        ossznetto += Convert.ToInt32((rend.termek_ar[i] * rend.termek_db[i]) / 1.27);
+                        osszbrutto += rend.termek_ar[i] * rend.termek_db[i];
+                        osszafa += Convert.ToInt32((rend.termek_ar[i] * rend.termek_db[i]) - ((rend.termek_ar[i] * rend.termek_db[i]) / 1.27));
+                    }
+                }
+                //Összár adatok feltöltése
+                dGV_SzamlaOssz.Rows.Add(new object[] { ossznetto, 27, osszafa, osszbrutto });
+
+                //Alap kijelölések törlése
+                dGV_Rendeles.ClearSelection();
+                dGV_SzamlaOssz.ClearSelection();
+                dgv_SzamlaTermekek.ClearSelection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Hiba");
+            }
         }
 
        
@@ -783,73 +833,83 @@ namespace VIR
         private void Doc_PrintPage(object sender, PrintPageEventArgs e)
         {
             //A számla Tabon lévő Panel3 rárajzolása egy Bitmapra.
+            try
+            {
+                //Az oldal margójának mentése
+                float x = e.MarginBounds.Left;
+                float y = e.MarginBounds.Top;
+                Bitmap bmp = new Bitmap(this.panel3.Width, this.panel3.Width);
 
-            //Az oldal margójának mentése
-            float x = e.MarginBounds.Left; 
-            float y = e.MarginBounds.Top;
-            Bitmap bmp = new Bitmap(this.panel3.Width, this.panel3.Width);
-            
-            this.panel3.DrawToBitmap(bmp, new Rectangle(0,0,panel3.Width+2,panel3.Height+2));
-            e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-            e.Graphics.DrawImage((Image)bmp,x,y);
-            
-
+                this.panel3.DrawToBitmap(bmp, new Rectangle(0, 0, panel3.Width + 2, panel3.Height + 2));
+                e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                e.Graphics.DrawImage((Image)bmp, x, y);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Hiba");
+            }
         }
 
         private void button_Kiallitas_Click(object sender, EventArgs e)
         {
-            
-            //Eredeti pozíciók mentése a Termékek dataGridvievének és az Összesen résznek::
-            int boxheight = groupBox5.Height;
-            int dgvheight = dgv_SzamlaTermekek.Height;
-            int osszesenpoz = groupBox6.Location.Y;
-            int szamlaosszpoz = dGV_SzamlaOssz.Location.Y;
-            //A Termékek DataGridviewjének expandolása lefelé és az Összesen rész eltolása vele együtt lefelé.
-            groupBox5.Height = boxheight + (megrendelesek_comboBox.Location.Y -(groupBox5.Location.Y+boxheight));
-            dgv_SzamlaTermekek.Height = groupBox5.Height - dgv_SzamlaTermekek.Location.Y-5;
-            dGV_SzamlaOssz.Location = new Point(dGV_SzamlaOssz.Location.X, groupBox5.Location.Y + groupBox5.Height + 10);
-            groupBox6.Location = new Point(groupBox6.Location.X, groupBox5.Location.Y + groupBox5.Height + 10);
-            //A formon lévő fölösleges gombok, textboxok rejtése
-            megrendelesek_comboBox.Visible = false;
-            textBox_SzTalloz.Visible = false;
-            button_Talloz.Visible = false;
-            button_Kiallitas.Visible = false;
-            button_szamlafriss.Visible = false;
-            //Textboxok keretének eltűntetése
-            vevoneve_textBox.BorderStyle = BorderStyle.None;
-            vevocime_textBox.BorderStyle = BorderStyle.None;
-            textBox_VevoTel.BorderStyle = BorderStyle.None;
-            textBox_Vevoado.BorderStyle = BorderStyle.None;
+            try
+            {
+                //Eredeti pozíciók mentése a Termékek dataGridvievének és az Összesen résznek::
+                int boxheight = groupBox5.Height;
+                int dgvheight = dgv_SzamlaTermekek.Height;
+                int osszesenpoz = groupBox6.Location.Y;
+                int szamlaosszpoz = dGV_SzamlaOssz.Location.Y;
+                //A Termékek DataGridviewjének expandolása lefelé és az Összesen rész eltolása vele együtt lefelé.
+                groupBox5.Height = boxheight + (megrendelesek_comboBox.Location.Y - (groupBox5.Location.Y + boxheight));
+                dgv_SzamlaTermekek.Height = groupBox5.Height - dgv_SzamlaTermekek.Location.Y - 5;
+                dGV_SzamlaOssz.Location = new Point(dGV_SzamlaOssz.Location.X, groupBox5.Location.Y + groupBox5.Height + 10);
+                groupBox6.Location = new Point(groupBox6.Location.X, groupBox5.Location.Y + groupBox5.Height + 10);
+                //A formon lévő fölösleges gombok, textboxok rejtése
+                megrendelesek_comboBox.Visible = false;
+                textBox_SzTalloz.Visible = false;
+                button_Talloz.Visible = false;
+                button_Kiallitas.Visible = false;
+                button_szamlafriss.Visible = false;
+                //Textboxok keretének eltűntetése
+                vevoneve_textBox.BorderStyle = BorderStyle.None;
+                vevocime_textBox.BorderStyle = BorderStyle.None;
+                textBox_VevoTel.BorderStyle = BorderStyle.None;
+                textBox_Vevoado.BorderStyle = BorderStyle.None;
 
-            //dGV_SzamlaOssz.Parent = groupBox6;
+                //dGV_SzamlaOssz.Parent = groupBox6;
 
-            //Számla nyomtatása.
-            PrintDocument doc = new PrintDocument();
-            doc.DefaultPageSettings.Landscape = true; //Fektetett nézet
-            //doc.OriginAtMargins = false; 
-            doc.DefaultPageSettings.PrinterResolution.Kind = PrinterResolutionKind.High;
-            
-            doc.PrintPage += this.Doc_PrintPage;
-           
-            // PrintDialog pdlg = new PrintDialog(); //Rögtön PDF-be menti/nyomtatja ezzel.            
-            PrintPreviewDialog pdlg = new PrintPreviewDialog(); //Először van egy preview és onnan lehet nyomtatni.           
-            pdlg.Document = doc;
-            pdlg.ShowDialog();
+                //Számla nyomtatása.
+                PrintDocument doc = new PrintDocument();
+                doc.DefaultPageSettings.Landscape = true; //Fektetett nézet
+                //doc.OriginAtMargins = false; 
+                doc.DefaultPageSettings.PrinterResolution.Kind = PrinterResolutionKind.High;
 
-            //Minden visszaállítása az eredetire
-            groupBox5.Height = boxheight;
-            dgv_SzamlaTermekek.Height = dgvheight;
-            dGV_SzamlaOssz.Location = new Point(dGV_SzamlaOssz.Location.X, szamlaosszpoz);
-            groupBox6.Location = new Point(groupBox6.Location.X, osszesenpoz);
-            megrendelesek_comboBox.Visible = true;
-            textBox_SzTalloz.Visible = true;
-            button_Talloz.Visible = true;
-            button_Kiallitas.Visible = true;
-            button_szamlafriss.Visible = true;
-            vevoneve_textBox.BorderStyle = BorderStyle.Fixed3D;
-            vevocime_textBox.BorderStyle = BorderStyle.Fixed3D;
-            textBox_VevoTel.BorderStyle = BorderStyle.Fixed3D;
-            textBox_Vevoado.BorderStyle = BorderStyle.Fixed3D;
+                doc.PrintPage += this.Doc_PrintPage;
+
+                // PrintDialog pdlg = new PrintDialog(); //Rögtön PDF-be menti/nyomtatja ezzel.            
+                PrintPreviewDialog pdlg = new PrintPreviewDialog(); //Először van egy preview és onnan lehet nyomtatni.           
+                pdlg.Document = doc;
+                pdlg.ShowDialog();
+
+                //Minden visszaállítása az eredetire
+                groupBox5.Height = boxheight;
+                dgv_SzamlaTermekek.Height = dgvheight;
+                dGV_SzamlaOssz.Location = new Point(dGV_SzamlaOssz.Location.X, szamlaosszpoz);
+                groupBox6.Location = new Point(groupBox6.Location.X, osszesenpoz);
+                megrendelesek_comboBox.Visible = true;
+                textBox_SzTalloz.Visible = true;
+                button_Talloz.Visible = true;
+                button_Kiallitas.Visible = true;
+                button_szamlafriss.Visible = true;
+                vevoneve_textBox.BorderStyle = BorderStyle.Fixed3D;
+                vevocime_textBox.BorderStyle = BorderStyle.Fixed3D;
+                textBox_VevoTel.BorderStyle = BorderStyle.Fixed3D;
+                textBox_Vevoado.BorderStyle = BorderStyle.Fixed3D;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Hiba");
+            }
         }
 
         //XML tallózása a számlába
@@ -949,28 +1009,38 @@ namespace VIR
         {
             megrendelesek_comboBox.Items.Clear();
             int rendelesdb = 0;
-            DBConnect conn = new DBConnect();
-            string qry = "SELECT count(id) FROM rendeles_adatok;";
-            MySqlDataReader reader;
-            MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
-            conn.OpenConnection();
-            reader = cmd.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                rendelesdb = int.Parse(reader.GetString(0));
-            }
-            conn.CloseConnection();
-            if (tabControl_Keszlet.SelectedIndex == 1)
-            {
-                rend = new Rendelesek(rendelesdb);
-                Muvelet muv = new Muvelet();
-                muv.getRend(rend);
-
-                for (int i = 0; i < rend.rend_id.Length; i++)
+                DBConnect conn = new DBConnect();
+                string qry = "SELECT count(id) FROM rendeles_adatok;";
+                MySqlDataReader reader;
+                MySqlCommand cmd = new MySqlCommand(qry, conn.returnConnection());
+                conn.OpenConnection();
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    if (i != 0)
+                    rendelesdb = int.Parse(reader.GetString(0));
+                }
+                conn.CloseConnection();
+                if (tabControl_Keszlet.SelectedIndex == 1)
+                {
+                    rend = new Rendelesek(rendelesdb);
+                    Muvelet muv = new Muvelet();
+                    muv.getRend(rend);
+
+                    for (int i = 0; i < rend.rend_id.Length; i++)
                     {
-                        if (rend.rend_id[i - 1] != rend.rend_id[i])
+                        if (i != 0)
+                        {
+                            if (rend.rend_id[i - 1] != rend.rend_id[i])
+                            {
+                                ComboBoxItem item = new ComboBoxItem();
+                                item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
+                                item.Value = i;
+                                megrendelesek_comboBox.Items.Add(item);
+                            }
+                        }
+                        else if (i == 0)
                         {
                             ComboBoxItem item = new ComboBoxItem();
                             item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
@@ -978,15 +1048,12 @@ namespace VIR
                             megrendelesek_comboBox.Items.Add(item);
                         }
                     }
-                    else if (i == 0)
-                    {
-                        ComboBoxItem item = new ComboBoxItem();
-                        item.Text = "Rendelés: " + rend.rend_id[i] + " - Idő: " + rend.rend_ido[i];
-                        item.Value = i;
-                        megrendelesek_comboBox.Items.Add(item);
-                    }
                 }
-            } 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Hiba");
+            }
         }
 #endregion
     }
