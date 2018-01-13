@@ -18,8 +18,8 @@ namespace VIR
         private static string kivalasztottTermeknev = "";
         private static string kivalasztottAr = "";
         private static string kivalasztottLeiras = "";
-        private string selectedFilePathName;
-        private string selectedFileName;
+        private string selectedFilePathName; //kiválasztott fájl könyvtára
+        private string selectedFileName; //Kiválasztott fájlneve a megnyitásnál
         private string selectedFilePathNameModositas;
         private string selectedFileNameModositas;
         bool[] check = new bool[6];  //button_Keres_Click voidhoz változó. Ebben tárolódnak a Keresés résznél bejelölt kritériumok státusza.
@@ -114,7 +114,7 @@ namespace VIR
                 }
                 catch (Exception ex) //ha nem található a fájl
                 {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    MessageBox.Show("Hiba a fájl elérése közben:" + ex.Message);
                 }
                 finally
                 {
