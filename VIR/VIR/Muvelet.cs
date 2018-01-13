@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VIR;
 using VIRConnect;
 
 namespace Muveletek
@@ -178,8 +177,8 @@ namespace Muveletek
         /// <param name="optionalQuery">Az SQL query helye</param>
         public void Adatletoltes(ListView listView1, string optionalQuery = "query")
         {
-            //try
-            //{
+            try
+            {
                 string sKeszleten;
 
                 DBConnect conn = new DBConnect();     //Kapcsolat létrehozása
@@ -224,11 +223,11 @@ namespace Muveletek
                     listView1.Items.Add(listViewItem);       // feltölteni a Listviewet
                     conn.CloseConnection(); //Adatbázis kapcsolat lezárása
                 }
-            //}
-            //catch (MySqlException ex)   //Ha hiba lépfel
-            //{
-            //    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
-            //}
+            }
+            catch (MySqlException ex)   //Ha hiba lépfel
+            {
+                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+            }
         }
 
         public void FileCopy(string Filename, string SourcePath)
@@ -256,141 +255,135 @@ namespace Muveletek
         //HomeFormon keresés funkció
         public void Kereses(string szoveg, bool[] check, ListView listView1)
         {
-            try
+
+            DBConnect conn = new DBConnect();
+
+            string connstring = "SELECT * FROM termekek";
+            bool vancheck = false; //Segítségével tudjuk, hogy milyen Where kondíció kell.
+            bool vanhiba = false; //Ha volt valamiféle beviteli hiba (számoknál), akkor true lesz.
+
+            if (szoveg != null && szoveg != "")
             {
-                DBConnect conn = new DBConnect();
-
-                string connstring = "SELECT * FROM termekek";
-                bool vancheck = false; //Segítségével tudjuk, hogy milyen Where kondíció kell.
-                bool vanhiba = false; //Ha volt valamiféle beviteli hiba (számoknál), akkor true lesz.
-
-                if (szoveg != null && szoveg != "")
+                if (check[0] == true) //Ha az első checkbox be van pipálva, akkor
                 {
-                    if (check[0] == true) //Ha az első checkbox be van pipálva, akkor
-                    {
-                        vancheck = true; //check true
-                        connstring += " WHERE termeknev like '%" + szoveg + "%'"; //alap where záradék
-                    }
+                    vancheck = true; //check true
+                    connstring += " WHERE termeknev like '%" + szoveg + "%'"; //alap where záradék
+                }
 
-                    if (check[1] == true) //ha a második checkbox be van pipálva, akkor
+                if (check[1] == true) //ha a második checkbox be van pipálva, akkor
+                {
+                    try
                     {
-                        try
+                        if (vancheck == false) //Ha eddig nem volt semmi se bejelölve
                         {
-                            if (vancheck == false) //Ha eddig nem volt semmi se bejelölve
-                            {
-                                vancheck = true; //volt bejelölés = igaz
-                                connstring += " WHERE ar=" + int.Parse(szoveg); //sima where záradék
-                            }
-                            else //Ha már volt eddig már más is bejelölve
-                            {
-                                connstring += " OR ar=" + int.Parse(szoveg); //where .. or ... záradék
-                            }
+                            vancheck = true; //volt bejelölés = igaz
+                            connstring += " WHERE ar=" + int.Parse(szoveg); //sima where záradék
                         }
-                        catch
+                        else //Ha már volt eddig már más is bejelölve
                         {
-                            if (vanhiba == false) //Ha eddig nem volt hiba
-                            {
-                                MessageBox.Show("Hibás formátum.\nEbben az esetben csak szám lehet a keresés mezőben.", "Hiba"); //Hiba oka
-                                vanhiba = true; //volt hiba
-                            }
+                            connstring += " OR ar=" + int.Parse(szoveg); //where .. or ... záradék
                         }
                     }
-
-                    if (check[2] == true)
+                    catch
                     {
-                        try
+                        if (vanhiba == false) //Ha eddig nem volt hiba
                         {
-                            if (vancheck == false)
-                            {
-                                vancheck = true;
-                                connstring += " WHERE mennyiseg=" + int.Parse(szoveg);
-                            }
-                            else
-                            {
-                                connstring += " OR mennyiseg=" + int.Parse(szoveg);
-                            }
-                        }
-                        catch
-                        {
-                            if (vanhiba == false)
-                            {
-                                MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
-                                vanhiba = true;
-                            }
-                        }
-                    }
-
-                    if (check[3] == true)
-                    {
-                        if (vancheck == false)
-                        {
-                            vancheck = true;
-                            connstring += " WHERE kategoria like \'%" + szoveg + "%\'";
-                        }
-                        else
-                        {
-                            connstring += " OR kategoria like \'%" + szoveg + "%\'";
-                        }
-                    }
-
-                    if (check[4] == true)
-                    {
-
-                        if (vancheck == false)
-                        {
-                            vancheck = true;
-                            connstring += " WHERE leiras like \'%" + szoveg + "%\'";
-                        }
-                        else
-                        {
-                            connstring += " OR leiras like \'%" + szoveg + "%\'";
-                        }
-
-                    }
-
-                    if (check[5] == true)
-                    {
-                        if (vancheck == false)
-                        {
-                            vancheck = true;
-                            if (szoveg.ToLower() == "van" || szoveg == "1")
-                            {
-                                connstring += " WHERE keszleten=1";
-                            }
-                            else if (szoveg.ToLower() == "nincs" || szoveg == "0")
-                            {
-                                connstring += " WHERE keszleten=0";
-                            }
-                        }
-                        else
-                        {
-                            if (szoveg.ToLower() == "van" || szoveg == "1")
-                            {
-                                connstring += " OR keszleten=1";
-                            }
-                            else if (szoveg.ToLower() == "nincs" || szoveg == "0")
-                            {
-                                connstring += " OR keszleten=0";
-                            }
+                            MessageBox.Show("Hibás formátum.\nEbben az esetben csak szám lehet a keresés mezőben.", "Hiba"); //Hiba oka
+                            vanhiba = true; //volt hiba
                         }
                     }
                 }
 
-                connstring += ";";
-
-                if (vanhiba == false) //ha nem volt hiba, akkor mehet a keresés
+                if (check[2] == true)
                 {
-                    listView1.Items.Clear(); //listanézet adatainak törlése
-                    Adatletoltes(listView1, connstring); //szűrt adatok betöltése
+                    try
+                    {
+                        if (vancheck == false)
+                        {
+                            vancheck = true;
+                            connstring += " WHERE mennyiseg=" + int.Parse(szoveg);
+                        }
+                        else
+                        {
+                            connstring += " OR mennyiseg=" + int.Parse(szoveg);
+                        }
+                    }
+                    catch
+                    {
+                        if (vanhiba == false)
+                        {
+                            MessageBox.Show("Hibás formátum. Csak szám lehet a keresés mezőben.", "Hiba");
+                            vanhiba = true;
+                        }
+                    }
                 }
-                else //ha volt hiba, akkor a jelző alaphelyzetre állítása.
+
+                if (check[3] == true)
                 {
-                    vanhiba = false;
+                    if (vancheck == false)
+                    {
+                        vancheck = true;
+                        connstring += " WHERE kategoria like \'%" + szoveg + "%\'";
+                    }
+                    else
+                    {
+                        connstring += " OR kategoria like \'%" + szoveg + "%\'";
+                    }
+                }
+
+                if (check[4] == true)
+                {
+
+                    if (vancheck == false)
+                    {
+                        vancheck = true;
+                        connstring += " WHERE leiras like \'%" + szoveg + "%\'";
+                    }
+                    else
+                    {
+                        connstring += " OR leiras like \'%" + szoveg + "%\'";
+                    }
+
+                }
+
+                if (check[5] == true)
+                {
+                    if (vancheck == false)
+                    {
+                        vancheck = true;
+                        if (szoveg.ToLower() == "van" || szoveg == "1")
+                        {
+                            connstring += " WHERE keszleten=1";
+                        }
+                        else if (szoveg.ToLower() == "nincs" || szoveg == "0")
+                        {
+                            connstring += " WHERE keszleten=0";
+                        }
+                    }
+                    else
+                    {
+                        if (szoveg.ToLower() == "van" || szoveg == "1")
+                        {
+                            connstring += " OR keszleten=1";
+                        }
+                        else if (szoveg.ToLower() == "nincs" || szoveg == "0")
+                        {
+                            connstring += " OR keszleten=0";
+                        }
+                    }
                 }
             }
-            catch (Exception ex)
+
+            connstring += ";";
+
+            if (vanhiba == false) //ha nem volt hiba, akkor mehet a keresés
             {
-                MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Hiba");
+                listView1.Items.Clear(); //listanézet adatainak törlése
+                Adatletoltes(listView1, connstring); //szűrt adatok betöltése
+            }
+            else //ha volt hiba, akkor a jelző alaphelyzetre állítása.
+            {
+                vanhiba = false;
             }
         }
     }

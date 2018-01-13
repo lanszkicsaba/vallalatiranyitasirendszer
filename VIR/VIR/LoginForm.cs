@@ -17,7 +17,7 @@ namespace VIR
 {
     public partial class LoginForm : Form
     {
-        DBConnect conn = new DBConnect(); //Adatbázis csatlakozás
+       
         private Form homeForm = new HomeForm(); //HomeForm deklarálása
         private string fullname = ""; //A getter része
         private string loginname = ""; //A getter része
@@ -132,6 +132,7 @@ namespace VIR
                 //Bejelentkezési adatok ellenőrzése.
                 try
                 {
+                    DBConnect conn = new DBConnect(); //Adatbázis csatlakozás
                     string mquerylogin = "SELECT * FROM asztaliusers where name=\"" + (textBoxUserName.Text.ToLower()) + "\"";
                     MySqlCommand cmdlogin = new MySqlCommand(mquerylogin, conn.returnConnection());
                     conn.OpenConnection();
@@ -179,10 +180,14 @@ namespace VIR
                 }
                 catch (MySqlException ex)
                 {
-                    conn.CloseConnection();
+                    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+                }
+                catch (Exception ex)
+                {
+                    //conn.CloseConnection();
                     labelMessage.Text = "Hiba lépett fel";
                     labelMessage.ForeColor = Color.Red;
-                    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+                    MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Hiba");
                     pictureBox1.Image = null;
                 }
             }
