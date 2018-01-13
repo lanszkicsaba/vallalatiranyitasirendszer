@@ -122,7 +122,7 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2">Felhasználónév:</label>
 					<div class="col-sm-2">
-						<input disabled type="text" class="form-control" id="fullname" name="fullname" value="' . $username . '"/><br>
+						<input disabled type="text" class="form-control" id="username" name="username" value="' . $username . '"/><br>
 					</div>
 				</div>
 				
