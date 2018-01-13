@@ -1,20 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rendeles>
-	<rendeloadatai>
-		<nev>Test Elek</nev>
-		<cim>3400 Mezőkövesd, Mátyás király út 124.</cim>
-		<telefonszam>06307239293</telefonszam>
-		<adoszam>15834481210</adoszam>
-	</rendeloadatai>
-	<rendelesadatai>
-		<rendid>2018/10</rendid>
-		<rendido>2018.01.06 12:15:28am</rendido>
-	</rendelesadatai>
-	<termekekadatai>
-		<termek>
-			<termekneve>Barack</termekneve>
-			<mennyiseg>1 db</mennyiseg>
-			<ara>190 Ft</ara>
-		</termek>
-	</termekekadatai>
-</rendeles>
+<rendeles><rendeloadatai><nev>Test Elek</nev><cim>3400 Mezőkövesd, Mátyás király út 124.</cim><telefonszam>06307239292</telefonszam><adoszam>15834481253</adoszam></rendeloadatai><rendelesadatai><rendid>2018/25</rendid><rendido>2018.01.14 12:52:07am</rendido></rendelesadatai><termekekadatai><termek><termekneve>Barack</termekneve><mennyiseg>1 db</mennyiseg><ara>190 Ft</ara></termek><termek><termekneve>Elektromos kisautó</termekneve><mennyiseg>1 db</mennyiseg><ara>50000 Ft</ara></termek><termek><termekneve>Alma</termekneve><mennyiseg>3 db</mennyiseg><ara>-30 Ft</ara></termek></termekekadatai></rendeles>
