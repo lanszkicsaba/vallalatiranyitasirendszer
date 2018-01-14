@@ -142,6 +142,7 @@
 						<tr>
 						<td colspan="4">
 							<input type="button" class="form-control " onClick="parent.location=\'index.php\'" value="Vissza a vásárláshoz"></input><br>';
+                               //ha a rendelések száma kissebb vagy egyenlő mint 0 akkor nem engedek rendelni, különben igen
                                 if ($dbhelye <= 0) {
                                     echo '		<input  type="submit" class="form-control " value="Megrendelem" disabled></input>';
                                 } else {
