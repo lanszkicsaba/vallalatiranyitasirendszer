@@ -412,7 +412,22 @@ namespace VIR
                 {
                     MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
                 }
-                catch (Exception ex) //egyébhiba
+                catch (IOException) //kép feltöltési hiba
+                {
+                    MessageBox.Show("Kérjük módosítsa a fájl nevét és próbáld újra!", "Hiba");
+
+                    selectedFileName = null; //null-ra állítom a kiválasztott fájl nevét
+
+                    if (File.Exists("Image/kezdo.png"))         // Kezdőkép beállítása
+                    {
+                        termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                    }
+                    else
+                    {
+                        termekKep_pictureBox.Image = null;
+                    }
+                }
+                catch (Exception ex) //egyéb hiba
                 {
                     MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
                 }
@@ -512,7 +527,7 @@ namespace VIR
 
                     bool torolkep = false;
 
-                    if (selectedFileNameModositas != null && selectedFileNameModositas != "")
+                    if (selectedFileNameModositas != null || selectedFileNameModositas != "")
                     {
                         torolkep = true;
                         string query = "SELECT kep FROM termekek WHERE termeknev='" + termeknev +
@@ -528,10 +543,22 @@ namespace VIR
                         {
                             kepnevTorol = reader.GetString(0);
                         }
-
+                        timer.Stop();
                         Muvelet muvelet = new Muvelet();
-                        muvelet.FileCopy(selectedFileNameModositas, selectedFilePathNameModositas);
 
+                        if (torolkep)
+                        {
+                            if (File.Exists(@"image/" + kepnevTorol) && kepnevTorol != "kezdo")
+                            {
+                                //System.GC.Collect();
+                                //System.GC.WaitForPendingFinalizers();
+                                File.Delete(@"image/" + kepnevTorol);
+                                kepnevTorol = "";
+                            }
+                        }
+
+                        muvelet.FileCopy(selectedFileNameModositas, selectedFilePathNameModositas);
+                        timer.Start();
                         conn.CloseConnection();
 
                         query1 = "UPDATE termekek SET " +
@@ -565,17 +592,6 @@ namespace VIR
 
                     reader1 = cmd1.ExecuteReader();
 
-                    if (torolkep)
-                    {
-                        if (File.Exists(@"image/" + kepnevTorol) && kepnevTorol != "kezdo")
-                        {
-                            //System.GC.Collect();
-                            //System.GC.WaitForPendingFinalizers();
-                            File.Delete(@"image/" + kepnevTorol);
-                            kepnevTorol = "";
-                        }
-                    }
-
                     listView1.Items.Clear();
 
                     Muvelet muveletek = new Muvelet();
@@ -588,6 +604,21 @@ namespace VIR
                 catch (MySqlException ex)
                 {
                     MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
+                }
+                catch (IOException)  //kép feltöltési hiba
+                {
+                    MessageBox.Show("Kérjük módosítsa a fájl nevét és próbáld újra!", "Hiba");
+
+                    selectedFileNameModositas = null; //null-ra állítom a kiválasztott fájl nevét
+
+                    if (File.Exists("Image/kezdo.png"))         // Kezdőkép beállítása
+                    {
+                        termekKep_pictureBox.Image = new Bitmap("image/kezdo.png");
+                    }
+                    else
+                    {
+                        termekKep_pictureBox.Image = null;
+                    }
                 }
                 catch (Exception ex)
                 {
