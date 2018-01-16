@@ -15,15 +15,24 @@ session_start();
 		<h1>Szűrtlista</h1>
 	</div>
 <?php
+
 if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
+	$conn = MySQLServerConnecter();
+	mysqli_set_charset($conn, "utf8");
+	$select = "SELECT max(ar) as max_ar FROM termekek";
+	$s = $conn->query($select);
+	$conn->close();
+	while ($row = $s->fetch_assoc()) {
+		$_SESSION["maximum_ar"] = $row["max_ar"];
+	}
 //ha bevan lépve
     if ($_POST['f_armin'] == "") {
-        $_POST['f_armin'] = 0;
+        $_POST['f_armin'] = 1;
     }
-    if ($_POST['f_armax'] == "") {
-        $_POST['f_armax'] = 0;
+        if ($_POST['f_armax'] == "" || $_POST['f_armax'] == 1) {
+		$_POST['f_armax'] = $_SESSION["maximum_ar"];
     }
-    if ($_POST['f_nev'] == "" && $_POST['f_armin'] == 0 && $_POST['f_armax'] == 0) {
+    if ($_POST['f_nev'] == "" && $_POST['f_armin'] == 1 && $_POST['f_armax'] == $_SESSION['maximum_ar']) {
         $conn = MySQLServerConnecter();
         mysqli_set_charset($conn, "utf8");
         $select = "SELECT id, kep, termeknev, leiras, keszleten, ar FROM termekek";
@@ -56,7 +65,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
         echo "</table>";
     }
     else {
-        if ($_POST['f_nev'] <> "" && $_POST['f_armin'] == 0 && $_POST['f_armax'] == 0) {
+        if ($_POST['f_nev'] <> "" && $_POST['f_armin'] == 1 && $_POST['f_armax'] == $_SESSION['maximum_ar']) {
             $conn = MySQLServerConnecter();
             mysqli_set_charset($conn, "utf8");
             $select = "SELECT id, kep, termeknev, leiras, keszleten, ar FROM termekek WHERE termeknev like '%$_POST[f_nev]%'";
@@ -93,7 +102,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
                 echo "<h2>Nincs a szűrésnek megfelelő elem!</h2>";
             }
         } else {
-            if ($_POST['f_nev'] == "" && $_POST['f_armin'] <> 0 && $_POST['f_armax'] <> 0) {
+            if ($_POST['f_nev'] == "") {
                 $conn = MySQLServerConnecter();
                 mysqli_set_charset($conn, "utf8");
                 $select = "SELECT id, kep, termeknev, leiras, keszleten, ar FROM termekek WHERE ar >= " . $_POST['f_armin'] . " and ar <= " . $_POST['f_armax'] . ";";
@@ -130,7 +139,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
                     echo "<h2>Nincs a szűrésnek megfelelő elem!</h2>";
                 }
             } else {
-                if ($_POST['f_nev'] <> "" && $_POST['f_armin'] <> 0 && $_POST['f_armax'] <> 0) {
+                if ($_POST['f_nev'] <> "") {
                     $conn = MySQLServerConnecter();
                     mysqli_set_charset($conn, "utf8");
                     $select = "SELECT id, kep, termeknev, leiras, keszleten, ar FROM termekek WHERE termeknev like '%$_POST[f_nev]%' and ar >= " . $_POST['f_armin'] . " and ar <= " . $_POST['f_armax'] . ";";
@@ -172,13 +181,21 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
     }
 } else {
 //ha nincs belépve
+	$conn = MySQLServerConnecter();
+	mysqli_set_charset($conn, "utf8");
+	$select = "SELECT max(ar) as max_ar FROM termekek";
+	$s = $conn->query($select);
+	$conn->close();
+	while ($row = $s->fetch_assoc()) {
+		$_SESSION["maximum_ar"] = $row["max_ar"];
+	}
     if ($_POST['f_armin'] == "") {
-        $_POST['f_armin'] = 0;
+        $_POST['f_armin'] = 1;
     }
-    if ($_POST['f_armax'] == "") {
-        $_POST['f_armax'] = 0;
+    if ($_POST['f_armax'] == "" || $_POST['f_armax'] == 1) {
+		$_POST['f_armax'] = $_SESSION["maximum_ar"];
     }
-    if ($_POST['f_nev'] == "" && $_POST['f_armin'] == 0 && $_POST['f_armax'] == 0) {
+    if ($_POST['f_nev'] == "" && $_POST['f_armin'] == 1 && $_POST['f_armax'] == $_SESSION['maximum_ar']) {
         $conn = MySQLServerConnecter();
         mysqli_set_charset($conn, "utf8");
         $select = "SELECT kep, termeknev, leiras, keszleten, ar FROM termekek";
@@ -207,7 +224,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
         echo "</table>";
     }
     else {
-        if ($_POST['f_nev'] <> "" && $_POST['f_armin'] == 0 && $_POST['f_armax'] == 0) {
+        if ($_POST['f_nev'] <> "") {
             $conn = MySQLServerConnecter();
             mysqli_set_charset($conn, "utf8");
             $select = "SELECT kep, termeknev, leiras, keszleten, ar FROM termekek WHERE termeknev like '%$_POST[f_nev]%'";
@@ -240,7 +257,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
                 echo "<h2>Nincs a szűrésnek megfelelő elem!</h2>";
             }
         } else {
-            if ($_POST['f_nev'] == "" && $_POST['f_armin'] <> 0 && $_POST['f_armax'] <> 0) {
+            if ($_POST['f_nev'] == "") {
                 $conn = MySQLServerConnecter();
                 mysqli_set_charset($conn, "utf8");
                 $select = "SELECT kep, termeknev, leiras, keszleten, ar FROM termekek WHERE ar >= " . $_POST['f_armin'] . " and ar <= " . $_POST['f_armax'] . ";";
@@ -273,7 +290,7 @@ if (count($_SESSION) > 0 && $_SESSION["login"] == "TRUE") {
                     echo "<h2>Nincs a szűrésnek megfelelő elem!</h2>";
                 }
             } else {
-                if ($_POST['f_nev'] <> "" && $_POST['f_armin'] <> 0 && $_POST['f_armax'] <> 0) {
+                if ($_POST['f_nev'] <> "") {
                     $conn = MySQLServerConnecter();
                     mysqli_set_charset($conn, "utf8");
                     $select = "SELECT kep, termeknev, leiras, keszleten, ar FROM termekek WHERE termeknev like '%$_POST[f_nev]%' and ar >= " . $_POST['f_armin'] . " and ar <= " . $_POST['f_armax'] . ";";

@@ -21,8 +21,14 @@
                     var armin = document.forms["szures"]["f_armin"].value;
                     var armax = document.forms["szures"]["f_armax"].value;
                     if (armin > armax) {
-                        alert("A minimum ár nem lehet nagyobb a maximumnál!");
-                        return false;
+						if(armax == 1){
+							return true;
+						}
+						else{
+							alert("A minimum ár nem lehet nagyobb a maximumnál!");
+							return false;
+						}
+                        
                     }
 					if (armin < 0) {
                         alert("A minimum ár nem lehet negatív!");
@@ -64,8 +70,8 @@
                 echo '<div class="col-sm-3">';
                 echo '<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
 				Név:<br> <input class="form-control" type="text" name="f_nev"><br>
-				Ár:<br> <input class="form-control" min="1" type="number" name="f_armin">-tól<br>
-				<input min="1" class="form-control" type="number" name="f_armax">-ig<br>
+				Ár:<br> <input class="form-control" min="1" type="number" name="f_armin" value="1">-tól<br>
+				<input min="1" class="form-control" type="number" name="f_armax" value="1">-ig<br>
 				<br>
 				<input type="submit" class="btn btn-default" value="Szűrés"/>
 				</form>';
@@ -112,11 +118,11 @@
                 echo '<div class="row">';
                 echo '<div class="col-sm-3">';
                 echo '<form name="szures" action="szurtlista.php" onsubmit="return validateForm()" method="post">
-				Név:<br> <input type="text" name="f_nev"><br>
-				Ár:<br> <input type="number" name="f_armin">-tól<br>
-				<input type="number" name="f_armax">-ig<br>
+				Név:<br> <input class="form-control" type="text" name="f_nev"><br>
+				Ár:<br> <input class="form-control" min="1" type="number" name="f_armin" value="1">-tól<br>
+				<input min="1" class="form-control" type="number" name="f_armax" value="1">-ig<br>
 				<br>
-				<input type="submit" value="Szűrés"/>
+				<input class="btn btn-default" type="submit" value="Szűrés"/>
 				</form>';
                 echo '</div>';
                 echo '<div class="col-sm-9">';
