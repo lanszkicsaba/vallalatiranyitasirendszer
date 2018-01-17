@@ -1,0 +1,50 @@
+Rendszerterv
+A rendszer célja:
+Az E CORP cég megbízásából egy olyan összetett vállalatirányítási rendszert készítünk el, ami összefoglalja a készletek nyilvántartását, az árúk leltározását, a honlapot, a rendelések figyelését és a rendelésekbõl a számla kiállítását.
+Projekt terv:
+A projekt véghez vitelére 4 és félhónap áll rendelkezésünkre.
+A projekt 3 fõ részt foglal magában:
+Adatbázis,
+Asztali program,
+Honlap.
+
+Adatbázis:
+A projekt véghezviteléhez rendelkezésünkre áll egy MySQL adatbázisszerver, amin az adatokat tárolni tudjuk. Ez az adatbázis csak és kizárólag a tesztelésre és a tervezésre áll fent. Ezt az adatbázist nem fogjuk biztosítani a cégnek, csak a táblák és mezõk megtervezését.
+Asztali program:
+Az asztali programot C# programozási nyelven fogjuk véghez vinni. A programban csak és kizárólag bejelentkezés után lehet használni. A belépési felületen megkell adni a felhasználó nevet és a jelszót. Majd itt a bejelentkezés gombra kattintva lehetséges majd belépni a homeform felületre. A loginformon még helyet foglal majd egy kijelentkezés gomb is amire rákattintva minden aktív bejelentkezés, kijelentkeztetésre kényszerül.
+A homeformon meg fog jeleni a bejelentkezett felhasználó teljesneve, egy kijelentkezés gomb és a készlet, illetve számlázás fülek.
+A készlet fülön lehetõség lesz arra, hogy megtekinthetjük a raktárkészletet, itt lehetõség nyílik a termékek hozzáadására, módosítására. A készlettábla fellesz készítve arra a lehetõségre, hogy ha máshol módosul a termékek valamelyike azt fogja látni minden felhasználó mivel a lista 10 sec-ként frissül, de lesz egy frissítés gomb is amivel manuálisan frissíthetõ a készlet lista. Lehetõség nyílik még a termékek keresésére is, ár, név, mennyiség alapján is.
+A termék nevére rákattintva automatikusan megjelenik a kép ablakban termék képe és az adatai kitöltõdnek a módosítás ablakban.
+A számlázás fülön lehetõség nyílik a számla kiállítására. Kinézete a Magyarországi NAV törvényeknek megfelelõ formátumú lesz. Itt csak és kizárólag a honlapon leadott rendelésekre lesz lehetõség számlát kiállítani. A rendelési adatokat az adatbázisból és/ vagy a honlap által elõállított XML-bõl lehet kinyerni.
+
+
+Honlap:
+A honlapnál a desingban és a megvalósításban is részt kell vennünk. A weboldalon megkell jelennie a termékeknek, amit az asztali alkalmazással töltöttünk fel, illetve lehetõségnek kell nyílnia arra hogy szûrni lehessen a termékek között.
+A rendelésre, csak a regisztrált felhasználóknak lesz lehetõségük. Emiatt kelleni fog egy regisztráció és bejelentkezési oldal. A regisztrációnál megkell adni minden elérhetõséget, adószámot és egy felhasználói nevet és jelszót. A jelszót md5 függvény segítségével fogjuk tárolni. 
+Bejelentkezés után a termékek neveinél megkell jelennie egy kosár gombnak, aminek segítségével a termék a kosárba helyezhetõ és a késõbbiekben megrendelhetõ.
+A kosár gombnál megkell jelennie a törlés gombnak, aminek segítségével törölhetõ a termék a kosárból és a mennyiség módosítása, illetve, ha van a kosárban termék, akkor a megrendelést lelehessen adni.
+A megrendelés leadása után megkell jelennie, hogy a rendelését leadta és hamarosan szállításra kerül a megrendelés, illetve a háttérben az adatbázisban elmentõdik a megrendelés adatai és XML-be kiíródik.
+Ütemterv:
+ModulID    VerzióNévKifejtésProgram001v0.1FelületKezdetleges felület létrehozása:
+Funkciógombok elhelyezése, feliratok, szövegdobozok létrehozása.Program002v0.2FelületMenürendszer megtervezése és létrehozása.Program003v0.2RegisztrációRegisztrációs ûrlap létrehozása. Lehessen regisztrálni a rendszerbe bárkinek.Program004v0.3KészletkezelésÚj termék/készlet létrehozására szolgáló felület megtervezése és megvalósítása.Adatbázis005v0.3KészletexportA termékek, készlet XML-be való mentése.Program006v0.2FelhasználókezelésA rendszer mentse azt a felhasználót, aki új terméket vesz fel, szerkeszt. (XML-be plusz bejegyzés).Adatbázis007v0.3KészletkezelésA készlettel kapcsolatban lehessen: szerkeszteni, törölni.Adatbázis008v0.4KészletkezelésLeltár funkció: Mennyi van még raktáron, státusza: van, nincs. Értesítõ küldése, ha valamibõl kevés van.Program009v0.4TerméknézegetõTermékek megtekintése egyszerûen. Irányító nyilak, töltse be hozzá a képet, az adatokat.Weblap010v0.7KészletkezelésA készletet/termékeket egy webes felületen megjeleníteni. Az adatokat XML-bõl kapja meg. Weblap011v0.7KészletkezelésA weboldalon lehessen lapozgatni a termékek között.Weblap012v0.8RendelésTermékek megrendelése szolgáló felület.Weblap – program013v0.8RendelésRendelésrõl szóló számla kiállító form létrehozása.Program014v1.0DesignA program felület design elemeinek kidolgozása, funkciógombok, szövegelemek végleges elhelyezése.
+Menürendszer újra átgondolása és véglegesítése.Weblap015v1.0DesignA weblap felület design elemeinek kidolgozása, funkciógombok, szövegelemek végleges elhelyezése.
+Menürendszer újra átgondolása és véglegesítése.Adatbázis------KészletexportKészlet exportja Excel formátumba.
+
+
+Képernyõképek:
+LoginForm:
+
+HomeForm:
+Készlet
+
+
+
+Számlázás
+
+Honlap:
+Bejelentkezés nélkül
+
+
+
+Bejelentkezéssel
+
