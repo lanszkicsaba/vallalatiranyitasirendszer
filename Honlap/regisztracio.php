@@ -16,6 +16,7 @@
             </div>
             <script>
                 function validateForm() {
+					//a formban megadott adatok kimentése változóba
                     var nev = document.forms["reg"]["f_nev"].value;
                     var felh = document.forms["reg"]["f_felhnev"].value;
                     var cim = document.forms["reg"]["f_cim"].value;
@@ -68,8 +69,9 @@
                 }
             </script>
             <?php
+			//A regisztrációs form létrehozása, címmel, beviteli mezővel, majd a végén a Captcha
             echo '<form name="reg" class="form-horizontal" action="reg.php" onsubmit="return validateForm()" method="post">
-				<div class="form-group">
+				<div class="form-group"> 
 					<label class="control-label col-sm-2">Név:</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" name="f_nev" placeholder="Teljes név">
@@ -115,6 +117,7 @@
 				<input class="btn btn-default" type="submit" value="Regisztráció" name="submit">
 				<input class="btn btn-default" type="reset">
 			</form>';
+			//vissza gomb az index oldalra
             echo '<html>
 				<br>
 				<form action="index.php" method="post">
