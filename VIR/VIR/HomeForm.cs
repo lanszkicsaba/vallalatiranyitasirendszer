@@ -585,7 +585,7 @@ namespace VIR
                         {
                             kepnevTorol = reader.GetString(0);
                         }
-                        timer.Stop();
+
                         Muvelet muvelet = new Muvelet();
 
                         if (torolkep)
@@ -602,7 +602,7 @@ namespace VIR
                         }
                         //az új kép bemásolása a képek közé
                         muvelet.FileCopy(selectedFileNameModositas, selectedFilePathNameModositas);
-                        timer.Start();
+
                         conn.CloseConnection();
                         //A módosítás adatbázis parancsa képmódosítással
                         query1 = "UPDATE termekek SET " +
@@ -673,7 +673,6 @@ namespace VIR
                 finally
                 {
                     conn.CloseConnection();
-                    selectedFileNameModositas = null; //null-ra állítom a kiválasztott fájl nevét
                 }
             }
         }
