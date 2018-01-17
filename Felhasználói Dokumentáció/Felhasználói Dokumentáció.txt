@@ -1,0 +1,131 @@
+﻿Felhasználói dokumentáció
+
+A program célja:
+Könnyen átlátható, felhasználóbarát felületet biztosítani egy vállalat és vevői számára. A rendszer fő részei közé tartozik: webes felület, asztali program.
+A webes felületen keresztül tudnak a vásárlók termékek között nézelődni, s rendelni közülük regisztráció után.
+Az asztali alkalmazás segítségével a vállalat vezetője képes termékeket hozzáadni, szerkeszteni és törölni. Továbbá képes a rendeléseket áttekinteni és azokról számlát kiállítani.
+
+Környezet:
+•	Az asztali alkalmazás minimum rendszerigénye:
+-	Windows 7 operációs rendszer
+-	1.6Ghz processzor
+-	1gb RAM
+-	128mb GPU
+-	10mb szabad hely
+-	Internetkapcsolat
+-	Billentyűzet, egér
+
+•	A webes felület minimum rendszerigénye:
+-	Webes böngésző (Ajánlott: Firefox, Chrome)
+-	Internetkapcsolat
+-	Billentyűzet, egér
+
+Használat:
+
+1.0. Asztali program esetén
+
+1.1. A program indítása
+Kattintsuk duplán a zöld hátterű VIR.exe ikonra. Ekkor a bejelentkezési ablak fog fogadni minket.
+ 
+1. kép: program_inditasa.png
+ 
+
+
+1.2. Bejelentkezés
+Az alábbi ablakban lehet bejelentkezni az asztali programba. A "Felhasználónév” alatti mezőbe kell a felhasználónevet, a "Jelszó” alatti mezőbe pedig a jelszót beírni.
+Ha a megfelelő adatok kerültek be, akkor megnyílik külön ablakban a program fő egysége. A beviteli mezők zöld színűvé válnak és a „Sikeres bejelentkezés” üzenet fogad.
+Ha kimarad valamelyik mezőt, akkor a megfelelő mező piros színű lesz és legalul egy üzenet figyelmeztet. Ha nem egyeznek az adatok, akkor mindkettő mező piros lesz.
+Bejelentkezés után ezen az ablakon is ki lehet jelentkezni, az aktívvá váló Kijelentkezés gomb segítségével vagy az egész programot be lehet zárni a jobb felső sarokban lévő piros X-szel.
+ 
+2. Kép: bejelentkezes.png
+ 
+
+
+1.3. Termékek kezelése
+ 
+3. kép: Termek_adatok_megjelenitese.png
+
+1.3.1. Termék adatainak megtekintése
+A VIR nevű főablak ’Készlet’ fülén láthatóak a termékek a listában. A főbb adatokat felsorolja a lista, de a részletes adatok, mint a kép, a leírás bővebb megtekintése érdekében rá kell kattintani a Termék nevére a bal egér gombbal egyszer, a listában. Ezután megjelennek az adott termék adatai jobb alul a Módosítás panelben és középen a hozzá tartozó kép.
+
+1.3.2. Termék adatainak módosítása
+Az 1.3.1. foglaltak szerint a termék nevére történő kattintás után a Módosítás panelba bekerülnek az adott termék adatai. Itt módosítható a termékhez tartozó fő adatok: név, ár, mennyiség, kategória, leírás, súly, készleten lévő állapot, kép.
+Megszorítások:
+-	Terméknév nélkül nem lehet feltölteni a módosítást
+-	Az ár, mennyiség és a súly nem lehet negatív szám.
+
+A kép módosítását a Módosítás panelen lévő Kép felirat melletti [Megnyitás] gomb megnyomásával kezdhető el. Az előugró ablak segítségével kiválasztható az új kép, majd az [Ok] gomb megnyomása után betöltődik a kép középre, s a program almappájába.
+A módosított adatok véglegesítése a Módosítás panelen lévő [Módosítás] gomb megnyomásával történik.
+Ha újra kell kezdeni az adatok bevitelét vagy nem szükségesek az ottani adatok, akkor az [Ürítés] gomb segítségével kiüríthetőek a mezők és a középen lévő termék képe alaphelyzetbe áll. A megnyomása után egy megerősítő üzenet jelenik meg a biztonság érdekében.
+
+1.3.3. Termék törlése
+Egy termék törlése érdekében a VIR főablak Készlet fülén lévő terméklistában kell a termék nevére jobb egér gombbal kattintani egyszer. Ekkor felugrik egy figyelmeztető üzenet, mely megerősítést kér a törlésről. Az [Igen] gomb megnyomása után a termék törlődik a rendszerből.
+
+1.3.4. Termék feltöltése
+A 3. Kép-en látható bal alul a Hozzáadás panel. Ezen panel segítségével új terméket lehet felvinni a rendszerbe. Működési elve megfelel az 1.3.2. pontba foglaltakkal azzal a különbséggel, hogy az új termék hozzáadásához a Hozzáadás panel [Hozzáadás] gomb megnyomásával történik.
+
+1.3.5. Termék keresése
+A 3. Kép-en látható jobb felül a Keresés panel. Segítségével lehet keresni a rendszerben lévő termékek között. Keresési feltételnek a bepipálható elemek adhatók meg (név, ár, mennyiség, kategória, leírás, készleten). Egyszerre több feltétel is megadható. Keresési kulcsszó a bevitel mezőben adható meg.
+Egyszerre több feltétel is bepipálható. A keresés indításához szükséges legalább egy feltétel megadása. A keresett eredményből való visszalépés a Keresés panelen található Vissza gomb segítségével történik.
+Készleten lévő feltételre való keresés az alábbi módon történhet: Van, Nincs [vagy] 1, 0 kulcsszavak megadásával.
+Megszorítások:
+-	0db feltétel megadása esetén a keresés nem fut le
+-	Ár, mennyiség feltétel esetén csak szám típusú keresési feltétel lehet megadva. Ellenkező esetben hibaüzenet figyelmeztet.
+-	Készleten-re való keresés esetén a kulcsszavak: Van, Nincs, 1, 0.
+ 
+1.3.6. Termékek exportálása táblába
+A termékek listáját kilehet exportálni .csv és .xlsx formátumba. A 4. Kép-en látható VIR ablak Készlet fülén belül megtalálható a [Tábla] gomb. Megnyomása után egy tallózó jelenik meg, ahol kiválaszthatjuk a tábla mentési helyét és kiterjesztését.
+ 
+4. Kép: termekek_exportalasa.png
+
+1.3.7. Termékek listájának frissítése
+A termékeket tartalmazó lista 10 másodpercenként automatikusan frissít. Ha hamarabb van szükség erre, akkor a VIR ablak Termékek fülön belül a [Frissítés] gomb megnyomásával ez az esemény kiváltható.
+ 
+
+
+1.4. Rendelések és számlázás
+ 
+5. kép: Rendelesek_Szamla.png
+
+1.4.1. Rendelések megtekintése
+Két féle módon tekinthető meg az eddig leadott rendelések adatai.
+Az egyik módja, ha a Számlázás fülön alul a Válasszon a megrendelések közül, vagy tallózza ki a visszaigazolást feliratú legördülő listát lenyitva kiválaszt a felhasználó egy rendelést. Ha nincs rendelés az adatbázisba bejegyezve, akkor ez a lista üres.
+A másik módja, ha a Számlázás fülön belül alul a [Tallózás] gomb megnyomása után a felhasználó betallózza a webes felület által legenerált .XML formátumú rendelésről szóló fájlt.
+Ha valamelyik módon ki lett választva egy megrendelés, akkor a megrendelő adatai a Vevő adatai: panelen belül találhatóak. Ha igény van a vevő által bármiféle adat módosítására (pl. cím), akkor ezen a panelen megtehető.	
+További adatok a rendelésről a Rendelés Adatai panelen belül jelennek meg. Itt található a fizetési mód, teljesítés dátuma, számla kelte, fizetési határidő, a rendelt termékekhez tartozó adatok.
+A Szállító adatai és a fizetési határidő beállítása a megrendelés folyamán történik a fejlesztők által. Bárminemű adatváltozás esetén őket kell felkeresni.
+ 
+1.4.2. Megrendelő adatainak módosítása
+Ha a vevő valamely adatát megszeretné változtatni a rendelés után, akkor a Számlázás fül Vevő adatai panelen van erre lehetőség. Telefonszám és adószám esetén csak szám típusú karakterek írhatók be.
+A módosítás csak akkor él, ha a rendelés adatai már be lettek töltve (1.4.1-es pont). A számla kiállítása folyamán véglegesítődnek.
+
+1.4.3. Rendelések frissítése
+Ha a felhasználó szeretné a rendelések listáját frissíteni a lenyíló menüben, akkor a lenyíló menü mellett lévő [Frissítés] gomb megnyomása esetén a rendelések listája lefrissül.
+
+1.4.4. Számla kiállítása
+Miután egy rendelés ki lett választva valamely módon (1.4.1-es pont), azután aktívvá válik a [Számla kiállítása] gomb. A megnyomása után megnyílik a számla nyomtatási képe, ahol még ellenőrizhetők a számlázás adatai. A jobb felső sarokban lévő Nyomtatás ikonra kattintva a számla nyomtatása megkezdődik a kiválasztott nyomtatón.
+ 
+6. kép: nyomtatasi_kep.png
+ 
+1.5 Kijelentkezés
+A programból való kijelentkezés több módon is történhet.
+1.	A VIR főablak jobb felső sarkában lévő [Kijelentkezés] gombra kattintva. Ezzel bezáródik a VIR ablak.
+2.	A VIR főablak jobb felső sarkában lévő piros [X] megnyomásával. Ezzel bezáródik a VIR ablak.
+3.	A Bejelentkezés ablak Kijelentkezés gomb megnyomásával. Ezzel bezáródik a VIR ablak.
+4.	A Bejelentkezés ablak jobb felső sarkában lévő piros [X] megnyomásával. Ezzel bezáródik a VIR és a Bejelentkezés ablak.
+
+1.6. További tudnivalók
+
+1.6.1. Üdvözlő szöveg
+A bejelentkezés után a VIR ablak bal felső sarkában megjelenik a felhasználó teljes neve az üdvözlő szövegben. Ha nem lett megadva a rendszer átadása folyamán, akkor az Üdvözöllek, Felhasználó alapértelmezett üzenet jelenik meg.
+
+1.6.2. Asztali program regisztráció
+Az asztali programba regisztrálni csak a rendszer fejlesztői tudnak. Ez esetben őket kell keresni.
+
+1.6.3. Adatok módosítása
+A felhasználóhoz és a céghez tartozó adatokat módosítani csak a rendszer fejlesztői tudnak. Ez esetben őket kell keresni.
+
+
+
+
+2.0 Webes alkalmazás esetén
