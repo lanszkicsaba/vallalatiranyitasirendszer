@@ -221,6 +221,7 @@ namespace VIR
             {
                 if (listView1.SelectedIndices.Count > 0)
                 {
+                    //A kiválasztott termék adatainak kimentése változóba, majd feltöltése a textBoxokba.
                     kivalasztottTermeknev = listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text;
                     modositasTermeknev_textBox.Text = kivalasztottTermeknev;
                     kivalasztottAr = listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text.Replace("Ft", "");
@@ -238,9 +239,10 @@ namespace VIR
                     else checkBox_KeszletenModositas.Checked = false;
 
                     DBConnect conn = new DBConnect();
-
+                    //Kép beszúrása a módosításhoz
                     try
                     {
+                        //A kép nevének a lekérése az adatbázisból
                         string query1 = "SELECT kep FROM termekek WHERE termeknev='" + listView1.Items[listView1.SelectedIndices[0]].SubItems[0].Text +
                            "' AND ar='" + int.Parse(listView1.Items[listView1.SelectedIndices[0]].SubItems[1].Text.Replace("Ft", "")) +
                            "' AND leiras='" + listView1.Items[listView1.SelectedIndices[0]].SubItems[4].Text + "';";
@@ -259,11 +261,12 @@ namespace VIR
                         }
 
                         conn.CloseConnection();
-
+                        //Ha a kép létezik akkor jelenjen meg a pictureBox-ban.
                         if (File.Exists(@"image/" + kepnev))
                         {
                             termekKep_pictureBox.Image = new Bitmap("image/" + kepnev);
                         }
+                        //Ha a kép nem létezik akkor az alapértelmezett kép jelenjen meg.
                         else
                         {
                             if (File.Exists("image/kezdo.png"))
@@ -276,12 +279,13 @@ namespace VIR
                             }
                         }
                     }
-                    catch (MySqlException ex)
+                    //Hibakezelések
+                    catch (MySqlException ex) //Adatbázis hiba
                     {
                         
                         MessageBox.Show("Kérjük mutassa meg ezt a fejlesztőnek:\n" + ex.Message, "Adatbázis hiba");
                     }
-                    catch (Exception ex)
+                    catch (Exception ex) //Egyéb hiba
                     {
                         
                         MessageBox.Show("Hiba történt! \n" + ex.Message, "Hiba");
@@ -544,6 +548,7 @@ namespace VIR
                 DBConnect conn = new DBConnect();
                 try
                 {
+                    //A textBoxok értékének kimentése változóba
                     string termeknev = modositasTermeknev_textBox.Text.ToString();
                     string kategoria = modositasKategoria_textBox.Text.ToString();
                     string leiras = richTextBox_LeirasModositas.Text.ToString();
@@ -562,10 +567,11 @@ namespace VIR
                     }
 
                     bool torolkep = false;
-
+                    //A kép módosítása ha van kiválasztva másik kép
                     if (selectedFileNameModositas != null && selectedFileNameModositas != "")
                     {
                         torolkep = true;
+                        //A módosítandó kép nevének a lekérése
                         string query = "SELECT kep FROM termekek WHERE termeknev='" + termeknev +
                                "' AND ar='" + ar +
                                "' AND leiras='" + leiras + "';";
@@ -584,19 +590,21 @@ namespace VIR
 
                         if (torolkep)
                         {
+                            //Létezik-e a kép a képek mappában, és ha igen akkor az nem a kezdő kép
                             if (File.Exists(@"image/" + kepnevTorol) && kepnevTorol != "kezdo")
                             {
                                 //System.GC.Collect();
                                 //System.GC.WaitForPendingFinalizers();
+                                //Kép törlése
                                 File.Delete(@"image/" + kepnevTorol);
                                 kepnevTorol = "";
                             }
                         }
-
+                        //az új kép bemásolása a képek közé
                         muvelet.FileCopy(selectedFileNameModositas, selectedFilePathNameModositas);
                         timer.Start();
                         conn.CloseConnection();
-
+                        //A módosítás adatbázis parancsa képmódosítással
                         query1 = "UPDATE termekek SET " +
                             "termeknev = '" + termeknev + "'," +
                             " ar = '" + ar + "'," +
@@ -610,6 +618,7 @@ namespace VIR
                     }
                     else
                     {
+                        //A módosítás adatbázis parancsa képmódosítás nélkül
                         query1 = "UPDATE termekek SET " +
                             "termeknev = '" + termeknev + "'," +
                             " ar = '" + ar + "'," +
@@ -620,19 +629,20 @@ namespace VIR
                             " keszleten = '" + iKeszleten + "'" +
                             " WHERE termeknev = '" + kivalasztottTermeknev + "' AND ar = '" + kivalasztottAr + "' AND leiras = '" + kivalasztottLeiras + "';";
                     }
-
+                    //Az adatok módosítása az adatbázisban
                     MySqlDataReader reader1;
                     MySqlCommand cmd1 = new MySqlCommand(query1, conn.returnConnection());
 
                     conn.OpenConnection();
 
                     reader1 = cmd1.ExecuteReader();
-
+                    //A termék lista frissítése
                     listView1.Items.Clear();
 
                     Muvelet muveletek = new Muvelet();
                     muveletek.Adatletoltes(listView1);
                 }
+                //hibák kezelése
                 catch (FormatException)
                 {
                     MessageBox.Show("Nem megfelelő a bevitt adat. \n Kérem ellenőrizze!", "Hiba");
@@ -670,6 +680,7 @@ namespace VIR
 
         private void modositasKep_btn_Click(object sender, EventArgs e)
         {
+            //a képtallózó megnyitása a kép kiválasztásához
             Stream myStream = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
@@ -691,6 +702,7 @@ namespace VIR
                         }
                     }
                 }
+                //hibák kezelése
                 catch (Exception ex)
                 {
                     MessageBox.Show("Hiba, nem lehet a fájlt megnyitni.\n " + ex.Message, "Hiba");
