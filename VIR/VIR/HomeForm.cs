@@ -304,14 +304,32 @@ namespace VIR
                 MessageBox.Show("Túl nagy érték az árnál. \n Maximum: 2147483647.", "Hiba");
                 hozzaadasAr_textBox.Select();
             }
+            //Ha negatív szám van megadva
+            else if (int.Parse(hozzaadasAr_textBox.Text) < 0)
+            {
+                MessageBox.Show("Nem adhat meg 0-nál kisebb értéket!", "Hiba");
+                hozzaadasAr_textBox.Select();
+            }
             else if (int.TryParse(hozzaadasMennyiseg_textBox.Text, out mennyiseg) == false && hozzaadasMennyiseg_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a mennyiségnél. \n Maximum: 2147483647.", "Hiba");
                 hozzaadasMennyiseg_textBox.Select();
             }
+            //Ha negatív szám van megadva
+            else if (int.Parse(hozzaadasMennyiseg_textBox.Text) < 0)
+            {
+                MessageBox.Show("Nem adhat meg 0-nál kisebb értéket!", "Hiba");
+                hozzaadasMennyiseg_textBox.Select();
+            }
             else if (int.TryParse(hozzaadasSuly_textBox.Text, out suly) == false && hozzaadasSuly_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a súlynál. \n Maximum: 2147483647.", "Hiba");
+                hozzaadasSuly_textBox.Select();
+            }
+            //Ha negatív szám van megadva
+            else if (int.Parse(hozzaadasSuly_textBox.Text) < 0)
+            {
+                MessageBox.Show("Nem adhat meg 0-nál kisebb értéket!", "Hiba");
                 hozzaadasSuly_textBox.Select();
             }
             else if (hozzaadasTermeknev_textBox.Text == string.Empty)
@@ -330,14 +348,14 @@ namespace VIR
                 try
                 {
                     //Szöveggé alakítások
-                    string termeknev = hozzaadasTermeknev_textBox.Text.ToString(); 
+                    string termeknev = hozzaadasTermeknev_textBox.Text.ToString();
                     string kategoria = hozzaadasKategoria_textBox.Text.ToString();
                     string leiras = richTextBox_LeirasHozzaad.Text.ToString();
 
                     //ha megfelelő a tallózott fájl elérési útja
                     if (selectedFileName != null && selectedFileName != "")
                     {
-                        Muvelet muvelet = new Muvelet(); 
+                        Muvelet muvelet = new Muvelet();
                         muvelet.FileCopy(selectedFileName, selectedFilePathName); //képmásolása a "szerverre"
                         kep = selectedFileName;                                   //a kép elérési útja
                     }
@@ -486,18 +504,36 @@ namespace VIR
                 MessageBox.Show("Túl nagy érték az árnál. \n Maximum: 2147483647.", "Hiba");
                 modositasAr_textBox.Select(); //Bejelöli a hibás beviteli részt
             }
+            //Ha negatív szám van megadva
+            else if (int.Parse(modositasAr_textBox.Text) < 0)
+            {
+                MessageBox.Show("Nem adhat meg 0-nál kisebb értéket!", "Hiba");
+                modositasAr_textBox.Select();
+            }
             //Ha az int maximumánál nagyobb érték van megadva
             else if (int.TryParse(modositasMennyiseg_textBox.Text, out mennyiseg) == false && modositasMennyiseg_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a mennyiségnél. \n Maximum: 2147483647.", "Hiba");
                 modositasMennyiseg_textBox.Select(); //Bejelöli a hibás beviteli részt
             }
+            //Ha negatív szám van megadva
+            else if (int.Parse(modositasMennyiseg_textBox.Text) < 0)
+            {
+                MessageBox.Show("Nem adhat meg 0-nál kisebb értéket!", "Hiba");
+                modositasMennyiseg_textBox.Select();
+            }
             else if (int.TryParse(modositasSuly_textBox.Text, out suly) == false && modositasSuly_textBox.Text != string.Empty)
             {
                 MessageBox.Show("Túl nagy érték a súlynál. \n Maximum: 2147483647.", "Hiba");
                 modositasSuly_textBox.Select();
             }
-                //Név nélkül nem lehet feltölteni.
+            //Ha negatív szám van megadva
+            else if (int.Parse(modositasSuly_textBox.Text) < 0)
+            {
+                MessageBox.Show("Nem adhat meg 0-nál kisebb értéket!", "Hiba");
+                modositasSuly_textBox.Select();
+            }
+            //Név nélkül nem lehet feltölteni.
             else if (modositasTermeknev_textBox.Text == string.Empty)
             {
                 MessageBox.Show("Név megadása kötelező.", "Hiba");
