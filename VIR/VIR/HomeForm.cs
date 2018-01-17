@@ -563,7 +563,7 @@ namespace VIR
 
                     bool torolkep = false;
 
-                    if (selectedFileNameModositas != null || selectedFileNameModositas != "")
+                    if (selectedFileNameModositas != null && selectedFileNameModositas != "")
                     {
                         torolkep = true;
                         string query = "SELECT kep FROM termekek WHERE termeknev='" + termeknev +
