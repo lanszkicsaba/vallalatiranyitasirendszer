@@ -593,8 +593,8 @@ namespace VIR
                             //Létezik-e a kép a képek mappában, és ha igen akkor az nem a kezdő kép
                             if (File.Exists(@"image/" + kepnevTorol) && kepnevTorol != "kezdo")
                             {
-                                //System.GC.Collect();
-                                //System.GC.WaitForPendingFinalizers();
+                                System.GC.Collect();
+                                System.GC.WaitForPendingFinalizers();
                                 //Kép törlése
                                 File.Delete(@"image/" + kepnevTorol);
                                 kepnevTorol = "";
@@ -673,6 +673,7 @@ namespace VIR
                 finally
                 {
                     conn.CloseConnection();
+                    selectedFileNameModositas = null; //null-ra állítom a kiválasztott fájl nevét
                 }
             }
         }
