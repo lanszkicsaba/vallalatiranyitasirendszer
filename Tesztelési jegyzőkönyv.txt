@@ -1,0 +1,788 @@
+Tesztelési jegyzõkönyv:
+(A jegyzõkönyv táblázat másolással többszörösíthetõ)
+Jegyzõkönyv
+Sorszám:
+1.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 19:28
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+Kipróbáltam mi történik abban az esetben, ha a jelszó 
+és felhasználói név nélkül próbálunk belépni. Tesztelni 
+akartam mennyire biztonságos és mennyire közlékeny a 
+figyelmeztetés egy hibás bevitel esetén.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali alkalmazás, Windows 10 operációs rendszeren
+Elvárt eredmény:
+Nem fog beléptetni és figyelmeztet a hibára.
+Mit kapott:
+A jelszó üres figyelmeztetést kaptam
+Tevékenység részletezése:
+Elindítottam a VIR.exe alkalmazást és rákattintottam a 
+belépés gombra.
+?
+Jegyzõkönyv
+Sorszám:
+2.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 19:40
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+A tesztelés során kipróbáltam mi történik abban az 
+esetben, ha be vagyok lépve a rendszerbe és bezárom a 
+bejelentkezési képernyõt. Kíváncsi voltam mennyire 
+biztonságos a rendszer.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali alkalmazás, Windows 10 operációs rendszeren
+Elvárt eredmény:
+Bezáródik az egész program
+Mit kapott:
+Kijelentkeztetett és bezáródott az egész alkalmazás
+Tevékenység részletezése:
+Elindítottam a VIR.exe alkalmazást és megadtam a 
+megfelelõ belépési adatokat, majd rákattintottam a 
+belépés gombra. Ezután visszamentem a belépési 
+panelre és rákattintottam a felsõsarokban lévõ bezárás 
+gombra. Ekkor bezáródott minden, majd elindítottam 
+ismételtek a VIR.exe alkalmazást és ismételten kérte a 
+belépési azonosítóm.
+?
+Jegyzõkönyv
+Sorszám:
+3.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 20:11
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+Megpróbáltam egy jó nagy számra módosítani a barack 
+nevû terméket. Leteszteltem hogy lehetséges-e irreális 
+mennyiséget felvinni az adatbázisba.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali alkalmazás, Windows 10 operációs rendszeren
+Elvárt eredmény:
+Figyelmeztet, hogy nem lehetséges ekkora darabszámra 
+módosítani a terméket.
+Mit kapott:
+Figyelmeztetett a program, hogy nem lehetséges 
+ekkora mennyiségre módosítani a terméket és kiírta 
+mennyi a megengedett maximális mennyiség.
+Tevékenység részletezése:
+Elindítottam a VIR.exe alkalmazást és bejelentkeztem, a 
+barack nevû termékre rákattintottam és átírtam a 
+mennyiségét 1111111111111111111411 db-re, majd 
+rákattintottam a módosítás gombra.
+?
+Jegyzõkönyv
+Sorszám:
+4.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 20:29
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+A keresés ára kipróbálása. A teszt során kipróbáltam mi 
+történik abban az esetben, ha nincs megfelelõ találat.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali alkalmazás, Windows 10 operációs rendszeren
+Elvárt eredmény:
+Figyelmeztet, hogy nincs találat, vagy nem ad elõ 
+semmit a program.
+Mit kapott:
+Nem adott elõ egy terméket sem a program.
+Tevékenység részletezése:
+Elindítottam a VIR.exe alkalmazást és bejelentkeztem, 
+majd a keresõ mezõbe beírtam, hogy 10000 és 
+bepipáltam hogy ár, majd rákattintottam a keresés 
+gombra. Mivel nem kaptam eredmény rákattintottam a 
+visszagombra.
+?
+Jegyzõkönyv
+Sorszám:
+5.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 20:55
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+Hozzáadtam egy új terméket a listához. Megfelelõen 
+mûködik-e a hozzáadás.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali alkalmazás, Windows 10 operációs rendszeren
+Elvárt eredmény:
+Hozzáadásra kerül a termék
+Mit kapott:
+Hozzáadásra került a termék
+Tevékenység részletezése:
+Elindítottam a VIR.exe alkalmazást és bejelentkeztem, 
+majd kitöltöttem a hozzáadás mezõket és egy képet 
+megnyitottam a Letöltések mappából. Ezután 
+rákattintottam a hozzáadás gombra a beírt dolgok 
+kiürültek a fenti lista befrissült és megjelent az Alma 
+mint termék.
+?
+Jegyzõkönyv
+Sorszám:
+6.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 21:18
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+Regisztráció. Létrehozza-e a felhasználót és belehet-e 
+vele lépni.
+Vizsgált eszköz/ szoftver fajtája:
+Honlap, Firefox böngészõ
+Elvárt eredmény:
+Sikerül regisztrálni és betudok lépni a megadott 
+adatokkal.
+Mit kapott:
+Hiba mentesen mûködött.
+Tevékenység részletezése:
+Felmentem a localhoston mûködõ honlapra 
+rákattintottam a regisztráció gombra. Ekkor bejött a 
+regisztrációs rész. Kitöltöttem minden mezõt, majd a 
+regisztráció gombra kattintottam. Ekkor visszaugrik a 
+kezdõképernyõre, ott rákattintottam a belépésre. 
+Beírtam az elõbb megadott adatokat és a belépésre 
+kattintottam. Sikeresen beléptetett.
+?
+Jegyzõkönyv
+Sorszám:
+7.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 21:39
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+Kosar.php elérése belépés nélkül. Letesztelem hogy 
+mennyire érhetõ el olyan oldalak amikre nincs 
+jogosultsága a látogatónak.
+Vizsgált eszköz/ szoftver fajtája:
+Honlap, Firefox böngészõ
+Elvárt eredmény:
+Figyelmeztet, hogy nincs jogosultságom vagy visszadob 
+a kezdõoldalra
+Mit kapott:
+Visszadobot a bolt kezdõoldalára.
+Tevékenység részletezése:
+Felmentem a localhoston mûködõ honlapra. A 
+böngészõ címsorában átírtam a 
+http://localhost/index.php -t, 
+http://localhost/kosar.php -re, majd ütöttem egy 
+entert. Ekkor visszakerültem az 
+http://localhost/index.php oldalra.
+?
+Jegyzõkönyv
+Sorszám:
+8.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 21:48
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+Termékek keresése belépés nélkül. Megnéztem, hogy 
+reagál nem létezõ név és ár adatok bevitelére a keresõ.
+Vizsgált eszköz/ szoftver fajtája:
+Honlap, Firefox böngészõ
+Elvárt eredmény:
+Kiírja, hogy nincs találat.
+Mit kapott:
+Nincs a szûrésnek megfelelõ elem.
+Tevékenység részletezése:
+Felmentem a localhoston mûködõ honlapra. Beírtam a 
+név mezõbe, hogy körte és az ár mezõbe a 0-tól 10 ig 
+adatokat, majd rákattintottam a keresés gombra. Mivel 
+nem volt ilyen termék, ezért a „Nincs a szûrésnek 
+megfelelõ elem” kiírást kaptam.
+?
+Jegyzõkönyv
+Sorszám:
+9.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 21:53
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+Termékek keresése belépéssel. Megnéztem, hogy 
+reagál létezõ név adatok bevitelére a keresõ.
+Vizsgált eszköz/ szoftver fajtája:
+Honlap, Firefox böngészõ
+Elvárt eredmény:
+Kiírja, a terméket és kosárba lehet tenni.
+Mit kapott:
+Megjelentek a termékek kosárral együtt.
+Tevékenység részletezése:
+Felmentem a localhoston mûködõ honlapra. 
+Bejelentkeztem. Beírtam a név mezõbe, hogy alma 
+majd rákattintottam a keresés gombra. Megjelentek a 
+termékek kosárral együtt.
+?
+Jegyzõkönyv
+Sorszám:
+10.
+A tesztelés dátuma és idõpontja:
+2018. 01. 12. 22:01
+Tesztelést végzõ neve:
+Lanszki Csaba
+A teszteset leírása és célja:
+Kosárba rakás. Lehet-e kosárba helyezni a terméket.
+Vizsgált eszköz/ szoftver fajtája:
+Honlap, Firefox böngészõ
+Elvárt eredmény:
+Megjelenik a kosárban a termék.
+Mit kapott:
+Megjelent a kosárban a termék.
+Tevékenység részletezése:
+Felmentem a localhoston mûködõ honlapra. 
+Bejelentkeztem. Rákattintottam a kosárba gombra. 
+Megjelent a kosárban a termék.
+?
+Jegyzõkönyv
+Sorszám:
+11.
+A tesztelés dátuma és idõpontja:
+2018.01.13. 18:22
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+Asztali alkalmazás keresõ funkció. 
+Megfelelõ üzenetek jelennek-e meg a hibás bevitelbõl. 
+Keresésnek megfelelõ és nem megfelelõ termékek 
+megjelenése. 
+Szûrésfeltétel megadása nélkül mi történik.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali program / Windows 7
+Elvárt eredmény:
+Hibaüzenetek a rossz beviteli adatokból. 
+Jól megadott paraméterek esetén megjelenik-e az adott 
+termék. Rossz esetén ne jelenjen meg semmi. 
+Szûrésfeltétel megadása nélkül jelenjen meg minden 
+termék.
+Mit kapott:
+Rossz adatbevitel esetén megjelent a megfelelõ 
+hibaüzenet. 
+Ha nincs szûrési feltétel megadva, akkor kilistázza az 
+összes terméket. 
+A megadott feltétel szerint kilistázza a megfelelõ 
+termékeket. Ha nincs, akkor semmi nem jelenik meg.
+Tevékenység részletezése:
+Bejelentkeztem a LoginFormon keresztül, majd a 
+megjelent HomeFormon elkezdtem a keresést. 
+Karaktereket beírtam a mezõbe, bepipáltam az Ár-ra 
+való keresést és  rányomtam a keresésre. Eredmény: 
+hibaüzenet a hibás bevitelrõl. Megtörtént ugyanez a 
+mennyiségre való szûrésre, a hibaüzenetet megkaptam. 
+Ha nem adok meg keresési feltételt, akkor kilistáz 
+mindent. 
+Ha nincs a keresésnek megfelelõ termék, akkor nem 
+listáz ki semmit. Ha van, akkor csak az adott feltételnek 
+megfelelõket listázta.
+?
+Jegyzõkönyv
+Sorszám:
+12
+A tesztelés dátuma és idõpontja:
+2018.01.13. 18:43
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+Számlanyomtatás teszt.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali Program / Windows 7
+Elvárt eredmény:
+Számla kiválasztása esetén az adatok töltõdjenek be és 
+a ’Számla kiállítása’ gomb változzon aktívvá. A ’Számla 
+kiállítása’ gomb megnyomása után jelenjen meg a 
+nyomtatási kép párbeszédablak.
+Mit kapott:
+A tetszõleges számla kiválasztása után az adatok 
+betöltõdtek, a gomb aktív lett. A gomb megnyomása 
+után megnyílt a nyomtatási kép egy külön ablakban. A 
+képen egyeznek az adatok.
+Tevékenység részletezése:
+Bejelentkezek a LoginFormon keresztül, majd a 
+megjelenõ HomeFormon kiválasztom a Számlázás fület. 
+Kiválasztok a legördülõ listából egy tetszés szerinti 
+számlát. Az adatok megjelentek, a ’Számla Kiállítása’ 
+gomb aktív lett. Megjelent a nyomtatási kép egy új 
+ablakban, amely segítségével kinyomtathatom a 
+számlát.
+?
+Jegyzõkönyv
+Sorszám:
+13
+A tesztelés dátuma és idõpontja:
+2018.01.13. 18.53
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+Internetkapcsolat nélküli teszt. 
+A teszt folyamán megszakítom az internetkapcsolatot 
+és végig próbálom az összes funkciót, mely internetet 
+igényel. 
+Elõször a bejelentkezést próbálom meg, majd 
+visszaállítom a kapcsolatot, belépek, majd megint 
+megszüntetem a kapcsolatot.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali alkalmazás/ Windown 7
+Elvárt eredmény:
+Hibaüzenetek megjelenése az adatbázis elérésének 
+hibájáról.
+Mit kapott:
+Login próbálkozás: A program kifagyott a try-catch 
+ellenére is. 
+HomeForm termékek letöltése/frissítése: Sikeres 
+hibaüzenet, de a frissítés miatt 10 másodpercenként 
+megjelenik. 
+HomeForm Termék felvitele/módosítása: Sikeres 
+hibaüzenet megjelenés. 
+HomeForm számlák: A program kifagyott.
+Tevékenység részletezése:
+Internet letiltása után LoginFormba történõ 
+bejelentkezés megpróbálása. 
+Net visszaállítása, bejelentkezés, majd a HomeForm 
+funkcióinak próbálása. 
+Kifagyás esetén netkapcsolat visszaállítása, 
+bejelentkezés, majd a következõ funkció próbálása.
+?
+Jegyzõkönyv
+Sorszám:
+14
+A tesztelés dátuma és idõpontja:
+2018.01.13.
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+A 13-as sorszámú tesztelés során bekövetkezett hibák 
+javításának tesztelése.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali program / Windows 7
+Elvárt eredmény:
+Hibaüzenetek megjelenése az adatbázis elérésének 
+hibájáról.
+Mit kapott:
+LoginForm lekezeli a kapcsolati hibát. 
+HomeForm összes funkciója lekezeli a kapcsolati hibát.
+Tevékenység részletezése:
+Internet letiltása után LoginFormba történõ 
+bejelentkezés megpróbálása. 
+Net visszaállítása, bejelentkezés, majd a HomeForm 
+funkcióinak próbálása. 
+Kifagyás esetén netkapcsolat visszaállítása, 
+bejelentkezés, majd a következõ funkció próbálása.
+?
+Jegyzõkönyv
+Sorszám:
+15
+A tesztelés dátuma és idõpontja:
+2018.01.14. 0:21
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+Termék módosítása. 
+Szélsõértékek tesztelése. Árnak, mennyiségnek negatív 
+érték, karakter megadás.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali Program / Windows 7
+Elvárt eredmény:
+Ne lehessen negatív számokat megadni. Ne lehessen túl 
+nagy számot megadni. Ne lehessen karaktereket beírni.
+Mit kapott:
+Mínusz jelet kézzel nem lehet beírni, de beilleszteni 
+belehet. <- hiba. 
+Maximális érték 2,1 millió lehet mindkét esetben.
+Tevékenység részletezése:
+LoginFormon keresztül bejelentkezés. Alma termék 
+kiválasztása a HomeForm Készlet fülén. 
+Ár és mennyiség megadása szélsõértékekkel: 
+Mínusz jelet megpróbáltam beírni, nem lehet kézzel. 
+Beilleszteni be lehet és fel is tölti. 
+Megpróbáltam 2 billiárdot megadni 
+árnak/mennyiségnek, de a felsõ korlát 2,1 millió (int 
+max). Errõl kaptam hibaüzenetet.
+?
+Jegyzõkönyv
+Sorszám:
+16
+A tesztelés dátuma és idõpontja:
+2018.01.14. 0:36
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+Weblapon az adatmódosításoknál szélsõérték teszt. 
+Lehet-e nem megfelelõ nevet, telefonszámot, 
+adószámot beírni és úgy módosítani.
+Vizsgált eszköz/ szoftver fajtája:
+Weblap / Google Chrome
+Elvárt eredmény:
+Alert / szöveg a hibás bevitelrõl.
+Mit kapott:
+Hiba volt a teljes név esetén -> mindig rossznak 
+érzékelte a jó nevet is. Javítva. 
+Minden rossz bevitel esetén specifikus Alert üzenet 
+fogadott.
+Tevékenység részletezése:
+Bejelentkeztem a Test Elek felhasználóba, majd 
+rámentem az Adatok módosítása menüpontra. 
+Adatmódosítás esetén mindig hibásnak írta a teljes 
+nevet. A hibát javítottam, s folytattam a tesztelést. 
+A többi mezõ esetén kaptam specifikus hibaüzenetet.
+?
+Jegyzõkönyv
+Sorszám:
+17
+A tesztelés dátuma és idõpontja:
+2018.01.14. 0:48
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+Weboldal kosárfunkció teszt. 
+Mûködik-e a kosárba helyezés, rendelés leadása.
+Vizsgált eszköz/ szoftver fajtája:
+Weboldal / Google Chrome
+Elvárt eredmény:
+Kosárba helyezés esetén jelenjenek meg a termékek. 
+Ugyanazon termék behelyezése esetén ne 
+duplikálódjon. Rendelés gomb megnyomása után 
+generálódjon le az XML és ürüljön ki a kosár. Üres kosár 
+esetén ne lehessen rendelni.
+Mit kapott:
+A termékek behelyezõdnek a kosárba, 1 azonos termék 
+nem duplikálódik azon belül. Rendelés gomb 
+megnyomása után az XML tökéletes formátumban 
+legenerálódik, a kosár kiürül. 
+Üres kosár esetén is sikeres a megrendelés. -> hiba.
+Tevékenység részletezése:
+Bejelentkeztem a Test Elek felhasználóval. Kosárba 
+raktam minden egyes terméket, többször. Nem 
+duplikálódtak, nem akadtak össze. Üres kosár esetén is 
+megtörténik a rendelés.
+?
+Jegyzõkönyv
+Sorszám:
+18
+A tesztelés dátuma és idõpontja:
+2018.01.14. 20:42
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+Felhasználókezelés. 
+Tesztelés arra vonatkozóan, hogy bejelentkezés nélkül 
+lehet-e kosárba helyezni és/vagy rendelni.
+Vizsgált eszköz/ szoftver fajtája:
+Weboldal / Google Chrome
+Elvárt eredmény:
+Bejelentkezés nélkül a kosár és rendelés funkciók ne 
+mûködjenek.
+Mit kapott:
+A kosár és a rendelés oldaláról rögtön visszairányított a 
+fõoldalra a weboldal, nem tudtam elérni ezeket a 
+funkciókat.
+Tevékenység részletezése:
+Megnyitottam a fõoldalt. Kézzel beírtam a kosar.php 
+majd a checkout.php elérését a címsorba.
+?
+Jegyzõkönyv
+Sorszám:
+19
+A tesztelés dátuma és idõpontja:
+2018.01.14. 22:05
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+Regisztráció szélsõérték teszt. 
+Megvizsgálni, hogy a weboldalra történõ regisztráció 
+folyamán lehet-e megadni rossz adatokat.
+Vizsgált eszköz/ szoftver fajtája:
+Weboldal / Google Chrome
+Elvárt eredmény:
+Minden hibásan bevitt elemre Alert / szöveges üzenet.
+Mit kapott:
+A két jelszó egyezõségén kívül semmit nem ellenõrzött. 
+<- Hiba.
+Tevékenység részletezése:
+Megnyitottam a weboldalt, majd megnyomtam a 
+Regisztráció gombot. Névnek megadtam a 
+keresztnevem, címnek csak a várost, telefonszámnak 
+4db 1-est, adószámnak 3db 0-t és két különbözõ jelszót.
+?
+Jegyzõkönyv
+Sorszám:
+20
+A tesztelés dátuma és idõpontja:
+2018.01.14. 22:12
+Tesztelést végzõ neve:
+Sarlósi Patrik
+A teszteset leírása és célja:
+Termékkép módosítás. 
+A teszt célja, hogy a programban mindenfajta hiba 
+nélkül lehet-e képet módosítani.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali Program / Windows 7
+Elvárt eredmény:
+Képnek csak kép formátumot lehessen megadni, a 
+program hibamentesen cserélje le a képet.
+Mit kapott:
+Képnél eltérõ formátum esetén megfelelõ hibaüzenet 
+jelent meg. 
+Kép feltöltése esetén rendszerhibaüzenet fogadott. Az 
+adatbázisba módosult a kép neve, de nem másolja át a 
+képet a program könyvtárába, többszöri próbálkozás 
+után sem.
+Tevékenység részletezése:
+Bejelentkeztem a programba, majd a HomeForm 
+Készlet fülén ráléptem az Alma termékre. A Módosítás 
+résznél rányomtam a Kép : megnyitás gombra. 
+Kiválasztottam egy .mp3-at és rányomtam az Ok-ra. 
+Hibaüzenetet kaptam. Kiválasztottam az alma2.png 
+képet az asztalomról. Módosítás gomb megnyomásakor 
+hibaüzenet fogadott.
+?
+Jegyzõkönyv
+Sorszám:
+21
+A tesztelés dátuma és idõpontja:
+2018. 01. 16. 12:10
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+Termékek ár szerinti szûrése csak alsó/felsõ érték 
+megadása esetén.
+Vizsgált eszköz/ szoftver fajtája:
+Weboldal / Google Chrome
+Elvárt eredmény:
+Kilistázza a termékeket találat esetén.
+Mit kapott:
+Ha csak minimum értéket adtam meg figyelmeztetett, 
+hogy a maximum nem lehet nagyobb a minimum 
+értéknél. Ha csak maximum értéket adtam meg akkor a 
+találati lista minden esetben üres maradt.
+Tevékenység részletezése:
+A keresési funkciónál kitöltöttem elõször csak a z ár 
+szerinti keresés minimum értékét, majd rákattintottam 
+a szûrés funkcióra, ezután megismételtem úgy is hogy 
+csak a maximum értéket adtam meg.
+?
+Jegyzõkönyv
+Sorszám:
+22
+A tesztelés dátuma és idõpontja:
+2018. 01. 16. 13:25
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+A 21-es sorszámú tesztelésben feltárt hibák javítása 
+után a teljes szûrési funkció tesztelése.
+Vizsgált eszköz/ szoftver fajtája:
+Weboldal / Google Chrome
+Elvárt eredmény:
+Minden szûrési funkció mûködik.
+Mit kapott:
+Minden szûrési funkció mûködik.
+Tevékenység részletezése:
+A javítás után minden egyes szûrési funkciót 
+leteszteltem bejelentkezés elõtt és után is.
+?
+Jegyzõkönyv
+Sorszám:
+23
+A tesztelés dátuma és idõpontja:
+2018. 01. 16. 19:27
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+Bejelentkezés hibás felhasználónév /jelszó esetén.
+Vizsgált eszköz/ szoftver fajtája:
+Weboldal / Google Chrome
+Elvárt eredmény:
+A program nem enged bejelentkezni a weblapra.
+Mit kapott:
+A rendszer figyelmeztet a hibás felhasználónévre, vagy 
+jelszóra és nem enged bejelentkezni.
+Tevékenység részletezése:
+Felmentem a localhost bejelentkezési felületére és 
+megadtam elõször egy hibás felhasználónevet és 
+rámentem a bejelentkezés gombra. A rendszer 
+figyelmeztetett, hogy rossz felhasználónevet, vagy 
+jelszót adtam meg. A folyamatot megismételtem hibás 
+jelszó esetén is.
+?
+Jegyzõkönyv
+Sorszám:
+24
+A tesztelés dátuma és idõpontja:
+2018. 01. 16. 19:35
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+Bejelentkezés hibás felhasználónév /jelszó esetén.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali program / Windows 10
+Elvárt eredmény:
+A program nem enged bejelentkezni a felületre.
+Mit kapott:
+A rendszer nem engedett bejelentkezni és 
+figyelmeztetett a hibás adatokra.
+Tevékenység részletezése:
+Elindítottam a VIR.exe alkalmazást majd a 
+bejelentkezésnél megpróbálok bejelentkezni hibás 
+adatokkal.
+?
+Jegyzõkönyv
+Sorszám:
+25
+A tesztelés dátuma és idõpontja:
+2018. 01. 16. 19:43
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+A regisztráció során megpróbálok létrehozni egy már 
+létezõ felhasználónevet. 
+Vizsgált eszköz/ szoftver fajtája:
+Weboldal / Google Chrome
+Elvárt eredmény:
+Nem engedi a regisztrációt, és figyelmeztet a program, 
+hogy az adott felhasználónév már foglalt.
+Mit kapott:
+Sikeres regisztráció a már meglévõ felhasználónév 
+esetén.
+Tevékenység részletezése:
+Létrehoztam elõször egy felhasználó felhasználónevû 
+felhasználót, majd ismételtem megpróbáltam 
+regisztrálni ezzel a felhasználónévvel.
+?
+Jegyzõkönyv
+Sorszám:
+26
+A tesztelés dátuma és idõpontja:
+2018. 01. 16. 20:10
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+A 25-õs sorszámú tesztben feltárt hibák javítás utáni 
+tesztelése.
+Vizsgált eszköz/ szoftver fajtája:
+Weboldal / Google Chrome
+Elvárt eredmény:
+Nem engedi a regisztrációt, és figyelmeztet a program, 
+hogy az adott felhasználónév már foglalt.
+Mit kapott:
+Nem enged regisztrálni és figyelmeztet, hogy a 
+felhasználónév már foglalt
+Tevékenység részletezése:
+A már létrehozott felhasználó felhasználónevû fiókkal 
+megpróbáltam ismét regisztrálni. Minden egyes 
+alkalommal foglalt felhasználónév figyelmeztetést 
+kaptam.
+?
+Jegyzõkönyv
+Sorszám:
+27
+A tesztelés dátuma és idõpontja:
+2018. 01. 17. 12:50
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+Az asztali programban mûködik e a számla frissítõ 
+gomb, hogy amikor a program futása közben új 
+terméket rendelnek meg az is megjelenjen.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali program / Windows 10
+Elvárt eredmény:
+A frissítés gombra kattintva megjelenik az új 
+megrendelés.
+Mit kapott:
+Megjelent az új megrendelés.
+Tevékenység részletezése:
+Bejelentkeztem az asztali alkalmazásba és a weboldalra 
+is.  Az asztali alkalmazáson rámentem a számlázás fülre 
+és ellenõriztem a megrendeléseket, ezután leadtam egy 
+új megrendelést, majd a programban frissítettem a 
+megrendelések listáját és megjelent az új megrendelés 
+is.
+?
+Jegyzõkönyv
+Sorszám:
+28
+A tesztelés dátuma és idõpontja:
+2018. 01. 17. 12:55
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+A korábban feltárt hiba javítása utáni ellenõrzõ teszt, 
+hogy új termék felvitelekor lehet-e negatív számot 
+felvinni új termék adatának.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali alkalmazás / Windows 10
+Elvárt eredmény:
+A program figyelmeztet, hogy nem lehet negatív számot 
+felvinni adatnak.
+Mit kapott:
+A program figyelmeztetett, hogy nem lehet negatív 
+számot felvinni.
+Tevékenység részletezése:
+Bejelentkeztem a programba és megpróbáltam negatív 
+számot másolni a mennyiség, ár és súly mezõkbe is, a 
+program minden alkalommal figyelmeztetett, hogy 
+negatív számot nem lehet felvinni. 
+?
+Jegyzõkönyv
+Sorszám:
+29
+A tesztelés dátuma és idõpontja:
+2018. 01. 17. 13:54
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+A korábban feltárt módosítási hibák javítása utáni 
+tesztelés. Ne lehessen negatív számot felvinni.
+Vizsgált eszköz/ szoftver fajtája:
+Asztali alkalmazás / Windows 10
+Elvárt eredmény:
+A program figyelmeztet, hogy nem lehet negatív számot 
+felvinni adatnak.
+Mit kapott:
+Nem lehet negatív számra módosítani az adatokat, de a 
+képmódosításra hibát ír ki.
+Tevékenység részletezése:
+Bejelentkeztem a programba és kipróbáltam, hogy a 
+negatív adatokra mit reagál a program, itt nem találtam 
+semmilyen hibát, de amikor a képet szerettem volna 
+módosítani, akkor hibát írt ki a program.
+?
+Jegyzõkönyv
+Sorszám:
+30
+A tesztelés dátuma és idõpontja:
+2018. 01. 17. 17:21
+Tesztelést végzõ neve:
+Szabolcs Gábor
+A teszteset leírása és célja:
+Számla kiállítás
+Vizsgált eszköz/ szoftver fajtája:
+Asztali alkalmazás / Windows 10
+Elvárt eredmény:
+A program kiállítja a számlát az adott rendelésrõl.
+Mit kapott:
+Kiválasztás után a program külön ablakban megjeleníti a 
+számlát, amelyet ezután ki lehet nyomtatni. Minden 
+adat egyezett.
+Tevékenység részletezése:
+Bejelentkeztem az alkalmazásba majd a számla fülön 
+kiválasztottam egy tetszõleges számlát, az adatokat 
+betöltötte a program, majd rányomtam a számla 
+kiállítása gombra.
+
+Jóváhagyás
+Jóváhagyó
+Név:
+Lanszki Csaba
+Szervezeti egység/ beosztás:
+Programtervezõ informatikus
+Aláírás:
+ 
+Dátum: 2018. 01. 17.
+
