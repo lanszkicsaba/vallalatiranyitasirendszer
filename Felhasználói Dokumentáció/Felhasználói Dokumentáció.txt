@@ -129,3 +129,84 @@ A felhasználóhoz és a céghez tartozó adatokat módosítani csak a rendszer 
 
 
 2.0 Webes alkalmazás esetén
+
+7. Kép: webshop_kezdolap.png
+
+
+2.1. Belépés/Regisztráció
+ 
+8. Kép: web_reg.png
+
+
+2.1.1. Regisztráció
+A weboldalra bárki regisztrálhat az alap adati megadása után. Ezek az adatok szükségesek a későbbi vásárlásaik folyamán. Két féle módon lehet eljutni a regisztrációs lapra. A weboldal tetején, jobboldalt a [Regisztráció] gomb megnyomása után vagy a [Bejelentkezés] gomb megnyomása után a Regisztráció linken keresztül. Minden adat és a Captcha kitöltése után az űrlap alján lévő [Regisztráció] gomb megnyomása esetén fejeződik be a regisztrációs folyamat.
+Az űrlap alján lévő [Visszaállítás] gomb segítségével az adatok törölhetők és újra beírhatók.
+Ha nincs minden mező kitöltve, akkor hibaüzenet figyelmezteti a felhasználót a hibára.
+Megszorítások:
+-	Telefonszám csak szám formátumú lehet.
+-	Adószám csak szám formátumú lehet.
+-	Minden adat kötelező
+-	A teljes név legalább 2 szótagból álljon
+-	A cím tartalmazzon legalább 1 szóközt
+
+
+
+2.1.2. Belépés
+Regisztráció (2.1.1-es pont) után mindenfajta korlátozás nélkül be lehet jelentkezni a weboldalra. Erre a weboldal tetején a [Bejelentkezés] gomb megnyomása után van lehetőség. A bejelentkezési oldalon a megadott Login név és jelszó bevitele után a [Bejelentkezés] gomb megnyomásával lehet belépni a felhasználóval. Ha nem egyeznek a regisztrált adatokkal, akkor hibaüzenet fogad.
+
+
+
+2.1.3 Adatok módosítása
+A regisztrált felhasználó módosíthatja a jelszavát, a rendeléshez szükséges adatait. Ez a bejelentkezés után a menüsorban megjelenő [Adatok módosítása] gomb megnyomása után, az Adatmódosítás lapon tehető meg. A jelenlegi adatok betöltődnek a megfelelő mezőkbe. A felhasználó módosíthatja ezeket, a véglegesítés a [Módosítás] gomb megnyomásával történik. Üzenet jelez arra, hogy a módosítás sikeres vagy sikertelen volt.
+Megszorítások megegyeznek a 2.1.1-es pontban foglaltakkal.
+ 
+
+
+2.2 Termékek
+
+2.2.1. Termékek megtekintése
+A rendszerben lévő termékeket bárki megtekintheti, aki a weboldalra belép. Ezek a főoldalon jelennek meg, kilistázva.
+ 
+9. kép: web_kosar.png
+
+
+2.2.2. Termékek kosárba tétele
+Terméket kosárba tenni csak a regisztrációt és a bejelentkezést követően van lehetőség. Minden termék mellett szerepel egy [Kosárba] gomb, a bejelentkezés után. Minden terméket csak egyszer tölt be a kosár listájába. A kosár tartalma megtekinthető a menüsor baloldalán lévő [Kosár] gombra nyomás után.
+
+
+2.2.3. Termék kosárból törlése
+Miután egy termék a kosárba került (2.2.2-es pont), utána van lehetőség azt törölni belőle, ha még sincs rá igény. Ez a kosár oldalon tehető meg. A termékek mellett található egy [X] gomb. Rákattintása folyamán egy figyelmeztető üzenet fogad a törléssel kapcsolatban. Igenlő válasz esetén a termék törlődik a kosárból. 
+
+
+
+2.2.4. Egy termék rendelése többször
+Egy terméket több darabszámmal is meglehet rendelni. Ez a rendelés leadása előtt, a kosárban lehetséges. Mielőtt a rendelést leadja a felhasználó, előtte a Darabszám mezőben tudja módosítani a kívánt darabszámot.
+Megszorítások:
+- A darabszám nem lehet negatív és maximum 99 lehet.
+ 
+
+
+2.2.5. Termékek megrendelése
+Miután a termékek a kosárba kerültek (2.2.2-es pont) és a felhasználó módosította a kedvező darabszámra a rendelést (2.2.4-es pont), akkor az űrlap alján lévő [Megrendelem] gomb segítségével véglegesítheti a vásárlást.
+Ha a rendelés sikeres volt, akkor a ,,Köszönjük megrendelését! Hamarosan szállítjuk a megrendelését!” üzenet fogadja a vásárlót. Ezzel egyidőben a háttérben a kosár kiürül és generálódik egy Megrendeles.XML fájl. A vásárló innen visszatérhet a főoldalra a [Vissza] gomb segítségével.
+
+
+
+2.2.6. Termékek keresése
+A weboldalon bárki kereshet a termékek között. Erre a főoldal bal oldalán lévő mezők adnak segítséget. A Név: felirat után lévő mezőben lehet a termék nevére szűrni, az Ár: felirat után lévő mezőkben pedig az árak egy bizonyos tartományára.
+Megszorítások:
+-	Az ár alsó és felső határa nem lehet negatív szám
+-	Az ár felső határa nem lehet kisebb, mint az alsó határ, vice versa
+
+
+
+
+
+Egyéb információk
+A rendszer készítői: Lanszki Csaba, Szabolcs Gábor, Sarlósi Patrik.
+A v.1.0-es verzió készült: 2017. szeptember – 2018. január.
+Félév: 2017/2018/1
+Iskola és szak: Eszterházy Károly Egyetem, Programtervező Informatikus
+A rendszer célja: A Rendszerfejlesztés technológiája című tantárgyban foglaltak elsajátítása a gyakorlatban, beadandó keretében. Ezalatt értendő például a tapasztalatszerzés verzió és feladatkövető rendszerekben, tesztelésben, tervezésben, fejlesztésben, dokumentációk írásában és nem utolsó sorban a közös munkavégzésben.
+Köszönjük a munkát!
+eke_logo.png
