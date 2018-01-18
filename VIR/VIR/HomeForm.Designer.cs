@@ -1247,9 +1247,12 @@
             // textBox_VevoTel
             // 
             this.textBox_VevoTel.Location = new System.Drawing.Point(91, 67);
+            this.textBox_VevoTel.MaxLength = 9;
             this.textBox_VevoTel.Name = "textBox_VevoTel";
+            this.textBox_VevoTel.ShortcutsEnabled = false;
             this.textBox_VevoTel.Size = new System.Drawing.Size(247, 21);
             this.textBox_VevoTel.TabIndex = 15;
+            this.textBox_VevoTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // label5
             // 
@@ -1263,9 +1266,12 @@
             // textBox_Vevoado
             // 
             this.textBox_Vevoado.Location = new System.Drawing.Point(91, 93);
+            this.textBox_Vevoado.MaxLength = 11;
             this.textBox_Vevoado.Name = "textBox_Vevoado";
+            this.textBox_Vevoado.ShortcutsEnabled = false;
             this.textBox_Vevoado.Size = new System.Drawing.Size(247, 21);
             this.textBox_Vevoado.TabIndex = 13;
+            this.textBox_Vevoado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // vevocime_textBox
             // 
